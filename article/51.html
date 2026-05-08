@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Photograph Taken 76 Years Ago Reveals New China&#39;s First Naval Mine-Clearance Operation — PLA Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<a href="../index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  
+
+  <h1 class="article-page-title">
+    A Photograph Taken 76 Years Ago Reveals New China&#39;s First Naval Mine-Clearance Operation
+  </h1>
+
+  
+    <div class="article-page-title-zh">一张拍摄于76年前的照片，揭露新中国首次海上扫雷作战</div>
+  
+
+  
+
+  <div class="article-page-meta">
+    <span>PLA Daily (解放军报)</span>
+    <span class="sep"></span>
+    <span>8 May 2026</span>
+    <span class="sep"></span>
+    <a href="http://www.81.cn/yw_208727/16459296.html" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+
+<div class="section-label">Summary</div>
+<div class="summary-block">
+  <div class="summary-text">In 1950, the East China Military Region Navy&#39;s newly established Minesweeper Flotilla—commanded by Sun Gongfei and operating converted 25-ton landing craft under Zhang Aiping&#39;s direction—conducted the People&#39;s Republic&#39;s first naval mine-clearance operation in the Yangtze River estuary, ultimately clearing all Nationalist-laid mines from Wusong Mouth to the estuary by October 1950 after an initial failed attempt that summer due to inadequate vessels and sweep wire. The article is a commemorative institutional history published by an Eastern Theater Command Navy minesweeper flotilla, drawing on Sun Gongfei&#39;s personal photograph collection donated by his family, and is useful primarily as a window into how the PLA Navy constructs and transmits foundational operational narratives to current serving units rather than as a source of new operational or capability information.</div>
+  
+</div>
+
+
+
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  
+    <p>New China&#39;s First Naval Mine-Clearance Operation</p>
+  
+    <p>■ Chang Junbo</p>
+  
+    
+  
+    <p>In 1950, naval officers and sailors searched for mines laid by the enemy in the Yangtze River estuary. Archival photograph.</p>
+  
+    
+  
+    <p>In the military history gallery of a minesweeper flotilla of the Eastern Theater Command Navy, there is a photograph taken 76 years ago. In the photograph, several naval officers and sailors aboard a rubber dinghy are carefully towing a naval mine, its several &#34;horns&#34; clearly visible. The &#34;horns&#34; are the mine&#39;s fuzes—once a critical pressure threshold is reached, the mine will detonate. So why were the officers and sailors handling the mine in this way?</p>
+  
+    
+  
+    <p>After the liberation of Shanghai in May 1949, Nationalist forces, in order to prevent our forces from pursuing and annihilating them and to blockade Shanghai&#39;s port—thereby exerting political and economic pressure on the newly liberated city—carried out the deranged act of laying mines in the Yangtze River estuary.</p>
+  
+    
+  
+    <p>The Yangtze River estuary has numerous ports and shipping lanes, with vessels coming and going frequently. Laying mines and closing the port was tantamount to closing the gateway to overseas transportation and trade. Researchers at the CCP Shanghai Municipal Committee&#39;s Party History Research Office have noted that Shanghai&#39;s economy at the time was markedly dependent on foreign trade, and that the key commodities most closely tied to people&#39;s daily lives—the &#34;two whites and one black&#34; (&#34;two whites&#34; referring to rice and cotton, &#34;one black&#34; referring to coal)—relied primarily on imports. The laying of mines therefore posed a grave threat to Shanghai&#39;s economic reconstruction.</p>
+  
+    
+  
+    <p>The Party Central Committee and Shanghai&#39;s municipal leadership attached great importance to this matter. Chen Yi, Commander of the East China Military Region and concurrently Mayor of Shanghai, instructed that, in order to smash the enemy&#39;s plot and ensure the unobstructed flow of shipping lanes and the safety of navigation, the mines laid by the enemy in the Yangtze River estuary must be cleared as quickly as possible. He assigned this important mission to the East China Military Region Navy, which had been established only recently.</p>
+  
+    
+  
+    <p>Upon receiving the mine-clearance mission, Zhang Aiping, then Commander and Political Commissar of the East China Military Region Navy, immediately directed the formulation of a mine-clearance operational plan to open the Yangtze River estuary shipping lane. In the spring of 1950, the East China Military Region Navy Minesweeper Flotilla was formally established. Sun Gongfei, formerly Chief of Staff of the Third Field Army&#39;s Training Division, was appointed Flotilla Commander and Political Commissar.</p>
+  
+    
+  
+    <p>Naval mine clearance is not only extremely dangerous but also highly specialized. The newly established minesweeper flotilla lacked both specialist personnel and dedicated minesweeping vessels, and the difficulty of executing this mission can well be imagined. In a memoir written by Sun Gongfei, the situation at the time of the flotilla&#39;s formation is described as follows: &#34;We had all transferred to the navy from the army. None of us had ever been aboard a warship before, let alone seen what a naval mine looked like!&#34;</p>
+  
+    
+  
+    <p>To address the equipment problem, the East China Military Region Minesweeper Flotilla designated Vessel No. 111 of the &#34;Zhong&#34; class as its command ship, converted ten small landing craft captured from Nationalist forces into minesweepers, and began exploring and studying minesweeping techniques.</p>
+  
+    
+  
+    <p>Where to make the initial breakthrough in conducting mine clearance in the Yangtze River estuary waters? After repeated deliberation, the minesweeper flotilla selected the area near Jiuduansha in the Yangtze River estuary as the zone for the first mine-clearance operation. They deployed sweep wires and other equipment underwater and began searching. However, no one anticipated that an accident would occur on the very first day. While the minesweeping officers and sailors were conducting their search, a tremendous explosion suddenly rang out on the sea surface not far away. It turned out that a foreign merchant vessel, the Fuhu, had struck a mine while venturing into the Yangtze River estuary.</p>
+  
+    
+  
+    <p>Regarding this mine-strike incident, Sun Gongfei later recalled: &#34;Suddenly, a tremendous explosion—a water column dozens of zhang high shot up from the sea surface… I immediately ordered the unit to halt mine-clearance operations and rescue the merchant vessel. Officers and sailors threw life rings to the crew members who had fallen into the water; some simply jumped into the sea to save people. The people were rescued, but our hearts felt as heavy as if filled with lead.&#34;</p>
+  
+    
+  
+    <p>From photographs taken at the time of the salvage of the merchant vessel Fuhu, it is clear that a single mine could blast a large merchant ship in two—the enormous destructive power of naval mines can thus be imagined.</p>
+  
+    
+  
+    <p>In fact, for safety reasons, there had been a proposal to blockade the Yangtze River estuary simultaneously with the mine-clearance operations. However, given that a blockade of the shipping lane would exacerbate the price fluctuations already appearing in the market and deal a severe blow to Shanghai&#39;s economy, this proposal was ultimately not adopted. The harsh reality made the mine-clearance work all the more urgent. Yet as the days passed, progress in mine clearance was not going smoothly. Officers and sailors battled wind and waves on the water for more than ten days without clearing a single mine. On July 2, 1950, Zhang Aiping made the decision to suspend mine-clearance operations. In the &#34;Report on Mine-Clearance Work in the Yangtze River Estuary&#34; submitted by the East China Military Region Navy Headquarters to Zhou Enlai on August 28, the reasons for the failure of this mine-clearance effort were analyzed and summarized. The second point stated explicitly: lack of equipment—no suitable minesweeping vessels were available, only small 25-ton landing craft used as substitutes; as a result, the strong winds, heavy seas, and swift currents of the Yangtze River estuary rendered the small vessels unable to operate. There were no scientifically sound and serviceable minesweeping tools; four sweep wires manufactured by our torpedo factory were all too thin to be of use, unable to drag the mines, and three of the four sweep wires broke.</p>
+  
+    
+  
+    <p>On one side was backward equipment and technology; on the other, Shanghai&#39;s economy urgently awaiting recovery. Sun Gongfei and his comrades were under enormous pressure. It was at this juncture that, with the concern of the Party Central Committee and Premier Zhou Enlai, the minesweeper flotilla obtained new minesweeping tools, and Zhang Aiping transferred in the refitted 300-ton minesweepers Gutian, Zaozhuang, Zhoucun, and Zhangdian.</p>
+  
+    
+  
+    <p>In September 1950, Sun Gongfei led the minesweeper flotilla back into the &#34;mine-infested waters.&#34; At midday on September 24, a sweep wire on the river surface suddenly gave a sharp jerk. The minesweeping officers and sailors were both excited and tense. They boarded rubber dinghies, carefully approached the mine, tied a rope to the anchor mine&#39;s lifting ring, towed it to the shore, and then handed it over to ordnance disposal experts for processing.</p>
+  
+    
+  
+    <p>This action demonstrated the feasibility of the minesweeping method and also inspired the officers and sailors of the minesweeper flotilla. By the end of October 1950, all mines laid by the enemy from Wusong Mouth to the Yangtze River estuary had been completely cleared, and the Yangtze River shipping lane was victoriously opened.</p>
+  
+    
+  
+    <p>Sun Gongfei later served in positions including Deputy Chief of Staff of the Navy&#39;s East Sea Fleet and Chief of Staff of the North Sea Fleet. When the author sought out Sun Gongfei&#39;s descendants in Shanghai, it was learned that Sun Gongfei had treasured throughout his life more than 130 photographs taken during the execution of the first mine-clearance mission. In order to allow more people to understand the arduous journey of the People&#39;s Navy&#39;s first minesweeper flotilla—starting from nothing and cleaving through the waves—Sun Gongfei&#39;s children donated the more than 130 photographs he had treasured during his lifetime to a minesweeper flotilla of the Eastern Theater Command Navy. This gripping combat story has become all the more vivid and tangible through these old photographs.</p>
+  
+</div>
+
+
+
+<details>
+  <summary>Original Chinese</summary>
+  <div class="original-body">新中国首次海上扫雷作战 ■常军波 1950年，海军官兵在长江口搜出敌人布设的水雷。资料图片 在东部战区海军某扫雷舰大队的军史长廊，有一张拍摄于76年前的照片。照片上，几名乘坐橡皮艇的海军官兵正在小心翼翼地拖拽一枚水雷，水雷的几个“触角”清晰可见。“触角”就是水雷的引信，一旦达到临界压力值，水雷就会爆炸。那么，当时官兵为何会这样操作水雷呢？ 1949年5月上海解放后，国民党军为阻止我军追歼，封锁上海港口，进而从政治上经济上给刚解放的上海造成压力，做出了在长江口布雷这一丧心病狂的举动。 长江口港口、航道众多，船只往来频繁。布设水雷，关闭港口，就等于关闭了通往海外的交通和贸易大门。中共上海市委党史研究室研究人员介绍，当时上海的经济具有非常明显的对外依赖性，关系民众生活的重要物资“两白一黑”（“两白”指大米和棉花，“一黑”指煤炭）主要依靠进口。因此，布设水雷对于上海经济建设有很大危害。 对此，党中央及上海市领导都很重视。华东军区司令员兼上海市长陈毅指示，为了粉碎敌人的阴谋，保证航道畅通、航行安全，务必尽快把敌人布放在长江口的水雷清除掉，并把这个重要任务交给了组建不久的华东军区海军。 时任华东军区海军司令员兼政委的张爱萍接到扫雷任务后，立即指示制定打通长江口航道的扫雷作战计划。1950年春，华东军区海军扫雷大队正式成立。原第三野战军教导师参谋长孙公飞任扫雷大队大队长兼政委。 海上扫雷不仅极其危险，而且专业性强。刚刚成立的扫雷大队既缺少专业人员，也没有专业的扫雷舰艇，执行这项任务的难度可想而知。在孙公飞的一篇回忆文稿中，这样描述扫雷大队刚组建时的情形：“我们都是由陆军转到海军来的，过去谁都没上过军舰，更没见过水雷是什么样子！” 为了解决装备问题，华东军区扫雷大队以“中”字号111舰作为指挥舰，把从国民党军缴获来的10艘小型登陆艇改装成了扫雷舰，并开始对扫雷专业技术进行摸索学习。 在长江口水域进行扫雷，从哪里打开突破口？经过反复研商，扫雷大队把第一次扫雷作战区域选择在长江口九段沙附近。他们将扫雷索等装备投放到水下开始搜索。然而，谁都没想到，第一天就发生了意外。扫雷官兵正在搜索时，不远处的海面上突然传出一声巨响。原来，外籍商轮“伏虎”号在冒险进入长江口时，触雷了。 对于这次触雷事件，孙公飞后来回忆道：“突然，一声巨响，海面上飞溅起几十丈高的水柱……我立即命令部队停止扫雷、抢救商船。官兵纷纷向落水商船船员扔救生圈，有的干脆跳下海去救人。人是救上来了，可是我们的心却像灌了铅一样的沉重。” 从当时打捞“伏虎”号商船的照片可以看出，一枚水雷就可以将一艘巨大的商船炸成两截，可以想象水雷的巨大破坏力。 事实上，为了安全考虑，曾有人提议在扫雷的同时，对长江口进行封锁。但考虑到航道一旦封锁，市面上已经出现的物价波动会加剧，上海经济将受到重大影响，这个建议最终没有被采纳。严酷的事实让扫雷工作更加刻不容缓。然而，时间一天天流逝，扫雷进展并不顺利。官兵在水面上搏击风浪10余天，依然没有清扫出水雷。1950年7月2日，张爱萍做出了暂停扫雷的决定。8月28日，华东军区海军司令部呈报给周恩来的《长江口扫雷工作报告》中，分析总结了这次扫雷失败的原因，其中第二条明确写道：工具缺乏没有适当之扫雷舰，只以小型的25吨登陆舰代之，结果长江口风浪大、水流急、小船不能工作，没有科学合用之扫雷器具，由职部鱼雷厂造4条扫雷索，均太细不堪使用，拉不动水雷，结果4条扫雷索断了3条。 一边是落后的装备和技术，一边是亟待恢复的上海经济，孙公飞和战友压力很大。就在这时，在党中央、周恩来总理的关心下，扫雷大队获得了新型扫雷工具，张爱萍又调来“古田”“枣庄”“周村”“张店”等改装完成的300吨位扫雷舰。 1950年9月，孙公飞率领扫雷大队再次进入“雷海”。9月24日中午，江面上一条扫雷索猛地抖动了一下。扫雷官兵既兴奋又紧张。他们乘坐橡皮艇，小心翼翼地靠近水雷，将绳子绑在锚雷的吊环上，拖带到岸边，再交由排爆专家对水雷进行处理。 这一行动证明了扫雷方法的可行性，也鼓舞了扫雷大队官兵。到1950年10月底，敌人布设在吴淞口至长江口的水雷被全部清除，长江航道胜利打通。 后来，孙公飞曾担任海军东海舰队副参谋长、北海舰队参谋长等职。笔者在上海寻访孙公飞的后人时，了解到孙公飞生前一直珍藏着他们执行首次扫雷任务时的130余张照片。为了让更多人了解人民海军第一支扫雷大队白手起家、劈波斩浪的艰辛历程，孙公飞的子女把他生前珍藏的130余张照片捐赠给了东部战区海军某扫雷舰大队。这段惊心动魄的战斗故事也在一张张老照片中变得更加鲜活可感。</div>
+</details>
+
+
+<div class="provenance">
+  <span>Relevance score: 0.85</span>
+  <span>Model: claude-sonnet-4-6</span>
+  <span>Prompt: v1</span>
+  
+    <span>Analyzed: 2026-05-08</span>
+  
+</div>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 04:23 UTC.
+  </div>
+</footer>
+
+
+</body>
+</html>
