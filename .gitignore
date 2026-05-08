@@ -1,0 +1,24 @@
+# Secrets
+.env
+
+# Runtime artifacts
+cache/
+pla_watch.db-shm
+pla_watch.db-wal
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/

@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{% set active_page = "" %}
+
+{% block title %}{{ article.title_english or article.title_original }} — PLA Watch{% endblock %}
+
+{% block extra_styles %}
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+{% endblock %}
+
+{% block content %}
+<a href="{{ root_path }}index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  {% if article.is_significant %}
+    <div class="sig-flag" style="margin-bottom:0.6rem;">Significant</div>
+  {% endif %}
+
+  <h1 class="article-page-title">
+    {{ article.title_english or article.title_original }}
+  </h1>
+
+  {% if article.title_original and article.source_language == 'zh' %}
+    <div class="article-page-title-zh">{{ article.title_original }}</div>
+  {% endif %}
+
+  {% if article.category_labels %}
+    <div class="tags">
+      {% for label in article.category_labels %}
+        <span class="tag">{{ label }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="article-page-meta">
+    <span>{{ article.source_name }}</span>
+    <span class="sep"></span>
+    <span>{{ article.published_date_fmt }}</span>
+    <span class="sep"></span>
+    <a href="{{ article.url }}" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+{% if article.summary_english %}
+<div class="section-label">Summary</div>
+<div class="summary-block{% if article.is_significant %} significant{% endif %}">
+  <div class="summary-text">{{ article.summary_english }}</div>
+  {% if article.is_significant and article.significance_reasoning %}
+    <div class="sig-block">{{ article.significance_reasoning }}</div>
+  {% endif %}
+</div>
+{% endif %}
+
+{% if article.text_english %}
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  {% for para in article.text_english.split('\n') %}
+    {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+
+{% if article.text_original %}
+<details>
+  <summary>Original {{ 'Chinese' if article.source_language == 'zh' else 'text' }}</summary>
+  <div class="original-body">{{ article.text_original }}</div>
+</details>
+{% endif %}
+
+<div class="provenance">
+  <span>Relevance score: {{ "%.2f"|format(article.relevance_score or 0) }}</span>
+  <span>Model: {{ article.model_id or '—' }}</span>
+  <span>Prompt: {{ article.prompt_version or '—' }}</span>
+  {% if article.analyzed_at %}
+    <span>Analyzed: {{ article.analyzed_at[:10] }}</span>
+  {% endif %}
+</div>
+
+{% endblock %}

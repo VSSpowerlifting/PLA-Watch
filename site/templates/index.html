@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% set active_page = "index" %}
+
+{% block title %}PLA Watch — Daily Brief{% if brief_date_fmt %}, {{ brief_date_fmt }}{% endif %}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Daily Brief{% if brief_date_fmt %} — {{ brief_date_fmt }}{% endif %}</h1>
+  <div class="meta">
+    {% if articles %}
+      <span>{{ articles | length }} article{{ 's' if articles | length != 1 }}</span>
+      {% if n_sources > 1 %}<span>{{ n_sources }} sources</span>{% endif %}
+      {% if n_significant > 0 %}<span>{{ n_significant }} significant</span>{% endif %}
+    {% else %}
+      <span>No articles</span>
+    {% endif %}
+  </div>
+</div>
+
+{% if articles %}
+  <div class="article-list">
+    {% for a in articles %}
+    <div class="article-card{% if a.is_significant %} significant{% endif %}">
+
+      {% if a.is_significant %}
+        <div class="sig-flag">Significant</div>
+      {% endif %}
+
+      <div class="article-title">
+        <a href="article/{{ a.id }}.html">{{ a.title_english or a.title_original }}</a>
+      </div>
+
+      {% if a.title_original and a.source_language == 'zh' %}
+        <div class="article-title-zh">{{ a.title_original }}</div>
+      {% endif %}
+
+      {% if a.category_labels %}
+        <div class="tags">
+          {% for label in a.category_labels %}
+            <span class="tag">{{ label }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if a.summary_english %}
+        <div class="article-summary">{{ a.summary_english }}</div>
+      {% endif %}
+
+      {% if a.is_significant and a.significance_reasoning %}
+        <div class="sig-reason">{{ a.significance_reasoning }}</div>
+      {% endif %}
+
+      <div class="article-footer">
+        <span>{{ a.source_name }}</span>
+        <span class="sep"></span>
+        <a href="{{ a.url }}" target="_blank" rel="noopener">Original ↗</a>
+        <span class="sep"></span>
+        <a href="article/{{ a.id }}.html">Full analysis →</a>
+      </div>
+
+    </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="empty-state">No articles available for this date.</p>
+{% endif %}
+{% endblock %}
