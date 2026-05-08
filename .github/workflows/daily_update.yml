@@ -1,0 +1,66 @@
+name: Daily PLA Watch Update
+
+on:
+  schedule:
+    - cron: '0 12 * * *'   # 12:00 UTC — 8:00 AM ET
+  workflow_dispatch:         # Manual trigger from Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── 1. Checkout ────────────────────────────────────────────────────────
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # Full history needed for the push-back step
+
+      # ── 2. Python setup ────────────────────────────────────────────────────
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+
+      # ── 3. Dependencies ────────────────────────────────────────────────────
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # ── 4. Run pipeline ────────────────────────────────────────────────────
+      - name: Run pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python pipeline.py --source pla_daily
+
+      # ── 5. Commit DB + site output back to main ────────────────────────────
+      #
+      # pla_watch.db must persist across runs — committing it to main is
+      # simpler than external storage for a project at this scale.
+      # output/ is committed so the rendered site lives alongside the code.
+      #
+      - name: Commit updated database and site output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pla_watch.db output/
+          if git diff --cached --quiet; then
+            echo "Nothing to commit — no new articles today."
+          else
+            git commit -m "Daily update: $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      # ── 6. Deploy output/ to gh-pages ─────────────────────────────────────
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          publish_branch: gh-pages
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_message: 'Deploy: ${{ github.run_id }}'
