@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>China Coast Guard Spokesperson Issues Statement — PLA Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<a href="../index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  
+
+  <h1 class="article-page-title">
+    China Coast Guard Spokesperson Issues Statement
+  </h1>
+
+  
+    <div class="article-page-title-zh">中国海警局新闻发言人发表谈话</div>
+  
+
+  
+    <div class="tags">
+      
+        <span class="tag">South China Sea</span>
+      
+        <span class="tag">Coast Guard</span>
+      
+    </div>
+  
+
+  <div class="article-page-meta">
+    <span>PLA Daily (解放军报)</span>
+    <span class="sep"></span>
+    <span>7 May 2026</span>
+    <span class="sep"></span>
+    <a href="http://www.81.cn/yw_208727/16459230.html" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+
+<div class="section-label">Summary</div>
+<div class="summary-block">
+  <div class="summary-text">China Coast Guard spokesperson Jiang Lue issued a statement on May 6 asserting that a Philippine Coast Guard unmanned aerial vehicle harassed the Chinese research vessel Xiangyanghong 33 while it conducted an ecological survey near Houteng Reef, and that CCG personnel responded in a lawful and professional manner. The statement follows an established CCG pattern of preemptively framing South China Sea incidents through official spokespeople to contest Philippine accounts and assert jurisdictional legitimacy over disputed features. The explicit reference to Houteng Reef and a named survey vessel adds granularity useful for tracking the geographic scope of Chinese maritime survey operations and the specific assets involved in contested-waters incidents.</div>
+  
+</div>
+
+
+
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  
+    <p>Jiang Lue, spokesperson of the China Coast Guard, stated that on May 6, China&#39;s Xiangyanghong 33 vessel was conducting a routine ecological and environmental survey in waters near China&#39;s Houteng Reef. During this time, a Philippine Coast Guard Islander-type unmanned aerial vehicle deliberately approached and harassed the vessel. The China Coast Guard tracked, monitored, and handled the situation in accordance with laws and regulations to ensure the safety of Chinese vessel operations; the entire operation was professional and standardized. The Philippine side&#39;s relevant statements distort right and wrong and disregard the facts, in an attempt to confuse and mislead. We sternly warn the Philippine side to immediately cease illegal interference and smear campaigns. The China Coast Guard will continue to conduct rights-protection and law enforcement activities in waters under China&#39;s jurisdiction in accordance with the law, and take all necessary measures to ensure the safety of China&#39;s scientific survey operations and peace and stability in the South China Sea.</p>
+  
+</div>
+
+
+
+<details>
+  <summary>Original Chinese</summary>
+  <div class="original-body">Statement by China Coast Guard Spokesperson 中国海警局新闻发言人姜略表示，5月6日，中方向阳红33号船位中国鲎藤礁附近海域开展正常生态环境调查。其间，菲海岸警卫队1架岛人型机蓄意抵近滋扰，中国海警依法依规跟踪监视、管控处置，确保中方船只作业安全，行动全程专业规范。菲方有关言论颠倒黑白、罔顾事实，企图混淆视听。我们正告菲方立即停止非法干扰和抹黑炒作。中国海警将依法在中国管辖海域持续开展维权执法活动，采取一切必要措施保障中方科考作业安全与南海地区和平稳定。 Jiang Lue, spokesperson of the China Coast Guard(CCG), stated that, on May 6, a Philippine Coast Guard Islander aircraft deliberately approached and harassed China&#39;s scientific research vessel Xiangyanghong 33, which was conducting a legitimate marine ecological survey in the waters near China&#39;s Houteng Jiao. The CCG tracked and monitored the aircraft and handled the situation in accordance with laws and regulations to ensure safe operations of the Chinese vessel. The CCG&#39;s maneuvers were professional and standardized throughout the whole process. The allegations by the Philippine side are mere distortion of facts and intended to mislead the public. We sternly warn the Philippine side to immediately stop illegal harassment, smearing and inflammatory propaganda. The CCG will continue to conduct rights-protection and law enforcement operations in waters under China&#39;s jurisdiction in accordance with the law, and take all necessary measures to ensure the safety of China&#39;s scientific survey operations and uphold peace and stability in the South China Sea.</div>
+</details>
+
+
+<div class="provenance">
+  <span>Relevance score: 0.90</span>
+  <span>Model: claude-sonnet-4-6</span>
+  <span>Prompt: v1</span>
+  
+    <span>Analyzed: 2026-05-08</span>
+  
+</div>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 04:23 UTC.
+  </div>
+</footer>
+
+
+</body>
+</html>

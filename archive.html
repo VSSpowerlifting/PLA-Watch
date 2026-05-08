@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLA Watch — Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  padding: 1.25rem 0 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.filter-label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.filter-group input[type="text"],
+.filter-group input[type="date"] {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  padding: 0.3rem 0.6rem;
+  outline: none;
+  width: 180px;
+}
+.filter-group input:focus { border-color: var(--text-muted); }
+.filter-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+}
+.cat-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  max-width: 480px;
+}
+.cat-check {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+.cat-check input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
+.cat-check span {
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tag-text);
+  background: var(--tag-bg);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.15rem 0.45rem;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.1s, border-color 0.1s;
+}
+.cat-check input:checked + span {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+.sig-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-top: 1.4rem;
+}
+.sig-toggle input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+}
+.sig-toggle span {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+}
+.filter-count {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  min-height: 1.2em;
+}
+#archive-list .article-card { display: block; }
+#archive-list .article-card.hidden { display: none; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="index.html" >Daily Brief</a>
+      <a href="archive.html" class="active">Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<div class="page-header">
+  <h1>Archive</h1>
+  <div class="meta">
+    <span>25 articles</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-group">
+    <div class="filter-label">Search</div>
+    <input type="text" id="search-input" placeholder="Title or summary…" autocomplete="off">
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-label">From</div>
+    <input type="date" id="date-from">
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-label">To</div>
+    <input type="date" id="date-to">
+  </div>
+
+  <div class="filter-group">
+    <div class="filter-label">Categories</div>
+    <div class="cat-checkboxes" id="cat-checkboxes">
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="taiwan">
+        <span>Taiwan</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="south_china_sea">
+        <span>South China Sea</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="east_china_sea">
+        <span>East China Sea</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="us_china_military">
+        <span>U.S.–China Military</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="exercises">
+        <span>Exercises</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="modernization">
+        <span>Modernization</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="doctrine">
+        <span>Doctrine</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="personnel">
+        <span>Personnel</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="nuclear">
+        <span>Nuclear</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="cyber_info">
+        <span>Cyber &amp; Info</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="internal_security">
+        <span>Internal Security</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="coast_guard">
+        <span>Coast Guard</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="military_diplomacy">
+        <span>Military Diplomacy</span>
+      </label>
+      
+      <label class="cat-check">
+        <input type="checkbox" class="cat-cb" value="political_work">
+        <span>Political Work</span>
+      </label>
+      
+    </div>
+  </div>
+
+  <label class="sig-toggle">
+    <input type="checkbox" id="sig-only">
+    <span>Significant only</span>
+  </label>
+</div>
+
+<div class="filter-count" id="filter-count"></div>
+
+<div id="archive-list"></div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 04:23 UTC.
+  </div>
+</footer>
+
+
+<script>
+const ARTICLES = [{"id": 36, "title_en": "An Army Brigade Drives the Transformation of Simulation Training Systems from 'Single Platform' to 'Integrated System'", "title_zh": "陆军某旅推动模拟训练系统从“单平台”向“成体系”转变", "summary": "An unidentified PLA Army brigade has upgraded its simulation training infrastructure from isolated single-platform systems to a networked, integrated architecture that links vehicle commander, gun commander, and driver stations in real time, enabling multi-crew and cross-specialty coordinated training on what the brigade calls a 'cloud training ground.' The shift addresses a documented gap in PLA combined-arms training—the inability to rehearse technical-tactical coupling and system-level coordination under realistic conditions without consuming live equipment and range time—and reflects a broader PLA effort to use simulation as a primary venue for developing and validating tactics before live-equipment execution. The brigade's formalized 'simulation-to-live-equipment transition day' protocol, which stress-tests simulated plans against live contingencies, signals an institutionalization of this training model rather than an ad hoc experiment.", "date": "2026-05-08", "date_fmt": "8 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["exercises", "modernization"], "category_labels": ["Exercises", "Modernization"], "is_significant": false, "significance_reason": "", "relevance_score": 0.85, "url": "http://www.81.cn/yw_208727/16459261.html", "article_path": "article/36.html"}, {"id": 51, "title_en": "A Photograph Taken 76 Years Ago Reveals New China's First Naval Mine-Clearance Operation", "title_zh": "一张拍摄于76年前的照片，揭露新中国首次海上扫雷作战", "summary": "In 1950, the East China Military Region Navy's newly established Minesweeper Flotilla—commanded by Sun Gongfei and operating converted 25-ton landing craft under Zhang Aiping's direction—conducted the People's Republic's first naval mine-clearance operation in the Yangtze River estuary, ultimately clearing all Nationalist-laid mines from Wusong Mouth to the estuary by October 1950 after an initial failed attempt that summer due to inadequate vessels and sweep wire. The article is a commemorative institutional history published by an Eastern Theater Command Navy minesweeper flotilla, drawing on Sun Gongfei's personal photograph collection donated by his family, and is useful primarily as a window into how the PLA Navy constructs and transmits foundational operational narratives to current serving units rather than as a source of new operational or capability information.", "date": "2026-05-08", "date_fmt": "8 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": [], "category_labels": [], "is_significant": false, "significance_reason": "", "relevance_score": 0.85, "url": "http://www.81.cn/yw_208727/16459296.html", "article_path": "article/51.html"}, {"id": 59, "title_en": "Ideological Front | Continuously Deepen Political Rectification Training with the Spirit of Thorough Self-Revolution", "title_zh": "思想战线丨以彻底的自我革命精神持续深化政治整训", "summary": "An article authored by three researchers at the National Defense University's Research Center for Xi Jinping Thought calls on PLA officers to deepen ongoing political rectification training (政治整训) by internalizing Xi Jinping's directive to pursue 'thorough self-revolution,' with explicit emphasis on purging corruption, reinforcing absolute Party loyalty, and elevating operational competencies ahead of the PLA's 2027 centenary founding goal. The piece is a doctrinal elaboration rather than a news report, but its publication by National Defense University researchers signals that the post-2023 rectification campaign targeting the Rocket Force and defense procurement sectors remains an active institutional priority rather than a concluded episode. The framing of military corruption explicitly as 'political betrayal' that 'erodes the principle of the Party commanding the gun' is notable: it elevates anti-corruption enforcement from a disciplinary matter to an existential political one, consistent with Xi's effort to use the campaign to reassert CMC control over the force.", "date": "2026-05-08", "date_fmt": "8 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["political_work"], "category_labels": ["Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.85, "url": "http://www.81.cn/yw_208727/16459257.html", "article_path": "article/59.html"}, {"id": 35, "title_en": "No Need for 'Please' on the Training Ground—Commands Admit Not the Slightest Ambiguity", "title_zh": "训练场上不必说“请”字，口令容不得半点含糊", "summary": "A PLA Navy unit's political education outlet published a first-person instructional narrative in which a newly appointed assistant squad leader, Liu Guoyu, is corrected by Political Instructor Zhu Denghui for softening commands with the word 'please' toward senior enlisted soldiers—a practice the article labels 'ingratiating-style leadership' (讨好式管理). The piece is a routine political education vignette aimed at junior non-commissioned officers and signals ongoing PLA institutional concern about command authority and discipline at the squad level, particularly as newly promoted NCOs navigate relationships with longer-serving enlisted personnel. The announcement follows a standard pattern of PLA unit-level moral instruction and contains no new information about capability, posture, or order of battle.", "date": "2026-05-08", "date_fmt": "8 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["political_work"], "category_labels": ["Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.72, "url": "http://www.81.cn/yw_208727/16459278.html", "article_path": "article/35.html"}, {"id": 41, "title_en": "\"I Taught Soldiers How to Choose a Path, and Found the One I Wanted to Walk Myself\"", "title_zh": "\"我教会战士选择路，也找到了自己想走的那条路”", "summary": "The Information Support Force's official newspaper profiles Guo Kai, a company commander in an unspecified ISF unit, who re-enlisted in 2019 after a career as a geography teacher, was commissioned in 2021, and in 2024 was tasked with standing up a drone company on a coastal tidal-flat training area. The article is a routine human-interest recruitment and morale piece and contains no operationally significant information, though its publication in Information Support News confirms that the ISF is actively building out drone-capable company-level units in coastal terrain and is using personnel profiles to normalize the force's still-nascent institutional identity following the 2024 reorganization.", "date": "2026-05-08", "date_fmt": "8 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["political_work"], "category_labels": ["Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.72, "url": "http://www.81.cn/yw_208727/16459273.html", "article_path": "article/41.html"}, {"id": 46, "title_en": "Streamlining Reimbursement Procedures for Small Official Expenditures — Service Members Must Not Pay Out of Pocket for Official Business", "title_zh": "优化小额因公支出报销流程，办公事不能让官兵“自掏腰包”", "summary": "A PLA Navy base headquarters, using a submarine crew unit as a pilot, overhauled reimbursement procedures for small official expenditures after finding that enlisted personnel—including Corporal Yin Mingming—were routinely absorbing minor work-related costs out of pocket rather than navigate a cumbersome claims process. The reform consolidated approval workflows, published dedicated reimbursement contacts, and established a 'maximum one visit' office for credential and welfare processing. The article is routine administrative reporting from a PLA outlet and signals no shift in operational posture or capability; its analytic value is limited to illustrating persistent friction between PLA grassroots units and rear-echelon headquarters bureaucracy, a recurring theme in PLA institutional reform coverage.", "date": "2026-05-08", "date_fmt": "8 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["political_work"], "category_labels": ["Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.7, "url": "http://www.81.cn/yw_208727/16459258.html", "article_path": "article/46.html"}, {"id": 48, "title_en": "An 'Demonstration of Incorrect Movements' Class That Takes an Unconventional Path Goes Viral in the Recruit Battalion", "title_zh": "一堂不走寻常路的“错误动作演示课”走红新兵营", "summary": "Squad Leader Lu Shangzeng of a PLA unit's Recruit 5th Battalion developed and implemented a 'demonstration of incorrect movements' training methodology that exposes recruits to common errors and randomized unexpected situations—including variable obstacle configurations and simulated equipment malfunctions—rather than drilling only standardized movements; his squad outperformed all others in a battalion-wide realistic-combat assessment, prompting the battalion to adopt the approach more broadly. The article is useful as ground-level evidence of an ongoing PLA effort to shift recruit training away from rote procedural execution toward adaptability under stress, consistent with the service-wide 实战化 (realistic combat) training push, and illustrates the institutional friction that accompanies that shift even at the squad level.", "date": "2026-05-08", "date_fmt": "8 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["doctrine", "political_work"], "category_labels": ["Doctrine", "Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.7, "url": "http://www.81.cn/yw_208727/16459277.html", "article_path": "article/48.html"}, {"id": 54, "title_en": "Sing the Song of Youth on the March Toward a Strong Military", "title_zh": "在强军征程上唱响青春之歌", "summary": "A PLA political education article published around May Fourth Youth Day calls on young officers and soldiers to internalize Xi Jinping's recent reply to youth award recipients, frame personal ambition within national military strengthening, and prioritize combat readiness and warfighting skill development. The piece is routine ideological mobilization content—drawing on standard CCP historical references to the Long March and Yan'an—and contains no new operational, organizational, or doctrinal information. It is useful only as a data point on the continuity of PLA political work messaging linking Xi's personal directives to unit-level ideological conditioning.", "date": "2026-05-08", "date_fmt": "8 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["political_work"], "category_labels": ["Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.7, "url": "http://www.81.cn/yw_208727/16459255.html", "article_path": "article/54.html"}, {"id": 55, "title_en": "International Observation | Remain Vigilant Against New Trends in Japan's 'Re-militarization'", "title_zh": "国际观察丨警惕日本“再军事化”新动向", "summary": "This article, published by a researcher at the CPC Central Committee Party School, argues that Japan's firing of Type 88 surface-to-ship missiles during the May 2025 U.S.-Philippines Balikatan exercise—the first Japanese offensive missile launch outside Japanese territory—exemplifies an accelerating pattern of military normalization that also includes Japan's transition from observer to full combat participant in Balikatan, the 2025 entry into force of the Japan-Philippines Reciprocal Access Agreement, the first stationing of Japanese military aircraft in Europe, and the April 2025 lifting of Japan's ban on lethal weapons exports. The piece is useful as a signal of official PRC framing: Beijing is consolidating these discrete Japanese defense policy developments into a unified 'new-type militarism' narrative and using the 80th anniversary of the Tokyo Trials as rhetorical leverage, suggesting this framing will feature in Chinese diplomatic messaging and information operations directed at regional audiences skeptical of Japanese rearmament.", "date": "2026-05-08", "date_fmt": "8 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["east_china_sea", "doctrine", "military_diplomacy"], "category_labels": ["East China Sea", "Doctrine", "Military Diplomacy"], "is_significant": false, "significance_reason": "", "relevance_score": 0.7, "url": "http://www.81.cn/yw_208727/16459269.html", "article_path": "article/55.html"}, {"id": 60, "title_en": "Always 'Taking the Initiative to Step Half a Pace Forward,' He Has Broadened the Military Careers of Many Comrades", "title_zh": "做事“主动向前迈半步”，他让许多战友的军旅之路更宽广", "summary": "First-Class Staff Sergeant Li Xin, an instructor at the training detachment of an unidentified naval unit, developed a dedicated vocational skills certification question bank for nearly 20 sub-specialties within the naval information and communications specialty after his unit's pass rate fell below 20 percent, subsequently raising it to 80 percent; he also co-authored a guidance handbook with counterparts from a naval academy to help non-commissioned officers navigate the certification process. The article is a human-interest profile with no operational or order-of-battle significance, but it incidentally documents a structural gap in the PLA Navy's vocational certification infrastructure—specifically, the absence of a service-specific question bank for information and communications specialties—that a junior NCO had to fill through individual initiative, suggesting institutional capacity constraints in PLA professional military education administration.", "date": "2026-05-08", "date_fmt": "8 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["political_work"], "category_labels": ["Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.7, "url": "http://www.81.cn/yw_208727/16459274.html", "article_path": "article/60.html"}, {"id": 12, "title_en": "First-Instance Verdicts Handed Down in the Cases of Wei Fenghe and Li Shangfu", "title_zh": "魏凤和案、李尚福案一审宣判", "summary": "On May 7, 2026, Chinese military courts handed down first-instance verdicts against Wei Fenghe and Li Shangfu—consecutive former Ministers of National Defense and Central Military Commission members—sentencing both to death with a two-year reprieve, permanent deprivation of political rights, and full asset confiscation, with automatic commutation to life imprisonment without possibility of reduction or parole. The verdicts mark the formal judicial conclusion of the most significant corruption prosecutions within the PLA's senior leadership in the Xi era, targeting two consecutive defense ministers and signaling that CMC-level rank provides no immunity from terminal career and legal consequences. The identical sentencing structure applied to both men, and the explicit bar on sentence reduction or parole, reflects a deliberate deterrence signal directed at the officer corps rather than a case-specific proportionality judgment.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["personnel"], "category_labels": ["Personnel"], "is_significant": true, "significance_reason": "First-instance verdicts against two consecutive former Defense Ministers and CMC members — Wei Fenghe and Li Shangfu — both receiving suspended death sentences, representing an unprecedented public accountability action at the highest level of PLA civilian leadership and signaling the scale of the corruption investigation within the defense establishment.", "relevance_score": 0.95, "url": "http://www.81.cn/yw_208727/16459190.html", "article_path": "article/12.html"}, {"id": 4, "title_en": "China Coast Guard Vessel Formation Patrols Diaoyu Islands Territorial Waters on May 7", "title_zh": "中国海警舰艇编队5月7日在我钓鱼岛领海巡航", "summary": "On May 7, a China Coast Guard formation led by vessel 1306 conducted a patrol in the waters around the Diaoyu Islands (Senkaku Islands), which Beijing claims as Chinese territory. The announcement follows a standard pattern of routine CCG patrols in the area and contains no new information about force composition, rules of engagement, or escalatory intent beyond the baseline pattern of persistent presence operations China uses to assert its territorial claims.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["east_china_sea", "coast_guard"], "category_labels": ["East China Sea", "Coast Guard"], "is_significant": false, "significance_reason": "", "relevance_score": 0.9, "url": "http://www.81.cn/yw_208727/16459188.html", "article_path": "article/4.html"}, {"id": 8, "title_en": "\"Veteran Pilots\" Retake the Unmanned Equipment Course, Turning \"Single-System Proficiency\" into \"System-Wide Linkage\"", "title_zh": "\"老飞手\"重修无人装备课，让“单装精通”成为“体系联动”", "summary": "A brigade under the 73rd Group Army, based in southern Fujian, has restructured its unmanned systems training after a mixed-formation exercise exposed coordination failures—including signal interference, overlapping UAV reconnaissance areas, and near-collisions among unmanned surface vessels—when more than ten unmanned platforms operated simultaneously. The brigade responded by forming a cross-specialty intensive training team, assigning dedicated signal channels to each platform type, and shifting the training objective from individual platform proficiency to integrated multi-system coordination across UAVs, robot dogs, and EOD robots. The report is useful for tracking how PLA ground forces at the brigade level are working through the practical command-and-control and electromagnetic deconfliction problems that arise when fielding heterogeneous unmanned systems at scale—a known gap between equipment acquisition and realized combat capability in the PLA's push toward manned-unmanned teaming.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["exercises", "modernization", "doctrine"], "category_labels": ["Exercises", "Modernization", "Doctrine"], "is_significant": false, "significance_reason": "", "relevance_score": 0.9, "url": "http://www.81.cn/yw_208727/16459090.html", "article_path": "article/8.html"}, {"id": 13, "title_en": "China Coast Guard Spokesperson Issues Statement", "title_zh": "中国海警局新闻发言人发表谈话", "summary": "China Coast Guard spokesperson Jiang Lue issued a statement on May 6 asserting that a Philippine Coast Guard unmanned aerial vehicle harassed the Chinese research vessel Xiangyanghong 33 while it conducted an ecological survey near Houteng Reef, and that CCG personnel responded in a lawful and professional manner. The statement follows an established CCG pattern of preemptively framing South China Sea incidents through official spokespeople to contest Philippine accounts and assert jurisdictional legitimacy over disputed features. The explicit reference to Houteng Reef and a named survey vessel adds granularity useful for tracking the geographic scope of Chinese maritime survey operations and the specific assets involved in contested-waters incidents.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["south_china_sea", "coast_guard"], "category_labels": ["South China Sea", "Coast Guard"], "is_significant": false, "significance_reason": "", "relevance_score": 0.9, "url": "http://www.81.cn/yw_208727/16459230.html", "article_path": "article/13.html"}, {"id": 23, "title_en": "Focus on Tactical Coordination! Multiple Images Unlock the People's Armed Police's Combat-Realistic Training →", "title_zh": "聚焦战术协同！多图解锁武警实战化训练→", "summary": "A mobile detachment under the People's Armed Police Beijing General Corps recently conducted multi-subject combat-realistic training with an emphasis on tactical coordination. The announcement is routine in content and format, reflecting standard PAP readiness messaging, and contains no new information about unit structure, equipment, or operational posture.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["exercises", "internal_security"], "category_labels": ["Exercises", "Internal Security"], "is_significant": false, "significance_reason": "", "relevance_score": 0.9, "url": "http://www.81.cn/wj_208567/16459162.html", "article_path": "article/23.html"}, {"id": 17, "title_en": "\"As Long as I Work Hard, I Can Do Better\" — A Profile of Xing Yingying, One of the Rocket Force's \"Top Ten Sword-Sharpening Vanguard Fighters (十大砺剑尖兵)\"", "title_zh": "“只要努力，我能做得更好”——记火箭军“十大砺剑尖兵”邢莹莹", "summary": "Xinhua profiled Xing Yingying, a PLA Rocket Force Staff Sergeant Third Class and 17-year communications specialist, who was named one of the Rocket Force's 'Top Ten Sword-Sharpening Vanguard Fighters' after winning multiple All-Army and Rocket Force communications competitions and developing a fault-localization methodology now used as a Rocket Force training reference. The profile is a standard PLA propaganda piece celebrating individual technical mastery and serves no independent analytic value, but it incidentally confirms that Rocket Force communications units conduct iterative equipment fielding with new assessment frameworks tied to operationally realistic scenarios, and that enlisted specialists at the staff sergeant level play a direct role in training backbone communications personnel and in real-time fault recovery during live-fire launch support missions.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["personnel", "nuclear", "political_work"], "category_labels": ["Personnel", "Nuclear", "Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.85, "url": "http://www.81.cn/yw_208727/16459233.html", "article_path": "article/17.html"}, {"id": 20, "title_en": "Young Backbone Personnel at Military-Wide Research Institutes Take on Heavy Responsibilities and Accelerate Their Development", "title_zh": "全军科研院所年轻骨干担当重任加速成长", "summary": "PLA Daily reports that military-wide research institutes—including the Academy of Military Sciences' Defense Science and Technology Innovation Research Institute, the National University of Defense Technology, the Naval Research Institute, and Rocket Force and Army research institutes—have significantly increased the share of researchers under 40 serving as project leaders or chief technical officers over the past three years, embedding young personnel in theater joint exercises, live-force confrontation drills, and field training to accelerate development under the 'research for war, talent for war' framework. The article signals an institutional push to compress the timeline for developing a technically proficient research cadre capable of supporting AI, intelligent command-and-control, and NBC defense systems in near-real combat conditions, with the two-way exchange mechanism between research institutes and operational units indicating deliberate effort to close the gap between laboratory development and field employment. The specific mention of AI integration into exercise-and-training chains at the Academy of Military Sciences and human-machine hybrid control work at the Army Research Institute provides evidence that PLA research institutes are actively operationalizing AI-enabled systems rather than conducting purely theoretical development.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["exercises", "modernization", "doctrine"], "category_labels": ["Exercises", "Modernization", "Doctrine"], "is_significant": false, "significance_reason": "", "relevance_score": 0.85, "url": "http://www.81.cn/yw_208727/16459087.html", "article_path": "article/20.html"}, {"id": 30, "title_en": "Sergeant Training Implements 'Dual-Mentor System,' Multiple Students Stand Out in Skills Competitions", "title_zh": "军士培养实行“双导师制”，多名学员在比武竞赛中崭露头角", "summary": "The Rocket Force Sergeant School has implemented a 'dual-mentor system' pairing professional instructors with frontline senior sergeants to train associate-to-bachelor's degree enlisted personnel, producing measurable results including a first-prize finish at the 8th National College Students Embedded Chip and System Design Competition. The initiative reflects the PLA Rocket Force's effort to close a recognized gap between theoretical knowledge and practical innovation capacity among its NCO corps, particularly as the force orients sergeant training explicitly toward requirements of 'informatized and intelligentized warfare.' The structured combination of academic instruction, frontline practitioner mentorship, and embedded research studios signals an institutional push to develop technically sophisticated enlisted specialists rather than relying solely on officer-led expertise for complex equipment operation and improvement.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["modernization", "personnel", "nuclear"], "category_labels": ["Modernization", "Personnel", "Nuclear"], "is_significant": false, "significance_reason": "", "relevance_score": 0.85, "url": "http://www.81.cn/yw_208727/16459096.html", "article_path": "article/30.html"}, {"id": 24, "title_en": "Resolving Servicemembers' Difficulties with Closed-Loop Implementation: Online Service Platform Bridges the 'Last Mile' of Grassroots Service", "title_zh": "为兵解难闭环落实，线上服务平台打通服务基层\"最后一公里\"", "summary": "A PLA Naval Aviation unit headquarters has deployed an online service platform enabling flight- and ground-crew personnel to submit welfare and operational complaints for tracked, closed-loop resolution, supplemented by institutionalized 'inspection and visit days' and two-way review meetings that allow enlisted personnel and junior officers to evaluate headquarters performance. The platform addresses a documented internal friction—slow feedback loops and low processing efficiency at the grassroots level—and reflects a broader PLA effort to manage retention-related grievances, particularly dependent-employment and quality-of-life issues that accompany assignment relocations. The announcement follows a standard PLA Daily pattern of publicizing internal service-improvement initiatives and contains no operationally significant new information, but is useful as evidence of persistent grassroots morale management challenges in naval aviation units.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["political_work"], "category_labels": ["Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.72, "url": "http://www.81.cn/yw_208727/16459098.html", "article_path": "article/24.html"}, {"id": 7, "title_en": "Abandoning the \"Good Enough\" Mentality Requires Firmly Establishing a Sense of Responsibility in One's Thinking", "title_zh": "摒弃“差不多”心态，就要在思想上树牢责任意识", "summary": "A political education article published in a PLA outlet, authored by Xiao Liming and Wang Zhongying, uses an equipment maintenance incident—in which a student's procedural shortcuts caused parameter deviations that nearly damaged a data link system—to argue that a 'good enough' (差不多) mentality is incompatible with combat readiness and must be replaced by rigorous standards, baseline thinking (底线思维), and continuous self-discipline. The piece is routine ideological guidance directed at junior officers and soldiers, consistent with longstanding PLA efforts to enforce procedural discipline and combat-effectiveness culture, and contains no new doctrinal, organizational, or capability information. Its primary value is as a data point on the PLA's persistent internal concern that training and maintenance standards remain inconsistently applied at the unit level.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["doctrine", "political_work"], "category_labels": ["Doctrine", "Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.7, "url": "http://www.81.cn/yw_208727/16459110.html", "article_path": "article/7.html"}, {"id": 14, "title_en": "Leading Troops Requires Knowing How to 'Speak' and How to 'Listen'—So How Does One Train the Skill of 'Listening'?", "title_zh": "带兵要会“说”也要会“听”，那“听”这门本领该怎么练？", "summary": "A Liaoning Provincial Military District cadre, writing in the PLA's Military Daily, argues that grassroots troop leaders must cultivate active listening as a concrete leadership skill, framing it as a direct contributor to unit cohesion and combat effectiveness rather than a soft interpersonal nicety. The piece, accompanied by responses from cadres across the People's Armed Police Qinghai General Corps, Jilin Province Liaoyuan Military Sub-district, and two army units, reflects a sustained PLA focus on officer-soldier communication deficits at the company level—a recurring theme in Military Daily commentary that signals institutional concern about morale management and political work effectiveness in units under heavy training and evaluation pressure.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["political_work"], "category_labels": ["Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.7, "url": "http://www.81.cn/yw_208727/16459116.html", "article_path": "article/14.html"}, {"id": 19, "title_en": "Announcement on the 2026 Rocket Force Open Recruitment of Professional and Technical Civilian Personnel from Society", "title_zh": "2026年火箭军面向社会公开招考专业技能类文职人员公告", "summary": "The PLA Rocket Force published its 2026 open recruitment announcement for professional and technical civilian personnel, soliciting applicants from society between May 8 and May 15 via the Military Talent Network for positions in equipment maintenance, materiel storage, cooking support, and motor vehicle driving. The announcement is a routine annual cycle and follows the standard framework established under the Regulations on Civilian Personnel of the People's Liberation Army, with no structural changes to eligibility criteria, grade requirements, or vetting procedures that would signal a shift in Rocket Force manning policy. The announcement is useful primarily as a baseline data point for tracking Rocket Force civilian workforce demand by functional category across recruitment cycles.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["modernization", "personnel", "nuclear"], "category_labels": ["Modernization", "Personnel", "Nuclear"], "is_significant": false, "significance_reason": "", "relevance_score": 0.7, "url": "http://www.81.cn/yw_208727/16459168.html", "article_path": "article/19.html"}, {"id": 22, "title_en": "Atop the Snow-Capped Mountains, a Young Soldier Completed His Own \"Coming-of-Age Ceremony\"", "title_zh": "雪山之巅，年轻的战士完成了自己的“成人礼”", "summary": "PLA Daily profiles Private Song Chengxin, a 19-year-old soldier assigned to a Xinjiang Military Region high-altitude training station at Kangxiwar in the Kunlun Mountains, recounting a birthday celebration organized by his squad amid austere plateau conditions. The article is a standard PLA Daily human-interest piece designed to promote recruitment and unit cohesion narratives—emphasizing sacrifice, camaraderie, and intergenerational military service—and contains no operationally significant information.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["internal_security", "political_work"], "category_labels": ["Internal Security", "Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.7, "url": "http://www.81.cn/yw_208727/16459118.html", "article_path": "article/22.html"}, {"id": 28, "title_en": "Song of Clean Conduct and Righteous Spirit | \"Never Seen Such an Army Before\"", "title_zh": "清风正气歌丨“从没见过这样的军队”", "summary": "A political education article published in a PLA outlet invokes Long March-era episodes—including the Red Army's conduct toward Yao villagers in Longsheng County in 1934 and figures such as Zhu De and Peng Dehuai—to argue that military effectiveness derives from ideological commitment, strict discipline, and civil-military unity rather than material superiority. The piece closes with a direct injunction to current PLA officers and soldiers to practice self-criticism, correct deviations, and preserve the 'fine traditions of the People's Army.' This is standard PLA political work content and follows an established pattern of using revolutionary history to reinforce present-day discipline and loyalty campaigns; it contains no new operational or organizational information.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["political_work"], "category_labels": ["Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.7, "url": "http://www.81.cn/yw_208727/16459093.html", "article_path": "article/28.html"}, {"id": 1, "title_en": "Drawing Cultivation Wisdom from Traditional Culture | 'Enrolled in the Register of Warriors, One Must Not Pause for Private Concerns'", "title_zh": "从传统文化中汲取修养智慧丨“名编壮士籍，不得中顾私”", "summary": "A PLA political education article published under the byline of Xiang Xianbiao invokes classical Chinese poetry, Han and Ming dynasty military figures, and Party-era martyrs to argue that PLA officers and soldiers must subordinate personal interests to national and Party missions, explicitly linking this norm to combat readiness and ideological discipline. The piece is a standard instance of the PLA's ongoing political work (政治工作) campaign to reinforce loyalty, self-sacrifice, and resistance to corruption through traditional culture and 'red gene' framing—a genre that has intensified since Xi Jinping's 2016 Gutian conference directives on military ideological rectification. It contains no new operational, organizational, or doctrinal information, but is useful as a data point on the continued emphasis within PLA political work on correcting 'erroneous ideological tendencies' and private self-interest among the force.", "date": "2026-05-07", "date_fmt": "7 May 2026", "source": "PLA Daily (解放军报)", "source_slug": "pla_daily", "categories": ["doctrine", "political_work"], "category_labels": ["Doctrine", "Political Work"], "is_significant": false, "significance_reason": "", "relevance_score": 0.6, "url": "http://www.81.cn/yw_208727/16459104.html", "article_path": "article/1.html"}];
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderCard(a) {
+  const sigClass = a.is_significant ? ' significant' : '';
+  const sigFlag  = a.is_significant ? '<div class="sig-flag">Significant</div>' : '';
+  const sigReason = (a.is_significant && a.significance_reason)
+    ? `<div class="sig-reason">${escapeHtml(a.significance_reason)}</div>` : '';
+
+  const tags = a.category_labels.length
+    ? `<div class="tags">${a.category_labels.map(l => `<span class="tag">${escapeHtml(l)}</span>`).join('')}</div>`
+    : '';
+
+  const zhTitle = a.title_zh
+    ? `<div class="article-title-zh">${escapeHtml(a.title_zh)}</div>` : '';
+
+  const summary = a.summary
+    ? `<div class="article-summary">${escapeHtml(a.summary)}</div>` : '';
+
+  return `
+<div class="article-card${sigClass}" data-date="${a.date}" data-cats="${a.categories.join(',')}" data-sig="${a.is_significant ? 1 : 0}">
+  ${sigFlag}
+  <div class="article-title"><a href="${escapeHtml(a.article_path)}">${escapeHtml(a.title_en || a.title_zh)}</a></div>
+  ${zhTitle}
+  ${tags}
+  ${summary}
+  ${sigReason}
+  <div class="article-footer">
+    <span>${escapeHtml(a.source)}</span>
+    <span class="sep"></span>
+    <span>${escapeHtml(a.date_fmt)}</span>
+    <span class="sep"></span>
+    <a href="${escapeHtml(a.url)}" target="_blank" rel="noopener">Original ↗</a>
+    <span class="sep"></span>
+    <a href="${escapeHtml(a.article_path)}">Full analysis →</a>
+  </div>
+</div>`;
+}
+
+// Render all cards once
+const listEl = document.getElementById('archive-list');
+listEl.innerHTML = ARTICLES.map(renderCard).join('');
+const cards = Array.from(listEl.querySelectorAll('.article-card'));
+
+function applyFilters() {
+  const query   = document.getElementById('search-input').value.trim().toLowerCase();
+  const dateFrom = document.getElementById('date-from').value;
+  const dateTo   = document.getElementById('date-to').value;
+  const sigOnly  = document.getElementById('sig-only').checked;
+  const activeCats = Array.from(document.querySelectorAll('.cat-cb:checked')).map(cb => cb.value);
+
+  let visible = 0;
+  ARTICLES.forEach((a, i) => {
+    let show = true;
+
+    if (query) {
+      const haystack = (a.title_en + ' ' + a.title_zh + ' ' + a.summary).toLowerCase();
+      if (!haystack.includes(query)) show = false;
+    }
+    if (dateFrom && a.date < dateFrom) show = false;
+    if (dateTo   && a.date > dateTo)   show = false;
+    if (sigOnly  && !a.is_significant) show = false;
+    if (activeCats.length) {
+      if (!activeCats.some(c => a.categories.includes(c))) show = false;
+    }
+
+    cards[i].classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+
+  const total = ARTICLES.length;
+  const countEl = document.getElementById('filter-count');
+  countEl.textContent = visible === total
+    ? `${total} articles`
+    : `${visible} of ${total} articles`;
+}
+
+// Wire up controls
+['search-input','date-from','date-to'].forEach(id =>
+  document.getElementById(id).addEventListener('input', applyFilters));
+document.getElementById('sig-only').addEventListener('change', applyFilters);
+document.querySelectorAll('.cat-cb').forEach(cb =>
+  cb.addEventListener('change', applyFilters));
+
+applyFilters();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&#34;Veteran Pilots&#34; Retake the Unmanned Equipment Course, Turning &#34;Single-System Proficiency&#34; into &#34;System-Wide Linkage&#34; — PLA Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<a href="../index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  
+
+  <h1 class="article-page-title">
+    &#34;Veteran Pilots&#34; Retake the Unmanned Equipment Course, Turning &#34;Single-System Proficiency&#34; into &#34;System-Wide Linkage&#34;
+  </h1>
+
+  
+    <div class="article-page-title-zh">&#34;老飞手&#34;重修无人装备课，让“单装精通”成为“体系联动”</div>
+  
+
+  
+    <div class="tags">
+      
+        <span class="tag">Exercises</span>
+      
+        <span class="tag">Modernization</span>
+      
+        <span class="tag">Doctrine</span>
+      
+    </div>
+  
+
+  <div class="article-page-meta">
+    <span>PLA Daily (解放军报)</span>
+    <span class="sep"></span>
+    <span>7 May 2026</span>
+    <span class="sep"></span>
+    <a href="http://www.81.cn/yw_208727/16459090.html" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+
+<div class="section-label">Summary</div>
+<div class="summary-block">
+  <div class="summary-text">A brigade under the 73rd Group Army, based in southern Fujian, has restructured its unmanned systems training after a mixed-formation exercise exposed coordination failures—including signal interference, overlapping UAV reconnaissance areas, and near-collisions among unmanned surface vessels—when more than ten unmanned platforms operated simultaneously. The brigade responded by forming a cross-specialty intensive training team, assigning dedicated signal channels to each platform type, and shifting the training objective from individual platform proficiency to integrated multi-system coordination across UAVs, robot dogs, and EOD robots. The report is useful for tracking how PLA ground forces at the brigade level are working through the practical command-and-control and electromagnetic deconfliction problems that arise when fielding heterogeneous unmanned systems at scale—a known gap between equipment acquisition and realized combat capability in the PLA&#39;s push toward manned-unmanned teaming.</div>
+  
+</div>
+
+
+
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  
+    <p>A Brigade of the 73rd Group Army Explores and Optimizes the Path to Generating New-Quality Combat Capabilities (新质战斗力) — &#34;Veteran Pilots&#34; Retake the Unmanned Equipment Course</p>
+  
+    <p>■ Zhu Jun, PLA Daily Special Correspondents Liao Xiaobin and Ni Xinlei</p>
+  
+    
+  
+    <p>A CBRN defense detachment of a brigade under the 73rd Group Army conducts reconnaissance operations using unmanned aerial vehicles. Photo by Yang Qi.</p>
+  
+    
+  
+    <p>In mid-spring, mist hangs over the mountains of southern Fujian. In the air, a reconnaissance UAV circles at low altitude; on the ground, a robot dog lunges forward in a crouching gait, with an explosive ordnance disposal (EOD) robot following close behind.</p>
+  
+    
+  
+    <p>Hundreds of meters away inside a command shelter, Staff Sergeant Second Class Miao Zetian of a brigade under the 73rd Group Army fixes his eyes on the control terminal, simultaneously piloting the UAV and monitoring the robot dog&#39;s route of advance, while periodically reminding the comrade beside him to adjust the EOD robot&#39;s speed. The aerial and ground unmanned systems coordinate closely and smoothly, successfully clearing a safe passage.</p>
+  
+    
+  
+    <p>&#34;Before this training exercise, everyone conducted theoretical study and multiple simulation drills covering the operational skills for each type of unmanned equipment and the coordinated tactics involved,&#34; Staff Officer Li of the brigade&#39;s operations and training section told the reporter. In recent years, the brigade has successively introduced multiple types of unmanned equipment, and officers and soldiers have shown great enthusiasm for learning and operating them; many have become top performers in the unmanned equipment field. However, several months ago, when the brigade attempted its first mixed-formation exercise with more than ten unmanned systems operating simultaneously, a number of problems were exposed during system-on-system confrontation: UAV mission areas overlapped, repeatedly reconnoitering the same terrain; unmanned surface vessels crossed paths in the water and nearly collided; the robot dog&#39;s tactical integration was inadequate and sensor data could not be synchronized in time... On the exercise floor, it was either signal interference or action conflicts. The single problem of signal interference caused by simultaneously powering on multiple types of equipment was enough to give Miao Zetian — a &#34;veteran pilot&#34; (老飞手) with over a thousand flight sorties — a headache.</p>
+  
+    
+  
+    <p>&#34;Mastering the operational skills for unmanned equipment is not the same as generating combat capability. Only by being embedded in the system-of-systems operational chain (体系作战链条) can unmanned equipment truly realize its operational effectiveness.&#34; At a combat and training review conference (议战议训会), the brigade&#39;s leadership identified the problem and proactively sought change by targeting the challenge of unmanned equipment coordination: they formed an unmanned equipment intensive training team, with backbone personnel from each specialty taking the podium to share professional experience and equipment operational skills and difficulties; they organized cross-specialty study and discussion, guiding officers and soldiers from different specialties to research tactics and training methods for modular grouping of unmanned forces through mutual learning; and they regularly conducted manned-unmanned coordinated tactics exercises and drills with tactical scenarios, focusing on breaking through coordination difficulties in unmanned equipment one by one.</p>
+  
+    
+  
+    <p>A cohort of unmanned equipment training backbone personnel — each highly proficient in their own specialty — converged without prior arrangement on the brigade&#39;s unmanned equipment specialist training room to retake the unmanned equipment course. As the brigade&#39;s UAV instructor, Miao Zetian voluntarily signed up for the intensive training. During the training, he took the podium to systematically explain UAV operational skills and the signal and flight-path requirements for UAV reconnaissance to his comrades. At the same time, he became a &#34;student&#34; again, learning from backbone personnel in other specialties about the robot dog&#39;s movement rhythm and studying the EOD robot&#39;s operational procedures.</p>
+  
+    
+  
+    <p>&#34;How do we avoid mutual signal interference?&#34; &#34;How do we ensure uninterrupted data links for multiple types of unmanned equipment operating in the same action?&#34; &#34;Which unmanned systems should be added when executing a mission to achieve greater efficiency?&#34;... The officers and soldiers in the intensive training continuously generated new ideas through exchange and discussion, resolved multiple coordination problems, and worked out several new manned-unmanned coordinated tactics.</p>
+  
+    
+  
+    <p>&#34;Today, many operators who were originally proficient only in a single type of unmanned equipment have grown into &#39;all-rounders&#39; (多面手) well-versed in the coordination mechanisms of multiple types of unmanned equipment,&#34; Staff Officer Li said with evident satisfaction. Taking Miao Zetian as an example: he can now skillfully use a UAV to guide the robot dog and EOD robot in coordinated operations. In a recent training exercise, facing a complex electromagnetic environment, he and his comrades operated multiple types of unmanned equipment to complete the training mission with &#34;zero interference and zero errors.&#34;</p>
+  
+    
+  
+    <p>From &#34;single-system proficiency&#34; (单装精通) to &#34;system-wide linkage&#34; (体系联动), the brigade&#39;s steps in exploring new coordinated tactics for unmanned equipment have grown increasingly concrete. The brigade&#39;s leadership introduced that they will continue to optimize the path to generating new-quality combat capabilities, and through such means as routinely organizing &#34;all-elements, full-process&#34; (全要素、全流程) adversarial training for unmanned equipment, will focus on solving the problems of data-link integration and autonomous coordination among multiple unmanned platforms in complex electromagnetic environments, driving tactical innovation and equipment iteration to advance in resonance.</p>
+  
+    
+  
+    <p>Behind the Unmanned Is the &#34;Highly Capable&#34; (高人)</p>
+  
+    <p>■ Fan Enda</p>
+  
+    
+  
+    <p>From &#34;one person, one system&#34; to &#34;multi-system coordination,&#34; from &#34;each fighting independently&#34; to &#34;system-of-systems integration&#34; — the practice of a brigade under the 73rd Group Army in deepening coordinated training for unmanned equipment tells us: behind the unmanned is the &#34;highly capable&#34; (高人). Unmanned and intelligentized (无人化智能化) does not mean weapons becoming human; rather, it means unmanned weapons at the front end and high-quality personnel at the back end, with humans and weapons highly integrated.</p>
+  
+    
+  
+    <p>At present, unmanned and intelligentized equipment is being fielded to units at an accelerating pace, but this does not mean combat capability will naturally leap forward. The essence of manned-unmanned coordination is not simply &#34;transferring&#34; human operations to machines, but rather, through restructuring operational processes and innovating tactics and methods, enabling each type of unmanned equipment to fully release its operational effectiveness under unified human command, ultimately producing a system-of-systems effect of &#34;1+1&gt;2.&#34;</p>
+  
+    
+  
+    <p>No matter how technology develops, humans remain the decisive factor in war&#39;s outcome. As integrated joint operations accelerate in their evolution, we must continuously strengthen manned-unmanned coordinated training, drive the alignment of officers&#39; and soldiers&#39; capabilities with battlefield requirements, make every unmanned system an organic node in the operational chain, and make every operator a &#34;bonding agent&#34; (黏合剂) for system-of-systems integration. Only in this way can new-domain, new-quality (新域新质) equipment fully realize its role on the battlefield.</p>
+  
+    
+  
+    <p>Forging the System Through Resonance</p>
+  
+    <p>■ Staff Sergeant Second Class, a Brigade of the 73rd Group Army, Miao Zetian</p>
+  
+    
+  
+    <p>Training concluded, the reconnaissance UAV returned to base, and the EOD robot and robot dog successively returned to their positions. &#34;Image stable, signal normal — this time we finally turned the tables!&#34; Hearing everyone&#39;s remarks, I set down the control terminal and finally felt a weight lift from my chest.</p>
+  
+    
+  
+    <p>Flying a single UAV well is not difficult. There was a time when, piloting a UAV solo, &#34;clear imagery and smooth commands&#34; was something I could achieve with ease. Yet the failure of that first mixed-formation exercise struck everyone like a hammer blow to the heart: powering on the UAV, EOD robot, and robot dog simultaneously not only caused image lag and command delays, but the various unmanned systems even began competing for signal channels. Beyond that, operators of different unmanned systems each had their own operating habits, and during training the phenomenon of &#34;each fighting independently&#34; was fairly common. Though sharing the same training ground, different crew positions were as if separated by invisible walls.</p>
+  
+    
+  
+    <p>On the surface it was a technical bottleneck; in substance it was insufficient coordination capability. After that exercise setback, the brigade simultaneously worked with manufacturers to tackle the problem — assigning each type of equipment its own dedicated signal channel and backup signal channel — while forming an unmanned equipment intensive training team to collectively research how to enable equipment to realize coordinated effectiveness, optimizing the coordination mechanism through repeated trials. After working through these issues, the technical bottlenecks among different systems were cleared, and a shared sense of coordination was established among operators of different systems.</p>
+  
+    
+  
+    <p>Moving from &#34;each fighting independently&#34; to resonance — this experience made me realize: a single drop of water can only release tremendous power by merging into the sea. Every unmanned system and every officer and soldier must be firmly embedded in the system-of-systems operational chain, allowing data to flow in an orderly manner and actions to mesh with precision, in order to open new pathways and generate new prospects in combat capability building, and to accumulate solid confidence for winning future wars.</p>
+  
+    
+  
+    <p>(Compiled by PLA Daily Special Correspondent Ni Xinlei)</p>
+  
+</div>
+
+
+
+<details>
+  <summary>Original Chinese</summary>
+  <div class="original-body">第73集团军某旅探索优化新质战斗力生成路径—— “老飞手”重修无人装备课 ■朱 君 解放军报特约记者 廖晓彬 倪鑫磊 第73集团军某旅防化分队利用无人机展开侦察作业。杨 琪摄 仲春时节，闽南山地雾气氤氲。空中，一架侦察无人机低空盘旋；地面，机器狗弓身突进，排爆机器人紧随其后。 数百米外的指挥方舱内，第73集团军某旅二级上士苗泽天紧盯操控终端，一边操控无人机飞行，一边监控机器狗行进路线，并不时提醒身旁战友调整排爆机器人的速度。空中与地面的无人装备密切协同、配合流畅，顺利开辟一条安全通路。 “这次训练前，大家针对各型无人装备的操作技能以及协同战术，进行了理论学习与多次模拟训练。”该旅作训科李参谋告诉记者，近年来，他们先后引进多型无人装备，官兵学用热情高涨，不少人成为无人装备领域的尖子。然而几个月前，旅里首次尝试进行混合编组演练，10余台无人装备齐上阵，在体系对抗中却暴露出一些问题：无人机任务区重叠，反复侦察同一片地域；无人艇在水中航线交叉，险些发生碰撞；机器狗战术融合不到位，侦测数据无法及时同步……演练现场，不是信号“打架”就是行动“撞车”，仅是多型装备同时开机导致信号干扰这一难题，便让苗泽天这位飞了上千架次的“老飞手”感到头疼。 “掌握了无人装备操作技能不等同于形成了战斗力，只有嵌入体系作战链条，无人装备才能真正发挥作战效能。”议战议训会上，该旅领导指出问题所在，并紧盯无人装备协同难题主动求变：组建无人装备集训队，由各专业骨干登台分享专业经验及装备操作技能和难点；组织跨专业学习研讨，引导不同专业官兵在互学互鉴中研究无人力量模块化编组的战法训法；定期开展带战术背景的有人无人协同战法研练，聚焦无人装备协同难点逐项攻关。 一批在各自专业领域驾轻就熟的无人装备训练骨干，不约而同地赶往旅无人装备专修室，重修无人装备课。作为旅队无人机教练员，苗泽天主动报名参加集训。集训中，他站上讲台，为战友系统讲解无人机操作技能及无人机侦察时对信号、航线的需求。与此同时，他重新当起“学生”，向其他专业骨干了解机器狗的行进节奏，研究排爆机器人的作业流程。 “如何规避信号互相干扰的问题”“怎样确保多种无人装备在同一行动中链路畅通”“遂行任务时加入哪些无人装备可以更高效”……集训官兵在交流研讨中不断碰撞出新的思维火花，解决多个协同难题，摸索出多项有人无人协同新战法。 “如今，许多原本只精通单一无人装备的操作手，纷纷成长为通晓多型无人装备协同机理的‘多面手’。”李参谋欣喜地说，以苗泽天为例，他已能够熟练利用无人机引导机器狗与排爆机器人协同作业。前不久一次训练中，面对复杂电磁环境，他和战友以“零干扰、零失误”表现，操控多型无人装备完成训练任务。 从“单装精通”到“体系联动”，该旅探索无人装备协同新战法的步子越迈越实。该旅领导介绍，他们将持续优化新质战斗力生成路径，通过常态组织无人装备“全要素、全流程”对抗训练等方式，重点破解复杂电磁环境下多类无人平台的链路融合与自主协同难题，推动战法创新与装备迭代同频共振。 无人的背后是“高人” ■范恩达 从“一人一机”到“多装协同”，从“各自为战”到“体系融合”，第73集团军某旅深化无人装备协同训练的实践告诉我们：无人的背后是“高人”。无人化智能化不是武器变成人，而是无人化武器在前台、高素质人员在后台，人与武器高度一体化。 当前，无人化、智能化装备加速列装部队，但并不意味着战斗力就会自然飞跃。有人无人协同的本质，不是简单地将人的操作“平移”给机器，而是通过重构作战流程、创新战术战法，让各型无人装备在人的统一指挥下充分释放作战效能，最终形成“1+1&gt;2”的体系效应。 无论科技如何发展，人始终是战争胜负的决定因素。随着一体化联合作战加速演进，我们应不断加强有人无人协同训练，推动官兵能力与战场需求相匹配，让每台无人装备都成为作战链条上的有机节点，让每名操作手都成为体系融合的“黏合剂”。惟有如此，新域新质装备才能在战场上充分发挥作用。 在同频共振中锤炼体系 ■第73集团军某旅二级上士 苗泽天 训练结束，侦察无人机返航，排爆机器人、机器狗也陆续归位。“图像稳定，信号正常，这次终于打了个‘翻身仗’！”听到大家的感慨，我放下操控终端，心中终于松了一口气。 飞好一架无人机并不难。曾几何时，操纵无人机单飞时，“图像清晰、指令流畅”对我来说可谓手拿把掐。然而首次混合编组演练的失败经历，如同敲在大家心头的一记重锤：无人机、排爆机器人、机器狗同时开机，不仅导致图像卡顿、指令延迟等问题，各型无人装备甚至出现抢占信号通道的现象。不仅如此，不同无人装备的操作手有自己的操作习惯，训练中，“各自为战”的现象比较普遍。虽然同处一片训练场，但不同战位像被一道道无形的墙隔开了。 表面看是技术瓶颈，实质上是协同能力不够。那次演训失利后，旅里一边联合生产厂家攻关，为每型装备划分专属信号通道与备用信号通道；一边组建无人装备集训队，让大家合力研究如何让装备发挥协同效能，在反复试验中优化协作机制。经过磨合，不同装备的技术堵点打通了，不同装备操作手的协同意识建立了。 从“各自为战”走向同频共振，这段经历让我意识到：一滴水只有融入大海才能迸发出磅礴力量，每一台无人装备、每一名官兵只有牢牢嵌入体系作战链条，让数据有序流淌、行动精准咬合，才能在战斗力建设中开辟新路径、催生新图景，为打赢未来战争积蓄充盈底气。 （解放军报特约记者 倪鑫磊整理）</div>
+</details>
+
+
+<div class="provenance">
+  <span>Relevance score: 0.90</span>
+  <span>Model: claude-sonnet-4-6</span>
+  <span>Prompt: v1</span>
+  
+    <span>Analyzed: 2026-05-08</span>
+  
+</div>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 04:23 UTC.
+  </div>
+</footer>
+
+
+</body>
+</html>

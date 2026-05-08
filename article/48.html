@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An &#39;Demonstration of Incorrect Movements&#39; Class That Takes an Unconventional Path Goes Viral in the Recruit Battalion — PLA Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<a href="../index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  
+
+  <h1 class="article-page-title">
+    An &#39;Demonstration of Incorrect Movements&#39; Class That Takes an Unconventional Path Goes Viral in the Recruit Battalion
+  </h1>
+
+  
+    <div class="article-page-title-zh">一堂不走寻常路的“错误动作演示课”走红新兵营</div>
+  
+
+  
+    <div class="tags">
+      
+        <span class="tag">Doctrine</span>
+      
+        <span class="tag">Political Work</span>
+      
+    </div>
+  
+
+  <div class="article-page-meta">
+    <span>PLA Daily (解放军报)</span>
+    <span class="sep"></span>
+    <span>8 May 2026</span>
+    <span class="sep"></span>
+    <a href="http://www.81.cn/yw_208727/16459277.html" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+
+<div class="section-label">Summary</div>
+<div class="summary-block">
+  <div class="summary-text">Squad Leader Lu Shangzeng of a PLA unit&#39;s Recruit 5th Battalion developed and implemented a &#39;demonstration of incorrect movements&#39; training methodology that exposes recruits to common errors and randomized unexpected situations—including variable obstacle configurations and simulated equipment malfunctions—rather than drilling only standardized movements; his squad outperformed all others in a battalion-wide realistic-combat assessment, prompting the battalion to adopt the approach more broadly. The article is useful as ground-level evidence of an ongoing PLA effort to shift recruit training away from rote procedural execution toward adaptability under stress, consistent with the service-wide 实战化 (realistic combat) training push, and illustrates the institutional friction that accompanies that shift even at the squad level.</div>
+  
+</div>
+
+
+
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  
+    <p>&#39;Demonstration of Incorrect Movements&#39; Class Goes Viral in the Recruit Battalion</p>
+  
+    <p>■ Ma Jiong, Xiao Changhao</p>
+  
+    
+  
+    <p>&#34;During a low crawl, you may momentarily rush and increase your range of motion, causing your gear to get caught on the barbed wire. Don&#39;t panic—don&#39;t yank hard. Pull in your abdomen, drop your shoulders to release the tension, and you can quickly free yourself and withdraw!&#34;</p>
+  
+    
+  
+    <p>One day last month, on the tactical training ground of a unit&#39;s Recruit 5th Battalion, squad leaders from every squad were going through movements person by person, correcting details—except for 10th Squad Leader Lu Shangzeng, who took a different approach and organized a &#34;demonstration of incorrect movements&#34; class.</p>
+  
+    
+  
+    <p>Lu Shangzeng was seen lying in front of the barbed wire, demonstrating on the spot the incorrect movements commonly seen during training, and drawing on his own experience to explain both the hidden dangers and risks and the remedies for unexpected situations. This unconventional &#34;demonstration of incorrect movements&#34; class was a revelation to the officers and soldiers present, but it also sparked considerable controversy.</p>
+  
+    
+  
+    <p>Many of the cadre responsible for leading troops had reservations. &#34;Recruits have just entered the battalion—they should first build a solid foundation of correct movements and develop standardized habits.&#34; &#34;Recruits have a weak tactical foundation and limited comprehension; exposing them to incorrect movements too early can easily confuse the key points.&#34; &#34;Training emphasizes gradual progression—we should follow the approach of &#39;learn the standard first, then pursue improvement,&#39; taking it step by step. I have reservations about Squad Leader Lu&#39;s approach.&#34; ...</p>
+  
+    
+  
+    <p>Faced with the discussion and puzzlement from those around him, Lu Shangzeng did not argue at length. Instead, after training ended, he recounted a previous experience.</p>
+  
+    
+  
+    <p>At the time, Lu Shangzeng had just taken on the role of recruit squad leader. He led his troops strictly and meticulously, holding everything to a high standard, and the results of his squad consistently ranked at the top. But during one tactical assessment conducted against a realistic combat backdrop, once the recruits were taken out of the fixed venue and preset procedures, their scores fluctuated significantly across the board.</p>
+  
+    
+  
+    <p>Among them, one recruit, while low-crawling through an obstacle to try to achieve a better score, let his form break down—his posture rose too high, and his equipment was firmly caught on the barbed wire. In his panic, he yanked with brute force; the more he struggled, the tighter the entanglement became, and he was unable to free himself for a long time, being ruled &#34;killed in action&#34; on the spot. Another recruit&#39;s weapon malfunctioned during shooting; he panicked momentarily and missed the optimal firing window entirely.</p>
+  
+    
+  
+    <p>During the after-action review, Lu Shangzeng realized that the battlefield has no fixed template and no opportunity to start over. If soldiers only know how to mechanically execute standard movements—knowing what to do but not why—they will inevitably fall into confusion and a passive position the moment they encounter an unexpected situation.</p>
+  
+    
+  
+    <p>From that point on, when organizing training, Lu Shangzeng began experimenting with visually demonstrating incorrect movements, leading everyone to analyze where the problem lay, what risks it would produce, and what remedies were available after a mistake—letting everyone understand &#34;how to correct errors and what to do when in danger.&#34; He also introduced random unexpected situations (随机特情) calibrated to the current training phase: barbed wire of varying density, weapons and equipment with sudden malfunctions, casualty evacuation tasks issued on the spot, and so on—forcing recruits to break out of a steady, predictable training rhythm and temper their psychological resilience and adaptability in complex environments.</p>
+  
+    
+  
+    <p>At first, many recruits found it difficult to adapt, but over time they came to feel they had benefited greatly. Not long ago, the recruit battalion organized a phased realistic-combat assessment (实战化考核). The exercise control group (导调组) temporarily changed the venue and randomly layered in unexpected situations; many recruits performed poorly due to insufficient adaptability. Only Lu Shangzeng&#39;s squad performed with composure across the board—coordinating seamlessly and calmly resolving every unexpected situation—finishing first in overall results across the entire battalion.</p>
+  
+    
+  
+    <p>Today, Lu Shangzeng&#39;s &#34;demonstration of incorrect movements&#34; class is gradually being rolled out across the recruit battalion. Political Instructor Li Chunqing reflected: &#34;Only by training the error-prone links until they are solid, and training the handling of unexpected situations (特情处置) until it is battle-hardened, can we forge qualified soldiers who can go to the battlefield!&#34;</p>
+  
+</div>
+
+
+
+<details>
+  <summary>Original Chinese</summary>
+  <div class="original-body">“错误动作演示课”走红新兵营 ■马 駉 肖昌豪 “匍匐时，可能因一时心急导致动作幅度增大，被铁丝网钩住。这时不要慌，别硬拽，收腹沉肩卸力，便能快速解脱撤离！”上个月的一天，在某部新兵五营战术训练场上，各班班长都在逐人抠动作、纠细节，唯独十班班长路上增另辟蹊径，组织了一堂“错误动作演示课”。 只见路上增趴在铁丝网前，现场示范训练中常见的错误动作，并结合自身经历，既讲隐患风险，又示范突发状况下的补救办法。一堂不走寻常路的“错误动作演示课”，让在场官兵耳目一新，但也引来不少争议。 不少带兵骨干有顾虑。“新兵刚入营，应该先打牢动作底子，养成规范素养”“新兵战术底子薄、理解能力有限，过早接触错误动作，容易混淆要领”“训练讲究循序渐进，应该遵循‘先学标准、再抓提升’的路子，步步踩实。我对路班长的做法，持保留态度”…… 面对众人的议论和不解，路上增没有过多争辩，而是在训练结束后讲起了此前一段经历。 那时，路上增刚担任新兵班长，带兵从严从细，事事高标准，所带班成绩稳居前列。可在一次有实战背景的战术考核中，脱离了固定场地与预设流程后，新兵们的成绩普遍出现较大波动。 其中，有名新兵在低姿匍匐通过障碍时，为争取更好成绩，动作走样，姿态过高，装具被铁丝牢牢钩住。情急之下，他蛮力拉扯，结果越挣扎束缚越紧，迟迟无法脱身，当场被判“阵亡”。另一名新兵射击时枪械突发故障，一时慌了神，白白错失最佳射击时机。 复盘中，路上增意识到，战场没有固定范式，更没有重来机会，如果战士只会机械地完成标准动作，知其然而不知其所以然，一旦遭遇意外特情，必然慌乱失据、陷入被动。 从那以后，组训时路上增尝试直观演示错误动作，带着大家剖析问题出在哪，会导致哪些风险，并给出失误后的补救办法，让大家明白“错了怎么改、遇险怎么办”。他还根据当前训练阶段，增设随机特情——疏密不一的铁丝网、突发故障的武器装备、临时下达的救护任务等等，倒逼新兵跳出四平八稳的训练节奏，让他们在复杂环境中磨砺心理素质与应变能力。 起初，不少新兵一时难以适应，但时间长了，他们深感受益良多。不久前，新兵营组织阶段性实战化考核，导调组临时变换场地、随机叠加特情，不少新兵因应变能力不足发挥失常。唯有路上增所带班全员沉着冷静、协同默契，从容化解各类突发状况，综合成绩位列全营第一。 如今，路上增的“错误动作演示课”逐步在新兵营推开，教导员李纯清感慨：“把易错环节练扎实，把特情处置练过硬，才能锻造出能上战场的合格兵！”</div>
+</details>
+
+
+<div class="provenance">
+  <span>Relevance score: 0.70</span>
+  <span>Model: claude-sonnet-4-6</span>
+  <span>Prompt: v1</span>
+  
+    <span>Analyzed: 2026-05-08</span>
+  
+</div>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 04:23 UTC.
+  </div>
+</footer>
+
+
+</body>
+</html>

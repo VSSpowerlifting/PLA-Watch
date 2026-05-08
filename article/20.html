@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Young Backbone Personnel at Military-Wide Research Institutes Take on Heavy Responsibilities and Accelerate Their Development — PLA Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<a href="../index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  
+
+  <h1 class="article-page-title">
+    Young Backbone Personnel at Military-Wide Research Institutes Take on Heavy Responsibilities and Accelerate Their Development
+  </h1>
+
+  
+    <div class="article-page-title-zh">全军科研院所年轻骨干担当重任加速成长</div>
+  
+
+  
+    <div class="tags">
+      
+        <span class="tag">Exercises</span>
+      
+        <span class="tag">Modernization</span>
+      
+        <span class="tag">Doctrine</span>
+      
+    </div>
+  
+
+  <div class="article-page-meta">
+    <span>PLA Daily (解放军报)</span>
+    <span class="sep"></span>
+    <span>7 May 2026</span>
+    <span class="sep"></span>
+    <a href="http://www.81.cn/yw_208727/16459087.html" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+
+<div class="section-label">Summary</div>
+<div class="summary-block">
+  <div class="summary-text">PLA Daily reports that military-wide research institutes—including the Academy of Military Sciences&#39; Defense Science and Technology Innovation Research Institute, the National University of Defense Technology, the Naval Research Institute, and Rocket Force and Army research institutes—have significantly increased the share of researchers under 40 serving as project leaders or chief technical officers over the past three years, embedding young personnel in theater joint exercises, live-force confrontation drills, and field training to accelerate development under the &#39;research for war, talent for war&#39; framework. The article signals an institutional push to compress the timeline for developing a technically proficient research cadre capable of supporting AI, intelligent command-and-control, and NBC defense systems in near-real combat conditions, with the two-way exchange mechanism between research institutes and operational units indicating deliberate effort to close the gap between laboratory development and field employment. The specific mention of AI integration into exercise-and-training chains at the Academy of Military Sciences and human-machine hybrid control work at the Army Research Institute provides evidence that PLA research institutes are actively operationalizing AI-enabled systems rather than conducting purely theoretical development.</div>
+  
+</div>
+
+
+
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  
+    <p>Young Backbone Personnel at Military-Wide Research Institutes Take on Heavy Responsibilities and Accelerate Their Development</p>
+  
+    <p>Proportion of Research Personnel Under Forty Serving as Project Leaders or Chief Technical Officers Rises Significantly</p>
+  
+    
+  
+    <p>PLA Daily correspondent Jia Qilong reports: Can a young team with an average age of under 31 shoulder a key military artificial intelligence project? Dr. Zhao of the Academy of Military Sciences&#39; Defense Science and Technology Innovation Research Institute led his team to answer that question affirmatively, with outstanding results in combat-realistic exercises. Six months ago, when Dr. Zhao was tasked with leading a certain intelligent systems project, he faced skepticism; today that system has been successfully integrated into the exercise-and-training chain, with real-time response capability significantly improved. &#34;Cultivate through use, temper through actual combat&#34; — this is a microcosm of the military-wide research institutes&#39; bold approach of placing heavy and difficult burdens on young backbone personnel to accelerate their development.</p>
+  
+    
+  
+    <p>In recent years, military-wide research institutes have closely aligned with their primary responsibility of preparing for war and fighting, pushing young backbone personnel to the forefront of scientific research breakthroughs and the front line of exercise-and-training support. A cohort of young scientific and technological talents who are politically firm, professionally solid, and bold in forging ahead has emerged, becoming a cutting-edge force in service of winning. Over the past three years, among combat-realistic scientific research projects undertaken by military-wide research institutes, the proportion of research personnel under 40 serving as project leaders or chief technical officers has risen significantly.</p>
+  
+    
+  
+    <p>&#34;Let young people engage with the main battlefield and lead the main projects from the very start.&#34; A responsible official from a relevant bureau and office under the Central Military Commission organs stated that, in major scientific research tasks, key laboratory construction, and critical technology breakthroughs, military-wide research institutes are actively encouraging young backbone personnel to take the lead in argumentation (论证), preside over design, and organize experiments. The College of Systems Engineering at the National University of Defense Technology has established a &#34;Young Innovative Talent Incubation&#34; mechanism, with leadership assigned to provide mentorship and guidance, helping young researchers clarify their research directions. A certain institute under the Naval Research Institute adheres to the concept of integrating theory with technology (理技融合); more than 20 achievements developed with the participation of young researchers have been applied in a testing capacity at the front line of troop training. A certain institute under the Rocket Force Research Institute ensures that young talent receives full tempering in major scientific research breakthroughs and in technical support for urgent, difficult, dangerous, and arduous tasks. The Academy of Military Sciences&#39; Research Institute of NBC Defense has launched a &#34;Young Seedling Program&#34; (青苗计划), selecting high-potential talent for focused cultivation, breaking down departmental organizational boundaries and professional barriers, and encouraging backbone personnel to serve as project leaders.</p>
+  
+    
+  
+    <p>The development of research backbone personnel cannot be separated from being tested and honed at the front line of exercises and training. Engineer Kong of a certain center under the Army Research Institute went deep into the exercise-and-training front line, using an intelligent command-and-control system to plan the movement routes and reconnaissance positions of unmanned equipment. Faced with unexpected situations, he conducted timely analysis and assessment and implemented interventions, ensuring the mission was completed successfully. &#34;Intelligent equipment systems are complex and wide-ranging in scope; the research and user sides must continuously work together through actual exercises and training in order to better achieve human-machine hybrid control (人机混合控制).&#34; The center&#39;s leadership stated. Today, a cohort of young researchers like Engineer Kong has grown into the unit&#39;s technical backbone. Multiple research institutes under the Army, Navy, Air Force, and People&#39;s Armed Police, as well as the National University of Defense Technology, routinely dispatch young researchers to be embedded in theater joint exercises, base-level training, and live-force confrontation exercises and other training activities, collecting data on-site, optimizing parameters in real time, and iterating plans simultaneously. The various research institutes are also actively receiving young troop backbone personnel into laboratories for research study, establishing a two-way exchange system of &#34;research backbone personnel stationed with units, troop backbone personnel entering stations,&#34; and regularly inviting commanders, training backbone personnel, equipment technicians, and others to participate in plan argumentation and acceptance reviews.</p>
+  
+    
+  
+    <p>Targeting the development patterns of young backbone personnel across different specialties and positions, the various research institutes have introduced precision-tailored cultivation measures. The Academy of Military Sciences&#39; Research Institute of NBC Defense has allocated dedicated funds to support more than 150 young researchers in pursuing self-selected research topics, with 9 backbone personnel having their senior professional titles conferred through exceptional promotion, and 7 young talents advancing to leadership positions at their research institutes. A certain institute under the Naval Research Institute is exploring a &#34;dual-mentor&#34; (双导师) mentorship model pairing &#34;troop mentors and academy mentors,&#34; arranging for young technical backbone personnel to follow research and training on main combat vessels and at key positions. A certain college at the National University of Defense Technology has established a &#34;one person, one policy&#34; (一人一策) development file for young backbone personnel, tailoring individualized cultivation plans. A certain Air Force research institute encourages young researchers to be embedded throughout major exercise-and-training activities, participating in important stages including planning, design, and assessment. The Rocket Force Research Institute, based on troop technical requirements, selects and dispatches professionally matched young backbone personnel to be stationed at launch sites and technical positions (技术阵地). A certain center under the Army Research Institute, the Naval Research Institute, and multiple other research teams have established mobile test stations and on-site service points at field training sites, arranging for young researchers to serve on rotating duty, achieving on-the-spot diagnosis of problems and on-the-spot trial use of results.</p>
+  
+    
+  
+    <p>Practical measures are propelling the rapid development of young backbone personnel. Seventy percent of the teaching and research section leaders at the National University of Defense Technology&#39;s College of Meteorology and Oceanography are only around 30 years old; 90 percent of young backbone personnel have participated in major national and military scientific research tasks, with many also serving as project leaders. Units including a certain research institute under the Academy of Military Sciences have seen the emergence of multiple young innovation teams, among them an &#34;assault team&#34; (突击队) with an average age of only 33 that conducted cross-disciplinary collaborative breakthroughs, completing the systematic argumentation and research for a major project in a short period of time. The National University of Defense Technology routinely arranges for young instructors under 30 to join mission teams, and selects outstanding young backbone personnel under 40 to take the lead on major scientific research projects, continuously driving young talent to shoulder heavy responsibilities and play leading roles in scientific research.</p>
+  
+    
+  
+    <p>From the laboratory to the exercise ground, from technology breakthroughs to equipment upgrades, a large cohort of young scientific and technological talents across military-wide research institutes — talents with ideals, capabilities, and a sense of responsibility — is accelerating its development into the backbone force of research in service of war. &#34;As the concept of &#39;research for war, talent for war&#39; (科研为战、人才为战) continues to deepen, our institute will continue to build a broad stage for young backbone personnel, allowing them to accelerate their development in the course of serving the mission of winning.&#34; The leadership of the Academy of Military Sciences&#39; Academy of Military Medical Sciences stated.</p>
+  
+</div>
+
+
+
+<details>
+  <summary>Original Chinese</summary>
+  <div class="original-body">全军科研院所年轻骨干担当重任加速成长 四十岁以下科研人员任项目负责人或技术首席的比例显著提升 解放军报讯 记者贾启龙报道：平均年龄不足31岁的年轻团队，能否担纲重点军事智能项目？军事科学院国防科技创新研究院赵博士带领团队，用实战化演练的优异成绩给出肯定回答。半年前，赵博士受命牵头某智能系统项目时曾遇质疑，如今该系统已成功嵌入演训链路，实时响应能力显著提升。“在使用中培养、在实战中锤炼”，这是全军科研院所大胆让年轻骨干担重担难、加速成长的缩影。 近年来，全军科研院所紧扣备战打仗主责主业，将年轻骨干推向科研攻关最前沿、演训保障第一线。一批政治过硬、专业扎实、敢闯敢拼的青年科技人才崭露头角，成为服务打赢的新锐力量。近3年，全军科研院所承担的实战化科研项目中，40岁以下科研人员任项目负责人或技术首席的比例显著提升。 “让年轻人从起步就接触主战场、担纲主项目。”军委机关相关局办负责人介绍，在重大科研任务、重点实验室建设、关键技术攻关中，全军科研院所积极鼓励年轻骨干牵头论证、主持设计、组织试验。国防科技大学系统工程学院建立“青年创新人才孵化”机制，领导挂钩帮带，助力年轻科研人员明确研究方向。海军研究院某所秉持理技融合理念，年轻科研人员参与研发的20余项成果在部队训练一线得到检验性运用。火箭军研究院某所在重大科研攻关和急难险重任务技术保障中，确保年轻人才得到充分锻炼。军事科学院防化研究院推出“青苗计划”，遴选潜力人才重点培养，打破部门建制和专业界限，鼓励骨干担纲项目负责人。 科研骨干的成长离不开在演训一线摔打磨砺。陆军研究院某中心孔工程师深入演训一线，利用智能指控系统，规划无人装备行进路线及侦察位置。面对突发情况，他及时分析判断、实施干预，确保任务圆满完成。“智能装备系统复杂、涉及面广，研用双方必须在实演实训中不断磨合，才能更好实现人机混合控制。”该中心领导表示。如今，一批像孔工程师这样的年轻科研人员，已成长为单位技术骨干。陆军、海军、空军、武警多个研究院所及国防科技大学常态化派出年轻科研人员嵌入战区联演、基地化训练、实兵对抗等演训活动，现场采集数据、实时优化参数、同步迭代方案。各科研院所还积极接收部队青年骨干进实验室研修，建立“科研骨干驻队、部队骨干进站”双向交流制度，定期邀请指挥员、训练骨干、装备技师等参与方案论证和验收评审。 针对不同专业、岗位的年轻骨干成长规律，各科研院所推出精准化培养举措。军事科学院防化研究院拨出专项经费，支持150余名青年科研人员自选课题攻关，9名骨干破格评定高级职称，7名青年才俊走上研究所领导岗位。海军研究院某所探索“部队导师+院校导师”的“双导师”帮带模式，安排青年技术骨干到主战舰艇、重要岗位跟研跟训。国防科技大学某学院为青年骨干建立“一人一策”成长档案，量身定制培养计划。空军某研究院鼓励年轻科研人员全程嵌入重大演训活动，参与筹划、设计、评估等重要环节。火箭军研究院根据部队技术需求，选派专业对口的青年骨干进驻发射场、技术阵地。陆军研究院某中心、海军研究院等多支科研分队在野外驻训点设立移动试验站、现场服务点，安排青年科研人员轮值驻点，实现问题当场诊断、成果当场试用。 务实举措助推年轻骨干快速成长。国防科技大学气象海洋学院70%的教研室领导仅30来岁，90%的年轻骨干参与了国家、军队重大科研任务，不少还担任项目负责人。军事科学院某研究院等单位涌现出多个青年创新团队，其中一支平均年龄仅33岁的“突击队”跨专业协同攻关，短时间内完成重大项目体系论证研究。国防科技大学常态化安排30岁以下年轻教员进任务团队，选派40岁以下成绩突出的青年骨干领衔担纲重大科研项目，持续推动青年人才在科研中挑大梁、当主角。 从实验室到演兵场，从技术攻关到装备升级，全军科研院所一大批有理想、有本领、有担当的青年科技人才，正加速成长为科研为战的骨干力量。“随着‘科研为战、人才为战’理念持续深化，我院将继续为年轻骨干搭建广阔舞台，让他们在服务打赢征程中加速成长。”军事科学院军事医学研究院领导表示。</div>
+</details>
+
+
+<div class="provenance">
+  <span>Relevance score: 0.85</span>
+  <span>Model: claude-sonnet-4-6</span>
+  <span>Prompt: v1</span>
+  
+    <span>Analyzed: 2026-05-08</span>
+  
+</div>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 04:23 UTC.
+  </div>
+</footer>
+
+
+</body>
+</html>

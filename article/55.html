@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>International Observation | Remain Vigilant Against New Trends in Japan&#39;s &#39;Re-militarization&#39; — PLA Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<a href="../index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  
+
+  <h1 class="article-page-title">
+    International Observation | Remain Vigilant Against New Trends in Japan&#39;s &#39;Re-militarization&#39;
+  </h1>
+
+  
+    <div class="article-page-title-zh">国际观察丨警惕日本“再军事化”新动向</div>
+  
+
+  
+    <div class="tags">
+      
+        <span class="tag">East China Sea</span>
+      
+        <span class="tag">Doctrine</span>
+      
+        <span class="tag">Military Diplomacy</span>
+      
+    </div>
+  
+
+  <div class="article-page-meta">
+    <span>PLA Daily (解放军报)</span>
+    <span class="sep"></span>
+    <span>8 May 2026</span>
+    <span class="sep"></span>
+    <a href="http://www.81.cn/yw_208727/16459269.html" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+
+<div class="section-label">Summary</div>
+<div class="summary-block">
+  <div class="summary-text">This article, published by a researcher at the CPC Central Committee Party School, argues that Japan&#39;s firing of Type 88 surface-to-ship missiles during the May 2025 U.S.-Philippines Balikatan exercise—the first Japanese offensive missile launch outside Japanese territory—exemplifies an accelerating pattern of military normalization that also includes Japan&#39;s transition from observer to full combat participant in Balikatan, the 2025 entry into force of the Japan-Philippines Reciprocal Access Agreement, the first stationing of Japanese military aircraft in Europe, and the April 2025 lifting of Japan&#39;s ban on lethal weapons exports. The piece is useful as a signal of official PRC framing: Beijing is consolidating these discrete Japanese defense policy developments into a unified &#39;new-type militarism&#39; narrative and using the 80th anniversary of the Tokyo Trials as rhetorical leverage, suggesting this framing will feature in Chinese diplomatic messaging and information operations directed at regional audiences skeptical of Japanese rearmament.</div>
+  
+</div>
+
+
+
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  
+    <p>Using Participation in &#39;Balikatan&#39; Joint Exercises to Deploy Military Forces Overseas and Launch Offensive Missiles——</p>
+  
+    <p>Remain Vigilant Against New Trends in Japan&#39;s &#39;Re-militarization&#39;</p>
+  
+    <p>■ Liu Lin</p>
+  
+    
+  
+    <p>On May 6, Japan&#39;s Type 88 missiles were fired during the &#39;Balikatan&#39; military exercise—the first time Japan has launched offensive missiles outside its own territory. In this special year marking the 80th anniversary of the opening of the Tokyo Trials, the former aggressor has not only failed to deeply reflect on its historical crimes, but has instead dispatched military forces overseas and launched offensive missiles under the guise of so-called &#39;security cooperation.&#39; This once again demonstrates that Japan&#39;s &#39;new-type militarism&#39; (新型军国主义) is gaining momentum and poses a serious threat to regional peace and stability.</p>
+  
+    
+  
+    <p>Recently, the U.S.-Philippines 2026 Balikatan joint exercise was held at multiple locations across the Philippines. Japan dispatched approximately 1,400 personnel from the Maritime, Ground, and Air Self-Defense Forces, deploying weapons and equipment including the helicopter destroyer JS Ise, the destroyer JS Ikazuchi, Type 88 surface-to-ship missiles, and C-130 transport aircraft, making Japan a major participating party alongside the United States and the Philippines.</p>
+  
+    
+  
+    <p>Japan&#39;s participation in this exercise is far different from previous instances. First, its role has changed: since 2012, Japan had attended the Balikatan exercise solely as an &#39;observer,&#39; performing only non-combat tasks. In September 2025, the Japan-Philippines Reciprocal Access Agreement formally entered into force, permitting both countries to deploy forces on each other&#39;s territory; Japan thereby became a full participating nation, dispatching combat units as well as military personnel from cyber technology, medical, and logistics departments to participate fully in live-action drills. Second, the scope of subjects in which Japan participated expanded significantly. In this exercise, Japan&#39;s participation covered subjects including anti-landing operations, integrated air and missile defense, cyber attacks, medical rescue, and airfield runway repair. This not only marks a further deepening of Japan-Philippines military cooperation, but also exposes Japan&#39;s accelerating effort to extend the tentacles of its military expansion beyond its own region.</p>
+  
+    
+  
+    <p>Over many years, Japan has continuously broken through the constraints of the &#39;Peace Constitution,&#39; steadily strengthening its capacity for overseas military power projection and deployment, with related activities becoming increasingly normalized. In the Indian Ocean direction, Japan has dispatched vessels to the Gulf of Aden to conduct counter-piracy missions since 2009; the &#39;counter-piracy base&#39; completed in Djibouti in 2011 became Japan&#39;s first permanent overseas military facility. In the Pacific direction, Japan routinely conducts joint exercises and training with allies such as &#39;Yama Sakura,&#39; continuously reinforcing military deployments on outlying islands; Japan has also continued to advance the fortification of Iwo Jima, with the ambition of building a &#39;core fortress of the second island chain.&#39; In the European direction, in September 2025, the Japan Air Self-Defense Force conducted &#39;Atlantic Eagle&#39; operations, dispatching F-15J fighters, C-2 transport aircraft, and other assets to NATO bases in the United Kingdom, Germany, and other countries, achieving the first stationing of Japanese military aircraft in Europe since World War II.</p>
+  
+    
+  
+    <p>At the same time, the batch induction of equipment such as the V-22 Osprey tiltrotor aircraft and KC-46 aerial refueling tankers, along with Reciprocal Access Agreements signed with Australia, the Philippines, and other countries, has provided support for Japan&#39;s rapid cross-domain power projection and forward deployment. Japan&#39;s overseas military activities continue to expand in geographic scope and to push past red lines in terms of the nature of operations and depth of involvement—this cannot but put the world on alert.</p>
+  
+    
+  
+    <p>In the face of stern warnings from the international community and strong protests within Japan, the Japanese authorities are nonetheless still racing down the dangerous road of military expansion. On April 21, the Japanese government passed a new version of the &#39;Three Principles on Transfer of Defense Equipment&#39; and its implementing guidelines, formally lifting the ban on exports of lethal weapons. Japan has also carried out a series of reorganizations of the Self-Defense Forces, including implementing the &#39;largest reorganization in history&#39; of the Maritime Self-Defense Force, expanding cognitive domain operations (认知领域作战), and enlarging the space force. More seriously, the Japanese government has once again forcibly placed constitutional revision on the political agenda, in an attempt to clear away legal obstacles to &#39;re-militarization.&#39;</p>
+  
+    
+  
+    <p>As a defeated nation in World War II, Japan should recognize the broad trend of history, cease military adventurism, abide by the &#39;Peace Constitution&#39; and the norms of international law, and hold firm to the bottom line of peace. If Japan&#39;s right-wing forces remain obstinate in their delusion of reviving militarism, what awaits them will inevitably be the tragic end that comes to all those who are bent on war.</p>
+  
+    
+  
+    <p>[Author&#39;s affiliation: Institute of International Strategic Studies, Party School of the Central Committee of the CPC (National Academy of Governance)]</p>
+  
+</div>
+
+
+
+<details>
+  <summary>Original Chinese</summary>
+  <div class="original-body">借参加“肩并肩”联演向海外派遣军事力量并发射进攻型导弹—— 警惕日本“再军事化”新动向 ■刘 琳 5月6日，日本88式导弹在“肩并肩”军演中发射，这是日本首次在境外发射进攻型导弹。在东京审判开庭80周年这一特殊年份，曾经的侵略者不仅未能深刻反省历史罪行，反而打着所谓“安全合作”幌子向海外派遣军事力量，发射进攻型导弹。这再次说明日本“新型军国主义”成势为患，严重威胁地区和平稳定。 近期，美菲2026年度“肩并肩”联演在菲多地举行。日本派出海上、陆上和航空自卫队等约1400人，出动“伊势”号直升机护卫舰、“雷”号驱逐舰、88式地对舰导弹、C-130运输机等武器装备参加联演，成为美菲之外的重要参演方。 此次日本参演远不同于以往。一是扮演角色发生变化，自2012年起，日本一直以“观察员”身份列席“肩并肩”演习，仅承担非战斗任务。2025年9月，日菲《互惠准入协定》正式生效，允许两国在对方领土上部署军队，日本由此成为正式参演国，派出作战部队以及网络技术、医疗后勤等部门军事人员全面参与实战演练。二是参与科目大幅增加。此次演习中，日本参与的科目涵盖抗登陆、一体化防空反导、网络攻击、医疗救护、机场跑道抢修等多项内容。这不仅标志着日菲军事合作进一步深化，也暴露出日本正加紧将军事扩张的触角向域外延伸。 多年来，日本不断突破“和平宪法”限制，持续强化海外军事投送与部署能力，相关行动日益常态化。在印度洋方向，日本自2009年起向亚丁湾派遣舰艇执行反海盗任务，2011年在吉布提建成的“反海盗基地”，成为日本首个永久性海外军事设施。在太平洋方向，日本常态化与盟友开展“护身军刀”等联合演训，不断强化离岛军事部署；日本还持续推进硫磺岛要塞化，妄图打造“第二岛链核心堡垒”。在欧洲方向，2025年9月，日本航空自卫队开展“大西洋之鹰”行动，派出F-15J战斗机、C-2运输机等，部署至英、德等国境内的北约基地，实现二战后日本战机首次进驻欧洲。 与此同时，“鱼鹰”倾转旋翼机、KC-46空中加油机等装备的批量列装，与澳、菲等国签署的《互惠准入协定》等，也为日本快速跨域投送、前沿部署提供了支撑。日本海外军事活动在地理范围上持续拓展，在行动性质、参与深度上不断突破底线，不能不令世人警惕。 在国际社会的严正警告和日本国内的强烈抗议下，日本当局却仍然在军事扩张的危险道路上狂奔。4月21日，日本政府通过新版“防卫装备转移三原则”及其运用指南，正式解禁杀伤性武器出口。日本还对自卫队作出一系列改组，包括对海上自卫队实施“史上最大改组”、拓展认知领域作战、扩编太空部队等。更为严峻的是，日本政府再度将修宪强行摆上政治议程，企图为“再军事化”扫除法理障碍。 作为二战战败国，日本应认清历史大势，停止军事冒险，恪守“和平宪法”和国际法准则，坚守和平底线。若日本右翼势力执迷不悟妄图使军国主义死灰复燃，等待他们的必将是好战必亡的可悲结局。 ［作者单位：中央党校（国家行政学院）国际战略研究院］</div>
+</details>
+
+
+<div class="provenance">
+  <span>Relevance score: 0.70</span>
+  <span>Model: claude-sonnet-4-6</span>
+  <span>Prompt: v1</span>
+  
+    <span>Analyzed: 2026-05-08</span>
+  
+</div>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 04:23 UTC.
+  </div>
+</footer>
+
+
+</body>
+</html>

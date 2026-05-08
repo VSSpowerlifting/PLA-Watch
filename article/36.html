@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An Army Brigade Drives the Transformation of Simulation Training Systems from &#39;Single Platform&#39; to &#39;Integrated System&#39; — PLA Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<a href="../index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  
+
+  <h1 class="article-page-title">
+    An Army Brigade Drives the Transformation of Simulation Training Systems from &#39;Single Platform&#39; to &#39;Integrated System&#39;
+  </h1>
+
+  
+    <div class="article-page-title-zh">陆军某旅推动模拟训练系统从“单平台”向“成体系”转变</div>
+  
+
+  
+    <div class="tags">
+      
+        <span class="tag">Exercises</span>
+      
+        <span class="tag">Modernization</span>
+      
+    </div>
+  
+
+  <div class="article-page-meta">
+    <span>PLA Daily (解放军报)</span>
+    <span class="sep"></span>
+    <span>8 May 2026</span>
+    <span class="sep"></span>
+    <a href="http://www.81.cn/yw_208727/16459261.html" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+
+<div class="section-label">Summary</div>
+<div class="summary-block">
+  <div class="summary-text">An unidentified PLA Army brigade has upgraded its simulation training infrastructure from isolated single-platform systems to a networked, integrated architecture that links vehicle commander, gun commander, and driver stations in real time, enabling multi-crew and cross-specialty coordinated training on what the brigade calls a &#39;cloud training ground.&#39; The shift addresses a documented gap in PLA combined-arms training—the inability to rehearse technical-tactical coupling and system-level coordination under realistic conditions without consuming live equipment and range time—and reflects a broader PLA effort to use simulation as a primary venue for developing and validating tactics before live-equipment execution. The brigade&#39;s formalized &#39;simulation-to-live-equipment transition day&#39; protocol, which stress-tests simulated plans against live contingencies, signals an institutionalization of this training model rather than an ad hoc experiment.</div>
+  
+</div>
+
+
+
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  
+    <p>An Army Brigade Drives the Transformation of Simulation Training Systems from &#39;Single Platform&#39; to &#39;Integrated System&#39;——</p>
+  
+    <p>Coordinated Combat Ignites on the &#39;Cloud Training Ground&#39;</p>
+  
+    <p>■ Peng Gang, PLA Daily Special Correspondents Tong Kang and Chen Jiawei</p>
+  
+    
+  
+    <p>In early summer, inside a simulation training room of an Army brigade, a coordinated confrontation exercise was underway: artillery sub-units delivered fire strikes against the &#34;enemy,&#34; air defense sub-units intensified air surveillance, and assault vehicles and infantry fighting vehicles alternated in providing cover while conducting mobile strikes against the target area. Aided by the simulation training system, all participating combat elements maintained close coordination throughout, shared battlefield information, and successfully completed the designated combat mission.</p>
+  
+    
+  
+    <p>&#34;Driven by combat missions, we are pushing the simulation training system to transform from &#39;single platform&#39; to &#39;integrated system,&#39; shifting the primary training content from individual equipment-operation skills toward the integration of technical and tactical skills, and shifting the mode of use from independent, dispersed training to networked, system-based training—this is our new attempt at simulation training.&#34; The brigade&#39;s leadership explained that in the past, simulation training was conducted mostly on a single-platform basis, with training in each specialty relatively independent. While this could alleviate constraints imposed by factors such as venues and equipment in live-equipment training, it still fell short of actual training requirements in areas such as technical-tactical coupling (技战术耦合) and system-level coordination (体系协同).</p>
+  
+    
+  
+    <p>Company Commander Fan of a battalion in the brigade recalled that during one cross-specialty simulation exercise, because the simulation training system data for the vehicle commander, driver, and gun commander were not interconnected, they could only use rudimentary communications equipment for command. To address this, he led technical backbone personnel to consult with manufacturer representatives and study operation manuals, attempting multiple solutions, but with little effect. It was not until the brigade drove the shift toward networked, system-based simulation training that this problem was truly resolved.</p>
+  
+    
+  
+    <p>On the day the new simulation training system was jointly commissioned, Company Commander Fan stared at the real-time multi-platform data flowing across the screen, his heart filled with excitement. &#34;Before, everyone trained on their own; now the &#39;symphony&#39; of specialized coordination can finally be played.&#34; He told the reporter that the new simulation training system integrates the positions of vehicle commander, gun commander, driver, and others into a unified whole, enabling multi-position coordinated training and advancing the improvement of personnel coordination capabilities.</p>
+  
+    
+  
+    <p>To ensure training quality and effectiveness, the brigade has established explicit regulations: every tactical subject must go through multiple rounds of simulation training refinement before undergoing live-equipment precision training and tempering; each week a &#34;simulation-to-live-equipment transition day&#34; is set, during which vehicle crews are randomly selected to undergo cross-examination of simulated plans against live-equipment contingencies, further driving the seamless integration of simulation training with the real battlefield.</p>
+  
+    
+  
+    <p>&#34;As the simulation training system has continuously improved, the level of coordination among vehicle crews has grown higher and higher.&#34; Vehicle Commander Zhang Lintao said that in previous live-equipment coordinated training, their crew had repeatedly affected training quality and effectiveness due to poor coordination. Now, with the simulation training system, crew members repeatedly work together on the &#34;cloud training ground,&#34; their coordination growing ever smoother, and they have achieved excellent results in live-equipment assessments.</p>
+  
+    
+  
+    <p>During one tactical assessment, the vehicle crew of Squad Leader Hou Longfei was ambushed by an &#34;enemy&#34; anti-armor team, and the vehicle&#39;s advance was blocked. After analysis and judgment, he decided to adopt the tactical approach studied and refined during simulation training, directing the driver to use surrounding obstacles for concealed flanking maneuver while simultaneously ordering the gun commander to lock onto the &#34;enemy&#34; position, successfully executing a precision strike. &#34;In simulation training, we explore crew coordination tactics for different combat scenarios following live-combat procedures. We have so far summarized multiple tactical methods and approaches (战术战法), which have been validated in combat-realistic exercises,&#34; Hou Longfei said with satisfaction.</p>
+  
+    
+  
+    <p>&#34;The simulation platform is an &#39;experimental field&#39; for incubating new combat methods, validating new concepts, and working in new equipment.&#34; The brigade&#39;s leadership stated that they will continue to improve the simulation training system, deepen the advancement of the training organization model of &#34;train more with simulation, train with precision on live equipment&#34; (模拟多训、实装精训), and strive to provide full rehearsal and solid support for battlefield victory.</p>
+  
+</div>
+
+
+
+<details>
+  <summary>Original Chinese</summary>
+  <div class="original-body">陆军某旅推动模拟训练系统从“单平台”向“成体系”转变—— 协同战斗在“云端演兵场”打响 ■彭 刚 解放军报特约记者 童 康 陈佳伟 初夏，陆军某旅模拟训练室内，一场协同对抗训练正在进行：炮兵分队对“敌”实施火力打击，防空分队加强对空警戒，突击车与步战车交替掩护对目标区域实施机动打击……借助模拟训练系统，参训各作战单元全程密切协同，共享战场信息，成功完成预定作战任务。 “以作战任务为牵引，推动模拟训练系统由‘单平台’向‘成体系’转变，主训内容由单兵操作技能向技术战术融合转变，运用方式由独立分散训向互联体系训转变——这是我们对模拟训练作出的新尝试。”该旅领导介绍，过去开展模拟训练大多以单平台为主，各专业训练相对独立，虽然能缓解实装训练中场地、装备等因素的制约，但在技战术耦合、体系协同等方面与实际训练需求仍有差距。 该旅某营凡连长回忆，一场跨专业模拟训练中，由于车长与驾驶员、炮长的模拟训练系统数据互不联通，只能用简易通信器材进行指挥。为此，他带着技术骨干咨询厂家人员、钻研操作手册，尝试了多种解决方法，但收效甚微。直到该旅推动模拟训练向互联体系训转变，这一难题才被真正解决。 新型模拟训练系统联调那天，凡连长盯着屏幕上实时流转的多平台数据，心里激动不已。“以前是各练各的，现在专业协同的‘交响乐’总算能奏起来了！”他告诉记者，新型模拟训练系统将车长、炮长、驾驶员等岗位集成一体，实现多岗位协同训练，促进提升官兵协同配合能力。 为确保训练质效，该旅明确规定：每个战术课题必须经过多轮模拟训练打磨流程，再进行实装精训淬火；每周设置“模拟—实装衔接日”，随机遴选车组接受模拟预案与实装特情的交叉检验，进一步推动模拟训练与真实战场的无缝对接。 “随着模拟训练系统不断完善，车组间的默契程度越来越高。”车长张林涛说，之前的实装协同训练中，他们车组多次因配合不当影响训练质效。如今借助模拟训练系统，车组成员在“云端演兵场”反复磨合，配合越来越顺畅，在实装考核中取得优秀成绩。 某次战术考核中，班长侯龙飞所在车组遭“敌”反装甲小组伏击，车辆行进受阻。经过研判，他决定采用模拟训练中研练的战术策略，指挥驾驶员利用周边障碍物隐蔽迂回，同时命令炮长锁定“敌”位置，成功实施精准打击。“模拟训练中，我们针对不同战斗场景，按照实战流程探索班组协同战术，目前已总结出多项战术战法，并在实战化演练中得到验证。”侯龙飞高兴地说。 “模拟平台是孕育新战法、验证新概念、磨合新装备的‘试验田’。”该旅领导表示，他们将继续完善模拟训练体系，深入推进“模拟多训、实装精训”的组训模式，努力为战场决胜提供充分预演与坚实支撑。</div>
+</details>
+
+
+<div class="provenance">
+  <span>Relevance score: 0.85</span>
+  <span>Model: claude-sonnet-4-6</span>
+  <span>Prompt: v1</span>
+  
+    <span>Analyzed: 2026-05-08</span>
+  
+</div>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 04:23 UTC.
+  </div>
+</footer>
+
+
+</body>
+</html>

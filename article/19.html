@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Announcement on the 2026 Rocket Force Open Recruitment of Professional and Technical Civilian Personnel from Society — PLA Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<a href="../index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  
+
+  <h1 class="article-page-title">
+    Announcement on the 2026 Rocket Force Open Recruitment of Professional and Technical Civilian Personnel from Society
+  </h1>
+
+  
+    <div class="article-page-title-zh">2026年火箭军面向社会公开招考专业技能类文职人员公告</div>
+  
+
+  
+    <div class="tags">
+      
+        <span class="tag">Modernization</span>
+      
+        <span class="tag">Personnel</span>
+      
+        <span class="tag">Nuclear</span>
+      
+    </div>
+  
+
+  <div class="article-page-meta">
+    <span>PLA Daily (解放军报)</span>
+    <span class="sep"></span>
+    <span>7 May 2026</span>
+    <span class="sep"></span>
+    <a href="http://www.81.cn/yw_208727/16459168.html" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+
+<div class="section-label">Summary</div>
+<div class="summary-block">
+  <div class="summary-text">The PLA Rocket Force published its 2026 open recruitment announcement for professional and technical civilian personnel, soliciting applicants from society between May 8 and May 15 via the Military Talent Network for positions in equipment maintenance, materiel storage, cooking support, and motor vehicle driving. The announcement is a routine annual cycle and follows the standard framework established under the Regulations on Civilian Personnel of the People&#39;s Liberation Army, with no structural changes to eligibility criteria, grade requirements, or vetting procedures that would signal a shift in Rocket Force manning policy. The announcement is useful primarily as a baseline data point for tracking Rocket Force civilian workforce demand by functional category across recruitment cycles.</div>
+  
+</div>
+
+
+
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  
+    <p>In accordance with the Regulations on Civilian Personnel of the People&#39;s Liberation Army and relevant policy provisions, the following matters concerning the 2026 Rocket Force open recruitment of professional and technical (专业技能类) civilian personnel from society are hereby announced:</p>
+  
+    
+  
+    <p>I. Recruitment Positions</p>
+  
+    
+  
+    <p>Positions in relevant Rocket Force units engaged in equipment maintenance, materiel storage, cooking support, motor vehicle driving, and related work. See the attached annex for the specific recruitment position plan.</p>
+  
+    
+  
+    <p>II. Recruitment Targets</p>
+  
+    
+  
+    <p>Members of society who meet the qualification requirements for the recruitment positions (including current-year college and university graduates and demobilized veterans).</p>
+  
+    
+  
+    <p>The following persons are not permitted to apply:</p>
+  
+    <p>(1) Those who have received criminal punishment for a crime;</p>
+  
+    <p>(2) Those who have been expelled from the Chinese Communist Party;</p>
+  
+    <p>(3) Those who have been dismissed from public office;</p>
+  
+    <p>(4) Those who have been listed in accordance with law as subjects of joint disciplinary action for untrustworthiness (失信联合惩戒对象);</p>
+  
+    <p>(5) Those who have been found to have committed fraud or other serious violations of recruitment discipline in examinations for civil servants, public institution staff, or military civilian personnel;</p>
+  
+    <p>(6) Those who, within the past three years, voluntarily relinquished their eligibility for appointment after being publicly announced as a proposed appointee for a military civilian personnel position;</p>
+  
+    <p>(7) Those who have been dismissed (unilaterally had their employment contract terminated) by a military employing unit or a government or public institution unit and for whom fewer than five years have elapsed;</p>
+  
+    <p>(8) Active-duty military personnel;</p>
+  
+    <p>(9) Non-graduating students currently enrolled in colleges or universities;</p>
+  
+    <p>(10) Those whom laws and regulations prohibit from being recruited or employed as civilian personnel.</p>
+  
+    
+  
+    <p>In principle, directionally assigned students (定向生) and commissioned-training students (委培生) graduating in 2026, as well as incumbent military civilian personnel (as of the date of this announcement), are not permitted to apply.</p>
+  
+    
+  
+    <p>Furthermore, applicants are not permitted to apply for positions at employing units whose leadership includes military personnel with whom the applicant has a spousal relationship, a direct lineal blood relationship, a collateral blood relationship within three generations, or a close affinal relationship. Applicants are also not permitted to apply for positions in which both the applicant and a military person with whom they share a spousal relationship, direct lineal blood relationship, or collateral blood relationship within three generations are directly subordinate to the same supervisor within the same employing unit, or for positions that would place them in a direct superior-subordinate relationship with such a person, nor for sensitive positions—such as human resources, discipline inspection and supervision, auditing, finance, and military facilities construction—in which military personnel hold leadership posts.</p>
+  
+    
+  
+    <p>III. Application Requirements</p>
+  
+    
+  
+    <p>Applicants must meet the basic conditions stipulated in the Regulations on Civilian Personnel of the People&#39;s Liberation Army and must additionally satisfy the following qualification requirements:</p>
+  
+    
+  
+    <p>(I) Political requirements. Applicants must meet the relevant provisions governing political review for the recruitment and employment of military civilian personnel.</p>
+  
+    
+  
+    <p>(II) Qualification requirements. Applicants for professional and technical Grade 3 through Grade 5 positions must, in principle, hold the advanced-skill (高级技能), intermediate-skill (中级技能), or entry-level-skill (初级技能) vocational qualification, respectively, in the relevant specialty (trade).</p>
+  
+    
+  
+    <p>(III) Educational requirements. Applicants must hold the educational credentials and degrees required by the recruitment position.</p>
+  
+    
+  
+    <p>(IV) Age requirements. Applicants must be no younger than 18 and no older than 35 years of age (born between May 1990 and May 2008).</p>
+  
+    
+  
+    <p>(V) Physical requirements. Applicants must meet the physical examination standards for the recruitment and employment of civilian personnel as stipulated in the Military Standards for Physical Examination in the Selection of Officers and Civilian Personnel.</p>
+  
+    
+  
+    <p>(VI) Other requirements. Applicants must meet any additional application conditions established by the employing unit based on the needs of the position.</p>
+  
+    
+  
+    <p>The date by which applicants must have obtained their educational credentials, degrees, and vocational qualifications is no later than July 31, 2026.</p>
+  
+    
+  
+    <p>IV. Recruitment Procedures</p>
+  
+    
+  
+    <p>(I) Publication of recruitment information. The Rocket Force will publish the recruitment announcement and position plan through the Military Talent Network (website: http://www.81rc.mil.cn or http://81rc.81.cn).</p>
+  
+    
+  
+    <p>(II) Online registration and preliminary review. The registration period runs from 08:00 on May 8 to 18:00 on May 15. Applicants shall register through the Military Talent Network (registration portal), truthfully complete personal information and upload relevant supporting materials in accordance with the registration process and requirements, select the employing unit and recruitment position, and, after confirming that all information is correct, submit an application for preliminary review of qualification requirements, while monitoring the review status in a timely manner.</p>
+  
+    
+  
+    <p>The preliminary review of qualification requirements will run from 08:00 on May 8 to 18:00 on May 16. Employing units will conduct a preliminary review of the information submitted by applicants through the Military Talent Network registration system to confirm whether applicants meet the application requirements; results of the preliminary review will generally be returned within approximately two days. Applicants who have submitted an application for preliminary review of qualification requirements and have passed may not modify their registration information or change to a different position. Applicants whose preliminary review of qualification requirements has not passed during the period from 18:00 on May 15 to 18:00 on May 16 may not change to a different position.</p>
+  
+    
+  
+    <p>The scope of the preliminary review of qualification requirements includes identity information, educational credentials and degrees, field of study, vocational qualifications, political affiliation, work experience, and other matters. Applicants must provide supporting materials corresponding to the specific requirements of the position applied for, including as applicable: identity card, household registration booklet (personal page), proof of Party membership, diploma, driver&#39;s license, vocational skills qualification certificate, employment contract, labor contract, social insurance payment records, and other supporting materials. (Supporting materials must be in JPG format; where multiple items exist for the same condition, they must be merged into a single file; file size must be kept between 100 KB and 1 MB; please ensure that images are clear and legible when uploading.)</p>
+  
+</div>
+
+
+
+<details>
+  <summary>Original Chinese</summary>
+  <div class="original-body">根据《中国人民解放军文职人员条例》及有关政策规定，现将2026年火箭军面向社会公开招考专业技能类文职人员有关事项公告如下： 一、招考岗位 火箭军相关单位从事装备维修、物资储存、炊事保障、汽车驾驶等工作的岗位。具体招考岗位计划见附件。 二、招考对象 符合招考岗位资格条件的社会人员（含高校应届毕业生、退役军人）。 下列人员不得报考： （1）因犯罪受过刑事处罚的； （2）被开除中国共产党党籍的； （3）被开除公职的； （4）被依法列为失信联合惩戒对象的； （5）在公务员、事业单位工作人员和军队文职人员招考中被认定有舞弊等严重违反录用纪律行为的； （6）近3年作为军队文职人员拟录用对象公示后，本人自愿放弃录用资格的； （7）被军队用人单位或者机关事业单位辞退（单方面解除聘用合同）未满5年的； （8）现役军人； （9）在读的非应届高校毕业生； （10）法律、法规规定不得招录聘用为文职人员的。 2026年毕业的定向生、委培生，以及在职军队文职人员（公告发布之日）原则上不得报考。 此外，报考人员不得报考与本人有夫妻关系、直系血亲关系、三代以内旁系血亲关系以及近姻亲关系的军队人员担任领导成员的用人单位的岗位，也不得报考与军队人员有夫妻关系、直系血亲关系、三代以内旁系血亲关系，在同一用人单位双方直接隶属于同一领导人员的岗位或者有直接上下级领导关系的岗位，以及军队人员担任领导职务的人力资源、纪检监察、审计、财务、军事设施建设等敏感岗位。 三、报考条件 报考人员应当符合《中国人民解放军文职人员条例》规定的基本条件，同时具备下列资格条件： （一）政治条件。应当符合军队招录聘用文职人员政治考核的有关规定。 （二）资格条件。报考专业技能三级至五级岗位，原则上应当分别取得相应专业（工种）的高级技能、中级技能、初级技能职业资格。 （三）学历条件。应当具有招考岗位要求的学历学位。 （四）年龄条件。年龄为18周岁以上、35周岁以下（1990年5月至2008年5月期间出生）。 （五）身体条件。应当符合《军队选拔军官和文职人员体检标准》规定的招录聘用文职人员体检标准条件。 （六）其他条件。应当符合用人单位根据岗位需要确定的其他报考条件。 报考人员取得学历学位和职业资格的时间，不晚于2026年7月31日。 四、招考程序 （一）公布招考信息。火箭军通过军队人才网（网址：http://www.81rc.mil.cn或者http://81rc.81.cn）发布招考公告和岗位计划。 （二）网上报名及初审。报名时间为5月8日08:00至15日18:00。报考人员通过军队人才网报名（报名入口），按照报名流程及要求，如实填报个人信息和上传相关证明材料，选择用人单位和招考岗位，确认无误后申请报名资格条件初审，并及时关注审核情况。 资格条件初审时间为5月8日08:00至16日18:00，用人单位将通过军队人才网报名系统对报考人员填报的信息进行初审，确认是否符合报考条件，一般2天左右反馈初审结果。申请报名资格条件初审并通过的，不能修改报名信息或者改报其他岗位；5月15日18:00至16日18:00期间资格条件初审未通过的，不能改报其他岗位。 资格条件初审范围包括身份信息、学历学位、所学专业、职业资格、政治面貌、工作经历等情况，报考人员需根据报考岗位具体要求，相应提供身份证、户口本本人页、党员身份证明、毕业证、驾驶证、职业技能资格证书、聘用合同、劳动合同、社保缴纳等证明材料（证明材料为JPG格式，同一条件下有多项材料的，需合并为1个，文件大小控制在100KB至1MB之间，上传时请确保图片清晰可辨识）。</div>
+</details>
+
+
+<div class="provenance">
+  <span>Relevance score: 0.70</span>
+  <span>Model: claude-sonnet-4-6</span>
+  <span>Prompt: v1</span>
+  
+    <span>Analyzed: 2026-05-08</span>
+  
+</div>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 04:23 UTC.
+  </div>
+</footer>
+
+
+</body>
+</html>
