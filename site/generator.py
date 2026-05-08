@@ -16,6 +16,7 @@ Called from pipeline.py after each analysis run.
 
 import json
 import logging
+import shutil
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -120,6 +121,11 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
     article_dir.mkdir(exist_ok=True)
     data_dir = output_dir / "data"
     data_dir.mkdir(exist_ok=True)
+
+    # Copy static assets
+    favicon_src = Path(__file__).parent / "favicon.svg"
+    if favicon_src.exists():
+        shutil.copy2(favicon_src, output_dir / "favicon.svg")
 
     env = _make_env()
     generated_at = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
