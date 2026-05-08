@@ -229,6 +229,31 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
     logger.info("Wrote %d article pages", count)
     logger.info("Site generated → %s", output_dir)
 
+    _generate_og_image(output_dir)
+
+
+def _generate_og_image(output_dir: Path) -> None:
+    """Render index.html to a 1200×630 PNG for Open Graph / Twitter Card."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        logger.warning("playwright not installed — skipping og-image generation")
+        return
+
+    index_path = (output_dir / "index.html").resolve()
+    out_path = output_dir / "og-image.png"
+
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page(viewport={"width": 1200, "height": 630})
+            page.goto(f"file://{index_path}", wait_until="networkidle")
+            page.screenshot(path=str(out_path), clip={"x": 0, "y": 0, "width": 1200, "height": 630})
+            browser.close()
+        logger.info("Wrote og-image.png")
+    except Exception as exc:
+        logger.warning("og-image generation failed: %s", exc)
+
 
 # ── Standalone entry ──────────────────────────────────────────────────────────
 
