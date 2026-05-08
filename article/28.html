@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Song of Clean Conduct and Righteous Spirit | &#34;Never Seen Such an Army Before&#34; — PLA Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<a href="../index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  
+
+  <h1 class="article-page-title">
+    Song of Clean Conduct and Righteous Spirit | &#34;Never Seen Such an Army Before&#34;
+  </h1>
+
+  
+    <div class="article-page-title-zh">清风正气歌丨“从没见过这样的军队”</div>
+  
+
+  
+    <div class="tags">
+      
+        <span class="tag">Political Work</span>
+      
+    </div>
+  
+
+  <div class="article-page-meta">
+    <span>PLA Daily (解放军报)</span>
+    <span class="sep"></span>
+    <span>7 May 2026</span>
+    <span class="sep"></span>
+    <a href="http://www.81.cn/yw_208727/16459093.html" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+
+<div class="section-label">Summary</div>
+<div class="summary-block">
+  <div class="summary-text">A political education article published in a PLA outlet invokes Long March-era episodes—including the Red Army&#39;s conduct toward Yao villagers in Longsheng County in 1934 and figures such as Zhu De and Peng Dehuai—to argue that military effectiveness derives from ideological commitment, strict discipline, and civil-military unity rather than material superiority. The piece closes with a direct injunction to current PLA officers and soldiers to practice self-criticism, correct deviations, and preserve the &#39;fine traditions of the People&#39;s Army.&#39; This is standard PLA political work content and follows an established pattern of using revolutionary history to reinforce present-day discipline and loyalty campaigns; it contains no new operational or organizational information.</div>
+  
+</div>
+
+
+
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  
+    <p>&#34;Never Seen Such an Army Before&#34;</p>
+  
+    <p>■ Li Xiaolin</p>
+  
+    
+  
+    <p>At the river crossing, the Red Army column bade farewell to the people and continued on its way.</p>
+  
+    
+  
+    <p>A ferryman, pulling at his oar, hummed softly: &#34;In the dead of night the troops came to the street, disturbing no one, entering no home; at dawn they shouldered buckets to fetch water, leaving a row of filled vessels under every family&#39;s eaves. Across the fields and hillsides they spread in great numbers, and at first light assembled and marched into the distance. This army I have never seen before—its name, the Red Army, I shall keep in my heart.&#34; The plain, unadorned folk song drifted out across the shimmering water, sketching the image of an army the people had &#34;never seen before.&#34;</p>
+  
+    
+  
+    <p>In the winter of 1934, the Red Army crossed the Laoshanjie mountains and arrived at Baimian Yao Village in Longsheng County, Guangxi. The village was deserted—year after year of military calamity, generation after generation of suffering. The warlords had never regarded the villagers as human beings; they had even deliberately written &#34;Yao people&#34; (瑶民) with the character for &#34;jackal&#34; (猺民). In the eyes of the common people, any armed soldier who came brought only disaster. When word spread that the Red Army was coming, they had long since fled deep into the mountains.</p>
+  
+    
+  
+    <p>This time, however, they encountered an army they had &#34;never seen before.&#34;</p>
+  
+    
+  
+    <p>Before entering the Yao village, the Red Army&#39;s General Political Department had issued the &#34;Directive on Winning Over Ethnic Minority Peoples,&#34; requiring strict enforcement of mass discipline and absolutely forbidding any harassment or harm to the people. The commander of a unit of the 3rd Red Army Corps convened a special meeting and organized personnel to mobilize the people hiding in the mountains to return home.</p>
+  
+    
+  
+    <p>When the villagers came back, they found that the courtyards, which had been in disarray when they left, had been tidied up; borrowed pots and bowls had been washed and returned to their places; and inside the rice jars were IOUs and copper coins. At dawn, the troops quietly departed, leaving only a few large characters carved into Longshi Rock: &#34;The Red Army absolutely protects the Yao people (傜民).&#34;</p>
+  
+    
+  
+    <p>Looking at the character &#34;傜&#34;—written with the human radical (单人旁)—the people were moved beyond words: &#34;We have never seen such an army. They carry us in their hearts; they regard us as human beings!&#34; With tears in their eyes, young and old alike rushed out of the village in pursuit, for they knew that the army they had been waiting for was exactly this kind of righteous and benevolent force (仁义之师) they had &#34;never seen before.&#34;</p>
+  
+    
+  
+    <p>Equal treatment, strict discipline, love for the people—this army that the people had &#34;never seen before&#34; was also one its adversaries had &#34;never seen before.&#34;</p>
+  
+    
+  
+    <p>A captured Nationalist soldier, after receiving political education, remarked with feeling: &#34;&#39;Five-leather&#39; cadres cannot beat &#39;five-grass&#39; cadres.&#34; Nationalist cadres wore leather shoes, leather gloves, leather belts, leather satchels, and carried leather whips—lording it over others, cracking their whips and shouting &#34;You go!&#34;; Communist cadres wore straw sandals, straw hats, straw capes, slept on straw mats, and gnawed on grass roots when hungry—shouting &#34;Follow me!&#34; and leading the charge. &#34;You go&#34; versus &#34;Follow me&#34;: a difference of one word, a world of difference, and the outcome was immediately clear.</p>
+  
+    
+  
+    <p>The enemy could never understand what &#34;privileges&#34; the commanders of this poorly clothed, poorly fed, poorly paid force actually possessed, or why the soldiers were willing to lay down their lives. The answer lay hidden in those utterly different &#34;privileges.&#34;</p>
+  
+    
+  
+    <p>When the Red Army was crossing the grasslands and a food crisis arose, Comrade Zhu De drew thirty men from the Military Commission&#39;s Cadre Regiment to form a wild vegetable survey team, appointing himself team leader. When he encountered wild vegetables he did not recognize, he would set them aside and boil them separately. Who would eat them first? &#34;I am the team leader; I have priority rights; I eat first.&#34; Zhu De always insisted on exercising his &#34;privilege&#34; in this way. In this manner, they identified more than a dozen edible wild plants, greatly alleviating the food shortage.</p>
+  
+    
+  
+    <p>In this army, if Party cadres had any privilege at all, it was the privilege of taking the lead in enduring hardship, taking the lead in upholding discipline, and taking the lead in making sacrifices. This kind of &#34;privilege&#34; was one the enemy had never possessed and feared to possess—a winning formula (制胜密码) the enemy could neither comprehend nor learn.</p>
+  
+    
+  
+    <p>After a period of observation and interviews, Edgar Snow was puzzled by what he saw: Why was it that, although regulations stipulated that battalion commanders and above were permitted to ride horses or mules, Zhu De&#39;s horse always carried wounded and sick soldiers? Why did Peng Dehuai&#39;s uniform look the same as his subordinates&#39;—just two sets, with no rank insignia or collar tabs? Why did delegations of oppressed peasants frequently come to request that the Red Army make a detour through their villages to &#34;liberate&#34; them? Later, in Red Star Over China, he wrote: &#34;I have had some acquaintance with the armies of the United States, Britain, France, Japan, Italy, and Germany, but I believe that only the finest troops could endure the intense and arduous daily conditions that Red Army soldiers bore.&#34;</p>
+  
+    
+  
+    <p>During the Yan&#39;an period, wave after wave of foreign journalists arrived there out of curiosity and described in enthusiastic prose the people they saw: &#34;This is an army the likes of which has never appeared in Chinese history. Their existence is a miracle for the world; their spirit is a treasure of world civilization.&#34;</p>
+  
+    
+  
+    <p>The reason this army was one &#34;never seen before&#34; lay not in the sophistication of its weapons, but in the firmness of its faith, the strictness of its discipline, and the excellence of its conduct (作风). It was born in a moment of national peril, grew in the course of serving the people, had &#34;serving the people wholeheartedly&#34; carved into its very bones, and wove &#34;unity between officers and soldiers, unity between the military and the people (官兵一致、军民一致)&#34; into its very bloodstream.</p>
+  
+    
+  
+    <p>What kind of army is longed for and possesses strength? Each of us should have a clear answer in our hearts. Today, the smoke of those battles has long since dissipated, yet the folk song from the river crossing still echoes. Standing at this particular moment in time and looking back, every officer and soldier must still at all times exercise self-vigilance and self-reflection, carry forward the fine traditions of the People&#39;s Army, maintain the habit of examining problems, and continuously correct deviations and realign direction—only then can they fulfill their mission and press boldly forward.</p>
+  
+</div>
+
+
+
+<details>
+  <summary>Original Chinese</summary>
+  <div class="original-body">“从没见过这样的军队” ■李小琳 渡口旁，红军队伍告别百姓，继续出发。 摇橹的船夫轻轻哼唱：“夜半部队到街上，不扰百姓不进房，拂晓担桶去挑水，各家檐下一串躺。山野田畔一大片，天明集合开远方。这个军队从未见，名叫红军记心上。”朴素无华的歌谣在粼粼波光中荡开，勾勒出一支百姓“从没见过”的军队形象。 1934年冬，红军翻越老山界，来到广西龙胜县白面瑶寨。寨子空空荡荡——岁岁兵灾，代代受苦，军阀从不把村民当人看，甚至故意把“瑶民”写作“猺民”。在老百姓眼里，但凡带甲之兵，带来的都是劫难。听说红军要来，他们早早躲进了深山。 这一次，他们遇见的却是一支“从没见过”的队伍。 进入瑶寨前，红军总政治部颁布了《关于争取少数民族工作的指示》，要求严格执行群众纪律，绝对不许对群众有任何骚扰和侵害。红三军团某部首长还专门召开会议，组织人员动员躲在山里的群众回家。 村民回来后发现，离开时杂乱的院落已被收拾利索，借用的锅碗洗净后被放回原处，米缸里还有借据和铜板。清晨，部队悄悄走了，只在龙舌岩上留下几个大字——“红军绝对保护傜民”。 看着那个单人旁的“傜”字，老百姓感慨万千：“从没见过这样的军队，他们心里装着我们，把我们当人看！”大家眼含热泪，扶老携幼追出山寨，因为他们知道，自己等的，就是这样一支“从没见过”的仁义之师。 平等、守纪、爱民，这支百姓“从没见过”的军队，也让他们的对手“从未见”。 一名被俘的国民党士兵接受教育后感慨地说：“‘五皮’干部打不过‘五草’干部。”国民党的干部脚穿皮鞋、手戴皮套、腰系皮带、肩挎皮包、手握皮鞭，高高在上，挥着鞭子喊“给我上”；共产党的干部脚穿草鞋、头戴草帽、身披草衣、睡盖草席、饿啃草根，喊着“跟我上”，带头冲锋。“给我上”与“跟我上”，一字之差，天壤之别，胜负立判。 敌人始终想不明白，这支缺衣少粮少军饷的队伍里，将领到底有什么“特权”，战士为何舍生忘死？答案，就藏在那些截然不同的“特权”里。 红军过草地时出现粮荒，朱德同志从军委干部团抽调30人成立野菜调查小组，自任组长，遇到不认识的野菜，单独挑出来煮熟。谁第一个吃？“我是组长，我有优先权，我先吃。”朱德总是强制使用他的“特权”。就这样，他们找到十几种可食用野菜，极大缓解了缺粮危机。 在这支队伍里，如果说党员干部有什么特权的话，那就是带头吃苦、带头守纪、带头牺牲。这种“特权”，是敌人从未拥有也害怕拥有的，是敌人看不懂也学不会的制胜密码。 经过一段时间的观察采访，埃德加·斯诺对所看到的景象感到疑惑：为什么明明规定营长以上可以骑马或骡子，但朱德的马上却总是驮着伤病员？为什么彭德怀的军装与部下一样，只有两套，并且都没有佩戴军衔和领章？为什么常有被压迫的农民派代表团，请求红军绕道到他们乡里去“解放”自己？后来，他在《红星照耀中国》中写道：“我对美、英、法、日、意、德的军队都比较熟悉，但是我相信只有最优秀的军队才能吃得消红军战士这样紧张艰苦的日常条件。” 延安时期，一批批外国记者带着好奇来到这里，用热情洋溢的文字描述看到的这群人：“这是一支中国历史上从未出现过的队伍。他们的存在，是世界的一个奇迹，他们的精神，是世界文明的一份财富。” 这支军队之所以“从没见过”，不在于武器之精良，而在于信仰之坚定、纪律之严明、作风之优良。它诞生于民族危亡之际，成长于为民服务之中，将“全心全意为人民服务”刻入骨髓，把“官兵一致、军民一致”融入血脉。 什么样的队伍被期盼、有力量？我们心中应该都有明确的答案。如今，当年的硝烟早已散尽，那首渡口边的歌谣仍在回响。站在这个特殊的时间节点回望，每名官兵仍需时刻自警自省，赓续人民军队优良传统，保持检视问题的自觉，不断纠偏正向，才能担当使命、奋勇向前。</div>
+</details>
+
+
+<div class="provenance">
+  <span>Relevance score: 0.70</span>
+  <span>Model: claude-sonnet-4-6</span>
+  <span>Prompt: v1</span>
+  
+    <span>Analyzed: 2026-05-08</span>
+  
+</div>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 03:11 UTC.
+  </div>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abandoning the &#34;Good Enough&#34; Mentality Requires Firmly Establishing a Sense of Responsibility in One&#39;s Thinking — PLA Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<a href="../index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  
+
+  <h1 class="article-page-title">
+    Abandoning the &#34;Good Enough&#34; Mentality Requires Firmly Establishing a Sense of Responsibility in One&#39;s Thinking
+  </h1>
+
+  
+    <div class="article-page-title-zh">摒弃“差不多”心态，就要在思想上树牢责任意识</div>
+  
+
+  
+    <div class="tags">
+      
+        <span class="tag">Doctrine</span>
+      
+        <span class="tag">Political Work</span>
+      
+    </div>
+  
+
+  <div class="article-page-meta">
+    <span>PLA Daily (解放军报)</span>
+    <span class="sep"></span>
+    <span>7 May 2026</span>
+    <span class="sep"></span>
+    <a href="http://www.81.cn/yw_208727/16459110.html" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+
+<div class="section-label">Summary</div>
+<div class="summary-block">
+  <div class="summary-text">A political education article published in a PLA outlet, authored by Xiao Liming and Wang Zhongying, uses an equipment maintenance incident—in which a student&#39;s procedural shortcuts caused parameter deviations that nearly damaged a data link system—to argue that a &#39;good enough&#39; (差不多) mentality is incompatible with combat readiness and must be replaced by rigorous standards, baseline thinking (底线思维), and continuous self-discipline. The piece is routine ideological guidance directed at junior officers and soldiers, consistent with longstanding PLA efforts to enforce procedural discipline and combat-effectiveness culture, and contains no new doctrinal, organizational, or capability information. Its primary value is as a data point on the PLA&#39;s persistent internal concern that training and maintenance standards remain inconsistently applied at the unit level.</div>
+  
+</div>
+
+
+
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  
+    <p>Abandoning the &#34;Good Enough&#34; Mentality</p>
+  
+    <p>■ Xiao Liming, Wang Zhongying</p>
+  
+    
+  
+    <p>● The &#34;good enough&#34; (差不多) mentality is a &#34;stumbling block&#34; to getting things done and building something worthwhile; its essence is an absence of responsibility consciousness, a diluted sense of standards, and a lack of the spirit of striving for progress.</p>
+  
+    
+  
+    <p>Recently, during an equipment maintenance and servicing class, a student simplified procedures during an operation and introduced parameter deviations, nearly damaging the equipment&#39;s data link. Fortunately, the situation was handled in time and no accident occurred. This incident sounded an alarm for the students and also gave the authors cause for reflection: whether in equipment operation or in daily work, if one harbors a &#34;good enough&#34; mentality, the end result will often fall far short and lead to serious failures.</p>
+  
+    
+  
+    <p>The &#34;good enough&#34; mentality is a &#34;stumbling block&#34; to getting things done and building something worthwhile; its essence is an absence of responsibility consciousness, a diluted sense of standards, and a lack of the spirit of striving for progress. In their work, some people are satisfied with &#34;getting it done&#34; rather than &#34;doing it well&#34;—they muddle through task implementation, handle details carelessly, and ask no questions about quality or results. Some people hold themselves to lax standards, lack the drive to be exacting, turn a blind eye to small gaps and small flaws in their work, and always feel these things are &#34;of no great consequence.&#34; Still others shrink back when faced with difficult problems, take detours when they encounter contradictions, and seek not to achieve merit but only to avoid fault. Little do they know that many mistakes, hidden dangers, and shortcomings arise precisely from the reckless complacency of &#34;good enough.&#34; Fractional deviations in work accumulate into enormous gaps in results; perfunctory handling of details, when compounded, will brew losses that cannot be undone. For soldiers, the battlefield admits no such thing as &#34;good enough&#34;—being off by a minute or a second may mean missing a critical opportunity, being off by a hair&#39;s breadth may mean triggering a dangerous situation, and being off by one step or one link may mean losing the whole game.</p>
+  
+    
+  
+    <p>Slacken one inch in your thinking, and your actions will scatter a foot. Abandoning the &#34;good enough&#34; mentality requires firmly establishing a sense of responsibility in one&#39;s thinking, consciously raising standards, and applying strict demands. For soldiers in particular, it is essential to recognize deeply that every task and every link is connected to combat effectiveness—even seemingly unremarkable small matters such as routinely wiping down equipment or filling out training records can, at a critical moment, affect whether a mission succeeds or fails. Only by rooting out from the depths of one&#39;s thinking the perfunctory attitude of &#34;good enough to get by,&#34; by engraving into one&#39;s mind the baseline thinking (底线思维) that &#34;a single failure leaves no room for ten thousand safeguards&#34; (一失万无), and by approaching every task with the sense of responsibility that comes from &#34;never being able to set one&#39;s mind at ease&#34; (时时放心不下), can one genuinely improve work quality and accomplish missions to the fullest.</p>
+  
+    
+  
+    <p>The gap created by &#34;good enough&#34; is most often reflected in the control of details. Abandoning &#34;good enough&#34; in action requires being exacting about details and applying effort at the finest level, treating every step and every link with meticulous rigor. Officers and soldiers across the force must cultivate the habit of &#34;looking back and checking repeatedly&#34;: conduct after-action reviews when training ends, inspect equipment before it is returned to storage, and when drawing up contingency plans, war-game extreme situations and the effects of variables. Scrutinize and nail down every easily overlooked detail, thoroughly eliminate the ambiguity that &#34;good enough&#34; produces, and ensure that every piece of work can withstand inspection and withstand the test of actual combat.</p>
+  
+    
+  
+    <p>Abandoning the &#34;good enough&#34; mentality is not a matter of one period of time but a lifelong commitment. Standards must not be relaxed when mission pressure is high, and one must not act without restraint when there is no supervision. Officers and soldiers across the force must at all times maintain a consistent and rigorous work style—whether in daily work or ad hoc tasks, whether in routine training or in competitions and exercises—integrating high-standard performance of duty and high-quality execution into the entire process of their work, and making every effort to carry out each task with thoroughness and precision.</p>
+  
+</div>
+
+
+
+<details>
+  <summary>Original Chinese</summary>
+  <div class="original-body">摒弃“差不多”心态 ■肖力铭 王仲英 ●“差不多”心态是干事创业的“绊脚石”，本质是责任意识的缺失、标准意识的淡薄、进取精神的缺位 近日，在一次装备勤务课上，有学员操作时简化规程、参数设置出现偏差，险些损坏装备数据链路，所幸处置及时，才未酿成事故。这件事给学员们敲响警钟，也给笔者以启示：无论是装备操作，还是日常工作，如果抱着“差不多”的心态，最后往往会差很多、误大事。 “差不多”心态是干事创业的“绊脚石”，本质是责任意识的缺失、标准意识的淡薄、进取精神的缺位。工作中，有的人满足于“做完”而非“做好”，任务落实应付交差，细节把控马马虎虎，不问质量成效；有的人自我要求不严，缺乏较真劲头，对工作中的小漏洞、小瑕疵视而不见，总觉得“无伤大雅”；还有的人面对难题畏惧退缩，遇到矛盾绕道而行，不求有功、但求无过。殊不知，诸多失误、隐患、短板，恰恰源于“差不多”的侥幸。工作上的分毫偏差，积累起来就是成效上的巨大差距；细节上的敷衍应付，叠加起来就会酿成难以挽回的损失。对军人来说，战场从无“差不多”可言，差一分一秒就可能错失良机，差一毫一厘就可能酿成险情，差一步一环就可能满盘皆输。 思想上松一寸，行动上就会散一尺。摒弃“差不多”心态，就要在思想上树牢责任意识，自觉提高标准、严格要求。尤其对军人而言，更要深刻认识到，每一项工作、每一个环节都连着战斗力，哪怕是日常擦拭装备、填写训练记录这类看似不起眼的小事，关键时刻都可能影响任务成败。只有从思想深处破除“过得去就行”的敷衍，将“一失万无”的底线思维刻进脑海，以“时时放心不下”的责任感对待每一项工作，才能切实提升工作质量、圆满完成任务。 “差不多”的差距，往往体现在对细节的把控上。在行动上摒弃“差不多”，关键要在细节上较真、在精微处用力，以一丝不苟的严谨对待每一个步骤、每一个环节。广大官兵要养成“回头看、反复查”的习惯：训练结束后复盘，装备入库前排查，制订预案后推演极端情况与变量影响，把每一个易忽略的细节抠实抠细，彻底消除“差不多”带来的模棱两可，让每一项工作都经得起检查、经得起实战检验。 摒弃“差不多”心态不是一阵子的事，而是一辈子的坚守。不能在任务压力大时就放宽标准，不能在无人监督时就放任自流。广大官兵要始终保持一以贯之的严谨作风，无论是日常工作还是临时任务，无论是日常训练还是比武演习，都把高标准履职、高质量干事融入工作全过程，全力把每项工作做细做精。</div>
+</details>
+
+
+<div class="provenance">
+  <span>Relevance score: 0.70</span>
+  <span>Model: claude-sonnet-4-6</span>
+  <span>Prompt: v1</span>
+  
+    <span>Analyzed: 2026-05-08</span>
+  
+</div>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 03:11 UTC.
+  </div>
+</footer>
+
+
+</body>
+</html>

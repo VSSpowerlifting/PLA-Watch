@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resolving Servicemembers&#39; Difficulties with Closed-Loop Implementation: Online Service Platform Bridges the &#39;Last Mile&#39; of Grassroots Service — PLA Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0d0d0d;
+      --surface:     #141414;
+      --border:      #252525;
+      --border-sub:  #1d1d1d;
+      --text:        #e2e0db;
+      --text-sec:    #918f8a;
+      --text-muted:  #555350;
+      --accent:      #c8922a;
+      --accent-dim:  rgba(200, 146, 42, 0.12);
+      --link:        #8ab0cc;
+      --link-hover:  #b0ccdf;
+      --tag-bg:      #1e1e1e;
+      --tag-text:    #7a7875;
+
+      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
+      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --max-width:   860px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    /* ── Navigation ─────────────────────────────────────────────────────────── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { color: var(--text); text-decoration: none; }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-size: 0.8125rem;
+      color: var(--text-sec);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Page header ─────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .page-header .meta {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    .page-header .meta span + span::before {
+      content: " · ";
+    }
+
+    /* ── Article card ────────────────────────────────────────────────────────── */
+    .article-card {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border-sub);
+    }
+    .article-card:last-child { border-bottom: none; }
+
+    .article-card.significant {
+      background: var(--accent-dim);
+      border-radius: 3px;
+      padding: 1.5rem;
+      margin: 0 -1.5rem;
+      border-bottom: none;
+      margin-bottom: 1px;
+    }
+    .article-card.significant + .article-card {
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .sig-flag {
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .sig-flag::before { content: "★  "; }
+
+    .article-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .article-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
+
+    .article-title-zh {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      font-size: 0.6875rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    .article-summary {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .sig-reason {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .article-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .article-footer a { color: var(--text-muted); }
+    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
+    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    footer a { color: var(--text-muted); }
+    footer a:hover { color: var(--link-hover); }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    
+.back-link {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--link-hover); text-decoration: none; }
+
+.article-page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.article-page-title-zh {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  align-items: center;
+}
+.article-page-meta a { color: var(--text-muted); }
+.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
+.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.summary-block {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  border-radius: 0 3px 3px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+.summary-block.significant {
+  border-left-color: var(--accent);
+}
+.summary-text { color: var(--text); }
+.sig-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.sig-block::before {
+  content: "★  ";
+  font-size: 0.75rem;
+}
+
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.translation-body p {
+  margin-bottom: 0.9rem;
+}
+.translation-body p:last-child { margin-bottom: 0; }
+
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--text-sec);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--text); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--text-sec);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.provenance {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-sub);
+}
+.provenance span + span::before { content: " · "; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">PLA Watch</a>
+    <div class="nav-links">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  
+<a href="../index.html" class="back-link">← Daily Brief</a>
+
+<div class="article-page-header">
+
+  
+
+  <h1 class="article-page-title">
+    Resolving Servicemembers&#39; Difficulties with Closed-Loop Implementation: Online Service Platform Bridges the &#39;Last Mile&#39; of Grassroots Service
+  </h1>
+
+  
+    <div class="article-page-title-zh">为兵解难闭环落实，线上服务平台打通服务基层&#34;最后一公里&#34;</div>
+  
+
+  
+    <div class="tags">
+      
+        <span class="tag">Political Work</span>
+      
+    </div>
+  
+
+  <div class="article-page-meta">
+    <span>PLA Daily (解放军报)</span>
+    <span class="sep"></span>
+    <span>7 May 2026</span>
+    <span class="sep"></span>
+    <a href="http://www.81.cn/yw_208727/16459098.html" target="_blank" rel="noopener">Original source ↗</a>
+  </div>
+
+</div>
+
+
+<div class="section-label">Summary</div>
+<div class="summary-block">
+  <div class="summary-text">A PLA Naval Aviation unit headquarters has deployed an online service platform enabling flight- and ground-crew personnel to submit welfare and operational complaints for tracked, closed-loop resolution, supplemented by institutionalized &#39;inspection and visit days&#39; and two-way review meetings that allow enlisted personnel and junior officers to evaluate headquarters performance. The platform addresses a documented internal friction—slow feedback loops and low processing efficiency at the grassroots level—and reflects a broader PLA effort to manage retention-related grievances, particularly dependent-employment and quality-of-life issues that accompany assignment relocations. The announcement follows a standard PLA Daily pattern of publicizing internal service-improvement initiatives and contains no operationally significant new information, but is useful as evidence of persistent grassroots morale management challenges in naval aviation units.</div>
+  
+</div>
+
+
+
+<div class="section-label">Translation</div>
+<div class="translation-body">
+  
+    <p>A Naval Aviation Unit Headquarters Builds an Online Service Platform — Requests Submitted Instantly, Difficulties Resolved with Closed-Loop Implementation</p>
+  
+    
+  
+    <p>PLA Daily Report by Yang Shenglong and special correspondent Hao Yongfei: Recently, a flight-crew cadre (空勤干部) in a certain Naval Aviation unit submitted a report through the unit&#39;s newly established online service platform reflecting difficulties his dependents faced in finding employment after relocating to follow him on assignment. The following day, headquarters cadres verified the situation with him and proactively coordinated with relevant local departments to understand applicable policies, resolving the problem satisfactorily.</p>
+  
+    
+  
+    <p>The unit&#39;s leadership explained that in recent years they have required the headquarters to continuously improve its work style (工作作风), treating the enhancement of grassroots service capacity as an important lever for breaking through difficulties in grassroots development. In response to conditions identified through research — including delayed feedback on servicemembers&#39; requests and low processing efficiency — the unit built an online service platform, assigned dedicated personnel to track and supervise cases throughout the entire process and provide real-time progress updates, and achieved &#34;instant submission, full-process tracking, and closed-loop implementation&#34; (即时提交、全程跟踪、闭环落实) of servicemembers&#39; requests. To bridge the &#34;last mile&#34; of grassroots service, while continuously optimizing the platform&#39;s functions, they have also normalized &#34;inspection and visit days&#34; (巡访日), organizing headquarters cadres to meet face-to-face with grassroots servicemembers to answer questions and resolve concerns — resolving on the spot those issues that can be immediately addressed, and for those that cannot be immediately resolved, recording them, setting clear deadlines, and following up on outcomes. At the same time, the unit has optimized its feedback mechanism: by leveraging occasions such as the two-way review meetings between headquarters and grassroots units (机关基层双向讲评会) and servicemember forums (官兵恳谈会), it regularly organizes grassroots servicemembers to evaluate headquarters service quality, creating reverse pressure (倒逼) on the headquarters to continuously improve its work style and strengthen its service consciousness.</p>
+  
+    
+  
+    <p>Not long ago, a ground-crew cadre (地勤干部) in the unit submitted a report on the online service platform reflecting that organizing, inspecting, and stowing equipment and tools during training was taking an excessive amount of time, affecting efficiency. Upon receiving the request, the headquarters immediately organized a working group to conduct an on-site assessment and solicit broad opinions and suggestions. The working group, taking into account the realities of ground-crew operations, resolved the problem by optimizing equipment storage layouts and adding tool storage facilities, earning commendation from the servicemembers.</p>
+  
+    
+  
+    <p>Requests submitted instantly, difficulties resolved with closed-loop implementation. Since the beginning of this year, the unit&#39;s headquarters has accepted dozens of servicemember requests, with the case-completion rate and servicemember satisfaction both rising steadily.</p>
+  
+</div>
+
+
+
+<details>
+  <summary>Original Chinese</summary>
+  <div class="original-body">海军航空兵某部机关打造线上服务平台 诉求即时提交 解难闭环落实 解放军报讯 杨圣龙、特约通讯员郝勇飞报道：近日，海军航空兵某部一名空勤干部通过该部建成的线上服务平台，反映家属随军后就业困难问题。次日，机关干部找他核实情况后，主动对接驻地相关部门了解政策，妥善解决了难题。 该部领导介绍，近年来，他们要求机关持续改进工作作风，把提升服务基层能力作为破解基层建设难题的重要抓手。针对调研了解到的官兵诉求反馈不及时、流转效率低等情况，该部搭建线上服务平台，组织专人全程跟踪督办、实时反馈进展，实现官兵诉求“即时提交、全程跟踪、闭环落实”。为打通服务基层“最后一公里”，他们在持续优化线上服务平台功能的基础上，常态开展“巡访日”活动，组织机关干部面对面为基层官兵答疑解惑，对于现场能解决的立即解决，一时难以解决的记录在案、明确时限、跟踪问效。同时，该部优化反馈机制，结合机关基层双向讲评会、官兵恳谈会等时机，定期组织基层官兵对机关服务质量进行评价，倒逼机关持续改进作风、提升服务意识。 前不久，该部一名地勤干部在线上服务平台反映，训练中整理检修设备、归置工具耗时较长，影响效率。机关接到诉求后，立即组织工作组实地了解情况，广泛征求意见建议。工作组结合地勤作业实际，采取优化设备存放布局、增设工具收纳设施等办法解决问题，赢得官兵好评。 诉求即时提交，解难闭环落实。今年以来，该部机关已受理官兵诉求数十件，事项办结率、官兵满意度稳步提升。</div>
+</details>
+
+
+<div class="provenance">
+  <span>Relevance score: 0.72</span>
+  <span>Model: claude-sonnet-4-6</span>
+  <span>Prompt: v1</span>
+  
+    <span>Analyzed: 2026-05-08</span>
+  
+</div>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Open-source intelligence monitoring of Chinese military and security developments.
+    Source material from Chinese state media; all analysis AI-generated.
+    Not for redistribution without attribution.
+    Generated 2026-05-08 03:11 UTC.
+  </div>
+</footer>
+
+
+</body>
+</html>
