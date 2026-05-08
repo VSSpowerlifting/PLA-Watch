@@ -5,6 +5,10 @@ on:
     - cron: '0 12 * * *'   # 12:00 UTC — 8:00 AM ET
   workflow_dispatch:         # Manual trigger from Actions tab
 
+concurrency:
+  group: daily-update
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -54,6 +58,7 @@ jobs:
             echo "Nothing to commit — no new articles today."
           else
             git commit -m "Daily update: $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main
             git push
           fi
 
