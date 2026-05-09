@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The PLA Watch — A weekly publication of China Mil Watch</title>
+  <meta name="description" content="The PLA Watch is the reader-facing weekly publication from China Mil Watch, turning daily outputs into accessible weekly analysis of Chinese military media.">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-brand:          #B3132B;
+      --color-brand-dark:     #8B0E20;
+      --color-bg:             #F6F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FBFAF6;
+      --color-text-primary:   #161616;
+      --color-text-secondary: #4A4A4A;
+      --color-text-muted:     #7A7A7A;
+      --color-border:         #E2DFD8;
+      --color-border-soft:    #ECE9E2;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      background-image:
+        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: -1px -1px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 2px 0 0 var(--color-brand);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img { height: 50px; width: 50px; display: block; border-radius: 3px; flex-shrink: 0; }
+    .header-wordmark { display: flex; flex-direction: column; line-height: 1; }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a.active { color: var(--color-text-primary); }
+    .header-nav a.active::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -1px;
+      height: 2px; background: var(--color-brand);
+    }
+    .header-nav .nav-sep { color: var(--color-border); font-weight: 400; }
+
+    /* Main layout */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+    .pw-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+    .pw-main { min-width: 0; }
+
+    .pw-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-brand);
+      margin-bottom: 0.75rem;
+    }
+    .pw-eyebrow::before {
+      content: "";
+      width: 22px; height: 2px;
+      background: var(--color-brand);
+    }
+    .pw-page-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 2.375rem;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      color: var(--color-text-primary);
+      margin-bottom: 0.65rem;
+    }
+    .pw-tagline {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+    }
+
+    /* Coming-soon card */
+    .coming-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-brand);
+      border-radius: 4px;
+      padding: 2rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .coming-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-brand);
+      margin-bottom: 0.65rem;
+    }
+    .coming-title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.45rem;
+      letter-spacing: -0.005em;
+      color: var(--color-text-primary);
+      margin-bottom: 0.65rem;
+      line-height: 1.2;
+    }
+    .coming-body {
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      max-width: 560px;
+    }
+    .coming-body p + p { margin-top: 0.75rem; }
+
+    /* CTA buttons */
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.55rem 1.1rem;
+      border-radius: 3px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .btn:hover { text-decoration: none; }
+    .btn-primary {
+      background: var(--color-brand);
+      color: #fff;
+      border: 1px solid var(--color-brand);
+    }
+    .btn-primary:hover { background: var(--color-brand-dark); border-color: var(--color-brand-dark); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+    }
+    .btn-secondary:hover { border-color: var(--color-text-secondary); color: var(--color-text-primary); }
+
+    /* Sidebar */
+    .pw-sidebar { position: sticky; top: 1.5rem; }
+    .sidebar-card {
+      background: var(--color-bg-sidebar);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 1.4rem 1.4rem 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .sidebar-eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-brand);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .sidebar-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--color-border-soft);
+      font-size: 0.8125rem;
+    }
+    .sidebar-row:last-child { border-bottom: none; }
+    .sidebar-row .label { color: var(--color-text-secondary); }
+    .sidebar-row .value {
+      color: var(--color-text-primary);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+    .sidebar-text {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto 0.75rem;
+    }
+    .footer-transparency {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0.75rem auto 0;
+      border-top: 1px solid var(--color-border-soft);
+      padding-top: 0.75rem;
+    }
+
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      .pw-layout { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+      .pw-sidebar { position: static; }
+      .pw-page-title { font-size: 1.75rem; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+      .header-nav .nav-sep { display: none; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+      .header-nav a[href$="archive.html"] { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="header-brand" aria-label="The PLA Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title">The PLA Watch</span>
+        <span class="kicker">A weekly publication of China Mil Watch</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html" class="active">Latest Edition</a>
+      <a href="archive.html">Archive</a>
+      <span class="nav-sep">|</span>
+      <a href="../index.html">China Mil Watch &rarr;</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="pw-layout">
+
+    <div class="pw-main">
+
+      <div class="pw-eyebrow">A weekly publication</div>
+      <h1 class="pw-page-title">The PLA Watch</h1>
+      <p class="pw-tagline">A weekly synthesis of signals from Chinese military and security media — drawn from the China Mil Watch daily archive and published every Sunday.</p>
+
+      <div class="coming-card">
+        <div class="coming-label">Pilot edition · 10 May 2026</div>
+        <div class="coming-title">The PLA Watch: Two Defense Ministers, One Verdict</div>
+        <div class="coming-body">
+          <p>Pilot edition based on three days of observed data (7–9 May 2026), not a full weekly readout. Across 42 articles from PLA Daily and affiliated outlets, the suspended death sentences against Wei Fenghe and Li Shangfu — two consecutive former defense ministers — stand apart from otherwise routine coverage.</p>
+          <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin-top: 0.85rem;">Covers 7–9 May 2026 (3 days) &nbsp;·&nbsp; 42 articles analyzed &nbsp;·&nbsp; 1 significant</p>
+        </div>
+        <div class="btn-row">
+          <a href="posts/2026-05-10.html" class="btn btn-primary">Read the pilot edition</a>
+          <a href="archive.html" class="btn btn-secondary">Browse the archive</a>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="pw-sidebar">
+
+      <div class="sidebar-card">
+        <div class="sidebar-eyebrow">Publication</div>
+        <div class="sidebar-row"><span class="label">Cadence</span><span class="value">Weekly</span></div>
+        <div class="sidebar-row"><span class="label">Publishes</span><span class="value">Sundays</span></div>
+        <div class="sidebar-row"><span class="label">Format</span><span class="value">Briefing</span></div>
+        <div class="sidebar-row"><span class="label">From</span><span class="value">China Mil Watch</span></div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-eyebrow">About</div>
+        <div class="sidebar-text">
+          Source-grounded weekly analysis built from the daily Chinese-language monitoring pipeline. Translations and synthesis are AI-assisted; original sources are linked from every claim.
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">The PLA Watch</div>
+    <div class="footer-desc">The reader-facing weekly publication from China Mil Watch.</div>
+    <div class="footer-transparency">
+      The PLA Watch is generated from China Mil Watch daily outputs and designed as a reader-facing synthesis layer.
+      It is source-grounded and may include AI-assisted drafting workflows.
+      It is not a substitute for expert judgment or original source review.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
