@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The PLA Watch — Coming Soon</title>
+  <meta name="description" content="The PLA Watch is the reader-facing weekly publication from China Mil Watch, turning daily outputs into accessible weekly analysis of Chinese military media.">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover, .header-nav a.active { color: #ffffff; text-decoration: none; }
+
+    main {
+      flex: 1;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .hero {
+      border-left: 3px solid var(--color-brand);
+      padding-left: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      line-height: 1.15;
+      color: var(--color-text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .hero-tagline {
+      font-size: 1.0625rem;
+      color: var(--color-text-secondary);
+      font-weight: 500;
+    }
+
+    .body-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      padding: 2rem 2.25rem;
+      margin-bottom: 2rem;
+    }
+    .body-card p {
+      color: var(--color-text-secondary);
+      margin-bottom: 1.25rem;
+    }
+    .body-card p:last-child { margin-bottom: 0; }
+    .body-card .lede-note {
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-primary {
+      background: var(--color-brand);
+      color: #ffffff;
+      border: 1px solid var(--color-brand);
+    }
+    .btn-primary:hover {
+      background: var(--color-brand-dark);
+      border-color: var(--color-brand-dark);
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
+    }
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
+    }
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 2rem 1rem 3rem; }
+      .hero-title { font-size: 1.875rem; }
+      .body-card { padding: 1.5rem 1.25rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html">Daily Brief</a>
+    <a href="../archive.html">Archive</a>
+    <a href="index.html" class="active">The PLA Watch</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <h1 class="hero-title">The PLA Watch</h1>
+    <p class="hero-tagline">Weekly signals from Chinese military media.</p>
+  </div>
+
+  <div class="body-card">
+    <p>The PLA Watch is the reader-facing weekly publication from China Mil Watch. It will turn daily China Mil Watch outputs into accessible weekly analysis of Chinese military media, PLA politics, and U.S.-China security signals.</p>
+    <p class="lede-note">The first edition is coming soon.</p>
+  </div>
+
+  <div class="cta-row">
+    <a href="https://chinamilwatch.org" class="btn btn-primary">Visit China Mil Watch</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-name">The PLA Watch</div>
+  <div class="footer-desc">The reader-facing weekly publication from China Mil Watch.</div>
+</footer>
+
+</body>
+</html>
