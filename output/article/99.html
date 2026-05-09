@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ministry of National Defense Routine Press Briefing, Early May 2026 — China Mil Watch</title>
+  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="China Mil Watch">
+  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-brand:          #B3132B;
+      --color-brand-dark:     #8B0E20;
+      --color-brand-light:    #D11C36;
+      --color-bg:             #F6F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FBFAF6;
+      --color-text-primary:   #161616;
+      --color-text-secondary: #4A4A4A;
+      --color-text-muted:     #7A7A7A;
+      --color-border:         #E2DFD8;
+      --color-border-soft:    #ECE9E2;
+      --color-accent:         #B3132B;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      /* Faint paper grid — barely-visible cross pattern for desktop polish */
+      background-image:
+        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: -1px -1px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 0 0 0 transparent, 0 2px 0 0 var(--color-brand);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a.active {
+      color: var(--color-text-primary);
+    }
+    .header-nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+    }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-card);
+      border-radius: 2px;
+      padding: 2px 8px;
+      line-height: 1.4;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
+
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    
+.article-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.article-page-title-zh {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Provenance ──────────────────────────────────────────────────── */
+.provenance {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+.provenance span + span::before { content: " · "; }
+
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
+}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title">China Mil Watch</span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../the-pla-watch/index.html" >The PLA Watch</a>
+    </nav>
+  </div>
+</header>
+
+
+
+<main>
+  
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+    
+      <div class="tags">
+        
+          <span class="tag">Taiwan</span>
+        
+          <span class="tag">South China Sea</span>
+        
+          <span class="tag">East China Sea</span>
+        
+          <span class="tag">Exercises</span>
+        
+          <span class="tag">Modernization</span>
+        
+          <span class="tag">Military Diplomacy</span>
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
+
+    <h1 class="article-page-title">
+      Ministry of National Defense Routine Press Briefing, Early May 2026
+    </h1>
+
+    
+      <div class="article-page-title-zh">2026年5月上旬国防部例行新闻发布</div>
+    
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>9 May 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16459585.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block significant">
+    <div>At the May 9 MND press briefing, Spokesperson Jiang Bin confirmed the delivery of the lead Qilin-class conventional submarine to Pakistan at Sanya, acknowledged the PLAN&#39;s assembly of a complete carrier air wing—stealth fighters, catapult-launched multi-role fighters, fixed-wing AEW aircraft, electronic warfare aircraft, and anti-submarine helicopters—and defended recent PLA joint combat-readiness patrols around Taiwan, including main combat vessel formations entering waters southwest of the Penghu Islands. The submarine delivery confirmation and the explicit official endorsement of the &#39;carrier five-piece set&#39; framing are notable: both represent the MND publicly validating capability milestones that Beijing has previously left to media inference, signaling deliberate messaging about the maturation of PLAN carrier strike and power-projection capacity. The Taiwan patrol remarks, denying the existence of the strait median line and linking operations directly to senior Taiwan officials&#39; overseas travel, reinforce an established pattern of using military signaling as a coercive response to perceived political provocation.</div>
+    
+      <div class="sig-reasoning">The MND spokesperson explicitly confirmed the PLAN has assembled the complete &#39;carrier five-piece set&#39; including fixed-wing electronic warfare aircraft and fixed-wing carrier-based early warning aircraft, representing official acknowledgment of a carrier air wing capability set that had previously been discussed only in media speculation; separately, the Qilin-class submarine delivery to Pakistan at Sanya with senior Pakistani officials present is the first official Chinese confirmation of that transfer and platform designation.</div>
+    
+  </div>
+  
+
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>On the afternoon of May 9, Senior Colonel Jiang Bin, Deputy Director of the Ministry of National Defense Press Bureau and MND Spokesperson, released information on recent military-related issues. On the afternoon of May 9, Senior Colonel Jiang Bin, Deputy Director of the Ministry of National Defense Press Bureau and MND Spokesperson, released information on recent military-related issues. Photo by Li Xiaowei.</p>
+    
+      
+    
+      <p>Jiang Bin: First, I have an announcement to make.</p>
+    
+      
+    
+      <p>In mid-to-late May, the China-Thailand &#34;Strike-2026&#34; Army Joint Training will be held in Thailand. This joint exercise focuses on mountain jungle joint counterterrorism operations, with both sides organized into mixed formations to conduct training in battlefield medical rescue, unmanned equipment operation, live-fire shooting, and other subjects. This is the 8th time the two countries&#39; armies have held this series of joint exercises, aimed at continuously deepening bilateral friendship and cooperation and enhancing joint counterterrorism operational capabilities.</p>
+    
+      
+    
+      <p>Reporter: Recently, Chairman Xi&#39;s reply letter to representatives of recipients of the May Fourth Medal for Chinese Youth and the New Era Youth Vanguard Award has generated a warm response throughout the armed forces. Please introduce the situation regarding the troops&#39; study and implementation of the relevant content.</p>
+    
+      
+    
+      <p>Jiang Bin: On the occasion of May Fourth Youth Day, Chairman Xi extended holiday greetings to young people of all ethnic groups across the country and expressed earnest hopes, urging young people broadly to cherish lofty ideals, dedicate themselves to hard struggle, integrate personal pursuits into the overall national development agenda, continuously create new achievements in their respective posts, and contribute the energy of youth on the new journey.</p>
+    
+      
+    
+      <p>Troops throughout the armed forces have studied and implemented the spirit of Chairman Xi&#39;s important message in depth, carrying out Youth League Day activities in various forms, and through themed League study sessions, story sharing, and model reports, educating and guiding young officers and soldiers to unwaveringly heed the Party&#39;s words and follow the Party, striving to become good young people of the new era who have ideals, dare to take responsibility, can endure hardship, and are willing to work hard. Themed publicity activities focused on &#34;dedicating youth to the country and striving to strengthen the military (青春报国、奋斗强军)&#34; have been conducted, promoting the deeds and spirit of wholehearted loyalty to the Party and determined assault on difficulties, reflecting the new conduct and upright spirit (新风正气) that has emerged from the revolutionary tempering of the people&#39;s armed forces, and inspiring young officers and soldiers to bravely shoulder the responsibilities of the era with a renewed political bearing, carrying the mountain-like mission on their shoulders with the passion of youth. Inspired by Chairman Xi&#39;s message, the drive of the broad ranks of young officers and soldiers to work hard and achieve merit at their posts has surged even higher. From the snow-covered plateau to the distant seas and oceans, from the front lines of missions to exercise and training sites, from combat units to scientific research institutes, officers and soldiers are deepening their love of country and family, training hard to master the skills needed to win, remaining battle-ready at their posts defending the homeland, pressing forward on the journey of dedicated military strengthening, inheriting the red gene through concrete actions, and displaying the vitality of youth.</p>
+    
+      
+    
+      <p>Wherever the motherland needs, that is the most brilliant stage for youth; when dreams resonate in harmony with military strengthening, that is the most beautiful movement of youth. Young officers and soldiers will deeply comprehend Chairman Xi&#39;s earnest instructions, practice their original aspirations with their youthful selves, shoulder their mission with their striving selves, and write a new chapter of military strengthening and national rejuvenation worthy of the era and worthy of their youth.</p>
+    
+      
+    
+      <p>Photo by Li Xiaowei.</p>
+    
+      
+    
+      <p>Reporter: According to reports, with the induction of multiple new types of combat aircraft, the People&#39;s Navy has successfully assembled the complete &#34;carrier five-piece set (航母五件套)&#34; — stealth carrier-based fighters, multi-role catapult carrier-based fighters, fixed-wing carrier-based early warning aircraft, fixed-wing electronic warfare aircraft, and anti-submarine helicopters. What is your comment on this?</p>
+    
+      
+    
+      <p>Jiang Bin: Thank you for your attention to the development and construction of the Chinese Navy. Regarding what the media calls the &#34;carrier five-piece set,&#34; this is an important component in forming the carrier battle group&#39;s system-of-systems operational capability (体系作战能力), and also an important achievement of the People&#39;s Navy&#39;s accelerated transformation and development. Building a powerful People&#39;s Navy embodies the generations-long aspiration of the Chinese nation to look seaward and grow strong, and is an important guarantee for realizing the great rejuvenation of the Chinese nation. Entering the new era, under the strong leadership of the Party Central Committee, the Central Military Commission, and Chairman Xi, the pace of modernization of the People&#39;s Navy has become ever more firm and powerful. From the air to underwater, from coastal waters to the open ocean, the types and functions of various weapons platforms have been continuously improved, achieving leapfrog development and innovative breakthroughs, providing stronger guarantees for defending national sovereignty, security, and development interests.</p>
+    
+      
+    
+      <p>The Chinese Navy has always upheld the concept of a maritime community with a shared future (海洋命运共同体). Whether in Gulf of Aden escort missions, international humanitarian relief, or hospital ships carrying out &#34;Harmonious Mission (和谐使命)&#34; tasks, practice has proven that a powerful Chinese Navy is always an anchor of peace and a bridge of cooperation for the world. We are willing to work together with the navies of all countries, standing together through thick and thin and cooperating sincerely, to make new and greater contributions to maintaining maritime security and world peace.</p>
+    
+      
+    
+      <p>Reporter: According to reports, the lead boat of the &#34;Qilin&#34;-class conventional submarine built by China for Pakistan was delivered in Sanya, with Pakistan&#39;s president, chief of naval staff, and other senior military and political officials attending the delivery ceremony. What is your comment on this?</p>
+    
+      
+    
+      <p>Jiang Bin: This is normal equipment cooperation between China and Pakistan, and a vivid embodiment of the China-Pakistan all-weather strategic cooperative partnership. In recent years, under the strategic guidance of the two countries&#39; leaders, bilateral relations have continuously reached new heights and achieved new results. The two militaries have stood by each other through thick and thin (肝胆相照) and supported one another over the years, with fruitful cooperation in strategic communication, joint exercises and training, personnel training, and equipment and technology, playing an important role in safeguarding the security of both countries and regional peace and stability. Going forward, the two militaries will continue to consolidate strategic mutual trust, deepen practical cooperation in all areas, and contribute to building an even closer China-Pakistan community with a shared future and to promoting world peace and development.</p>
+    
+      
+    
+      <p>Photo by Li Xiaowei.</p>
+    
+      
+    
+      <p>Reporter: According to reports, Japanese Prime Minister Sanae Takaichi recently visited Australia and Vietnam, strengthening security cooperation with the relevant countries and proposing a so-called new version of the &#34;Free and Open Indo-Pacific&#34; concept. Takaichi has also been clamoring that Japan&#39;s constitution, drafted by the U.S. occupation forces after World War II, should be periodically updated to reflect the demands of the times. What is your comment on this?</p>
+    
+      
+    
+      <p>Jiang Bin: We resolutely oppose the Japanese ruling authorities&#39; use of the so-called banners of &#34;freedom and openness&#34; and &#34;security cooperation&#34; to stoke bloc confrontation, build &#34;small cliques (小圈子),&#34; harm other countries&#39; strategic security and interests, and seek pretexts and breakthroughs for loosening their own military constraints.</p>
+    
+      
+    
+      <p>May 3 of this year marks the 80th anniversary of the opening of the Tokyo Trials. Over the past 80 years, Japanese right-wing forces have schemed relentlessly to dilute and resist the solemn verdict that represents the conscience of humanity and the justice of history, distorting and denying the crimes of aggression committed by Japanese militarism as recorded in black and white. Class-A war criminals who committed monstrous crimes are enshrined and venerated as &#34;heroes&#34; at Yasukuni Shrine. The Japanese government&#39;s position of &#34;upholding the peace constitution and following the path of a peaceful nation&#34; has gone from explicit commitment to paying lip service while acting otherwise, and now to the Takaichi government openly pushing for constitutional revision. Japanese right-wing forces are step by step tearing off their disguise, shifting from covert military expansion to open war preparation. The real threat posed by Japan&#39;s &#34;new-style militarism (新型军国主义)&#34; to regional peace is becoming increasingly apparent.</p>
+    
+      
+    
+      <p>Wanting peace rather than conflict, wanting cooperation rather than confrontation — these are the true demands of the present era. We urge the Japanese ruling authorities to stop their hypocritical self-promotion and dangerous ambitions of military expansion and war preparation, and to genuinely demonstrate an attitude of squarely facing history and take sincere actions of remorseful atonement, so as to earn the trust of Asian neighbors and the international community.</p>
+    
+      
+    
+      <p>Reporter: According to reports, the Japanese Defense Minister and the Philippine Defense Secretary issued a joint statement declaring opposition to any &#34;unilateral attempt to change the status quo in the East China Sea and South China Sea by force or coercion,&#34; and expressing serious concern over China&#39;s &#34;dangerous coercion&#34; in the vicinity of Japan and the Philippines. The two sides will also strengthen defense cooperation in areas including equipment and technology and information sharing. What is your comment on this?</p>
+    
+      
+    
+      <p>Jiang Bin: Certain politicians in Japan and the Philippines are hyping up false narratives on maritime issues and smearing China without cause. We are strongly dissatisfied with and resolutely oppose this. The relevant parties, disregarding the common desire of regional countries for peace and development, and ignoring the opposition of their own people, are strengthening military collusion to pursue private interests and exacerbating regional tensions. Japan has dispatched troops to participate in joint exercises and for the first time fired offensive missiles outside its own territory, deliberately breaking through the principle of &#34;exclusively defensive defense (専守防衛),&#34; while the Philippines attempts to bring in extra-regional forces to back up its rights-infringing actions and then tries to turn the tables on China — this is a complete miscalculation. The Chinese military&#39;s resolve to defend its own territorial sovereignty and maritime rights and interests is unwavering. We urge the relevant countries to stop forming cliques and engaging in bloc confrontation, and to do more things that are truly conducive to regional peace and stability.</p>
+    
+      
+    
+      <p>Reporter: According to reports, the PLA recently organized naval and air forces to conduct joint combat readiness patrols (联合战备警巡) around Taiwan Island, with main combat vessel formations entering the waters southwest of the Penghu Islands. Some analysts believe that the increase in the number of PLA vessels and aircraft crossing the &#34;strait median line (海峡中线)&#34; may be related to recent visits abroad by senior Taiwan officials. What is your comment on this?</p>
+    
+      
+    
+      <p>Jiang Bin: Taiwan is a part of China, and the so-called &#34;strait median line&#34; simply does not exist. The PLA&#39;s conduct of military operations in the relevant areas is entirely justified and reasonable. &#34;Taiwan independence&#34; is the chief culprit destroying peace in the Taiwan Strait. We will absolutely not condone it, and will absolutely not tolerate it (决不姑息、决不容忍). The PLA will continue to resolutely defend national sovereignty and territorial integrity through concrete actions, and resolutely safeguard peace and stability in the Taiwan Strait.</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">5月9日下午，国防部新闻局副局长、国防部新闻发言人蒋斌大校就近期涉军问题发布消息。 5月9日下午，国防部新闻局副局长、国防部新闻发言人蒋斌大校就近期涉军问题发布消息。李晓伟 摄 蒋斌：首先，我发布一条消息。 5月中下旬，中泰“突击-2026”陆军联合训练将在泰国举行。此次联训以山地丛林联合反恐为课题，双方混合编组进行战场救护、无人装备操作、实弹射击等课目训练。这是两国陆军第8次举行该系列联训，旨在不断深化双方友谊合作，提升联合反恐行动能力。 记者：近日，习主席给中国青年五四奖章暨新时代青年先锋奖获奖者代表的回信，在全军引起热烈反响。请介绍部队学习贯彻有关情况。 蒋斌：五四青年节到来之际，习主席向全国各族青年致以节日祝贺并提出殷切期望，寄语广大青年胸怀远大理想，矢志拼搏奋斗，把个人追求融入国家发展大局，立足各自岗位不断创造新业绩，在新征程上贡献青春力量。 全军部队深入学习贯彻习主席重要寄语精神，以多种形式开展团日活动，通过主题团课、故事分享、典型报告等，教育引导青年官兵坚定不移听党话、跟党走，争做有理想、敢担当、能吃苦、肯奋斗的新时代好青年。聚焦“青春报国、奋斗强军”开展主题宣传，弘扬铁心向党、奋力攻坚的事迹精神，反映人民军队革命性锻造焕发的新风正气，激励青年官兵以崭新政治面貌勇担时代重任，用青春热血扛起如山使命。在习主席寄语鼓舞下，广大青年官兵干事创业、建功岗位的劲头更加高涨。从雪域高原到远海大洋、从任务一线到演训现场、从作战部队到科研院所，官兵们厚植家国情怀，苦练打赢本领，在保家卫国的战位枕戈待旦，在矢志强军的征途奋勇争先，以实际行动传承红色基因，展现青春风采。 祖国需要的地方，就是青春最绚烂的舞台；梦想与强军同频共振，就是青春最动听的乐章。青年官兵将深刻领悟习主席的谆谆嘱托，以青春之我践行初心，以奋斗之我担当使命，书写不负时代、不负韶华的强军兴军新篇章。 5月9日下午，国防部新闻局副局长、国防部新闻发言人蒋斌大校就近期涉军问题发布消息。李晓伟 摄 记者：据报道，随着多型新式战机列装，人民海军成功配齐隐身舰载战斗机、多用途弹射舰载战斗机、固定翼舰载预警机、固定翼电子战机和反潜直升机等“航母五件套”。请问对此有何评论？ 蒋斌：感谢大家对中国海军发展建设的关注。关于媒体所说的“航母五件套”，这是形成航母编队体系作战能力的重要一环，也是人民海军加速转型建设的重要成果。建设一支强大的人民海军，寄托着中华民族向海图强的世代夙愿，是实现中华民族伟大复兴的重要保障。进入新时代，在党中央、中央军委和习主席坚强领导下，人民海军现代化建设步伐愈发坚实有力，从空中到水下，从近海到远洋，各型武器平台种类、功能不断完善，实现跨越式发展、创新性突破，为捍卫国家主权、安全、发展利益提供更强有力的保障。 中国海军始终秉持海洋命运共同体理念，无论是亚丁湾护航、国际人道主义救援，还是医院船执行“和谐使命”任务，实践证明，一支强大的中国海军始终是世界的和平之锚、合作之桥。我们愿与各国海军一道，同舟共济、精诚合作，为维护海洋安全和世界和平作出新的更大贡献。 记者：据报道，中方为巴基斯坦建造的“麒麟”级常规动力潜艇首艇在三亚交付，巴基斯坦总统、海军参谋长等军政高层出席交付仪式。请问对此有何评论？ 蒋斌：这是中巴之间正常的装备合作，也是中巴全天候战略合作伙伴关系的生动体现。近年来，在两国领导人战略引领下，两国关系不断迈上新高度、取得新成果。两军多年来肝胆相照、守望相助，在战略沟通、联演联训、人员培训、装备技术等领域合作成果丰硕，为维护两国安全与地区和平稳定发挥了重要作用。下步，中巴两军将持续巩固战略互信，深化各领域务实合作，为构建更加紧密的中巴命运共同体、促进世界和平与发展贡献力量。 5月9日下午，国防部新闻局副局长、国防部新闻发言人蒋斌大校就近期涉军问题发布消息。李晓伟 摄 记者：据报道，日本首相高市早苗近日访问澳大利亚、越南，与相关国家加强安全合作，并提出所谓新版“自由开放印太”构想。高市还鼓噪称，二战后由美国占领军制定的日本宪法应定期更新，以反映时代要求。请问对此有何评论？ 蒋斌：我们坚决反对日本执政当局打着所谓“自由开放”“安全合作”的幌子，挑动阵营对抗、打造“小圈子”，损害他国战略安全和利益，并为自身军事松绑找借口、谋突破。 今年5月3日是东京审判开庭80周年纪念日。80年来，日本右翼势力处心积虑淡化、对抗代表人类良知和历史正义的庄严判决，歪曲、否定白纸黑字记载的日本军国主义侵略罪行。犯下滔天罪行的甲级战犯被标榜为“英雄”供奉在靖国神社，日本政府对“坚持和平宪法，走和平国家道路”的立场，从明确承诺到阳奉阴违，再到如今高市早苗政府公开推动修宪，日本右翼势力正一步步撕下伪装，从暗地扩军转向公开备战，日本“新型军国主义”对地区和平的现实威胁日益显现。 要和平不要战乱、要合作不要对抗，才是当今时代的真正要求。我们敦促日本执政当局停止虚伪的自我标榜和扩军备战的危险野心，真正拿出正视历史的态度、真诚悔罪的行动，取信于亚洲邻国和国际社会。 记者：据报道，日本防卫大臣与菲律宾防长发表联合声明称，反对任何“单方面企图以武力或胁迫手段改变东海和南海现状”行为，对中国在日菲周边“危险胁迫”表示严重关切。双方还将在装备技术、信息共享等领域加强防务合作。请问对此有何评论？ 蒋斌：日菲某些政客在涉海问题上炒作虚假叙事，无端抹黑中国，我们对此强烈不满、坚决反对。有关方面无视地区国家求和平、谋发展的共同愿望，不顾本国民众反对，为谋取私利加强军事勾连，加剧地区局势紧张。日方派兵参加联合演习并首次在境外发射进攻型导弹，蓄意突破“专守防卫”原则，菲方企图拉域外势力为其侵权行径撑腰打气，还想对中方倒打一耙，完全是打错了算盘。中国军队维护自身领土主权和海洋权益的决心坚定不移。我们敦促有关国家停止拉帮结伙搞阵营对抗，多做真正有利于地区和平稳定的事。 记者：据报道，解放军近期组织海空兵力位台岛周边开展联合战备警巡、主战舰艇编队进入澎湖西南海域。有分析认为，解放军舰机越过“海峡中线”数量增加，可能与近期台高层窜访活动有关。请问对此有何评论？ 蒋斌：台湾是中国的一部分，根本不存在所谓“海峡中线”。解放军位相关区域开展军事行动，完全正当合理。“台独”是破坏台海和平的罪魁祸首，我们决不姑息、决不容忍。解放军将继续以实际行动坚决捍卫国家主权和领土完整，坚决维护台海和平稳定。</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.92</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-09</span>
+    
+  </div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. Translations and analytical summaries are AI-assisted; original sources are linked from every article.</div>
+  </div>
+</footer>
+
+
+</body>
+</html>
