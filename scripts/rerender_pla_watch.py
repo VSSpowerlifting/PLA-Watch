@@ -152,6 +152,9 @@ def _build_post_context(sidecar: dict) -> dict:
         "articles": _articles_from_sidecar(sidecar),
         "source_trail_truncated": sidecar.get("source_trail_truncated", False),
 
+        # Visual context (license-verified outside images, if any)
+        "media_items": sidecar.get("media_items", []) or [],
+
         # Author identity (graceful fallbacks: missing keys → chip omitted)
         "author_name":  sidecar.get("author_name",  AUTHOR_NAME),
         "author_title": sidecar.get("author_title", AUTHOR_TITLE),

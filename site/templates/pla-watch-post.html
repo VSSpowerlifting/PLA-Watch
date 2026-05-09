@@ -47,6 +47,68 @@
   text-align: right;
 }
 
+/* ── Visual Context — restrained editorial image card ───────────────── */
+.visual-context {
+  margin: 0 0 2.5rem;
+}
+.media-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.media-card:last-child { margin-bottom: 0; }
+.media-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--color-bg-card);
+}
+.media-card-body {
+  padding: 0.95rem 1.15rem 1rem;
+  border-top: 1px solid var(--color-border-soft);
+}
+.media-caption {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+.media-meta {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+.media-meta a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+}
+.media-meta a:hover {
+  color: var(--color-brand);
+  text-decoration-color: var(--color-brand);
+}
+.media-meta .sep {
+  margin: 0 0.45rem;
+  color: var(--color-border);
+}
+.media-note {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-top: 0.45rem;
+  line-height: 1.5;
+}
+@media (max-width: 600px) {
+  .media-card-body { padding: 0.85rem 1rem 0.95rem; }
+  .media-caption { font-size: 0.9rem; }
+}
+
 /* ── Editorial hero — large display, generous spacing, watermark ────── */
 .hero {
   position: relative;
@@ -653,6 +715,31 @@
            width="1200" height="630" loading="eager">
       <figcaption>Issue cover · The PLA Watch · {{ week_ending }}</figcaption>
     </figure>
+    {% endif %}
+
+    {# ── Visual Context — outside images, license-verified ─────────── #}
+    {% if media_items %}
+    <section class="visual-context" aria-label="Visual context">
+      <div class="mod-heading brand">Visual Context</div>
+      {% for m in media_items if m.type == 'image' and m.src %}
+      <figure class="media-card">
+        <img src="{{ m.src }}"
+             alt="{{ m.alt or 'Visual context image' }}"
+             loading="lazy">
+        <figcaption class="media-card-body">
+          {% if m.caption %}<div class="media-caption">{{ m.caption }}</div>{% endif %}
+          <div class="media-meta">
+            {% if m.credit %}<span>{{ m.credit }}</span>{% endif %}
+            {% if m.license and not (m.credit and m.license in m.credit) %}<span class="sep">·</span><span>
+              {% if m.license_url %}<a href="{{ m.license_url }}" target="_blank" rel="noopener nofollow">{{ m.license }}</a>{% else %}{{ m.license }}{% endif %}
+            </span>{% endif %}
+            {% if m.source_url %}<span class="sep">·</span><a href="{{ m.source_url }}" target="_blank" rel="noopener nofollow">Source</a>{% endif %}
+          </div>
+          {% if m.selection_note %}<div class="media-note">{{ m.selection_note }}</div>{% endif %}
+        </figcaption>
+      </figure>
+      {% endfor %}
+    </section>
     {% endif %}
 
     {# ── This Week's Signal — graceful fallback if missing ─────────── #}
