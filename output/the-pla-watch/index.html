@@ -497,6 +497,20 @@
 }
 .btn-ghost:hover { border-color: var(--color-text-secondary); color: var(--color-text-primary); }
 
+/* ── Byline (latest-edition card) ───────────────────────────────────── */
+.issue-cover-byline {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+.issue-cover-byline .byline-name {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
 /* ── Section heading ─────────────────────────────────────────────────── */
 .section-heading {
   display: flex;
@@ -734,6 +748,9 @@
         </div>
         <h2 class="issue-cover-title"><a href="posts/2026-05-10.html">The PLA Watch: Two Defense Ministers, One Verdict</a></h2>
         <p class="issue-cover-dek">Pilot edition based on three days of observed data (7–9 May 2026), not a full weekly readout. Across 42 articles from PLA Daily and affiliated outlets, the suspended death sentences against Wei Fenghe and Li Shangfu — two consecutive former defense ministers — stand apart from otherwise routine coverage.</p>
+        
+        <div class="issue-cover-byline">By <span class="byline-name">Benjamin Yang</span></div>
+        
         <div class="issue-cover-meta">
           <span class="stat"><span class="num">42</span> articles</span>
           <span class="stat"><span class="num">1</span> significant</span>

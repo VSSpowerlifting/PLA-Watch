@@ -218,6 +218,20 @@
 }
 .btn-ghost:hover { border-color: var(--color-text-secondary); color: var(--color-text-primary); }
 
+/* ── Byline (latest-edition card) ───────────────────────────────────── */
+.issue-cover-byline {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+.issue-cover-byline .byline-name {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
 /* ── Section heading ─────────────────────────────────────────────────── */
 .section-heading {
   display: flex;
@@ -427,6 +441,9 @@
         </div>
         <h2 class="issue-cover-title"><a href="posts/{{ latest_post.date }}.html">{{ latest_post.title }}</a></h2>
         <p class="issue-cover-dek">{{ latest_post.dek }}</p>
+        {% if latest_post.author_name %}
+        <div class="issue-cover-byline">By <span class="byline-name">{{ latest_post.author_name }}</span></div>
+        {% endif %}
         <div class="issue-cover-meta">
           <span class="stat"><span class="num">{{ latest_post.n_articles }}</span> articles</span>
           <span class="stat"><span class="num">{{ latest_post.n_significant }}</span> significant</span>

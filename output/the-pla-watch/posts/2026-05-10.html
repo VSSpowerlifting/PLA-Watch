@@ -694,6 +694,114 @@
   line-height: 1.7;
 }
 
+/* ── Byline (hero) ─────────────────────────────────────────────────── */
+.byline {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.4rem;
+  position: relative;
+  z-index: 1;
+  max-width: 660px;
+}
+.byline-name {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+.byline-title {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+  letter-spacing: 0.005em;
+}
+
+/* ── Author block (bottom of post) ─────────────────────────────────── */
+.author-block {
+  margin-top: 2.5rem;
+  padding: 1.5rem 1.65rem 1.6rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+.author-block-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.author-block-eyebrow::before {
+  content: "";
+  width: 22px; height: 2px;
+  background: var(--color-brand);
+}
+.author-block-name {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-text-primary);
+  letter-spacing: -0.005em;
+  margin-bottom: 0.15rem;
+}
+.author-block-title {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.85rem;
+}
+.author-block-bio {
+  font-family: var(--serif);
+  font-size: 0.97rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 640px;
+  margin-bottom: 1.1rem;
+}
+
+/* ── Contact chips — restrained text pills ─────────────────────────── */
+.author-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+.author-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.author-chip:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  text-decoration: none;
+}
+.author-chip .arrow {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  transition: color 0.15s;
+}
+.author-chip:hover .arrow { color: var(--color-brand); }
+
 /* ── Sidebar (sticky) ──────────────────────────────────────────────── */
 .post-sidebar { position: sticky; top: 1.5rem; }
 .sb-card {
@@ -799,6 +907,12 @@
       </div>
       <h1 class="hero-title">The PLA Watch: Two Defense Ministers, One Verdict</h1>
       <div class="hero-dek">Pilot edition based on three days of observed data (7–9 May 2026), not a full weekly readout. Across 42 articles from PLA Daily and affiliated outlets, the suspended death sentences against Wei Fenghe and Li Shangfu — two consecutive former defense ministers — stand apart from otherwise routine coverage.</div>
+      
+      <div class="byline">
+        By <span class="byline-name">Benjamin Yang</span>
+        <span class="byline-title">Founder & Principal Analyst, China Mil Watch</span>
+      </div>
+      
       <div class="hero-meta">
         <span class="meta-item">Covers <span class="num">2026-05-07</span> → <span class="num">2026-05-09</span></span>
         
@@ -955,10 +1069,10 @@
         
         <div class="source-cards">
           
-          <a class="source-card is-significant" href="http://www.81.cn/yw_208727/16459190.html" target="_blank" rel="noopener">
+          <a class="source-card" href="http://www.81.cn/yw_208727/16459190.html" target="_blank" rel="noopener">
             <div class="source-card-title">Wei Fenghe / Li Shangfu verdicts</div>
             <div class="source-card-meta">
-              <span class="sig-tag">Significant</span> · PLA Daily (81.cn) &middot; 
+              PLA Daily (81.cn) &middot; 
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459190.html</div>
           </a>
@@ -1067,6 +1181,22 @@
       <div class="closing-note">
         I welcome comments or corrections from people working on Chinese military media, PLA studies, or U.S.-China security.
       </div>
+
+      
+      <div class="author-block">
+        <div class="author-block-eyebrow">Author</div>
+        <div class="author-block-name">Benjamin Yang</div>
+        <div class="author-block-title">Founder & Principal Analyst, China Mil Watch</div>
+        <div class="author-block-bio">Benjamin Yang is the founder of China Mil Watch and an incoming International Affairs student at George Washington University’s Elliott School, focused on U.S.-China relations, public diplomacy, and security affairs.</div>
+        
+        <div class="author-chips">
+          <a class="author-chip" href="https://www.linkedin.com/in/benjamin-yang-42b525294" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
+          <a class="author-chip" href="mailto:ben.yang@gwmail.gwu.edu">Email <span class="arrow">→</span></a>
+          <a class="author-chip" href="../../index.html">China Mil Watch <span class="arrow">→</span></a>
+        </div>
+        
+      </div>
+      
 
     </div>
 

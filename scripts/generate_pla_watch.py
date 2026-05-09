@@ -27,6 +27,23 @@ from config import DB_PATH, ANTHROPIC_API_KEY
 from storage.db import get_articles_for_date_range
 
 
+# ── Author identity ──────────────────────────────────────────────────────────
+
+AUTHOR_NAME = "Benjamin Yang"
+AUTHOR_TITLE = "Founder & Principal Analyst, China Mil Watch"
+AUTHOR_BIO = (
+    "Benjamin Yang is the founder of China Mil Watch and an incoming "
+    "International Affairs student at George Washington University’s "
+    "Elliott School, focused on U.S.-China relations, public diplomacy, "
+    "and security affairs."
+)
+AUTHOR_LINKS = {
+    "LinkedIn":        "https://www.linkedin.com/in/benjamin-yang-42b525294",
+    "Email":           "mailto:ben.yang@gwmail.gwu.edu",
+    "China Mil Watch": "../../index.html",
+}
+
+
 # ── CLI ───────────────────────────────────────────────────────────────────────
 
 def parse_args():
@@ -456,6 +473,10 @@ def render_post(result: dict, meta: dict) -> str:
         "days_covered":  meta.get("days_covered", 0),
         "edition_label": meta.get("edition_label", ""),
         "source_trail_truncated": meta.get("source_trail_truncated", False),
+        "author_name":   meta.get("author_name", AUTHOR_NAME),
+        "author_title":  meta.get("author_title", AUTHOR_TITLE),
+        "author_bio":    meta.get("author_bio", AUTHOR_BIO),
+        "author_links":  meta.get("author_links", AUTHOR_LINKS),
     }
     context = _build_context(result, layout_meta, root_path="../../")
     return template.render(**context)
@@ -578,6 +599,10 @@ def main():
         "days_covered": days_covered,
         "edition_type": result["edition_type"],
         "edition_label": edition_label,
+        "author_name":  AUTHOR_NAME,
+        "author_title": AUTHOR_TITLE,
+        "author_bio":   AUTHOR_BIO,
+        "author_links": AUTHOR_LINKS,
     }
 
     meta = {

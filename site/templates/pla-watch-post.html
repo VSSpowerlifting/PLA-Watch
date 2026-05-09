@@ -415,6 +415,114 @@
   line-height: 1.7;
 }
 
+/* ── Byline (hero) ─────────────────────────────────────────────────── */
+.byline {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.4rem;
+  position: relative;
+  z-index: 1;
+  max-width: 660px;
+}
+.byline-name {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+.byline-title {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+  letter-spacing: 0.005em;
+}
+
+/* ── Author block (bottom of post) ─────────────────────────────────── */
+.author-block {
+  margin-top: 2.5rem;
+  padding: 1.5rem 1.65rem 1.6rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+.author-block-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.author-block-eyebrow::before {
+  content: "";
+  width: 22px; height: 2px;
+  background: var(--color-brand);
+}
+.author-block-name {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-text-primary);
+  letter-spacing: -0.005em;
+  margin-bottom: 0.15rem;
+}
+.author-block-title {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.85rem;
+}
+.author-block-bio {
+  font-family: var(--serif);
+  font-size: 0.97rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 640px;
+  margin-bottom: 1.1rem;
+}
+
+/* ── Contact chips — restrained text pills ─────────────────────────── */
+.author-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+.author-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.author-chip:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  text-decoration: none;
+}
+.author-chip .arrow {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  transition: color 0.15s;
+}
+.author-chip:hover .arrow { color: var(--color-brand); }
+
 /* ── Sidebar (sticky) ──────────────────────────────────────────────── */
 .post-sidebar { position: sticky; top: 1.5rem; }
 .sb-card {
@@ -492,6 +600,12 @@
       </div>
       <h1 class="hero-title">{{ title }}</h1>
       <div class="hero-dek">{{ dek }}</div>
+      {% if author_name %}
+      <div class="byline">
+        By <span class="byline-name">{{ author_name }}</span>
+        {% if author_title %}<span class="byline-title">{{ author_title }}</span>{% endif %}
+      </div>
+      {% endif %}
       <div class="hero-meta">
         <span class="meta-item">Covers <span class="num">{{ week_start }}</span> → <span class="num">{{ week_ending }}</span></span>
         {% if days_covered %}<span class="meta-item"><span class="num">{{ days_covered }}</span> days observed</span>{% endif %}
@@ -651,6 +765,22 @@
       <div class="closing-note">
         I welcome comments or corrections from people working on Chinese military media, PLA studies, or U.S.-China security.
       </div>
+
+      {% if author_name %}
+      <div class="author-block">
+        <div class="author-block-eyebrow">Author</div>
+        <div class="author-block-name">{{ author_name }}</div>
+        {% if author_title %}<div class="author-block-title">{{ author_title }}</div>{% endif %}
+        {% if author_bio %}<div class="author-block-bio">{{ author_bio }}</div>{% endif %}
+        {% if author_links %}
+        <div class="author-chips">
+          {% if author_links.LinkedIn %}<a class="author-chip" href="{{ author_links.LinkedIn }}" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>{% endif %}
+          {% if author_links.Email %}<a class="author-chip" href="{{ author_links.Email }}">Email <span class="arrow">→</span></a>{% endif %}
+          {% if author_links['China Mil Watch'] %}<a class="author-chip" href="{{ author_links['China Mil Watch'] }}">China Mil Watch <span class="arrow">→</span></a>{% endif %}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
 
     </div>
 
