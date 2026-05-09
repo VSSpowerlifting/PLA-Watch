@@ -7,12 +7,12 @@
   <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
 
   <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:site_name"   content="China Mil Watch">
-  <meta property="og:url"         content="https://chinamilwatch.org">
-  <meta property="og:title"       content="China Mil Watch">
-  <meta property="og:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
-  <meta property="og:image"       content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
@@ -22,43 +22,38 @@
   <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
   <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="logo-icon.png">
+  <link rel="apple-touch-icon" href="logo-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    /* ── Reset & base ──────────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --bg:          #0d0d0d;
-      --surface:     #141414;
-      --border:      #252525;
-      --border-sub:  #1d1d1d;
-      --text:        #e2e0db;
-      --text-sec:    #918f8a;
-      --text-muted:  #555350;
-      --accent:      #c8922a;
-      --accent-dim:  rgba(200, 146, 42, 0.12);
-      --link:        #8ab0cc;
-      --link-hover:  #b0ccdf;
-      --tag-bg:      #1e1e1e;
-      --tag-text:    #7a7875;
-
-      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
-      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      --max-width:   860px;
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
     }
 
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-weight: 300;
-      font-size: 0.9375rem;
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
@@ -66,223 +61,254 @@
       flex-direction: column;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-    a:hover { color: var(--link-hover); text-decoration: underline; }
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* ── Navigation ─────────────────────────────────────────────────────────── */
-    nav {
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
-    }
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      height: 52px;
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
-    .nav-brand {
-      font-family: var(--font-sans);
-      font-weight: 500;
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text);
       text-decoration: none;
+      transition: color 0.15s;
     }
-    .nav-brand:hover { color: var(--text); text-decoration: none; }
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-    }
-    .nav-links a {
-      font-size: 0.8125rem;
-      color: var(--text-sec);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--text); }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
       flex: 1;
-      max-width: var(--max-width);
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
       padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* ── Page header ─────────────────────────────────────────────────────────── */
-    .page-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
     }
-    .page-header h1 {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
     }
-    .page-header .meta {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-    .page-header .meta span + span::before {
-      content: " · ";
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
     }
 
-    /* ── Article card ────────────────────────────────────────────────────────── */
-    .article-card {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-sub);
-    }
-    .article-card:last-child { border-bottom: none; }
-
-    .article-card.significant {
-      background: var(--accent-dim);
-      border-radius: 3px;
-      padding: 1.5rem;
-      margin: 0 -1.5rem;
-      border-bottom: none;
-      margin-bottom: 1px;
-    }
-    .article-card.significant + .article-card {
-      border-top: 1px solid var(--border-sub);
-    }
-
-    .sig-flag {
-      font-family: var(--font-sans);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .sig-flag::before { content: "★  "; }
-
-    .article-title {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 1.25rem;
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-    }
-    .article-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
-
-    .article-title-zh {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem;
+      gap: 0.35rem;
       margin-bottom: 0.75rem;
     }
     .tag {
+      display: inline-block;
       font-size: 0.6875rem;
-      letter-spacing: 0.04em;
+      font-weight: 500;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid var(--border);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
       border-radius: 2px;
-      padding: 0.15rem 0.45rem;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
     }
-
-    .article-summary {
-      font-size: 0.9375rem;
-      line-height: 1.65;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .sig-reason {
-      font-size: 0.875rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--accent);
-    }
-
-    .article-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      align-items: center;
-    }
-    .article-footer a { color: var(--text-muted); }
-    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
-    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
-
-    /* ── Footer ──────────────────────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    footer a { color: var(--text-muted); }
-    footer a:hover { color: var(--link-hover); }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
     .empty-state {
-      color: var(--text-muted);
+      color: var(--color-text-muted);
       font-style: italic;
       padding: 2rem 0;
     }
 
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
     
+.hero-strip {
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-brand);
+  padding: 18px 48px;
+  text-align: center;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Brief date header ───────────────────────────────────────────── */
+.brief-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-top: 0.25rem;
+}
+.brief-header-bar {
+  width: 3px;
+  min-height: 52px;
+  background: var(--color-brand);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.brief-date {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+.brief-meta {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+.brief-meta span + span::before { content: " · "; }
+
+/* ── Article cards ───────────────────────────────────────────────── */
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+}
+
+.article-card {
+  background: var(--color-bg-card);
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 28px 32px;
+  position: relative;
+  border-left: 4px solid transparent;
+}
+.article-card.significant {
+  border-left-color: var(--color-brand);
+}
+
+.article-title {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.1875rem;
+  line-height: 1.35;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+.article-title a { color: inherit; text-decoration: none; }
+.article-title a:hover { color: var(--color-brand); text-decoration: none; }
+
+.article-title-zh {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.article-summary {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: #333333;
+  margin-bottom: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.article-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  margin-top: 0.875rem;
+}
+.article-footer a { color: var(--color-text-muted); }
+.article-footer a:hover { color: var(--color-brand); text-decoration: none; }
+.article-footer .sep::before { content: "·"; margin-right: 0.75rem; }
+
+@media (max-width: 768px) {
+  .hero-strip { padding: 16px; }
+  .article-list { max-width: 100%; }
+  .article-card {
+    padding: 20px 16px;
+    border-radius: 0;
+    box-shadow: none;
+    border-left-width: 3px;
+  }
+  .brief-date { font-size: 1.5rem; }
+}
+
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand">PLA Watch</a>
-    <div class="nav-links">
-      <a href="index.html" class="active">Daily Brief</a>
-      <a href="archive.html" >Archive</a>
-    </div>
-  </div>
-</nav>
+<header class="site-header">
+  <a href="index.html" class="header-logo">
+    <img src="logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="index.html" class="active">Daily Brief</a>
+    <a href="archive.html" >Archive</a>
+  </nav>
+</header>
+
+
+<div class="hero-strip">
+  Daily signals from Chinese military and security media — published every morning at 8:00 AM ET.
+</div>
+
 
 <main>
   
-<div class="page-header">
-  <h1>Daily Brief — 8 May 2026</h1>
-  <div class="meta">
-    
-      <span>15 articles</span>
+<div class="brief-header">
+  <div class="brief-header-bar"></div>
+  <div>
+    <div class="brief-date">8 May 2026</div>
+    <div class="brief-meta">
       
+        <span>15 articles</span>
+        
+        
       
-    
+    </div>
   </div>
 </div>
 
@@ -290,16 +316,6 @@
   <div class="article-list">
     
     <div class="article-card">
-
-      
-
-      <div class="article-title">
-        <a href="article/55.html">International Observation | Remain Vigilant Against New Trends in Japan&#39;s &#39;Re-militarization&#39;</a>
-      </div>
-
-      
-        <div class="article-title-zh">国际观察丨警惕日本“再军事化”新动向</div>
-      
 
       
         <div class="tags">
@@ -313,10 +329,16 @@
         </div>
       
 
+      <div class="article-title">
+        <a href="article/55.html">International Observation | Remain Vigilant Against New Trends in Japan&#39;s &#39;Re-militarization&#39;</a>
+      </div>
+
       
-        <div class="article-summary">This article, published by a researcher at the CPC Central Committee Party School, argues that Japan&#39;s firing of Type 88 surface-to-ship missiles during the May 2025 U.S.-Philippines Balikatan exercise—the first Japanese offensive missile launch outside Japanese territory—exemplifies an accelerating pattern of military normalization that also includes Japan&#39;s transition from observer to full combat participant in Balikatan, the 2025 entry into force of the Japan-Philippines Reciprocal Access Agreement, the first stationing of Japanese military aircraft in Europe, and the April 2025 lifting of Japan&#39;s ban on lethal weapons exports. The piece is useful as a signal of official PRC framing: Beijing is consolidating these discrete Japanese defense policy developments into a unified &#39;new-type militarism&#39; narrative and using the 80th anniversary of the Tokyo Trials as rhetorical leverage, suggesting this framing will feature in Chinese diplomatic messaging and information operations directed at regional audiences skeptical of Japanese rearmament.</div>
+        <div class="article-title-zh">国际观察丨警惕日本“再军事化”新动向</div>
       
 
+      
+        <div class="article-summary">This article, published by a researcher at the CPC Central Committee Party School, argues that Japan&#39;s firing of Type 88 surface-to-ship missiles during the May 2025 U.S.-Philippines Balikatan exercise—the first Japanese offensive missile launch outside Japanese territory—exemplifies an accelerating pattern of military normalization that also includes Japan&#39;s transition from observer to full combat participant in Balikatan, the 2025 entry into force of the Japan-Philippines Reciprocal Access Agreement, the first stationing of Japanese military aircraft in Europe, and the April 2025 lifting of Japan&#39;s ban on lethal weapons exports. The piece is useful as a signal of official PRC framing: Beijing is consolidating these discrete Japanese defense policy developments into a unified &#39;new-type militarism&#39; narrative and using the 80th anniversary of the Tokyo Trials as rhetorical leverage, suggesting this framing will feature in Chinese diplomatic messaging and information operations directed at regional audiences skeptical of Japanese rearmament.</div>
       
 
       <div class="article-footer">
@@ -332,6 +354,14 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Exercises</span>
+          
+            <span class="tag">Modernization</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/67.html">An Army Brigade Drives the Transformation of Simulation Training Systems from &#39;Single-Platform&#39; to &#39;Integrated System&#39;</a>
@@ -342,19 +372,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Exercises</span>
-          
-            <span class="tag">Modernization</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">An unidentified PLA Army brigade has upgraded its simulation training infrastructure from isolated single-platform systems to a networked, integrated architecture that links vehicle commanders, gunners, and drivers in real-time multi-position coordinated exercises, with a structured protocol requiring simulation refinement before live-equipment training and weekly simulation-to-live-equipment transition assessments. The shift reflects a deliberate doctrinal push—framed explicitly around 技战术融合 and 体系协同—to close the gap between individual skill development and system-level combined-arms coordination, a known weakness in PLA ground force readiness. The brigade&#39;s articulation of simulation as a &#39;test field&#39; for validating new tactics before live-equipment execution is consistent with broader PLA efforts to reduce training costs while accelerating tactical innovation cycles.</div>
-      
-
       
 
       <div class="article-footer">
@@ -370,6 +388,14 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Exercises</span>
+          
+            <span class="tag">Modernization</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/36.html">An Army Brigade Drives the Transformation of Simulation Training Systems from &#39;Single Platform&#39; to &#39;Integrated System&#39;</a>
@@ -380,19 +406,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Exercises</span>
-          
-            <span class="tag">Modernization</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">An unidentified PLA Army brigade has upgraded its simulation training infrastructure from isolated single-platform systems to a networked, integrated architecture that links vehicle commander, gun commander, and driver stations in real time, enabling multi-crew and cross-specialty coordinated training on what the brigade calls a &#39;cloud training ground.&#39; The shift addresses a documented gap in PLA combined-arms training—the inability to rehearse technical-tactical coupling and system-level coordination under realistic conditions without consuming live equipment and range time—and reflects a broader PLA effort to use simulation as a primary venue for developing and validating tactics before live-equipment execution. The brigade&#39;s formalized &#39;simulation-to-live-equipment transition day&#39; protocol, which stress-tests simulated plans against live contingencies, signals an institutionalization of this training model rather than an ad hoc experiment.</div>
-      
-
       
 
       <div class="article-footer">
@@ -408,6 +422,14 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Doctrine</span>
+          
+            <span class="tag">Political Work</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/48.html">An &#39;Demonstration of Incorrect Movements&#39; Class That Takes an Unconventional Path Goes Viral in the Recruit Battalion</a>
@@ -418,19 +440,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Doctrine</span>
-          
-            <span class="tag">Political Work</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">Squad Leader Lu Shangzeng of a PLA unit&#39;s Recruit 5th Battalion developed and implemented a &#39;demonstration of incorrect movements&#39; training methodology that exposes recruits to common errors and randomized unexpected situations—including variable obstacle configurations and simulated equipment malfunctions—rather than drilling only standardized movements; his squad outperformed all others in a battalion-wide realistic-combat assessment, prompting the battalion to adopt the approach more broadly. The article is useful as ground-level evidence of an ongoing PLA effort to shift recruit training away from rote procedural execution toward adaptability under stress, consistent with the service-wide 实战化 (realistic combat) training push, and illustrates the institutional friction that accompanies that shift even at the squad level.</div>
-      
-
       
 
       <div class="article-footer">
@@ -446,6 +456,12 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Political Work</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/59.html">Ideological Front | Continuously Deepen Political Rectification Training with the Spirit of Thorough Self-Revolution</a>
@@ -456,17 +472,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Political Work</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">An article authored by three researchers at the National Defense University&#39;s Research Center for Xi Jinping Thought calls on PLA officers to deepen ongoing political rectification training (政治整训) by internalizing Xi Jinping&#39;s directive to pursue &#39;thorough self-revolution,&#39; with explicit emphasis on purging corruption, reinforcing absolute Party loyalty, and elevating operational competencies ahead of the PLA&#39;s 2027 centenary founding goal. The piece is a doctrinal elaboration rather than a news report, but its publication by National Defense University researchers signals that the post-2023 rectification campaign targeting the Rocket Force and defense procurement sectors remains an active institutional priority rather than a concluded episode. The framing of military corruption explicitly as &#39;political betrayal&#39; that &#39;erodes the principle of the Party commanding the gun&#39; is notable: it elevates anti-corruption enforcement from a disciplinary matter to an existential political one, consistent with Xi&#39;s effort to use the campaign to reassert CMC control over the force.</div>
-      
-
       
 
       <div class="article-footer">
@@ -482,6 +488,12 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Political Work</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/35.html">No Need for &#39;Please&#39; on the Training Ground—Commands Admit Not the Slightest Ambiguity</a>
@@ -492,17 +504,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Political Work</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">A PLA Navy unit&#39;s political education outlet published a first-person instructional narrative in which a newly appointed assistant squad leader, Liu Guoyu, is corrected by Political Instructor Zhu Denghui for softening commands with the word &#39;please&#39; toward senior enlisted soldiers—a practice the article labels &#39;ingratiating-style leadership&#39; (讨好式管理). The piece is a routine political education vignette aimed at junior non-commissioned officers and signals ongoing PLA institutional concern about command authority and discipline at the squad level, particularly as newly promoted NCOs navigate relationships with longer-serving enlisted personnel. The announcement follows a standard pattern of PLA unit-level moral instruction and contains no new information about capability, posture, or order of battle.</div>
-      
-
       
 
       <div class="article-footer">
@@ -518,6 +520,12 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Political Work</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/41.html">&#34;I Taught Soldiers How to Choose a Path, and Found the One I Wanted to Walk Myself&#34;</a>
@@ -528,17 +536,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Political Work</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">The Information Support Force&#39;s official newspaper profiles Guo Kai, a company commander in an unspecified ISF unit, who re-enlisted in 2019 after a career as a geography teacher, was commissioned in 2021, and in 2024 was tasked with standing up a drone company on a coastal tidal-flat training area. The article is a routine human-interest recruitment and morale piece and contains no operationally significant information, though its publication in Information Support News confirms that the ISF is actively building out drone-capable company-level units in coastal terrain and is using personnel profiles to normalize the force&#39;s still-nascent institutional identity following the 2024 reorganization.</div>
-      
-
       
 
       <div class="article-footer">
@@ -554,6 +552,12 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Political Work</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/65.html">There Is No Need to Say &#39;Please&#39; on the Training Ground—Commands Cannot Tolerate the Slightest Ambiguity</a>
@@ -564,17 +568,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Political Work</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">A PLA Navy unit&#39;s political instructor corrected a newly appointed assistant squad leader who had been softening commands with the word &#39;please,&#39; framing the behavior as an &#39;ingratiating style of leadership&#39; incompatible with military command authority. The article is a political education narrative aimed at junior NCOs, reinforcing that command clarity and positional authority take precedence over interpersonal deference—a recurring theme in PLA grassroots unit-building literature. The piece contains no new operational or organizational information and follows a standard format for PLA morale and discipline messaging.</div>
-      
-
       
 
       <div class="article-footer">
@@ -590,6 +584,12 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Political Work</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/46.html">Streamlining Reimbursement Procedures for Small Official Expenditures — Service Members Must Not Pay Out of Pocket for Official Business</a>
@@ -600,17 +600,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Political Work</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">A PLA Navy base headquarters, using a submarine crew unit as a pilot, overhauled reimbursement procedures for small official expenditures after finding that enlisted personnel—including Corporal Yin Mingming—were routinely absorbing minor work-related costs out of pocket rather than navigate a cumbersome claims process. The reform consolidated approval workflows, published dedicated reimbursement contacts, and established a &#39;maximum one visit&#39; office for credential and welfare processing. The article is routine administrative reporting from a PLA outlet and signals no shift in operational posture or capability; its analytic value is limited to illustrating persistent friction between PLA grassroots units and rear-echelon headquarters bureaucracy, a recurring theme in PLA institutional reform coverage.</div>
-      
-
       
 
       <div class="article-footer">
@@ -626,6 +616,12 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Political Work</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/54.html">Sing the Song of Youth on the March Toward a Strong Military</a>
@@ -636,17 +632,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Political Work</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">A PLA political education article published around May Fourth Youth Day calls on young officers and soldiers to internalize Xi Jinping&#39;s recent reply to youth award recipients, frame personal ambition within national military strengthening, and prioritize combat readiness and warfighting skill development. The piece is routine ideological mobilization content—drawing on standard CCP historical references to the Long March and Yan&#39;an—and contains no new operational, organizational, or doctrinal information. It is useful only as a data point on the continuity of PLA political work messaging linking Xi&#39;s personal directives to unit-level ideological conditioning.</div>
-      
-
       
 
       <div class="article-footer">
@@ -662,6 +648,12 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Political Work</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/60.html">Always &#39;Taking the Initiative to Step Half a Pace Forward,&#39; He Has Broadened the Military Careers of Many Comrades</a>
@@ -672,17 +664,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Political Work</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">First-Class Staff Sergeant Li Xin, an instructor at the training detachment of an unidentified naval unit, developed a dedicated vocational skills certification question bank for nearly 20 sub-specialties within the naval information and communications specialty after his unit&#39;s pass rate fell below 20 percent, subsequently raising it to 80 percent; he also co-authored a guidance handbook with counterparts from a naval academy to help non-commissioned officers navigate the certification process. The article is a human-interest profile with no operational or order-of-battle significance, but it incidentally documents a structural gap in the PLA Navy&#39;s vocational certification infrastructure—specifically, the absence of a service-specific question bank for information and communications specialties—that a junior NCO had to fill through individual initiative, suggesting institutional capacity constraints in PLA professional military education administration.</div>
-      
-
       
 
       <div class="article-footer">
@@ -698,6 +680,14 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Personnel</span>
+          
+            <span class="tag">Political Work</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/63.html">Always &#39;Taking the Initiative to Step Half a Step Forward,&#39; He Has Broadened the Military Careers of Many Comrades</a>
@@ -708,19 +698,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Personnel</span>
-          
-            <span class="tag">Political Work</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">Staff Sergeant First Class Li Xin, an instructor at the training cadre unit of an unidentified PLA Navy element, developed a dedicated vocational skills question bank for the Navy&#39;s information and communications specialty after identifying that the absence of Navy-specific materials was suppressing unit pass rates to below 20 percent; following the question bank&#39;s introduction, the pass rate rose to 80 percent. The article is a human-interest profile intended for internal PLA audiences and functions as institutional promotion of bottom-up initiative within the NCO corps, signaling ongoing efforts to professionalize enlisted career development infrastructure—particularly vocational credentialing systems—within PLA Navy communications specialties. The announcement follows a standard PLA propaganda pattern and contains no operationally significant new information, but it does confirm that the Navy&#39;s vocational skills assessment program for information and communications sub-specialties remains under development and that standardized training materials across services are not yet complete.</div>
-      
-
       
 
       <div class="article-footer">
@@ -736,6 +714,14 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Personnel</span>
+          
+            <span class="tag">Political Work</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/66.html">Streamlining Reimbursement Procedures for Small Official Expenditures: Personnel Must Not &#39;Pay Out of Pocket&#39; for Official Business</a>
@@ -746,19 +732,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Personnel</span>
-          
-            <span class="tag">Political Work</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">A PLA Navy submarine base—unit and location unspecified—identified a pattern in which enlisted personnel were absorbing small official expenses out of pocket rather than navigate a cumbersome reimbursement process, and responded by streamlining approval procedures, consolidating reimbursement cycles, and establishing a &#39;run at most once&#39; administrative office for credential and welfare processing. The article is routine administrative reporting and signals no shift in operational posture or capability; its value is narrow, illustrating how PLA grassroots logistics and welfare administration function at the unit level and the friction points that erode personnel trust in institutional support systems.</div>
-      
-
       
 
       <div class="article-footer">
@@ -774,6 +748,12 @@
     <div class="article-card">
 
       
+        <div class="tags">
+          
+            <span class="tag">Political Work</span>
+          
+        </div>
+      
 
       <div class="article-title">
         <a href="article/68.html">Cultivating New People Through the Thought on Strengthening the Military | Soaring to the Clouds</a>
@@ -784,17 +764,7 @@
       
 
       
-        <div class="tags">
-          
-            <span class="tag">Political Work</span>
-          
-        </div>
-      
-
-      
         <div class="article-summary">On July 23, 2020, Xi Jinping visited the Air Force Aviation University, observed flight cadets conducting rotating-ladder training, and personally encouraged them to train rigorously and contribute to PLA modernization under the &#39;strengthening the military&#39; framework. The visit, produced by the PLA News and Communication Center&#39;s Current Affairs Department with involvement from Unit 95006, is a routine propaganda piece reinforcing Xi&#39;s role as commander-in-chief and the ideological framing of military education around his &#39;Thought on Strengthening the Military.&#39; The announcement follows a standard pattern of leadership inspection coverage and contains no new operational or capability information.</div>
-      
-
       
 
       <div class="article-footer">
@@ -820,11 +790,7 @@
       
 
       
-
-      
         <div class="article-summary">In 1950, the East China Military Region Navy&#39;s newly established Minesweeper Flotilla—commanded by Sun Gongfei and operating converted 25-ton landing craft under Zhang Aiping&#39;s direction—conducted the People&#39;s Republic&#39;s first naval mine-clearance operation in the Yangtze River estuary, ultimately clearing all Nationalist-laid mines from Wusong Mouth to the estuary by October 1950 after an initial failed attempt that summer due to inadequate vessels and sweep wire. The article is a commemorative institutional history published by an Eastern Theater Command Navy minesweeper flotilla, drawing on Sun Gongfei&#39;s personal photograph collection donated by his family, and is useful primarily as a window into how the PLA Navy constructs and transmits foundational operational narratives to current serving units rather than as a source of new operational or capability information.</div>
-      
-
       
 
       <div class="article-footer">
@@ -842,13 +808,9 @@
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    Open-source intelligence monitoring of Chinese military and security developments.
-    Source material from Chinese state media; all analysis AI-generated.
-    Not for redistribution without attribution.
-    Generated 2026-05-08 17:06 UTC.
-  </div>
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
 </footer>
 
 

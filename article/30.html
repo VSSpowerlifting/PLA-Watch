@@ -7,12 +7,12 @@
   <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
 
   <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:site_name"   content="China Mil Watch">
-  <meta property="og:url"         content="https://chinamilwatch.org">
-  <meta property="og:title"       content="China Mil Watch">
-  <meta property="og:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
-  <meta property="og:image"       content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
@@ -22,43 +22,38 @@
   <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
   <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
 
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    /* ── Reset & base ──────────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --bg:          #0d0d0d;
-      --surface:     #141414;
-      --border:      #252525;
-      --border-sub:  #1d1d1d;
-      --text:        #e2e0db;
-      --text-sec:    #918f8a;
-      --text-muted:  #555350;
-      --accent:      #c8922a;
-      --accent-dim:  rgba(200, 146, 42, 0.12);
-      --link:        #8ab0cc;
-      --link-hover:  #b0ccdf;
-      --tag-bg:      #1e1e1e;
-      --tag-text:    #7a7875;
-
-      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
-      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      --max-width:   860px;
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
     }
 
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-weight: 300;
-      font-size: 0.9375rem;
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
@@ -66,293 +61,223 @@
       flex-direction: column;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-    a:hover { color: var(--link-hover); text-decoration: underline; }
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* ── Navigation ─────────────────────────────────────────────────────────── */
-    nav {
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
-    }
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      height: 52px;
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
-    .nav-brand {
-      font-family: var(--font-sans);
-      font-weight: 500;
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text);
       text-decoration: none;
+      transition: color 0.15s;
     }
-    .nav-brand:hover { color: var(--text); text-decoration: none; }
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-    }
-    .nav-links a {
-      font-size: 0.8125rem;
-      color: var(--text-sec);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--text); }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
       flex: 1;
-      max-width: var(--max-width);
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
       padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* ── Page header ─────────────────────────────────────────────────────────── */
-    .page-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
     }
-    .page-header h1 {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
     }
-    .page-header .meta {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-    .page-header .meta span + span::before {
-      content: " · ";
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
     }
 
-    /* ── Article card ────────────────────────────────────────────────────────── */
-    .article-card {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-sub);
-    }
-    .article-card:last-child { border-bottom: none; }
-
-    .article-card.significant {
-      background: var(--accent-dim);
-      border-radius: 3px;
-      padding: 1.5rem;
-      margin: 0 -1.5rem;
-      border-bottom: none;
-      margin-bottom: 1px;
-    }
-    .article-card.significant + .article-card {
-      border-top: 1px solid var(--border-sub);
-    }
-
-    .sig-flag {
-      font-family: var(--font-sans);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .sig-flag::before { content: "★  "; }
-
-    .article-title {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 1.25rem;
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-    }
-    .article-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
-
-    .article-title-zh {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem;
+      gap: 0.35rem;
       margin-bottom: 0.75rem;
     }
     .tag {
+      display: inline-block;
       font-size: 0.6875rem;
-      letter-spacing: 0.04em;
+      font-weight: 500;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid var(--border);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
       border-radius: 2px;
-      padding: 0.15rem 0.45rem;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
     }
-
-    .article-summary {
-      font-size: 0.9375rem;
-      line-height: 1.65;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .sig-reason {
-      font-size: 0.875rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--accent);
-    }
-
-    .article-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      align-items: center;
-    }
-    .article-footer a { color: var(--text-muted); }
-    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
-    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
-
-    /* ── Footer ──────────────────────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    footer a { color: var(--text-muted); }
-    footer a:hover { color: var(--link-hover); }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
     .empty-state {
-      color: var(--text-muted);
+      color: var(--color-text-muted);
       font-style: italic;
       padding: 2rem 0;
     }
 
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
     
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .back-link {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
   display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
   margin-bottom: 1.75rem;
 }
-.back-link:hover { color: var(--link-hover); text-decoration: none; }
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
 
-.article-page-header {
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 }
+
 .article-page-title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 1.75rem;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
   line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  margin-bottom: 0.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
 }
+
 .article-page-title-zh {
-  font-size: 0.9375rem;
-  color: var(--text-muted);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
   font-style: italic;
   margin-bottom: 1rem;
 }
+
 .article-page-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem 1rem;
   font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  align-items: center;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
 }
-.article-page-meta a { color: var(--text-muted); }
-.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
-.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
 
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
 .section-label {
   font-size: 0.6875rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 0.75rem;
 }
 
+/* ── Summary block ───────────────────────────────────────────────── */
 .summary-block {
-  background: var(--surface);
-  border-left: 3px solid var(--border);
-  border-radius: 0 3px 3px 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
   padding: 1.1rem 1.25rem;
   margin-bottom: 2rem;
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
 }
 .summary-block.significant {
-  border-left-color: var(--accent);
+  border-left-color: var(--color-brand);
 }
-.summary-text { color: var(--text); }
-.sig-block {
+.sig-reasoning {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
-  color: var(--accent);
-}
-.sig-block::before {
-  content: "★  ";
-  font-size: 0.75rem;
+  color: var(--color-brand);
+  line-height: 1.6;
 }
 
+/* ── Translation body ────────────────────────────────────────────── */
 .translation-body {
   font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--text);
+  line-height: 1.8;
+  color: var(--color-text-primary);
   margin-bottom: 2rem;
 }
-.translation-body p {
-  margin-bottom: 0.9rem;
-}
+.translation-body p { margin-bottom: 0.9rem; }
 .translation-body p:last-child { margin-bottom: 0; }
 
+/* ── Collapsible original ────────────────────────────────────────── */
 details {
   margin-bottom: 2rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
 details summary {
   font-size: 0.8125rem;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   padding: 0.65rem 1rem;
   cursor: pointer;
   user-select: none;
@@ -369,137 +294,140 @@ details summary::before {
   display: inline-block;
 }
 details[open] summary::before { transform: rotate(90deg); }
-details summary:hover { color: var(--text); }
+details summary:hover { color: var(--color-text-primary); }
 .original-body {
   padding: 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.9375rem;
   line-height: 1.85;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
+/* ── Provenance ──────────────────────────────────────────────────── */
 .provenance {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   line-height: 1.8;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-sub);
+  border-top: 1px solid var(--color-border);
 }
 .provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
 
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-brand">PLA Watch</a>
-    <div class="nav-links">
-      <a href="../index.html" >Daily Brief</a>
-      <a href="../archive.html" >Archive</a>
-    </div>
-  </div>
-</nav>
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
 
 <main>
   
-<a href="../index.html" class="back-link">← Daily Brief</a>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
 
-<div class="article-page-header">
+  <div class="article-header">
 
-  
+    
+      <div class="tags">
+        
+          <span class="tag">Modernization</span>
+        
+          <span class="tag">Personnel</span>
+        
+          <span class="tag">Nuclear</span>
+        
+      </div>
+    
 
-  <h1 class="article-page-title">
-    Sergeant Training Implements &#39;Dual-Mentor System,&#39; Multiple Students Stand Out in Skills Competitions
-  </h1>
+    <h1 class="article-page-title">
+      Sergeant Training Implements &#39;Dual-Mentor System,&#39; Multiple Students Stand Out in Skills Competitions
+    </h1>
 
-  
-    <div class="article-page-title-zh">军士培养实行“双导师制”，多名学员在比武竞赛中崭露头角</div>
-  
+    
+      <div class="article-page-title-zh">军士培养实行“双导师制”，多名学员在比武竞赛中崭露头角</div>
+    
 
-  
-    <div class="tags">
-      
-        <span class="tag">Modernization</span>
-      
-        <span class="tag">Personnel</span>
-      
-        <span class="tag">Nuclear</span>
-      
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>7 May 2026</span>
     </div>
+
+    <a href="http://www.81.cn/yw_208727/16459096.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>The Rocket Force Sergeant School has implemented a &#39;dual-mentor system&#39; pairing professional instructors with frontline senior sergeants to train associate-to-bachelor&#39;s degree enlisted personnel, producing measurable results including a first-prize finish at the 8th National College Students Embedded Chip and System Design Competition. The initiative reflects the PLA Rocket Force&#39;s effort to close a recognized gap between theoretical knowledge and practical innovation capacity among its NCO corps, particularly as the force orients sergeant training explicitly toward requirements of &#39;informatized and intelligentized warfare.&#39; The structured combination of academic instruction, frontline practitioner mentorship, and embedded research studios signals an institutional push to develop technically sophisticated enlisted specialists rather than relying solely on officer-led expertise for complex equipment operation and improvement.</div>
+    
+  </div>
   
 
-  <div class="article-page-meta">
-    <span>PLA Daily (解放军报)</span>
-    <span class="sep"></span>
-    <span>7 May 2026</span>
-    <span class="sep"></span>
-    <a href="http://www.81.cn/yw_208727/16459096.html" target="_blank" rel="noopener">Original source ↗</a>
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>Rocket Force Sergeant School Accelerates Forging of Specialized Personnel; Sergeant Training Implements &#39;Dual-Mentor System&#39;</p>
+    
+      
+    
+      <p>PLA Daily report by Yang Lijuan and reporter Xu Xiaolong: Recently, Liu Xuan, among the first cohort of associate-to-bachelor&#39;s degree students at the Rocket Force Sergeant School, won first prize in the 8th National College Students Embedded Chip and System Design Competition. This is yet another result achieved by the school through its exploratory implementation of the &#39;dual-mentor system&#39; (双导师制) for sergeant training, accelerating the forging of specialized personnel.</p>
+    
+      
+    
+      <p>&#39;Winning informatized and intelligentized warfare (信息化智能化战争) places new demands on the professional competence and combat capability of sergeants.&#39; School leadership explained that two years ago they enrolled associate-to-bachelor&#39;s degree students for the first time. Although these students had more than two years of experience at grassroots posts, they generally exhibited shortcomings such as insufficient theoretical knowledge and inadequate capacity for innovation. To address this, the school introduced a &#39;professional instructor + senior sergeant&#39; dual-mentor model, working to achieve dual-wheel drive (双轮驱动) of theoretical instruction and practical guidance. They selected professional instructors with a solid teaching foundation and outstanding research capabilities to serve as instructor-mentors, helping students consolidate their theoretical grounding; they invited senior sergeants from frontline units with strong hands-on skills and rich practical experience to serve as sergeant-mentors, guiding students to strengthen their capacity for technical innovation. At the same time, leveraging teaching and research advantages, they established &#39;teacher-student innovation studios&#39; (师生创新工作室), selecting outstanding associate-to-bachelor&#39;s degree students to participate under dual-mentor guidance in research projects, technical problem-solving, and equipment improvement practice. Complementary mechanisms for process assessment, dynamic evaluation, and incentive rewards were established to guide mentors to actively fulfill their teaching responsibilities and improve the effectiveness of personnel cultivation.</p>
+    
+      
+    
+      <p>After joining the &#39;teacher-student innovation studio,&#39; Liu Xuan participated in a certain research project. Under the guidance of his instructor-mentor, he systematically studied theoretical knowledge including programming fundamentals and program design, and participated in algorithm design and system debugging; his sergeant-mentor, drawing on the realities of unit exercises and training, guided him in optimizing and improving the project plan. Driven by the dual traction of &#39;theory and practice,&#39; Liu Xuan&#39;s research capabilities and hands-on proficiency were effectively enhanced. The project has currently achieved phased results.</p>
+    
+      
+    
+      <p>As the &#39;dual-mentor system&#39; has been put into practice, multiple students at the school have stood out in various skills competitions and have gradually grown into specialized personnel who &#39;understand principles, are proficient in operations, and are skilled in command&#39; (懂原理、精操作、善指挥). Recently, the school organized professional assessments and unit training and instruction competitions; the rate of excellent professional scores among students reached a new high.</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">火箭军士官学校加速锻造专业化人才 军士培养实行“双导师制” 解放军报讯 杨丽娟、记者徐小龙报道：前不久，火箭军士官学校首批专升本学员刘璇，在全国第八届大学生嵌入式芯片与系统设计竞赛中荣获一等奖。这是该校探索推行军士培养“双导师制”，加速锻造专业化人才取得的又一成果。 “打赢信息化智能化战争，对军士的专业素养和实战能力提出了新要求。”该校领导介绍，前年他们首次招收专升本学员，这些学员虽然具有两年以上基层岗位经历，但普遍存在理论知识不够、创新能力不足等短板。为此，该校推出“专业教员+高级军士”双导师模式，着力实现理论教学与实践指导双轮驱动。他们遴选教学功底扎实、科研能力突出的专业教员担任教员导师，帮助学员夯实理论根基；邀请实操能力过硬、实践经验丰富的一线部队高级军士担任军士导师，引导学员强化技术创新能力。同时，依托教学科研优势成立“师生创新工作室”，遴选优秀专升本学员在双导师带领下参与科研项目、技术攻关和装备改进实践；配套建立过程考核、动态评价和激励奖励机制，引导导师积极履行带教责任，提高人才培养效果。 刘璇加入“师生创新工作室”后参与某科研项目。在教员导师指导下，他系统学习编程基础、程序设计等理论知识，参与算法设计与系统调试；军士导师结合部队演训实际，指导他对项目方案进行优化改进。在“技术+实践”双重牵引下，刘璇的科研能力与实操水平得到有效提升。目前，该项目已取得阶段性成果。 随着“双导师制”实践推行，该校多名学员在各类比武竞赛中崭露头角，逐步成长为“懂原理、精操作、善指挥”的专业化人才。近期，该校组织专业考核和组训施教比武，学员专业成绩优良率再创新高。</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.85</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-08</span>
+    
   </div>
 
 </div>
-
-
-<div class="section-label">Summary</div>
-<div class="summary-block">
-  <div class="summary-text">The Rocket Force Sergeant School has implemented a &#39;dual-mentor system&#39; pairing professional instructors with frontline senior sergeants to train associate-to-bachelor&#39;s degree enlisted personnel, producing measurable results including a first-prize finish at the 8th National College Students Embedded Chip and System Design Competition. The initiative reflects the PLA Rocket Force&#39;s effort to close a recognized gap between theoretical knowledge and practical innovation capacity among its NCO corps, particularly as the force orients sergeant training explicitly toward requirements of &#39;informatized and intelligentized warfare.&#39; The structured combination of academic instruction, frontline practitioner mentorship, and embedded research studios signals an institutional push to develop technically sophisticated enlisted specialists rather than relying solely on officer-led expertise for complex equipment operation and improvement.</div>
-  
-</div>
-
-
-
-<div class="section-label">Translation</div>
-<div class="translation-body">
-  
-    <p>Rocket Force Sergeant School Accelerates Forging of Specialized Personnel; Sergeant Training Implements &#39;Dual-Mentor System&#39;</p>
-  
-    
-  
-    <p>PLA Daily report by Yang Lijuan and reporter Xu Xiaolong: Recently, Liu Xuan, among the first cohort of associate-to-bachelor&#39;s degree students at the Rocket Force Sergeant School, won first prize in the 8th National College Students Embedded Chip and System Design Competition. This is yet another result achieved by the school through its exploratory implementation of the &#39;dual-mentor system&#39; (双导师制) for sergeant training, accelerating the forging of specialized personnel.</p>
-  
-    
-  
-    <p>&#39;Winning informatized and intelligentized warfare (信息化智能化战争) places new demands on the professional competence and combat capability of sergeants.&#39; School leadership explained that two years ago they enrolled associate-to-bachelor&#39;s degree students for the first time. Although these students had more than two years of experience at grassroots posts, they generally exhibited shortcomings such as insufficient theoretical knowledge and inadequate capacity for innovation. To address this, the school introduced a &#39;professional instructor + senior sergeant&#39; dual-mentor model, working to achieve dual-wheel drive (双轮驱动) of theoretical instruction and practical guidance. They selected professional instructors with a solid teaching foundation and outstanding research capabilities to serve as instructor-mentors, helping students consolidate their theoretical grounding; they invited senior sergeants from frontline units with strong hands-on skills and rich practical experience to serve as sergeant-mentors, guiding students to strengthen their capacity for technical innovation. At the same time, leveraging teaching and research advantages, they established &#39;teacher-student innovation studios&#39; (师生创新工作室), selecting outstanding associate-to-bachelor&#39;s degree students to participate under dual-mentor guidance in research projects, technical problem-solving, and equipment improvement practice. Complementary mechanisms for process assessment, dynamic evaluation, and incentive rewards were established to guide mentors to actively fulfill their teaching responsibilities and improve the effectiveness of personnel cultivation.</p>
-  
-    
-  
-    <p>After joining the &#39;teacher-student innovation studio,&#39; Liu Xuan participated in a certain research project. Under the guidance of his instructor-mentor, he systematically studied theoretical knowledge including programming fundamentals and program design, and participated in algorithm design and system debugging; his sergeant-mentor, drawing on the realities of unit exercises and training, guided him in optimizing and improving the project plan. Driven by the dual traction of &#39;theory and practice,&#39; Liu Xuan&#39;s research capabilities and hands-on proficiency were effectively enhanced. The project has currently achieved phased results.</p>
-  
-    
-  
-    <p>As the &#39;dual-mentor system&#39; has been put into practice, multiple students at the school have stood out in various skills competitions and have gradually grown into specialized personnel who &#39;understand principles, are proficient in operations, and are skilled in command&#39; (懂原理、精操作、善指挥). Recently, the school organized professional assessments and unit training and instruction competitions; the rate of excellent professional scores among students reached a new high.</p>
-  
-</div>
-
-
-
-<details>
-  <summary>Original Chinese</summary>
-  <div class="original-body">火箭军士官学校加速锻造专业化人才 军士培养实行“双导师制” 解放军报讯 杨丽娟、记者徐小龙报道：前不久，火箭军士官学校首批专升本学员刘璇，在全国第八届大学生嵌入式芯片与系统设计竞赛中荣获一等奖。这是该校探索推行军士培养“双导师制”，加速锻造专业化人才取得的又一成果。 “打赢信息化智能化战争，对军士的专业素养和实战能力提出了新要求。”该校领导介绍，前年他们首次招收专升本学员，这些学员虽然具有两年以上基层岗位经历，但普遍存在理论知识不够、创新能力不足等短板。为此，该校推出“专业教员+高级军士”双导师模式，着力实现理论教学与实践指导双轮驱动。他们遴选教学功底扎实、科研能力突出的专业教员担任教员导师，帮助学员夯实理论根基；邀请实操能力过硬、实践经验丰富的一线部队高级军士担任军士导师，引导学员强化技术创新能力。同时，依托教学科研优势成立“师生创新工作室”，遴选优秀专升本学员在双导师带领下参与科研项目、技术攻关和装备改进实践；配套建立过程考核、动态评价和激励奖励机制，引导导师积极履行带教责任，提高人才培养效果。 刘璇加入“师生创新工作室”后参与某科研项目。在教员导师指导下，他系统学习编程基础、程序设计等理论知识，参与算法设计与系统调试；军士导师结合部队演训实际，指导他对项目方案进行优化改进。在“技术+实践”双重牵引下，刘璇的科研能力与实操水平得到有效提升。目前，该项目已取得阶段性成果。 随着“双导师制”实践推行，该校多名学员在各类比武竞赛中崭露头角，逐步成长为“懂原理、精操作、善指挥”的专业化人才。近期，该校组织专业考核和组训施教比武，学员专业成绩优良率再创新高。</div>
-</details>
-
-
-<div class="provenance">
-  <span>Relevance score: 0.85</span>
-  <span>Model: claude-sonnet-4-6</span>
-  <span>Prompt: v1</span>
-  
-    <span>Analyzed: 2026-05-08</span>
-  
-</div>
-
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    Open-source intelligence monitoring of Chinese military and security developments.
-    Source material from Chinese state media; all analysis AI-generated.
-    Not for redistribution without attribution.
-    Generated 2026-05-08 17:06 UTC.
-  </div>
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
 </footer>
 
 

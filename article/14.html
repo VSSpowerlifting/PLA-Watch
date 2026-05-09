@@ -7,12 +7,12 @@
   <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
 
   <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:site_name"   content="China Mil Watch">
-  <meta property="og:url"         content="https://chinamilwatch.org">
-  <meta property="og:title"       content="China Mil Watch">
-  <meta property="og:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
-  <meta property="og:image"       content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
@@ -22,43 +22,38 @@
   <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
   <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
 
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    /* ── Reset & base ──────────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --bg:          #0d0d0d;
-      --surface:     #141414;
-      --border:      #252525;
-      --border-sub:  #1d1d1d;
-      --text:        #e2e0db;
-      --text-sec:    #918f8a;
-      --text-muted:  #555350;
-      --accent:      #c8922a;
-      --accent-dim:  rgba(200, 146, 42, 0.12);
-      --link:        #8ab0cc;
-      --link-hover:  #b0ccdf;
-      --tag-bg:      #1e1e1e;
-      --tag-text:    #7a7875;
-
-      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
-      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      --max-width:   860px;
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
     }
 
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-weight: 300;
-      font-size: 0.9375rem;
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
@@ -66,293 +61,223 @@
       flex-direction: column;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-    a:hover { color: var(--link-hover); text-decoration: underline; }
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* ── Navigation ─────────────────────────────────────────────────────────── */
-    nav {
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
-    }
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      height: 52px;
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
-    .nav-brand {
-      font-family: var(--font-sans);
-      font-weight: 500;
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text);
       text-decoration: none;
+      transition: color 0.15s;
     }
-    .nav-brand:hover { color: var(--text); text-decoration: none; }
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-    }
-    .nav-links a {
-      font-size: 0.8125rem;
-      color: var(--text-sec);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--text); }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
       flex: 1;
-      max-width: var(--max-width);
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
       padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* ── Page header ─────────────────────────────────────────────────────────── */
-    .page-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
     }
-    .page-header h1 {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
     }
-    .page-header .meta {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-    .page-header .meta span + span::before {
-      content: " · ";
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
     }
 
-    /* ── Article card ────────────────────────────────────────────────────────── */
-    .article-card {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-sub);
-    }
-    .article-card:last-child { border-bottom: none; }
-
-    .article-card.significant {
-      background: var(--accent-dim);
-      border-radius: 3px;
-      padding: 1.5rem;
-      margin: 0 -1.5rem;
-      border-bottom: none;
-      margin-bottom: 1px;
-    }
-    .article-card.significant + .article-card {
-      border-top: 1px solid var(--border-sub);
-    }
-
-    .sig-flag {
-      font-family: var(--font-sans);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .sig-flag::before { content: "★  "; }
-
-    .article-title {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 1.25rem;
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-    }
-    .article-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
-
-    .article-title-zh {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem;
+      gap: 0.35rem;
       margin-bottom: 0.75rem;
     }
     .tag {
+      display: inline-block;
       font-size: 0.6875rem;
-      letter-spacing: 0.04em;
+      font-weight: 500;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid var(--border);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
       border-radius: 2px;
-      padding: 0.15rem 0.45rem;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
     }
-
-    .article-summary {
-      font-size: 0.9375rem;
-      line-height: 1.65;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .sig-reason {
-      font-size: 0.875rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--accent);
-    }
-
-    .article-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      align-items: center;
-    }
-    .article-footer a { color: var(--text-muted); }
-    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
-    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
-
-    /* ── Footer ──────────────────────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    footer a { color: var(--text-muted); }
-    footer a:hover { color: var(--link-hover); }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
     .empty-state {
-      color: var(--text-muted);
+      color: var(--color-text-muted);
       font-style: italic;
       padding: 2rem 0;
     }
 
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
     
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .back-link {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
   display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
   margin-bottom: 1.75rem;
 }
-.back-link:hover { color: var(--link-hover); text-decoration: none; }
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
 
-.article-page-header {
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 }
+
 .article-page-title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 1.75rem;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
   line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  margin-bottom: 0.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
 }
+
 .article-page-title-zh {
-  font-size: 0.9375rem;
-  color: var(--text-muted);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
   font-style: italic;
   margin-bottom: 1rem;
 }
+
 .article-page-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem 1rem;
   font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  align-items: center;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
 }
-.article-page-meta a { color: var(--text-muted); }
-.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
-.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
 
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
 .section-label {
   font-size: 0.6875rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 0.75rem;
 }
 
+/* ── Summary block ───────────────────────────────────────────────── */
 .summary-block {
-  background: var(--surface);
-  border-left: 3px solid var(--border);
-  border-radius: 0 3px 3px 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
   padding: 1.1rem 1.25rem;
   margin-bottom: 2rem;
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
 }
 .summary-block.significant {
-  border-left-color: var(--accent);
+  border-left-color: var(--color-brand);
 }
-.summary-text { color: var(--text); }
-.sig-block {
+.sig-reasoning {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
-  color: var(--accent);
-}
-.sig-block::before {
-  content: "★  ";
-  font-size: 0.75rem;
+  color: var(--color-brand);
+  line-height: 1.6;
 }
 
+/* ── Translation body ────────────────────────────────────────────── */
 .translation-body {
   font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--text);
+  line-height: 1.8;
+  color: var(--color-text-primary);
   margin-bottom: 2rem;
 }
-.translation-body p {
-  margin-bottom: 0.9rem;
-}
+.translation-body p { margin-bottom: 0.9rem; }
 .translation-body p:last-child { margin-bottom: 0; }
 
+/* ── Collapsible original ────────────────────────────────────────── */
 details {
   margin-bottom: 2rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
 details summary {
   font-size: 0.8125rem;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   padding: 0.65rem 1rem;
   cursor: pointer;
   user-select: none;
@@ -369,227 +294,230 @@ details summary::before {
   display: inline-block;
 }
 details[open] summary::before { transform: rotate(90deg); }
-details summary:hover { color: var(--text); }
+details summary:hover { color: var(--color-text-primary); }
 .original-body {
   padding: 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.9375rem;
   line-height: 1.85;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
+/* ── Provenance ──────────────────────────────────────────────────── */
 .provenance {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   line-height: 1.8;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-sub);
+  border-top: 1px solid var(--color-border);
 }
 .provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
 
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-brand">PLA Watch</a>
-    <div class="nav-links">
-      <a href="../index.html" >Daily Brief</a>
-      <a href="../archive.html" >Archive</a>
-    </div>
-  </div>
-</nav>
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
 
 <main>
   
-<a href="../index.html" class="back-link">← Daily Brief</a>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
 
-<div class="article-page-header">
+  <div class="article-header">
 
-  
+    
+      <div class="tags">
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
 
-  <h1 class="article-page-title">
-    Leading Troops Requires Knowing How to &#39;Speak&#39; and How to &#39;Listen&#39;—So How Does One Train the Skill of &#39;Listening&#39;?
-  </h1>
+    <h1 class="article-page-title">
+      Leading Troops Requires Knowing How to &#39;Speak&#39; and How to &#39;Listen&#39;—So How Does One Train the Skill of &#39;Listening&#39;?
+    </h1>
 
-  
-    <div class="article-page-title-zh">带兵要会“说”也要会“听”，那“听”这门本领该怎么练？</div>
-  
+    
+      <div class="article-page-title-zh">带兵要会“说”也要会“听”，那“听”这门本领该怎么练？</div>
+    
 
-  
-    <div class="tags">
-      
-        <span class="tag">Political Work</span>
-      
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>7 May 2026</span>
     </div>
+
+    <a href="http://www.81.cn/yw_208727/16459116.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A Liaoning Provincial Military District cadre, writing in the PLA&#39;s Military Daily, argues that grassroots troop leaders must cultivate active listening as a concrete leadership skill, framing it as a direct contributor to unit cohesion and combat effectiveness rather than a soft interpersonal nicety. The piece, accompanied by responses from cadres across the People&#39;s Armed Police Qinghai General Corps, Jilin Province Liaoyuan Military Sub-district, and two army units, reflects a sustained PLA focus on officer-soldier communication deficits at the company level—a recurring theme in Military Daily commentary that signals institutional concern about morale management and political work effectiveness in units under heavy training and evaluation pressure.</div>
+    
+  </div>
   
 
-  <div class="article-page-meta">
-    <span>PLA Daily (解放军报)</span>
-    <span class="sep"></span>
-    <span>7 May 2026</span>
-    <span class="sep"></span>
-    <a href="http://www.81.cn/yw_208727/16459116.html" target="_blank" rel="noopener">Original source ↗</a>
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>Leading Troops: Knowing How to &#39;Speak&#39; and How to &#39;Listen&#39;</p>
+    
+      <p>■ Liaoning Provincial Military District Cadre Su Erxuan</p>
+    
+      
+    
+      <p>On April 9, the Military Daily published a pair of reports: &#34;Let the Soldier Finish Speaking&#34; and &#34;Listen to the Soldier&#39;s Explanation.&#34; Though the titles differ, a close reading reveals that both reports point to the same problem—grassroots troop leaders must learn to listen.</p>
+    
+      
+    
+      <p>Knowing how to &#34;speak&#34; and knowing how to &#34;listen&#34; are complementary core competencies in leading and developing troops, and together they form a closed loop of effective communication with soldiers. By comparison, knowing how to &#34;listen&#34; might seem easier—after all, it only requires &#34;pricking up one&#39;s ears.&#34; Yet, as the experiences of the protagonists in both reports show, whether from a lack of patience or from preconceived notions, difficulties arose in each case precisely because the leader did not know how to &#34;listen.&#34;</p>
+    
+      
+    
+      <p>I worked in grassroots units for many years, and I have a personal conviction: every person who leads troops well is skilled at listening. The troop leaders whom soldiers respect and who forge a company into a single cohesive force are not necessarily the ones with the loudest voices or the most experience, but they share one thing in common—their ears &#34;work well.&#34; They can seize on what matters from a soldier&#39;s fragmentary words, find the crux of a problem in a single complaint, and read a hidden grievance in a moment of silence. Many of the knots in a soldier&#39;s heart are not untied by orders—they are dissolved by a troop leader&#39;s patient listening. Once you have truly heard someone out, the direction for solving the problem becomes clear; once you have genuinely taken it in, the hearts of leader and soldier draw closer; once the channel of communication is open, a soldier&#39;s grievances can more readily be relieved.</p>
+    
+      
+    
+      <p>Looking at those who struggle to lead troops, the problem usually does not lie in &#34;willingness to listen&#34;—the vast majority of grassroots troop leaders genuinely want to enter the soldier&#39;s inner world and earn trust. The problem lies in &#34;knowing how to listen,&#34; in the tendency to &#34;take things for granted&#34;—cutting a soldier off the moment he opens his mouth, setting the tone before the facts are clear. This may look crisp and decisive, but in reality it can cause problems to fester and push soldiers further away.</p>
+    
+      
+    
+      <p>Listening is not merely a matter of attitude; it is also a capability that must be cultivated, a skill that must be tempered. A troop leader who does not know how to listen is like a radio with a broken antenna—the voices in soldiers&#39; hearts go unheard, political education fails to reach soldiers&#39; hearts, and even the strongest abilities become an empty framework.</p>
+    
+      
+    
+      <p>How does one train the skill of &#34;listening&#34;? Years of grassroots experience have gradually taught me a few things—</p>
+    
+      
+    
+      <p>Learn to slow down. Some soldiers speak slowly and think unclearly, which tests a troop leader&#39;s patience. Do not rush them, do not cut them off, do not finish their sentences for them—wait until they have said everything they need to say. Slowing down is not a waste of time; it is showing respect to the soldier and allowing yourself to understand the true situation.</p>
+    
+      
+    
+      <p>First, set aside preconceptions. A troop leader&#39;s wealth of experience and familiarity with situations is a source of confidence, but it also easily produces &#34;path dependency&#34; (路径依赖). If you are already carrying a standard answer in your mind, the soldier will be &#34;boxed in&#34; after just a few words. Put the ready-made answer away first, and only then can you prescribe the right remedy and remain impartial.</p>
+    
+      
+    
+      <p>Listen for what lies beneath the words. What can be heard is sound; what can be understood is the soldier&#39;s heart. A soldier&#39;s true thoughts are often not stated directly—the pauses in his tone, the grievance in his silence, a breezy &#34;it&#39;s nothing&#34; are all information.</p>
+    
+      
+    
+      <p>Clarifying thinking, breaking through difficulties, resolving contradictions, rallying hearts—only if you are willing to listen to soldiers will soldiers be willing to listen to you. When communication flows freely and officers and soldiers are of one mind, combat effectiveness naturally becomes more solid.</p>
+    
+      
+    
+      <p>The Military Daily&#39;s two reports brought the question of learning to listen to the table precisely to remind grassroots troop leaders: do not treat listening as a trivial matter. It is not a soft indicator—it is a hard skill; not an optional item—it is a required question, a genuine capability verified by countless outstanding troop leaders that can directly generate combat effectiveness.</p>
+    
+      
+    
+      <p>(Compiled by Jiang Yukun)</p>
+    
+      
+    
+      <p>—Illustration by Xiao Qian—</p>
+    
+      
+    
+      <p>Voices from All Sides (七嘴八舌)</p>
+    
+      
+    
+      <p>In the article &#34;Let the Soldier Finish Speaking,&#34; there is a thought-provoking detail: Instructor Zhu, while conducting a late-night guard check, has a conversation with soldier Shi Feijie, and the atmosphere is relaxed. Why does the stillness of the late night allow communication to break through? Because a quiet environment makes it easier for Instructor Zhu to set aside the urge to judge quickly and begin paying attention to the true emotions behind the other person&#39;s words. The grievances and needs that the soldier never stated plainly are often hidden in the rises and falls of his tone, in silences and pauses, and in evasions and deflections.</p>
+    
+      
+    
+      <p>Complete listening sometimes also requires restating and confirming after the other person has finished. If, after the soldier has spoken, the troop leader can quickly sort out the facts and feelings and gently check with &#34;did I understand you correctly,&#34; this both accurately responds to the other person&#39;s emotions and actively invites the soldier to add anything left unsaid.</p>
+    
+      
+    
+      <p>Only when troop leaders are willing to listen will soldiers dare to speak the truth, tell it as it is, and offer opinions; only when troop leaders are skilled at listening can they accurately grasp soldiers&#39; ideological dynamics, resolve practical difficulties, and defuse latent contradictions and tensions. When &#34;letting the soldier finish speaking&#34; becomes a habit of leadership, and when &#34;listening to the soldier&#39;s explanation&#34; becomes a conscious act, officers and soldiers will trust each other more and more, forming a combined force in which minds point in the same direction and efforts are channeled toward the same goal.</p>
+    
+      <p>—People&#39;s Armed Police Qinghai General Corps Cadre Guo Ziyang</p>
+    
+      
+    
+      <p>I served as a primary officer in a grassroots company and also worked in a headquarters organ. The experience is similar to that of Instructor Zhu in &#34;Let the Soldier Finish Speaking,&#34; and I feel it deeply. Headquarters work prizes efficiency and demands getting straight to the point, but leading troops at the grassroots level means facing individual, living soldiers—what is needed is patience, understanding, and empathy.</p>
+    
+      
+    
+      <p>In the report, Shi Feijie speaks slowly and An Yuhang has a quick temper; the two clash because of the difference in their personalities. Instructor Zhu himself also happens to have a quick temper. When a troop leader applies his own standards of expression to soldiers, it is easy to overlook the differences in soldiers&#39; habits of expression and ways of thinking.</p>
+    
+      
+    
+      <p>When &#34;get to the point&#34; becomes a habit, &#34;take your time&#34; becomes scarce. Whether one can &#34;let the soldier finish speaking&#34; is a test of the troop leader&#39;s conception of the masses (群众观念), his conduct and bearing, and his wisdom in leading troops. Only by bending down and holding one&#39;s patience—letting soldiers be willing to speak, dare to speak, and finish speaking—can one truly enter the soldier&#39;s heart, rally morale, and consolidate the foundation of grassroots development.</p>
+    
+      <p>—Jilin Province Liaoyuan Military Sub-district Cadre Yu Yong</p>
+    
+      
+    
+      <p>The Military Daily&#39;s April 15 article &#34;Be Cautious in Telling Troops &#39;We&#39;ll Get Back to It&#39;&#34; likewise reports on a troop-leading problem triggered by a habitual phrase. In the soldier&#39;s eyes, the &#34;minor matter&#34; he raised—&#34;the washroom drain is clogged&#34;—is his most concrete and most pressing current frustration; if it goes unresolved, there is a knot in his heart. A troop leader&#39;s breezy &#34;we&#39;ll get back to it&#34; is no different from pulling that knot tighter.</p>
+    
+      
+    
+      <p>Thinking deeper: when a soldier is willing to open his mouth and raise a problem, it is often a &#34;test&#34; of the troop leader. The first time he speaks, he watches how you respond. If you take it seriously and resolve it, he will be willing to speak a second time, a third time, and may even bring out what he has kept buried in his heart. Conversely, if you brush it off once, he will very likely never open his mouth again.</p>
+    
+      
+    
+      <p>Treating the soldier&#39;s affairs &#34;as one&#39;s own affairs&#34; does not mean hanging &#34;grassroots first, soldiers first&#34; on one&#39;s lips or posting it on the wall—it means translating it into the action of handling things immediately and handling them well. Even if you are genuinely busy at the moment or cannot resolve it right away, could you not put it differently: &#34;I&#39;ve noted this problem—I&#39;ll go coordinate as soon as training ends this afternoon,&#34; or &#34;This matter will probably take a few days to resolve; I&#39;ll give you an answer this week&#34;? A clear attitude and a foreseeable deadline are warmer and more effective than a single &#34;we&#39;ll get back to it.&#34;</p>
+    
+      <p>—Army Unit Cadre Wang Hongliang</p>
+    
+      
+    
+      <p>Today, many grassroots companies carry heavy training loads and frequent assessments and evaluations. Troop-leading cadres and non-commissioned officers, positioned at the bottom of the management chain, bear pressure transmitted layer by layer, and at times it is hard to avoid becoming restless and communicating in a simple, rough manner. Yet the more complex the affairs, the more one must temper a rigorous and solid work style (严实作风). A good troop-leading work style is reflected in every word and phrase of communication, is embedded in the implementation of every task and matter, and is won through genuine and sincere treatment of one another.</p>
+    
+      
+    
+      <p>As grassroots troop leaders, living alongside soldiers day and night, every word and action bears on the bond between officers and soldiers and on the effectiveness of leadership. Leading troops at the grassroots level is not the simple execution of &#34;I speak, you listen; I order, you act&#34;—it is a process of teaching by example, of guiding with heart and helping with sincerity (走心帮带). Changing a habitual phrase changes the way one communicates, corrects the work style of troop leadership, and warms the hearts of soldiers.</p>
+    
+      <p>—Army Unit Staff Sergeant Second Class (二级上士) Jia Haotian</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">带兵，会“说”也要会“听” ■辽宁省军区干部 苏尔璕 4月9日，军报刊发了一组报道《让战士把话说完》和《听听战士的解释》。虽然标题表述不同，但细看之下，两篇报道指出的是同一个问题——基层带兵人要学会倾听。 会“说”与会“听”，是带兵育人相辅相成的核心能力，共同构成与战士有效沟通的闭环。相较之下，会“听”似乎更容易，毕竟只要“竖起耳朵”就可以。然而，就像两篇报道中主人公的经历，或因缺乏耐心，或因先入为主，在与战士交流中都因为不会“听”而带来困扰。 我曾在基层部队工作多年，有一个切身感受：凡是带兵带得好的人，都善于倾听。那些战士服气、把连队拧成一股绳的带兵人，未必嗓门最大、经验最多，但有一个共同点——耳朵“好使”。他们能从战士的只言片语里抓住关键，从一句抱怨里摸到症结，从一次沉默里读出隐情。很多战士心里的疙瘩，不是靠命令解开的，而是靠带兵人耐心倾听化解的——听明白了，解决问题的方向就明了；听进去了，带兵人和战士的心就近了；言路通了，战士的委屈就容易得到排解。 反观那些带兵吃力的人，问题往往不是出在“愿不愿听”——相信绝大多数基层带兵人都愿意走进战士内心，赢得信任；问题出在“会不会听”，出在容易“想当然”——战士刚开口就“堵”回去，事情没问清就先定调，看上去干脆利落，实则可能把问题越捂越大，把兵越推越远。 倾听不只是态度问题，还是一种需要培养的能力、需要锤炼的本领。不会倾听的带兵人，就像电台断了天线，战士的心声听不见，搞教育也落不到战士心里，再强的能力也成了空架子。 “听”这门本领怎么练？多年的基层经历，让我慢慢品出些门道—— 要学会慢下来。有些战士说话慢、思路不清晰，考验带兵人的耐心。不催、不截、不替他说完，等他把话说透。慢下来不是浪费时间，是给战士尊重，是让自己能了解实情。 要先放下预设。带兵人经验多、情况熟，这是底气，也容易形成“路径依赖”。如果心里揣着标准答案，战士刚说两句就会被“框住”。把现成的答案先收起来，才能对症下药、不偏不倚。 要听出弦外之音。听得见的是声音，听得懂的是兵心。战士的真实想法，往往不直说，语气里的停顿、沉默里的委屈、一句轻飘飘的“没事”，全是信息。 捋清思路、破解难题、化解矛盾、凝聚人心——你愿意听战士的，战士才愿意听你的。当交流顺畅、官兵同心，战斗力自然更牢固。 军报的两篇报道，把学会倾听这个问题端到桌面上，就是想提醒基层带兵人：别把倾听不当回事。它不是软指标，是硬功夫；不是可选项，是必答题，是被无数优秀带兵人验证过的、能直接出战斗力的真本领。 （姜玉坤整理） 七嘴八舌 肖茜 绘 《让战士把话说完》一文中，有个耐人寻味的细节：朱教导员深夜查哨时与战士石飞杰交谈，气氛融洽。夜深人静为何能让沟通破冰？因为安静的环境容易让朱教导员放下急于评判的心态，开始留意对方话语背后的真实情绪。战士未曾直白说出的委屈与诉求，往往就藏在语气起伏、沉默停顿与回避躲闪之中。 完整的倾听，有时还需要在听完之后去复述确认。如果战士说完后，带兵人能快速梳理事实与感受，用“我理解的对吗”去轻声核对，既准确回应了对方情绪，也主动邀请战士补充未尽之言。 带兵人愿意倾听，战士才敢说真话、讲实情、提意见；带兵人善于倾听，才能精准掌握战士思想动态、解决实际困难、化解矛盾隐患。当“让战士把话说完”成为带兵习惯，当“听听战士的解释”成为行动自觉，官兵彼此间就会越来越信任，形成心往一处想、劲往一处使的合力。 ——武警青海总队干部 郭紫阳 我在基层连队当过主官，也曾在机关工作，与《让战士把话说完》一文中朱教导员类似的任职经历让我感同身受。机关工作讲究效率、要求直奔主题，但基层带兵面对的是一个个鲜活的战士，需要的是耐心、理解与共情。 报道中，石飞杰说话慢，安宇航性子急，两人因为性格差异产生摩擦。朱教导员恰恰也是个急性子。当带兵人用自己的表达标准去要求战士，就容易忽略战士表达习惯、思维方式存在的差异性。 当“说重点”成为习惯，“慢慢说”就变得稀缺。能否“让战士把话说完”，检验的是带兵人的群众观念、作风涵养和带兵智慧。只有俯下身子、耐住性子，让战士愿说、敢说、把话说完，才能真正走进兵心、凝聚士气，夯实基层建设的基础。 ——吉林省辽源军分区干部 于 勇 军报4月15日刊发的《带兵慎言“回头再说”》，报道的同样是一句口头禅引发的带兵问题。在战士眼里，他反映的“水房堵了”这件“小事”，是他当下最具体、最头疼的困扰，如果不解决，他心里就有个疙瘩。带兵人一句轻飘飘的“回头再说”，无异于把这个疙瘩又给系紧了。 再往深处想，战士愿意开口反映问题，常常是对带兵人的“试探”。第一次说，看你怎么回应。你重视了、解决了，他就愿意说第二次、第三次，甚至把藏在心底的话也掏出来。反之，你随口应付一次，他很可能就再也不会开口。 把战士的事“当成自己的事”，不是把“基层至上、士兵第一”挂在嘴上、贴在墙上，而是落到马上就办、办就办好的行动上。即便当时确实忙或者一时解决不了，可否换个说法“这个问题我记下了，下午训练结束就去协调”，或者“这件事大概需要几天时间解决，我这周给你答复”。一个明确的态度，一个可期待的时限，比一句“回头再说”有温度，也更管用。 ——陆军某部干部 王宏亮 如今，不少基层连队训练任务重、考核测评多，带兵骨干身处管理末端，压力层层传导，有时难免心浮气躁，沟通简单粗放。然而，越是事务繁杂，越要锤炼严实作风。好的带兵作风，体现在一言一语的沟通中，藏在一事一物的落实里，赢在真心实意的相待上。 作为基层带兵人，与战士朝夕相处，一言一行都关乎官兵情谊，关乎带兵实效。基层带兵，不是“我说你听、我令你行”的简单执行，而是言传身教、走心帮带的过程。一句口头禅的转变，改的是沟通方式，正的是带兵作风，暖的是战士的心。 ——陆军某部二级上士 贾昊天</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.70</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-08</span>
+    
   </div>
 
 </div>
-
-
-<div class="section-label">Summary</div>
-<div class="summary-block">
-  <div class="summary-text">A Liaoning Provincial Military District cadre, writing in the PLA&#39;s Military Daily, argues that grassroots troop leaders must cultivate active listening as a concrete leadership skill, framing it as a direct contributor to unit cohesion and combat effectiveness rather than a soft interpersonal nicety. The piece, accompanied by responses from cadres across the People&#39;s Armed Police Qinghai General Corps, Jilin Province Liaoyuan Military Sub-district, and two army units, reflects a sustained PLA focus on officer-soldier communication deficits at the company level—a recurring theme in Military Daily commentary that signals institutional concern about morale management and political work effectiveness in units under heavy training and evaluation pressure.</div>
-  
-</div>
-
-
-
-<div class="section-label">Translation</div>
-<div class="translation-body">
-  
-    <p>Leading Troops: Knowing How to &#39;Speak&#39; and How to &#39;Listen&#39;</p>
-  
-    <p>■ Liaoning Provincial Military District Cadre Su Erxuan</p>
-  
-    
-  
-    <p>On April 9, the Military Daily published a pair of reports: &#34;Let the Soldier Finish Speaking&#34; and &#34;Listen to the Soldier&#39;s Explanation.&#34; Though the titles differ, a close reading reveals that both reports point to the same problem—grassroots troop leaders must learn to listen.</p>
-  
-    
-  
-    <p>Knowing how to &#34;speak&#34; and knowing how to &#34;listen&#34; are complementary core competencies in leading and developing troops, and together they form a closed loop of effective communication with soldiers. By comparison, knowing how to &#34;listen&#34; might seem easier—after all, it only requires &#34;pricking up one&#39;s ears.&#34; Yet, as the experiences of the protagonists in both reports show, whether from a lack of patience or from preconceived notions, difficulties arose in each case precisely because the leader did not know how to &#34;listen.&#34;</p>
-  
-    
-  
-    <p>I worked in grassroots units for many years, and I have a personal conviction: every person who leads troops well is skilled at listening. The troop leaders whom soldiers respect and who forge a company into a single cohesive force are not necessarily the ones with the loudest voices or the most experience, but they share one thing in common—their ears &#34;work well.&#34; They can seize on what matters from a soldier&#39;s fragmentary words, find the crux of a problem in a single complaint, and read a hidden grievance in a moment of silence. Many of the knots in a soldier&#39;s heart are not untied by orders—they are dissolved by a troop leader&#39;s patient listening. Once you have truly heard someone out, the direction for solving the problem becomes clear; once you have genuinely taken it in, the hearts of leader and soldier draw closer; once the channel of communication is open, a soldier&#39;s grievances can more readily be relieved.</p>
-  
-    
-  
-    <p>Looking at those who struggle to lead troops, the problem usually does not lie in &#34;willingness to listen&#34;—the vast majority of grassroots troop leaders genuinely want to enter the soldier&#39;s inner world and earn trust. The problem lies in &#34;knowing how to listen,&#34; in the tendency to &#34;take things for granted&#34;—cutting a soldier off the moment he opens his mouth, setting the tone before the facts are clear. This may look crisp and decisive, but in reality it can cause problems to fester and push soldiers further away.</p>
-  
-    
-  
-    <p>Listening is not merely a matter of attitude; it is also a capability that must be cultivated, a skill that must be tempered. A troop leader who does not know how to listen is like a radio with a broken antenna—the voices in soldiers&#39; hearts go unheard, political education fails to reach soldiers&#39; hearts, and even the strongest abilities become an empty framework.</p>
-  
-    
-  
-    <p>How does one train the skill of &#34;listening&#34;? Years of grassroots experience have gradually taught me a few things—</p>
-  
-    
-  
-    <p>Learn to slow down. Some soldiers speak slowly and think unclearly, which tests a troop leader&#39;s patience. Do not rush them, do not cut them off, do not finish their sentences for them—wait until they have said everything they need to say. Slowing down is not a waste of time; it is showing respect to the soldier and allowing yourself to understand the true situation.</p>
-  
-    
-  
-    <p>First, set aside preconceptions. A troop leader&#39;s wealth of experience and familiarity with situations is a source of confidence, but it also easily produces &#34;path dependency&#34; (路径依赖). If you are already carrying a standard answer in your mind, the soldier will be &#34;boxed in&#34; after just a few words. Put the ready-made answer away first, and only then can you prescribe the right remedy and remain impartial.</p>
-  
-    
-  
-    <p>Listen for what lies beneath the words. What can be heard is sound; what can be understood is the soldier&#39;s heart. A soldier&#39;s true thoughts are often not stated directly—the pauses in his tone, the grievance in his silence, a breezy &#34;it&#39;s nothing&#34; are all information.</p>
-  
-    
-  
-    <p>Clarifying thinking, breaking through difficulties, resolving contradictions, rallying hearts—only if you are willing to listen to soldiers will soldiers be willing to listen to you. When communication flows freely and officers and soldiers are of one mind, combat effectiveness naturally becomes more solid.</p>
-  
-    
-  
-    <p>The Military Daily&#39;s two reports brought the question of learning to listen to the table precisely to remind grassroots troop leaders: do not treat listening as a trivial matter. It is not a soft indicator—it is a hard skill; not an optional item—it is a required question, a genuine capability verified by countless outstanding troop leaders that can directly generate combat effectiveness.</p>
-  
-    
-  
-    <p>(Compiled by Jiang Yukun)</p>
-  
-    
-  
-    <p>—Illustration by Xiao Qian—</p>
-  
-    
-  
-    <p>Voices from All Sides (七嘴八舌)</p>
-  
-    
-  
-    <p>In the article &#34;Let the Soldier Finish Speaking,&#34; there is a thought-provoking detail: Instructor Zhu, while conducting a late-night guard check, has a conversation with soldier Shi Feijie, and the atmosphere is relaxed. Why does the stillness of the late night allow communication to break through? Because a quiet environment makes it easier for Instructor Zhu to set aside the urge to judge quickly and begin paying attention to the true emotions behind the other person&#39;s words. The grievances and needs that the soldier never stated plainly are often hidden in the rises and falls of his tone, in silences and pauses, and in evasions and deflections.</p>
-  
-    
-  
-    <p>Complete listening sometimes also requires restating and confirming after the other person has finished. If, after the soldier has spoken, the troop leader can quickly sort out the facts and feelings and gently check with &#34;did I understand you correctly,&#34; this both accurately responds to the other person&#39;s emotions and actively invites the soldier to add anything left unsaid.</p>
-  
-    
-  
-    <p>Only when troop leaders are willing to listen will soldiers dare to speak the truth, tell it as it is, and offer opinions; only when troop leaders are skilled at listening can they accurately grasp soldiers&#39; ideological dynamics, resolve practical difficulties, and defuse latent contradictions and tensions. When &#34;letting the soldier finish speaking&#34; becomes a habit of leadership, and when &#34;listening to the soldier&#39;s explanation&#34; becomes a conscious act, officers and soldiers will trust each other more and more, forming a combined force in which minds point in the same direction and efforts are channeled toward the same goal.</p>
-  
-    <p>—People&#39;s Armed Police Qinghai General Corps Cadre Guo Ziyang</p>
-  
-    
-  
-    <p>I served as a primary officer in a grassroots company and also worked in a headquarters organ. The experience is similar to that of Instructor Zhu in &#34;Let the Soldier Finish Speaking,&#34; and I feel it deeply. Headquarters work prizes efficiency and demands getting straight to the point, but leading troops at the grassroots level means facing individual, living soldiers—what is needed is patience, understanding, and empathy.</p>
-  
-    
-  
-    <p>In the report, Shi Feijie speaks slowly and An Yuhang has a quick temper; the two clash because of the difference in their personalities. Instructor Zhu himself also happens to have a quick temper. When a troop leader applies his own standards of expression to soldiers, it is easy to overlook the differences in soldiers&#39; habits of expression and ways of thinking.</p>
-  
-    
-  
-    <p>When &#34;get to the point&#34; becomes a habit, &#34;take your time&#34; becomes scarce. Whether one can &#34;let the soldier finish speaking&#34; is a test of the troop leader&#39;s conception of the masses (群众观念), his conduct and bearing, and his wisdom in leading troops. Only by bending down and holding one&#39;s patience—letting soldiers be willing to speak, dare to speak, and finish speaking—can one truly enter the soldier&#39;s heart, rally morale, and consolidate the foundation of grassroots development.</p>
-  
-    <p>—Jilin Province Liaoyuan Military Sub-district Cadre Yu Yong</p>
-  
-    
-  
-    <p>The Military Daily&#39;s April 15 article &#34;Be Cautious in Telling Troops &#39;We&#39;ll Get Back to It&#39;&#34; likewise reports on a troop-leading problem triggered by a habitual phrase. In the soldier&#39;s eyes, the &#34;minor matter&#34; he raised—&#34;the washroom drain is clogged&#34;—is his most concrete and most pressing current frustration; if it goes unresolved, there is a knot in his heart. A troop leader&#39;s breezy &#34;we&#39;ll get back to it&#34; is no different from pulling that knot tighter.</p>
-  
-    
-  
-    <p>Thinking deeper: when a soldier is willing to open his mouth and raise a problem, it is often a &#34;test&#34; of the troop leader. The first time he speaks, he watches how you respond. If you take it seriously and resolve it, he will be willing to speak a second time, a third time, and may even bring out what he has kept buried in his heart. Conversely, if you brush it off once, he will very likely never open his mouth again.</p>
-  
-    
-  
-    <p>Treating the soldier&#39;s affairs &#34;as one&#39;s own affairs&#34; does not mean hanging &#34;grassroots first, soldiers first&#34; on one&#39;s lips or posting it on the wall—it means translating it into the action of handling things immediately and handling them well. Even if you are genuinely busy at the moment or cannot resolve it right away, could you not put it differently: &#34;I&#39;ve noted this problem—I&#39;ll go coordinate as soon as training ends this afternoon,&#34; or &#34;This matter will probably take a few days to resolve; I&#39;ll give you an answer this week&#34;? A clear attitude and a foreseeable deadline are warmer and more effective than a single &#34;we&#39;ll get back to it.&#34;</p>
-  
-    <p>—Army Unit Cadre Wang Hongliang</p>
-  
-    
-  
-    <p>Today, many grassroots companies carry heavy training loads and frequent assessments and evaluations. Troop-leading cadres and non-commissioned officers, positioned at the bottom of the management chain, bear pressure transmitted layer by layer, and at times it is hard to avoid becoming restless and communicating in a simple, rough manner. Yet the more complex the affairs, the more one must temper a rigorous and solid work style (严实作风). A good troop-leading work style is reflected in every word and phrase of communication, is embedded in the implementation of every task and matter, and is won through genuine and sincere treatment of one another.</p>
-  
-    
-  
-    <p>As grassroots troop leaders, living alongside soldiers day and night, every word and action bears on the bond between officers and soldiers and on the effectiveness of leadership. Leading troops at the grassroots level is not the simple execution of &#34;I speak, you listen; I order, you act&#34;—it is a process of teaching by example, of guiding with heart and helping with sincerity (走心帮带). Changing a habitual phrase changes the way one communicates, corrects the work style of troop leadership, and warms the hearts of soldiers.</p>
-  
-    <p>—Army Unit Staff Sergeant Second Class (二级上士) Jia Haotian</p>
-  
-</div>
-
-
-
-<details>
-  <summary>Original Chinese</summary>
-  <div class="original-body">带兵，会“说”也要会“听” ■辽宁省军区干部 苏尔璕 4月9日，军报刊发了一组报道《让战士把话说完》和《听听战士的解释》。虽然标题表述不同，但细看之下，两篇报道指出的是同一个问题——基层带兵人要学会倾听。 会“说”与会“听”，是带兵育人相辅相成的核心能力，共同构成与战士有效沟通的闭环。相较之下，会“听”似乎更容易，毕竟只要“竖起耳朵”就可以。然而，就像两篇报道中主人公的经历，或因缺乏耐心，或因先入为主，在与战士交流中都因为不会“听”而带来困扰。 我曾在基层部队工作多年，有一个切身感受：凡是带兵带得好的人，都善于倾听。那些战士服气、把连队拧成一股绳的带兵人，未必嗓门最大、经验最多，但有一个共同点——耳朵“好使”。他们能从战士的只言片语里抓住关键，从一句抱怨里摸到症结，从一次沉默里读出隐情。很多战士心里的疙瘩，不是靠命令解开的，而是靠带兵人耐心倾听化解的——听明白了，解决问题的方向就明了；听进去了，带兵人和战士的心就近了；言路通了，战士的委屈就容易得到排解。 反观那些带兵吃力的人，问题往往不是出在“愿不愿听”——相信绝大多数基层带兵人都愿意走进战士内心，赢得信任；问题出在“会不会听”，出在容易“想当然”——战士刚开口就“堵”回去，事情没问清就先定调，看上去干脆利落，实则可能把问题越捂越大，把兵越推越远。 倾听不只是态度问题，还是一种需要培养的能力、需要锤炼的本领。不会倾听的带兵人，就像电台断了天线，战士的心声听不见，搞教育也落不到战士心里，再强的能力也成了空架子。 “听”这门本领怎么练？多年的基层经历，让我慢慢品出些门道—— 要学会慢下来。有些战士说话慢、思路不清晰，考验带兵人的耐心。不催、不截、不替他说完，等他把话说透。慢下来不是浪费时间，是给战士尊重，是让自己能了解实情。 要先放下预设。带兵人经验多、情况熟，这是底气，也容易形成“路径依赖”。如果心里揣着标准答案，战士刚说两句就会被“框住”。把现成的答案先收起来，才能对症下药、不偏不倚。 要听出弦外之音。听得见的是声音，听得懂的是兵心。战士的真实想法，往往不直说，语气里的停顿、沉默里的委屈、一句轻飘飘的“没事”，全是信息。 捋清思路、破解难题、化解矛盾、凝聚人心——你愿意听战士的，战士才愿意听你的。当交流顺畅、官兵同心，战斗力自然更牢固。 军报的两篇报道，把学会倾听这个问题端到桌面上，就是想提醒基层带兵人：别把倾听不当回事。它不是软指标，是硬功夫；不是可选项，是必答题，是被无数优秀带兵人验证过的、能直接出战斗力的真本领。 （姜玉坤整理） 七嘴八舌 肖茜 绘 《让战士把话说完》一文中，有个耐人寻味的细节：朱教导员深夜查哨时与战士石飞杰交谈，气氛融洽。夜深人静为何能让沟通破冰？因为安静的环境容易让朱教导员放下急于评判的心态，开始留意对方话语背后的真实情绪。战士未曾直白说出的委屈与诉求，往往就藏在语气起伏、沉默停顿与回避躲闪之中。 完整的倾听，有时还需要在听完之后去复述确认。如果战士说完后，带兵人能快速梳理事实与感受，用“我理解的对吗”去轻声核对，既准确回应了对方情绪，也主动邀请战士补充未尽之言。 带兵人愿意倾听，战士才敢说真话、讲实情、提意见；带兵人善于倾听，才能精准掌握战士思想动态、解决实际困难、化解矛盾隐患。当“让战士把话说完”成为带兵习惯，当“听听战士的解释”成为行动自觉，官兵彼此间就会越来越信任，形成心往一处想、劲往一处使的合力。 ——武警青海总队干部 郭紫阳 我在基层连队当过主官，也曾在机关工作，与《让战士把话说完》一文中朱教导员类似的任职经历让我感同身受。机关工作讲究效率、要求直奔主题，但基层带兵面对的是一个个鲜活的战士，需要的是耐心、理解与共情。 报道中，石飞杰说话慢，安宇航性子急，两人因为性格差异产生摩擦。朱教导员恰恰也是个急性子。当带兵人用自己的表达标准去要求战士，就容易忽略战士表达习惯、思维方式存在的差异性。 当“说重点”成为习惯，“慢慢说”就变得稀缺。能否“让战士把话说完”，检验的是带兵人的群众观念、作风涵养和带兵智慧。只有俯下身子、耐住性子，让战士愿说、敢说、把话说完，才能真正走进兵心、凝聚士气，夯实基层建设的基础。 ——吉林省辽源军分区干部 于 勇 军报4月15日刊发的《带兵慎言“回头再说”》，报道的同样是一句口头禅引发的带兵问题。在战士眼里，他反映的“水房堵了”这件“小事”，是他当下最具体、最头疼的困扰，如果不解决，他心里就有个疙瘩。带兵人一句轻飘飘的“回头再说”，无异于把这个疙瘩又给系紧了。 再往深处想，战士愿意开口反映问题，常常是对带兵人的“试探”。第一次说，看你怎么回应。你重视了、解决了，他就愿意说第二次、第三次，甚至把藏在心底的话也掏出来。反之，你随口应付一次，他很可能就再也不会开口。 把战士的事“当成自己的事”，不是把“基层至上、士兵第一”挂在嘴上、贴在墙上，而是落到马上就办、办就办好的行动上。即便当时确实忙或者一时解决不了，可否换个说法“这个问题我记下了，下午训练结束就去协调”，或者“这件事大概需要几天时间解决，我这周给你答复”。一个明确的态度，一个可期待的时限，比一句“回头再说”有温度，也更管用。 ——陆军某部干部 王宏亮 如今，不少基层连队训练任务重、考核测评多，带兵骨干身处管理末端，压力层层传导，有时难免心浮气躁，沟通简单粗放。然而，越是事务繁杂，越要锤炼严实作风。好的带兵作风，体现在一言一语的沟通中，藏在一事一物的落实里，赢在真心实意的相待上。 作为基层带兵人，与战士朝夕相处，一言一行都关乎官兵情谊，关乎带兵实效。基层带兵，不是“我说你听、我令你行”的简单执行，而是言传身教、走心帮带的过程。一句口头禅的转变，改的是沟通方式，正的是带兵作风，暖的是战士的心。 ——陆军某部二级上士 贾昊天</div>
-</details>
-
-
-<div class="provenance">
-  <span>Relevance score: 0.70</span>
-  <span>Model: claude-sonnet-4-6</span>
-  <span>Prompt: v1</span>
-  
-    <span>Analyzed: 2026-05-08</span>
-  
-</div>
-
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    Open-source intelligence monitoring of Chinese military and security developments.
-    Source material from Chinese state media; all analysis AI-generated.
-    Not for redistribution without attribution.
-    Generated 2026-05-08 17:06 UTC.
-  </div>
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
 </footer>
 
 
