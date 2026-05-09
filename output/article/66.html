@@ -7,12 +7,12 @@
   <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
 
   <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:site_name"   content="China Mil Watch">
-  <meta property="og:url"         content="https://chinamilwatch.org">
-  <meta property="og:title"       content="China Mil Watch">
-  <meta property="og:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
-  <meta property="og:image"       content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
@@ -22,43 +22,38 @@
   <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
   <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
 
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    /* ── Reset & base ──────────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --bg:          #0d0d0d;
-      --surface:     #141414;
-      --border:      #252525;
-      --border-sub:  #1d1d1d;
-      --text:        #e2e0db;
-      --text-sec:    #918f8a;
-      --text-muted:  #555350;
-      --accent:      #c8922a;
-      --accent-dim:  rgba(200, 146, 42, 0.12);
-      --link:        #8ab0cc;
-      --link-hover:  #b0ccdf;
-      --tag-bg:      #1e1e1e;
-      --tag-text:    #7a7875;
-
-      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
-      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      --max-width:   860px;
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
     }
 
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-weight: 300;
-      font-size: 0.9375rem;
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
@@ -66,293 +61,223 @@
       flex-direction: column;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-    a:hover { color: var(--link-hover); text-decoration: underline; }
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* ── Navigation ─────────────────────────────────────────────────────────── */
-    nav {
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
-    }
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      height: 52px;
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
-    .nav-brand {
-      font-family: var(--font-sans);
-      font-weight: 500;
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text);
       text-decoration: none;
+      transition: color 0.15s;
     }
-    .nav-brand:hover { color: var(--text); text-decoration: none; }
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-    }
-    .nav-links a {
-      font-size: 0.8125rem;
-      color: var(--text-sec);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--text); }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
       flex: 1;
-      max-width: var(--max-width);
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
       padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* ── Page header ─────────────────────────────────────────────────────────── */
-    .page-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
     }
-    .page-header h1 {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
     }
-    .page-header .meta {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-    .page-header .meta span + span::before {
-      content: " · ";
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
     }
 
-    /* ── Article card ────────────────────────────────────────────────────────── */
-    .article-card {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-sub);
-    }
-    .article-card:last-child { border-bottom: none; }
-
-    .article-card.significant {
-      background: var(--accent-dim);
-      border-radius: 3px;
-      padding: 1.5rem;
-      margin: 0 -1.5rem;
-      border-bottom: none;
-      margin-bottom: 1px;
-    }
-    .article-card.significant + .article-card {
-      border-top: 1px solid var(--border-sub);
-    }
-
-    .sig-flag {
-      font-family: var(--font-sans);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .sig-flag::before { content: "★  "; }
-
-    .article-title {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 1.25rem;
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-    }
-    .article-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
-
-    .article-title-zh {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem;
+      gap: 0.35rem;
       margin-bottom: 0.75rem;
     }
     .tag {
+      display: inline-block;
       font-size: 0.6875rem;
-      letter-spacing: 0.04em;
+      font-weight: 500;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid var(--border);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
       border-radius: 2px;
-      padding: 0.15rem 0.45rem;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
     }
-
-    .article-summary {
-      font-size: 0.9375rem;
-      line-height: 1.65;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .sig-reason {
-      font-size: 0.875rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--accent);
-    }
-
-    .article-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      align-items: center;
-    }
-    .article-footer a { color: var(--text-muted); }
-    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
-    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
-
-    /* ── Footer ──────────────────────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    footer a { color: var(--text-muted); }
-    footer a:hover { color: var(--link-hover); }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
     .empty-state {
-      color: var(--text-muted);
+      color: var(--color-text-muted);
       font-style: italic;
       padding: 2rem 0;
     }
 
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
     
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .back-link {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
   display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
   margin-bottom: 1.75rem;
 }
-.back-link:hover { color: var(--link-hover); text-decoration: none; }
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
 
-.article-page-header {
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 }
+
 .article-page-title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 1.75rem;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
   line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  margin-bottom: 0.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
 }
+
 .article-page-title-zh {
-  font-size: 0.9375rem;
-  color: var(--text-muted);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
   font-style: italic;
   margin-bottom: 1rem;
 }
+
 .article-page-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem 1rem;
   font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  align-items: center;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
 }
-.article-page-meta a { color: var(--text-muted); }
-.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
-.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
 
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
 .section-label {
   font-size: 0.6875rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 0.75rem;
 }
 
+/* ── Summary block ───────────────────────────────────────────────── */
 .summary-block {
-  background: var(--surface);
-  border-left: 3px solid var(--border);
-  border-radius: 0 3px 3px 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
   padding: 1.1rem 1.25rem;
   margin-bottom: 2rem;
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
 }
 .summary-block.significant {
-  border-left-color: var(--accent);
+  border-left-color: var(--color-brand);
 }
-.summary-text { color: var(--text); }
-.sig-block {
+.sig-reasoning {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
-  color: var(--accent);
-}
-.sig-block::before {
-  content: "★  ";
-  font-size: 0.75rem;
+  color: var(--color-brand);
+  line-height: 1.6;
 }
 
+/* ── Translation body ────────────────────────────────────────────── */
 .translation-body {
   font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--text);
+  line-height: 1.8;
+  color: var(--color-text-primary);
   margin-bottom: 2rem;
 }
-.translation-body p {
-  margin-bottom: 0.9rem;
-}
+.translation-body p { margin-bottom: 0.9rem; }
 .translation-body p:last-child { margin-bottom: 0; }
 
+/* ── Collapsible original ────────────────────────────────────────── */
 details {
   margin-bottom: 2rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
 details summary {
   font-size: 0.8125rem;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   padding: 0.65rem 1rem;
   cursor: pointer;
   user-select: none;
@@ -369,143 +294,146 @@ details summary::before {
   display: inline-block;
 }
 details[open] summary::before { transform: rotate(90deg); }
-details summary:hover { color: var(--text); }
+details summary:hover { color: var(--color-text-primary); }
 .original-body {
   padding: 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.9375rem;
   line-height: 1.85;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
+/* ── Provenance ──────────────────────────────────────────────────── */
 .provenance {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   line-height: 1.8;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-sub);
+  border-top: 1px solid var(--color-border);
 }
 .provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
 
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-brand">PLA Watch</a>
-    <div class="nav-links">
-      <a href="../index.html" >Daily Brief</a>
-      <a href="../archive.html" >Archive</a>
-    </div>
-  </div>
-</nav>
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
 
 <main>
   
-<a href="../index.html" class="back-link">← Daily Brief</a>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
 
-<div class="article-page-header">
+  <div class="article-header">
 
-  
+    
+      <div class="tags">
+        
+          <span class="tag">Personnel</span>
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
 
-  <h1 class="article-page-title">
-    Streamlining Reimbursement Procedures for Small Official Expenditures: Personnel Must Not &#39;Pay Out of Pocket&#39; for Official Business
-  </h1>
+    <h1 class="article-page-title">
+      Streamlining Reimbursement Procedures for Small Official Expenditures: Personnel Must Not &#39;Pay Out of Pocket&#39; for Official Business
+    </h1>
 
-  
-    <div class="article-page-title-zh">优化小额因公支出报销流程，办公事不能让官兵“自掏腰包”</div>
-  
+    
+      <div class="article-page-title-zh">优化小额因公支出报销流程，办公事不能让官兵“自掏腰包”</div>
+    
 
-  
-    <div class="tags">
-      
-        <span class="tag">Personnel</span>
-      
-        <span class="tag">Political Work</span>
-      
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>8 May 2026</span>
     </div>
+
+    <a href="http://www.81.cn/hj_208557/16459282.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A PLA Navy submarine base—unit and location unspecified—identified a pattern in which enlisted personnel were absorbing small official expenses out of pocket rather than navigate a cumbersome reimbursement process, and responded by streamlining approval procedures, consolidating reimbursement cycles, and establishing a &#39;run at most once&#39; administrative office for credential and welfare processing. The article is routine administrative reporting and signals no shift in operational posture or capability; its value is narrow, illustrating how PLA grassroots logistics and welfare administration function at the unit level and the friction points that erode personnel trust in institutional support systems.</div>
+    
+  </div>
   
 
-  <div class="article-page-meta">
-    <span>PLA Daily (解放军报)</span>
-    <span class="sep"></span>
-    <span>8 May 2026</span>
-    <span class="sep"></span>
-    <a href="http://www.81.cn/hj_208557/16459282.html" target="_blank" rel="noopener">Original source ↗</a>
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>Not long ago, during a routine general cleaning, Yin Mingming, a Corporal in a certain submarine crew unit of a certain Naval base, used a small vacuum cleaner to quickly clean the hard-to-reach sanitary corners of the compartment. His squad leader, Senior Master Sergeant Lei Jie, saw this and asked in surprise: &#34;That vacuum cleaner works really well—when did you requisition it?&#34; Yin Mingming scratched his head and replied: &#34;I bought it with my own money.&#34;</p>
+    
+      
+    
+      <p>&#34;Putting in the effort and paying out of your own pocket—that&#39;s no long-term solution.&#34; Upon further inquiry, Lei Jie learned that the small common-use items Yin Mingming had purchased at his own expense were not limited to this one: cleaning paste for equipment interiors, magnetic hooks for bulkheads, label stickers for marking pipelines… Although each item cost little, the total came to several hundred yuan. Yin Mingming was candid about it: &#34;Reimbursement is too much trouble. Since the amounts are small anyway, it&#39;s simpler to just pay out of pocket.&#34;</p>
+    
+      
+    
+      <p>That same day, Lei Jie reported the situation to the submarine crew unit&#39;s leadership. Upon investigation, they found that such cases were not uncommon: some personnel who worked overtime and missed meals found the missed-meal subsidy reimbursement process troublesome and time-consuming, and preferred to pay out of pocket; others who made emergency purchases of urgently needed common-use items gave up on reimbursement due to cumbersome procedures. &#34;Looking at it comprehensively, the causes are mainly concentrated in a few areas: the amounts are small, so personnel feel embarrassed to claim; the process has too many steps, and they fear being a nuisance to the administrative organs; the cycle is long, and they can&#39;t be bothered to go through the procedures,&#34; the submarine crew unit&#39;s leadership said.</p>
+    
+      
+    
+      <p>&#34;What appears to be personnel voluntarily forgoing reimbursement is in fact the administrative organs&#39; failure to provide adequate service, and it damages the rights and interests of the personnel.&#34; After learning of the situation, the base leadership decided to use Yin Mingming&#39;s submarine crew unit as a pilot, and introduced a series of measures to streamline the reimbursement procedures for small official expenditures at the grassroots level.</p>
+    
+      
+    
+      <p>The base directed its administrative organs to conduct a comprehensive review of the common reimbursement categories, procedural steps, and points of attention at the grassroots level, compiling these into illustrated booklets for distribution to grassroots units to ensure personnel could understand them at a glance. The administrative organs published the contact information of personnel responsible for reimbursement work to open up channels for work coordination, and regularly consolidated grassroots requests for missed-meal subsidy reimbursements, common-use item purchases, and similar needs for unified review and centralized approval, so that grassroots units would no longer need to &#34;run to multiple offices&#34; or &#34;make repeated trips.&#34; In addition, the base explicitly required that for urgently needed common-use items, submarine crew units could apply for expedited procurement at any time, with the administrative organs designating a dedicated person to verify, confirm, and handle the purchase.</p>
+    
+      
+    
+      <p>&#34;Small expenditures no longer require paying out of pocket—kudos to the administrative organs for this practical measure!&#34; Yin Mingming said happily. After the series of measures to streamline reimbursement were rolled out across the submarine crew units, he submitted receipts for the common-use items he had purchased at his own expense; from submitting the reimbursement application to the funds arriving in his account took only four days in total.</p>
+    
+      
+    
+      <p>This reporter learned that the base&#39;s administrative organs also drew broader lessons from this case, collecting problems that personnel found urgent, difficult, worrying, or long-awaited, and established a &#34;run at most once (最多跑一次)&#34; office, achieving &#34;one-stop&#34; processing for matters such as credential issuance and welfare applications. &#34;The more attentive and meticulous the administrative organs&#39; service, the more trust the personnel will have in the administrative organs, and the stronger the motivation for training and combat readiness will be,&#34; the base leadership explained. Recently, they organized a questionnaire survey, and grassroots personnel satisfaction with administrative organ services showed a marked improvement.</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">前不久，例行大扫除时，海军某基地某艇员队下士殷明明拿着小型吸尘器，不一会儿就将舱室里的卫生死角清理干净。班长、一级军士长雷杰看到后惊讶地问：“这个吸尘器真好用，什么时候申领的？”殷明明听了，挠挠头说：“是我自己花钱买的。” “既出力又贴钱，这可不是长久之计。”雷杰了解得知，殷明明自费购买的小件公用物品不止这一件：清洁设备内壁的软膏、舱壁磁吸挂钩、标识管线贴纸……虽说每一件没多少钱，但林林总总加起来也有几百元。对此，殷明明坦言：“报销起来太麻烦，反正钱也不多，干脆自掏腰包省事。” 当天，雷杰将这一情况反馈给艇员队领导。他们了解发现，这类情况还不少：有的官兵加班误了饭点， 因误餐补助报销麻烦周期长，宁愿自掏腰包；有的临时购买急需公用物品，由于程序繁琐而放弃报销……“综合来看，原因主要集中在几方面：金额小，不好意思报；流程多，怕麻烦机关；周期长，懒得跑手续。”该艇员队领导说。 “看似官兵自愿放弃报销，实则是机关服务不到位，损害了官兵权益。”该基地领导了解情况后，决定以殷明明所在艇员队为试点，推出优化基层小额因公支出报销流程的系列措施。 该基地安排机关全面梳理基层常见报销类别、流程步骤、注意事项等内容，将其编印成图册下发基层，确保官兵一看就懂；机关公布负责报销工作人员的联系方式，畅通工作对接渠道，定期汇总基层误餐补助报销、公用物品购置等需求，统一审核、集中签批，让基层报销时不再“多头跑”“来回跑”。此外，该基地明确要求，针对急需公用物品，艇员队可以随时申请加急采购，机关安排专人核实确认并负责购置。 “小额支出不再‘自掏腰包’，为机关务实举措点赞！”殷明明高兴地说，优化报销的系列措施在各艇员队推广后，他按照要求上交了自费购买公用物品的票据，从提交报销申请到钱款到账，前后仅用了4天。 笔者了解到，该基地机关还举一反三，收集官兵急难愁盼问题，设立“最多跑一次”办公室，证件制办、福利申请等事务实现“一站式”办理。“机关服务贴心细致一点，官兵对机关的信任就会多一分，练兵备战的动力就能更足。”该基地领导介绍，近日，他们组织问卷调查，基层官兵对机关服务的满意度明显提升。</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.70</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-08</span>
+    
   </div>
 
 </div>
-
-
-<div class="section-label">Summary</div>
-<div class="summary-block">
-  <div class="summary-text">A PLA Navy submarine base—unit and location unspecified—identified a pattern in which enlisted personnel were absorbing small official expenses out of pocket rather than navigate a cumbersome reimbursement process, and responded by streamlining approval procedures, consolidating reimbursement cycles, and establishing a &#39;run at most once&#39; administrative office for credential and welfare processing. The article is routine administrative reporting and signals no shift in operational posture or capability; its value is narrow, illustrating how PLA grassroots logistics and welfare administration function at the unit level and the friction points that erode personnel trust in institutional support systems.</div>
-  
-</div>
-
-
-
-<div class="section-label">Translation</div>
-<div class="translation-body">
-  
-    <p>Not long ago, during a routine general cleaning, Yin Mingming, a Corporal in a certain submarine crew unit of a certain Naval base, used a small vacuum cleaner to quickly clean the hard-to-reach sanitary corners of the compartment. His squad leader, Senior Master Sergeant Lei Jie, saw this and asked in surprise: &#34;That vacuum cleaner works really well—when did you requisition it?&#34; Yin Mingming scratched his head and replied: &#34;I bought it with my own money.&#34;</p>
-  
-    
-  
-    <p>&#34;Putting in the effort and paying out of your own pocket—that&#39;s no long-term solution.&#34; Upon further inquiry, Lei Jie learned that the small common-use items Yin Mingming had purchased at his own expense were not limited to this one: cleaning paste for equipment interiors, magnetic hooks for bulkheads, label stickers for marking pipelines… Although each item cost little, the total came to several hundred yuan. Yin Mingming was candid about it: &#34;Reimbursement is too much trouble. Since the amounts are small anyway, it&#39;s simpler to just pay out of pocket.&#34;</p>
-  
-    
-  
-    <p>That same day, Lei Jie reported the situation to the submarine crew unit&#39;s leadership. Upon investigation, they found that such cases were not uncommon: some personnel who worked overtime and missed meals found the missed-meal subsidy reimbursement process troublesome and time-consuming, and preferred to pay out of pocket; others who made emergency purchases of urgently needed common-use items gave up on reimbursement due to cumbersome procedures. &#34;Looking at it comprehensively, the causes are mainly concentrated in a few areas: the amounts are small, so personnel feel embarrassed to claim; the process has too many steps, and they fear being a nuisance to the administrative organs; the cycle is long, and they can&#39;t be bothered to go through the procedures,&#34; the submarine crew unit&#39;s leadership said.</p>
-  
-    
-  
-    <p>&#34;What appears to be personnel voluntarily forgoing reimbursement is in fact the administrative organs&#39; failure to provide adequate service, and it damages the rights and interests of the personnel.&#34; After learning of the situation, the base leadership decided to use Yin Mingming&#39;s submarine crew unit as a pilot, and introduced a series of measures to streamline the reimbursement procedures for small official expenditures at the grassroots level.</p>
-  
-    
-  
-    <p>The base directed its administrative organs to conduct a comprehensive review of the common reimbursement categories, procedural steps, and points of attention at the grassroots level, compiling these into illustrated booklets for distribution to grassroots units to ensure personnel could understand them at a glance. The administrative organs published the contact information of personnel responsible for reimbursement work to open up channels for work coordination, and regularly consolidated grassroots requests for missed-meal subsidy reimbursements, common-use item purchases, and similar needs for unified review and centralized approval, so that grassroots units would no longer need to &#34;run to multiple offices&#34; or &#34;make repeated trips.&#34; In addition, the base explicitly required that for urgently needed common-use items, submarine crew units could apply for expedited procurement at any time, with the administrative organs designating a dedicated person to verify, confirm, and handle the purchase.</p>
-  
-    
-  
-    <p>&#34;Small expenditures no longer require paying out of pocket—kudos to the administrative organs for this practical measure!&#34; Yin Mingming said happily. After the series of measures to streamline reimbursement were rolled out across the submarine crew units, he submitted receipts for the common-use items he had purchased at his own expense; from submitting the reimbursement application to the funds arriving in his account took only four days in total.</p>
-  
-    
-  
-    <p>This reporter learned that the base&#39;s administrative organs also drew broader lessons from this case, collecting problems that personnel found urgent, difficult, worrying, or long-awaited, and established a &#34;run at most once (最多跑一次)&#34; office, achieving &#34;one-stop&#34; processing for matters such as credential issuance and welfare applications. &#34;The more attentive and meticulous the administrative organs&#39; service, the more trust the personnel will have in the administrative organs, and the stronger the motivation for training and combat readiness will be,&#34; the base leadership explained. Recently, they organized a questionnaire survey, and grassroots personnel satisfaction with administrative organ services showed a marked improvement.</p>
-  
-</div>
-
-
-
-<details>
-  <summary>Original Chinese</summary>
-  <div class="original-body">前不久，例行大扫除时，海军某基地某艇员队下士殷明明拿着小型吸尘器，不一会儿就将舱室里的卫生死角清理干净。班长、一级军士长雷杰看到后惊讶地问：“这个吸尘器真好用，什么时候申领的？”殷明明听了，挠挠头说：“是我自己花钱买的。” “既出力又贴钱，这可不是长久之计。”雷杰了解得知，殷明明自费购买的小件公用物品不止这一件：清洁设备内壁的软膏、舱壁磁吸挂钩、标识管线贴纸……虽说每一件没多少钱，但林林总总加起来也有几百元。对此，殷明明坦言：“报销起来太麻烦，反正钱也不多，干脆自掏腰包省事。” 当天，雷杰将这一情况反馈给艇员队领导。他们了解发现，这类情况还不少：有的官兵加班误了饭点， 因误餐补助报销麻烦周期长，宁愿自掏腰包；有的临时购买急需公用物品，由于程序繁琐而放弃报销……“综合来看，原因主要集中在几方面：金额小，不好意思报；流程多，怕麻烦机关；周期长，懒得跑手续。”该艇员队领导说。 “看似官兵自愿放弃报销，实则是机关服务不到位，损害了官兵权益。”该基地领导了解情况后，决定以殷明明所在艇员队为试点，推出优化基层小额因公支出报销流程的系列措施。 该基地安排机关全面梳理基层常见报销类别、流程步骤、注意事项等内容，将其编印成图册下发基层，确保官兵一看就懂；机关公布负责报销工作人员的联系方式，畅通工作对接渠道，定期汇总基层误餐补助报销、公用物品购置等需求，统一审核、集中签批，让基层报销时不再“多头跑”“来回跑”。此外，该基地明确要求，针对急需公用物品，艇员队可以随时申请加急采购，机关安排专人核实确认并负责购置。 “小额支出不再‘自掏腰包’，为机关务实举措点赞！”殷明明高兴地说，优化报销的系列措施在各艇员队推广后，他按照要求上交了自费购买公用物品的票据，从提交报销申请到钱款到账，前后仅用了4天。 笔者了解到，该基地机关还举一反三，收集官兵急难愁盼问题，设立“最多跑一次”办公室，证件制办、福利申请等事务实现“一站式”办理。“机关服务贴心细致一点，官兵对机关的信任就会多一分，练兵备战的动力就能更足。”该基地领导介绍，近日，他们组织问卷调查，基层官兵对机关服务的满意度明显提升。</div>
-</details>
-
-
-<div class="provenance">
-  <span>Relevance score: 0.70</span>
-  <span>Model: claude-sonnet-4-6</span>
-  <span>Prompt: v1</span>
-  
-    <span>Analyzed: 2026-05-08</span>
-  
-</div>
-
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    Open-source intelligence monitoring of Chinese military and security developments.
-    Source material from Chinese state media; all analysis AI-generated.
-    Not for redistribution without attribution.
-    Generated 2026-05-08 17:06 UTC.
-  </div>
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
 </footer>
 
 

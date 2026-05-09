@@ -4,13 +4,14 @@
 {% block title %}China Mil Watch — Archive{% endblock %}
 
 {% block extra_styles %}
+/* ── Filter bar ──────────────────────────────────────────────────── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 2rem;
   padding: 1.25rem 0 1.5rem;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.75rem;
   align-items: flex-start;
 }
 .filter-group {
@@ -20,31 +21,35 @@
 }
 .filter-label {
   font-size: 0.6875rem;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 .filter-group input[type="text"],
 .filter-group input[type="date"] {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  color: var(--text);
-  font-family: var(--font-sans);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  color: var(--color-text-primary);
+  font-family: 'Inter', sans-serif;
   font-size: 0.8125rem;
-  padding: 0.3rem 0.6rem;
+  padding: 0.35rem 0.65rem;
   outline: none;
-  width: 180px;
+  width: 190px;
+  transition: border-color 0.15s;
 }
-.filter-group input:focus { border-color: var(--text-muted); }
+.filter-group input:focus { border-color: var(--color-brand); }
 .filter-group input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.5);
+  opacity: 0.4;
+  cursor: pointer;
 }
+
 .cat-checkboxes {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
-  max-width: 480px;
+  max-width: 500px;
 }
 .cat-check {
   display: flex;
@@ -53,28 +58,30 @@
   cursor: pointer;
 }
 .cat-check input[type="checkbox"] {
-  accent-color: var(--accent);
+  accent-color: var(--color-brand);
   width: 12px;
   height: 12px;
   cursor: pointer;
 }
 .cat-check span {
   font-size: 0.6875rem;
-  letter-spacing: 0.04em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--tag-text);
-  background: var(--tag-bg);
-  border: 1px solid var(--border);
+  color: var(--color-text-muted);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
   border-radius: 2px;
-  padding: 0.15rem 0.45rem;
+  padding: 2px 8px;
   cursor: pointer;
   user-select: none;
-  transition: color 0.1s, border-color 0.1s;
+  transition: color 0.12s, border-color 0.12s;
 }
 .cat-check input:checked + span {
-  color: var(--text);
-  border-color: var(--text-muted);
+  color: var(--color-brand);
+  border-color: var(--color-brand);
 }
+
 .sig-toggle {
   display: flex;
   align-items: center;
@@ -83,31 +90,135 @@
   margin-top: 1.4rem;
 }
 .sig-toggle input[type="checkbox"] {
-  accent-color: var(--accent);
+  accent-color: var(--color-brand);
   width: 13px;
   height: 13px;
   cursor: pointer;
 }
 .sig-toggle span {
   font-size: 0.8125rem;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
 }
+
 .filter-count {
   font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
   min-height: 1.2em;
 }
-#archive-list .article-card { display: block; }
-#archive-list .article-card.hidden { display: none; }
+
+/* ── Date groups ─────────────────────────────────────────────────── */
+.date-group { margin-bottom: 0; }
+.date-group.hidden { display: none; }
+
+.date-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.875rem 0 0.5rem;
+  border-top: 1px solid var(--color-border);
+  margin-top: 0;
+}
+.date-group:first-child .date-header { border-top: none; }
+
+.date-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color 0.15s;
+  user-select: none;
+}
+.date-label:hover { color: var(--color-brand); }
+
+.date-count {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Article rows ────────────────────────────────────────────────── */
+.article-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #F0EDE8;
+}
+.article-row:last-child { border-bottom: none; }
+.article-row.hidden { display: none; }
+
+.row-left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.sig-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-brand);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  top: -1px;
+}
+.sig-dot-placeholder {
+  width: 6px;
+  flex-shrink: 0;
+}
+
+.row-title {
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  transition: color 0.12s;
+}
+.row-title:hover { color: var(--color-brand); text-decoration: none; }
+
+.row-source {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Archive page header ─────────────────────────────────────────── */
+.archive-page-header {
+  margin-bottom: 0.5rem;
+}
+.archive-page-header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+.archive-page-header .meta {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .filter-bar { gap: 0.75rem 1.5rem; }
+  .filter-group input[type="text"],
+  .filter-group input[type="date"] { width: 160px; }
+  .cat-checkboxes { max-width: 100%; }
+  .row-title { font-size: 0.875rem; }
+  .article-row { grid-template-columns: 1fr; gap: 0.1rem; }
+  .row-source { display: none; }
+}
 {% endblock %}
 
 {% block content %}
-<div class="page-header">
+<div class="archive-page-header">
   <h1>Archive</h1>
-  <div class="meta">
-    <span>{{ total_articles }} article{{ 's' if total_articles != 1 }}</span>
-  </div>
+  <div class="meta">{{ total_articles }} article{{ 's' if total_articles != 1 }}</div>
 </div>
 
 <div class="filter-bar">
@@ -145,7 +256,6 @@
 </div>
 
 <div class="filter-count" id="filter-count"></div>
-
 <div id="archive-list"></div>
 {% endblock %}
 
@@ -154,85 +264,105 @@
 const ARTICLES = {{ articles_json | safe }};
 
 function escapeHtml(s) {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function renderCard(a) {
-  const sigClass = a.is_significant ? ' significant' : '';
-  const sigFlag  = a.is_significant ? '<div class="sig-flag">Significant</div>' : '';
-  const sigReason = (a.is_significant && a.significance_reason)
-    ? `<div class="sig-reason">${escapeHtml(a.significance_reason)}</div>` : '';
+// Group articles by date, preserving sort order
+const byDate = {};
+const dates = [];
+ARTICLES.forEach(a => {
+  if (!byDate[a.date]) { byDate[a.date] = []; dates.push(a.date); }
+  byDate[a.date].push(a);
+});
+dates.sort((a, b) => b.localeCompare(a));
 
-  const tags = a.category_labels.length
-    ? `<div class="tags">${a.category_labels.map(l => `<span class="tag">${escapeHtml(l)}</span>`).join('')}</div>`
-    : '';
-
-  const zhTitle = a.title_zh
-    ? `<div class="article-title-zh">${escapeHtml(a.title_zh)}</div>` : '';
-
-  const summary = a.summary
-    ? `<div class="article-summary">${escapeHtml(a.summary)}</div>` : '';
-
-  return `
-<div class="article-card${sigClass}" data-date="${a.date}" data-cats="${a.categories.join(',')}" data-sig="${a.is_significant ? 1 : 0}">
-  ${sigFlag}
-  <div class="article-title"><a href="${escapeHtml(a.article_path)}">${escapeHtml(a.title_en || a.title_zh)}</a></div>
-  ${zhTitle}
-  ${tags}
-  ${summary}
-  ${sigReason}
-  <div class="article-footer">
-    <span>${escapeHtml(a.source)}</span>
-    <span class="sep"></span>
-    <span>${escapeHtml(a.date_fmt)}</span>
-    <span class="sep"></span>
-    <a href="${escapeHtml(a.url)}" target="_blank" rel="noopener">Original ↗</a>
-    <span class="sep"></span>
-    <a href="${escapeHtml(a.article_path)}">Full analysis →</a>
+function renderRow(a) {
+  const sig = a.is_significant
+    ? '<span class="sig-dot" title="Significant"></span>'
+    : '<span class="sig-dot-placeholder"></span>';
+  const searchText = escapeHtml((a.title_en + ' ' + a.title_zh + ' ' + a.summary).toLowerCase());
+  const catList = a.categories.join(',');
+  return `<div class="article-row" data-date="${a.date}" data-cats="${catList}" data-sig="${a.is_significant ? 1 : 0}" data-search="${searchText}">
+  <div class="row-left">
+    ${sig}
+    <a href="${escapeHtml(a.article_path)}" class="row-title">${escapeHtml(a.title_en || a.title_zh)}</a>
   </div>
+  <span class="row-source">${escapeHtml(a.source)}</span>
 </div>`;
 }
 
-// Render all cards once
+function renderGroup(date) {
+  const arts = byDate[date];
+  const label = arts[0].date_fmt;
+  const n = arts.length;
+  return `<div class="date-group" data-date-group="${date}">
+  <div class="date-header">
+    <span class="date-label" data-date="${date}">${escapeHtml(label)}</span>
+    <span class="date-count" id="count-${date}">${n} article${n !== 1 ? 's' : ''}</span>
+  </div>
+  ${arts.map(renderRow).join('')}
+</div>`;
+}
+
 const listEl = document.getElementById('archive-list');
-listEl.innerHTML = ARTICLES.map(renderCard).join('');
-const cards = Array.from(listEl.querySelectorAll('.article-card'));
+listEl.innerHTML = dates.map(renderGroup).join('');
+
+// Clicking a date label filters to that date
+listEl.addEventListener('click', e => {
+  const label = e.target.closest('.date-label');
+  if (!label) return;
+  const d = label.dataset.date;
+  document.getElementById('date-from').value = d;
+  document.getElementById('date-to').value = d;
+  applyFilters();
+});
 
 function applyFilters() {
-  const query   = document.getElementById('search-input').value.trim().toLowerCase();
-  const dateFrom = document.getElementById('date-from').value;
-  const dateTo   = document.getElementById('date-to').value;
-  const sigOnly  = document.getElementById('sig-only').checked;
+  const query      = document.getElementById('search-input').value.trim().toLowerCase();
+  const dateFrom   = document.getElementById('date-from').value;
+  const dateTo     = document.getElementById('date-to').value;
+  const sigOnly    = document.getElementById('sig-only').checked;
   const activeCats = Array.from(document.querySelectorAll('.cat-cb:checked')).map(cb => cb.value);
 
-  let visible = 0;
-  ARTICLES.forEach((a, i) => {
-    let show = true;
+  let totalVisible = 0;
 
-    if (query) {
-      const haystack = (a.title_en + ' ' + a.title_zh + ' ' + a.summary).toLowerCase();
-      if (!haystack.includes(query)) show = false;
-    }
-    if (dateFrom && a.date < dateFrom) show = false;
-    if (dateTo   && a.date > dateTo)   show = false;
-    if (sigOnly  && !a.is_significant) show = false;
-    if (activeCats.length) {
-      if (!activeCats.some(c => a.categories.includes(c))) show = false;
-    }
+  document.querySelectorAll('.date-group').forEach(group => {
+    const date = group.dataset.dateGroup;
+    let groupVisible = 0;
 
-    cards[i].classList.toggle('hidden', !show);
-    if (show) visible++;
+    group.querySelectorAll('.article-row').forEach(row => {
+      let show = true;
+      if (query      && !row.dataset.search.includes(query))              show = false;
+      if (dateFrom   && date < dateFrom)                                   show = false;
+      if (dateTo     && date > dateTo)                                     show = false;
+      if (sigOnly    && row.dataset.sig !== '1')                          show = false;
+      if (activeCats.length) {
+        const rowCats = row.dataset.cats.split(',').filter(Boolean);
+        if (!activeCats.some(c => rowCats.includes(c)))                   show = false;
+      }
+      row.classList.toggle('hidden', !show);
+      if (show) { groupVisible++; totalVisible++; }
+    });
+
+    group.classList.toggle('hidden', groupVisible === 0);
+    const countEl = document.getElementById('count-' + date);
+    if (countEl) {
+      const total = group.querySelectorAll('.article-row').length;
+      countEl.textContent = groupVisible === total
+        ? `${total} article${total !== 1 ? 's' : ''}`
+        : `${groupVisible} of ${total} article${total !== 1 ? 's' : ''}`;
+    }
   });
 
   const total = ARTICLES.length;
-  const countEl = document.getElementById('filter-count');
-  countEl.textContent = visible === total
+  document.getElementById('filter-count').textContent = totalVisible === total
     ? `${total} articles`
-    : `${visible} of ${total} articles`;
+    : `${totalVisible} of ${total} articles`;
 }
 
-// Wire up controls
-['search-input','date-from','date-to'].forEach(id =>
+['search-input', 'date-from', 'date-to'].forEach(id =>
   document.getElementById(id).addEventListener('input', applyFilters));
 document.getElementById('sig-only').addEventListener('change', applyFilters);
 document.querySelectorAll('.cat-cb').forEach(cb =>

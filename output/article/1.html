@@ -7,12 +7,12 @@
   <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
 
   <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:site_name"   content="China Mil Watch">
-  <meta property="og:url"         content="https://chinamilwatch.org">
-  <meta property="og:title"       content="China Mil Watch">
-  <meta property="og:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
-  <meta property="og:image"       content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
@@ -22,43 +22,38 @@
   <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
   <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
 
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    /* ── Reset & base ──────────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --bg:          #0d0d0d;
-      --surface:     #141414;
-      --border:      #252525;
-      --border-sub:  #1d1d1d;
-      --text:        #e2e0db;
-      --text-sec:    #918f8a;
-      --text-muted:  #555350;
-      --accent:      #c8922a;
-      --accent-dim:  rgba(200, 146, 42, 0.12);
-      --link:        #8ab0cc;
-      --link-hover:  #b0ccdf;
-      --tag-bg:      #1e1e1e;
-      --tag-text:    #7a7875;
-
-      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
-      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      --max-width:   860px;
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
     }
 
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-weight: 300;
-      font-size: 0.9375rem;
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
@@ -66,293 +61,223 @@
       flex-direction: column;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-    a:hover { color: var(--link-hover); text-decoration: underline; }
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* ── Navigation ─────────────────────────────────────────────────────────── */
-    nav {
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
-    }
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      height: 52px;
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
-    .nav-brand {
-      font-family: var(--font-sans);
-      font-weight: 500;
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text);
       text-decoration: none;
+      transition: color 0.15s;
     }
-    .nav-brand:hover { color: var(--text); text-decoration: none; }
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-    }
-    .nav-links a {
-      font-size: 0.8125rem;
-      color: var(--text-sec);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--text); }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
       flex: 1;
-      max-width: var(--max-width);
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
       padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* ── Page header ─────────────────────────────────────────────────────────── */
-    .page-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
     }
-    .page-header h1 {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
     }
-    .page-header .meta {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-    .page-header .meta span + span::before {
-      content: " · ";
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
     }
 
-    /* ── Article card ────────────────────────────────────────────────────────── */
-    .article-card {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-sub);
-    }
-    .article-card:last-child { border-bottom: none; }
-
-    .article-card.significant {
-      background: var(--accent-dim);
-      border-radius: 3px;
-      padding: 1.5rem;
-      margin: 0 -1.5rem;
-      border-bottom: none;
-      margin-bottom: 1px;
-    }
-    .article-card.significant + .article-card {
-      border-top: 1px solid var(--border-sub);
-    }
-
-    .sig-flag {
-      font-family: var(--font-sans);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .sig-flag::before { content: "★  "; }
-
-    .article-title {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 1.25rem;
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-    }
-    .article-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
-
-    .article-title-zh {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem;
+      gap: 0.35rem;
       margin-bottom: 0.75rem;
     }
     .tag {
+      display: inline-block;
       font-size: 0.6875rem;
-      letter-spacing: 0.04em;
+      font-weight: 500;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid var(--border);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
       border-radius: 2px;
-      padding: 0.15rem 0.45rem;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
     }
-
-    .article-summary {
-      font-size: 0.9375rem;
-      line-height: 1.65;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .sig-reason {
-      font-size: 0.875rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--accent);
-    }
-
-    .article-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      align-items: center;
-    }
-    .article-footer a { color: var(--text-muted); }
-    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
-    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
-
-    /* ── Footer ──────────────────────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    footer a { color: var(--text-muted); }
-    footer a:hover { color: var(--link-hover); }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
     .empty-state {
-      color: var(--text-muted);
+      color: var(--color-text-muted);
       font-style: italic;
       padding: 2rem 0;
     }
 
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
     
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .back-link {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
   display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
   margin-bottom: 1.75rem;
 }
-.back-link:hover { color: var(--link-hover); text-decoration: none; }
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
 
-.article-page-header {
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 }
+
 .article-page-title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 1.75rem;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
   line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  margin-bottom: 0.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
 }
+
 .article-page-title-zh {
-  font-size: 0.9375rem;
-  color: var(--text-muted);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
   font-style: italic;
   margin-bottom: 1rem;
 }
+
 .article-page-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem 1rem;
   font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  align-items: center;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
 }
-.article-page-meta a { color: var(--text-muted); }
-.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
-.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
 
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
 .section-label {
   font-size: 0.6875rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 0.75rem;
 }
 
+/* ── Summary block ───────────────────────────────────────────────── */
 .summary-block {
-  background: var(--surface);
-  border-left: 3px solid var(--border);
-  border-radius: 0 3px 3px 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
   padding: 1.1rem 1.25rem;
   margin-bottom: 2rem;
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
 }
 .summary-block.significant {
-  border-left-color: var(--accent);
+  border-left-color: var(--color-brand);
 }
-.summary-text { color: var(--text); }
-.sig-block {
+.sig-reasoning {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
-  color: var(--accent);
-}
-.sig-block::before {
-  content: "★  ";
-  font-size: 0.75rem;
+  color: var(--color-brand);
+  line-height: 1.6;
 }
 
+/* ── Translation body ────────────────────────────────────────────── */
 .translation-body {
   font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--text);
+  line-height: 1.8;
+  color: var(--color-text-primary);
   margin-bottom: 2rem;
 }
-.translation-body p {
-  margin-bottom: 0.9rem;
-}
+.translation-body p { margin-bottom: 0.9rem; }
 .translation-body p:last-child { margin-bottom: 0; }
 
+/* ── Collapsible original ────────────────────────────────────────── */
 details {
   margin-bottom: 2rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
 details summary {
   font-size: 0.8125rem;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   padding: 0.65rem 1rem;
   cursor: pointer;
   user-select: none;
@@ -369,155 +294,158 @@ details summary::before {
   display: inline-block;
 }
 details[open] summary::before { transform: rotate(90deg); }
-details summary:hover { color: var(--text); }
+details summary:hover { color: var(--color-text-primary); }
 .original-body {
   padding: 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.9375rem;
   line-height: 1.85;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
+/* ── Provenance ──────────────────────────────────────────────────── */
 .provenance {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   line-height: 1.8;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-sub);
+  border-top: 1px solid var(--color-border);
 }
 .provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
 
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-brand">PLA Watch</a>
-    <div class="nav-links">
-      <a href="../index.html" >Daily Brief</a>
-      <a href="../archive.html" >Archive</a>
-    </div>
-  </div>
-</nav>
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
 
 <main>
   
-<a href="../index.html" class="back-link">← Daily Brief</a>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
 
-<div class="article-page-header">
+  <div class="article-header">
 
-  
+    
+      <div class="tags">
+        
+          <span class="tag">Doctrine</span>
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
 
-  <h1 class="article-page-title">
-    Drawing Cultivation Wisdom from Traditional Culture | &#39;Enrolled in the Register of Warriors, One Must Not Pause for Private Concerns&#39;
-  </h1>
+    <h1 class="article-page-title">
+      Drawing Cultivation Wisdom from Traditional Culture | &#39;Enrolled in the Register of Warriors, One Must Not Pause for Private Concerns&#39;
+    </h1>
 
-  
-    <div class="article-page-title-zh">从传统文化中汲取修养智慧丨“名编壮士籍，不得中顾私”</div>
-  
+    
+      <div class="article-page-title-zh">从传统文化中汲取修养智慧丨“名编壮士籍，不得中顾私”</div>
+    
 
-  
-    <div class="tags">
-      
-        <span class="tag">Doctrine</span>
-      
-        <span class="tag">Political Work</span>
-      
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>7 May 2026</span>
     </div>
+
+    <a href="http://www.81.cn/yw_208727/16459104.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A PLA political education article published under the byline of Xiang Xianbiao invokes classical Chinese poetry, Han and Ming dynasty military figures, and Party-era martyrs to argue that PLA officers and soldiers must subordinate personal interests to national and Party missions, explicitly linking this norm to combat readiness and ideological discipline. The piece is a standard instance of the PLA&#39;s ongoing political work (政治工作) campaign to reinforce loyalty, self-sacrifice, and resistance to corruption through traditional culture and &#39;red gene&#39; framing—a genre that has intensified since Xi Jinping&#39;s 2016 Gutian conference directives on military ideological rectification. It contains no new operational, organizational, or doctrinal information, but is useful as a data point on the continued emphasis within PLA political work on correcting &#39;erroneous ideological tendencies&#39; and private self-interest among the force.</div>
+    
+  </div>
   
 
-  <div class="article-page-meta">
-    <span>PLA Daily (解放军报)</span>
-    <span class="sep"></span>
-    <span>7 May 2026</span>
-    <span class="sep"></span>
-    <a href="http://www.81.cn/yw_208727/16459104.html" target="_blank" rel="noopener">Original source ↗</a>
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>&#39;Enrolled in the Register of Warriors, One Must Not Pause for Private Concerns&#39;</p>
+    
+      
+    
+      <p>■ Xiang Xianbiao</p>
+    
+      
+    
+      <p>During the Three Kingdoms period, Cao Zhi wrote in his poem &#39;Ballad of the White Horse&#39; (白马篇): &#39;Enrolled in the register of warriors, one must not pause for private concerns.&#39; These refined verses articulate the lofty realm of the ancient warrior who sacrifices himself for the nation and casts aside selfish thoughts. They are not only a tribute to the spirit of self-sacrifice in service of the country, but also shine brilliantly within China&#39;s outstanding traditional culture for the clear values they embody.</p>
+    
+      
+    
+      <p>For a soldier, to be &#39;enrolled in the register of warriors&#39;—to join the military and shoulder its mission—means that national interests must come first, and personal selfish thoughts must yield to what lies behind. The &#39;private concerns&#39; one must not attend to include not only personal comfort, but also leaving one&#39;s hometown to garrison the frontier and face hardship, as well as moonlit evenings with loved ones, the bonds of blood and kinship, and the longing across a thousand li for wife and children left behind. This &#39;forgetting of self&#39; is not an absence of ordinary human feeling, but rather a profound identification with and conscious fulfillment of the soldier&#39;s duty and responsibility. It is precisely because the &#39;small self&#39; (小我) of &#39;private concerns&#39; has been cast aside that one can ignite the patriotic resolve and love of country expressed in &#39;giving one&#39;s life to meet the nation&#39;s peril, regarding death as a return home.&#39;</p>
+    
+      
+    
+      <p>Throughout the annals of the Chinese nation, for the sake of national unity and the interests of the people, countless officers and soldiers have forsaken home for country, given their lives without hesitation, and cast aside selfish thoughts, composing heroic chapters of resistance against foreign aggression and salvation of the nation.</p>
+    
+      
+    
+      <p>After the Western Han dynasty&#39;s celebrated general Huo Qubing led his forces to a great victory in the Mobei campaign, Emperor Wu of Han, wishing to commend him for his military achievements against the Xiongnu, had a mansion built for him. Huo Qubing politely declined, saying: &#39;The Xiongnu have not yet been destroyed—what use have I for a home?&#39; In Huo Qubing&#39;s view, so long as the threat on the nation&#39;s frontiers had not been eliminated, personal family, wealth, and pleasure were all secondary; only eliminating the frontier threat and defending the homeland was the primary mission. It was precisely because he harbored such great ambition and such a perspective on life that Huo Qubing launched six campaigns against the Xiongnu and performed the Feng Shan sacrifice at Mount Langju Xu. His spirit of forsaking home for country has transcended time and space and continues to this day to strike a powerful chord in our hearts.</p>
+    
+      
+    
+      <p>Qi Jiguang, the celebrated Ming dynasty general who resisted the Wokou pirates, wrote in &#39;Deep Within the Military Tent&#39; (韬钤深处): &#39;Enfeoffment as a marquis is not my wish; I only hope the seas will be at peace.&#39; By this time he had already accumulated great military merit, yet he always held &#39;pacifying the Wokou threat and guarding the maritime frontier&#39; as his life&#39;s pursuit, rather than personal fame and fortune. Qi Jiguang harbored great ambitions and kept the world in his heart. Throughout his life he fought campaigns in the south and the north, established the Qi Family Army (戚家军), constructed defensive fortifications, and reformed military equipment. &#39;The heavy frost is all the blood from my heart, scattered across a thousand peaks to redden the autumn leaves.&#39; He regarded fame and fortune as of little account and the righteousness of family and nation as of great weight. This lofty realm of &#39;forgetting home upon receiving orders, forgetting self when facing the enemy&#39; commands deep respect.</p>
+    
+      
+    
+      <p>Devoting oneself to the public and forgetting private interests, pledging one&#39;s life to the nation—this is not only a spiritual inheritance extending across a thousand years, but also the vivid foundation of the red gene (红色基因). Throughout the history of our Party and our military, heroic and model figures who forsook home for country and gave their lives without hesitation have emerged in an endless stream. From Zhao Yiman&#39;s courageous march to righteousness—&#39;I did not begrudge my head for the new motherland, I gladly let my hot blood nourish China&#39;—to Dong Cunrui&#39;s cry from the depths of his heart, &#39;For a new China, advance!&#39;; from Du Fuguo&#39;s life-and-death choice, &#39;You fall back, let me handle it,&#39; to Chen Xiangrong&#39;s declaration of youth, &#39;Pure and clear love, only for China&#39;—they &#39;forgot home for the nation, forgot self for the public,&#39; manifesting the loyal faith and patriotic sentiment of Communist Party members and revolutionary soldiers.</p>
+    
+      
+    
+      <p>&#39;The Party and the country have already given me more than enough—what more could I possibly ask for?&#39; These are words that Zhang Fuqing, recipient of the &#39;Medal of the Republic&#39; (共和国勋章), often had on his lips. Zhang Fuqing, who charged into battle and repeatedly distinguished himself in combat, could have obtained better treatment on the strength of his military merits, but he instead actively chose to conceal his achievements and reputation and went to the most difficult places to take up work, solely in order to better build the motherland. Soldiers are also ordinary people of flesh and blood who hope for family reunion and a happy life. Yet, as soldiers bearing the sacred mission of defending home and country, when the nation needs us to step forward, we must make our choice without hesitation and be willing to sacrifice and dedicate ourselves. If one calculates personal gains and losses at every turn—speaking of national righteousness and duty on one&#39;s lips while in reality pursuing private interests and using power for personal gain—one will not only ruin one&#39;s own future but will also bring harm to the cause of the Party and the military.</p>
+    
+      
+    
+      <p>&#39;If one calculates for petty gain, why bother donning the soldier&#39;s coat?&#39; Having chosen the profession of soldier, one must cast aside selfish and distracting thoughts, merge the &#39;small self&#39; into &#39;the great affairs of the nation&#39; (国之大者), constantly harbor the heart to serve the country and constantly sharpen the resolve to serve the country, and with a sincere and devoted heart forge a steel Great Wall and guard the mountains and rivers in peace. This requires the broad ranks of officers and soldiers to persistently arm their minds with the Party&#39;s innovative theories, to constantly draw spiritual nourishment from China&#39;s outstanding traditional culture, to carry forward spiritual strength from the red gene, to continuously raise their ideological consciousness, to correct deviations in thought and behavior, and to cultivate the realm and sentiment of &#39;not pausing for private concerns.&#39; One must constantly maintain the clarity of &#39;examining oneself as though never measuring up&#39; (检身若不及), constantly practice the discipline of &#39;daily examining oneself on three points&#39; (吾日三省吾身), consciously measure oneself against predecessors, martyrs, and advanced models to identify gaps and shortcomings, conduct a &#39;physical examination&#39; against the Party constitution, Party regulations, and Party discipline, look for what gaps still exist in oneself, whether personal interests have been placed above all else, whether selfish and distracting thoughts are at work, and promptly identify and correct erroneous ideological tendencies. One must put the spirit of self-sacrifice for the nation into concrete action in the practice of refining martial skills and strengthening capabilities (精武强能): in ordinary times, stand firm at one&#39;s post, fulfill one&#39;s duties, and dedicate oneself selflessly; at critical junctures, be willing to step forward and give one&#39;s life without hesitation; and with absolute loyalty and selfless, fearless responsibility and commitment, let youth shine and write the glory of the age on the great journey of strengthening and revitalizing the military (强军兴军).</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">“名编壮士籍，不得中顾私” ■向贤彪 三国时期，曹植在《白马篇》中写道：“名编壮士籍，不得中顾私。”凝练的诗句，道出古代壮士舍身为国、摒弃私念的崇高境界，不仅是对舍身报国精神的礼赞，也以其鲜明价值导向在中华优秀传统文化中熠熠生辉。 对于军人来说，“名编壮士籍”，投身军旅、肩负使命，就意味着必须以国家利益为先，将个人私念让位于身后。所不能顾的“私”，不仅是个人的安逸生活，离乡戍边、直面艰苦，也有花前月下、血脉亲情，离妻别子、千里相思。这种“忘私”并非不念人之常情，而是对军人职责担当的高度认同和自觉践行。正是因为摒弃了“顾私”的“小我”之念，所以才能激发出“捐躯赴国难，视死忽如归”的报国之志、爱国之情。 在中华民族的编年史上，为了国家的统一、人民的利益，无数将士舍家为国、舍生忘死、摒弃私念，谱写了一曲曲抵御外侮、抗敌救国的英雄篇章。 西汉名将霍去病率军取得漠北大捷后，汉武帝为表彰他抗击匈奴的战功，给他修建了府邸，他却婉言谢绝：“匈奴未灭，无以家为也。”在霍去病看来，国家边患尚未平息，个人的家庭、财富、享乐皆为次要，唯有消除边患、保家卫国才是首要使命。正是胸怀这样的大志向和人生格局，霍去病六征匈奴，封狼居胥，其舍家为国的精神穿越时空，至今仍给我们以心灵的震撼。 明代抗倭名将戚继光在《韬钤深处》中写道：“封侯非我意，但愿海波平。”此时他已战功赫赫，却始终将“平息倭患、守护海疆”作为人生的追求，而非个人功名利禄。戚继光胸怀大志，心忧天下，一生南征北战，创建戚家军，修筑防御工事、革新军事装备，“繁霜尽是心头血，洒向千峰秋叶丹”。他把功名利禄看得很轻，把家国大义看得很重，这种“受命忘家，临敌忘身”的崇高境界，令人肃然起敬。 公而忘私、以身许国，不仅是绵延千载的精神传承，也是红色基因的鲜明底色。在我党我军的历史上，舍家为国、舍生忘死的英模人物更是层出不穷。从赵一曼“未惜头颅新故国，甘将热血沃中华”的慷慨赴义，到董存瑞“为了新中国，前进”的心底呐喊；从杜富国“你退后，让我来”的生死抉择，到陈祥榕“清澈的爱，只为中国”的青春表白……他们“国而忘家、公而忘私”，彰显出共产党人和革命军人的忠诚信仰和爱国情怀。 “党和国家给我的已经足够多了，我还能再奢求什么？”这是“共和国勋章”获得者张富清时常挂在嘴边的一句话。在战场上冲锋陷阵、屡立战功的张富清，本可以凭借军功得到更好的待遇，但他却主动选择深藏功与名，到最困难的地方去参加工作，只为更好地建设祖国。军人也是有血有肉的普通人，希望家庭团聚、生活幸福。然而，身为军人，肩负着保家卫国的神圣使命，当国家需要我们挺身而出时，必须义无反顾作出选择，勇于牺牲奉献。倘若处处计较个人利益得失，嘴上说着家国大义、职责使命，实际却追逐私利、以权谋私，不仅会自毁前程，更会给党和军队的事业带来危害。 “若以小利计，何必披征衣。”既然选择了军人这一职业，就要摒弃私心杂念，把“小我”融入“国之大者”，常怀报国之心、常砺报国之志，以赤诚之心铸就钢铁长城、守护山河无恙。这就需要广大官兵坚持不懈用党的创新理论武装头脑，常从中华优秀传统文化中汲取精神滋养，从红色基因中赓续精神力量，不断提高思想觉悟，校正思想行为偏差，涵养“不得中顾私”的境界与情怀。常怀“检身若不及”的清醒，常修“吾日三省吾身”的功课，自觉对照先辈先烈、先进典型查找差距不足，对照党章党规党纪进行“体检”，找一找自身还存在哪些差距，有没有个人利益至上、有没有私心杂念作祟，及时发现并纠正错误思想苗头。要把舍身为国的精神落实到精武强能的实际行动中，平时立足岗位恪尽职守、忘我奉献，危急关头勇于挺身而出、舍生忘死，以绝对忠诚和无私无畏的责任担当，在强军兴军的伟大征程中绽放青春光彩、书写时代荣光。</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.60</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-08</span>
+    
   </div>
 
 </div>
-
-
-<div class="section-label">Summary</div>
-<div class="summary-block">
-  <div class="summary-text">A PLA political education article published under the byline of Xiang Xianbiao invokes classical Chinese poetry, Han and Ming dynasty military figures, and Party-era martyrs to argue that PLA officers and soldiers must subordinate personal interests to national and Party missions, explicitly linking this norm to combat readiness and ideological discipline. The piece is a standard instance of the PLA&#39;s ongoing political work (政治工作) campaign to reinforce loyalty, self-sacrifice, and resistance to corruption through traditional culture and &#39;red gene&#39; framing—a genre that has intensified since Xi Jinping&#39;s 2016 Gutian conference directives on military ideological rectification. It contains no new operational, organizational, or doctrinal information, but is useful as a data point on the continued emphasis within PLA political work on correcting &#39;erroneous ideological tendencies&#39; and private self-interest among the force.</div>
-  
-</div>
-
-
-
-<div class="section-label">Translation</div>
-<div class="translation-body">
-  
-    <p>&#39;Enrolled in the Register of Warriors, One Must Not Pause for Private Concerns&#39;</p>
-  
-    
-  
-    <p>■ Xiang Xianbiao</p>
-  
-    
-  
-    <p>During the Three Kingdoms period, Cao Zhi wrote in his poem &#39;Ballad of the White Horse&#39; (白马篇): &#39;Enrolled in the register of warriors, one must not pause for private concerns.&#39; These refined verses articulate the lofty realm of the ancient warrior who sacrifices himself for the nation and casts aside selfish thoughts. They are not only a tribute to the spirit of self-sacrifice in service of the country, but also shine brilliantly within China&#39;s outstanding traditional culture for the clear values they embody.</p>
-  
-    
-  
-    <p>For a soldier, to be &#39;enrolled in the register of warriors&#39;—to join the military and shoulder its mission—means that national interests must come first, and personal selfish thoughts must yield to what lies behind. The &#39;private concerns&#39; one must not attend to include not only personal comfort, but also leaving one&#39;s hometown to garrison the frontier and face hardship, as well as moonlit evenings with loved ones, the bonds of blood and kinship, and the longing across a thousand li for wife and children left behind. This &#39;forgetting of self&#39; is not an absence of ordinary human feeling, but rather a profound identification with and conscious fulfillment of the soldier&#39;s duty and responsibility. It is precisely because the &#39;small self&#39; (小我) of &#39;private concerns&#39; has been cast aside that one can ignite the patriotic resolve and love of country expressed in &#39;giving one&#39;s life to meet the nation&#39;s peril, regarding death as a return home.&#39;</p>
-  
-    
-  
-    <p>Throughout the annals of the Chinese nation, for the sake of national unity and the interests of the people, countless officers and soldiers have forsaken home for country, given their lives without hesitation, and cast aside selfish thoughts, composing heroic chapters of resistance against foreign aggression and salvation of the nation.</p>
-  
-    
-  
-    <p>After the Western Han dynasty&#39;s celebrated general Huo Qubing led his forces to a great victory in the Mobei campaign, Emperor Wu of Han, wishing to commend him for his military achievements against the Xiongnu, had a mansion built for him. Huo Qubing politely declined, saying: &#39;The Xiongnu have not yet been destroyed—what use have I for a home?&#39; In Huo Qubing&#39;s view, so long as the threat on the nation&#39;s frontiers had not been eliminated, personal family, wealth, and pleasure were all secondary; only eliminating the frontier threat and defending the homeland was the primary mission. It was precisely because he harbored such great ambition and such a perspective on life that Huo Qubing launched six campaigns against the Xiongnu and performed the Feng Shan sacrifice at Mount Langju Xu. His spirit of forsaking home for country has transcended time and space and continues to this day to strike a powerful chord in our hearts.</p>
-  
-    
-  
-    <p>Qi Jiguang, the celebrated Ming dynasty general who resisted the Wokou pirates, wrote in &#39;Deep Within the Military Tent&#39; (韬钤深处): &#39;Enfeoffment as a marquis is not my wish; I only hope the seas will be at peace.&#39; By this time he had already accumulated great military merit, yet he always held &#39;pacifying the Wokou threat and guarding the maritime frontier&#39; as his life&#39;s pursuit, rather than personal fame and fortune. Qi Jiguang harbored great ambitions and kept the world in his heart. Throughout his life he fought campaigns in the south and the north, established the Qi Family Army (戚家军), constructed defensive fortifications, and reformed military equipment. &#39;The heavy frost is all the blood from my heart, scattered across a thousand peaks to redden the autumn leaves.&#39; He regarded fame and fortune as of little account and the righteousness of family and nation as of great weight. This lofty realm of &#39;forgetting home upon receiving orders, forgetting self when facing the enemy&#39; commands deep respect.</p>
-  
-    
-  
-    <p>Devoting oneself to the public and forgetting private interests, pledging one&#39;s life to the nation—this is not only a spiritual inheritance extending across a thousand years, but also the vivid foundation of the red gene (红色基因). Throughout the history of our Party and our military, heroic and model figures who forsook home for country and gave their lives without hesitation have emerged in an endless stream. From Zhao Yiman&#39;s courageous march to righteousness—&#39;I did not begrudge my head for the new motherland, I gladly let my hot blood nourish China&#39;—to Dong Cunrui&#39;s cry from the depths of his heart, &#39;For a new China, advance!&#39;; from Du Fuguo&#39;s life-and-death choice, &#39;You fall back, let me handle it,&#39; to Chen Xiangrong&#39;s declaration of youth, &#39;Pure and clear love, only for China&#39;—they &#39;forgot home for the nation, forgot self for the public,&#39; manifesting the loyal faith and patriotic sentiment of Communist Party members and revolutionary soldiers.</p>
-  
-    
-  
-    <p>&#39;The Party and the country have already given me more than enough—what more could I possibly ask for?&#39; These are words that Zhang Fuqing, recipient of the &#39;Medal of the Republic&#39; (共和国勋章), often had on his lips. Zhang Fuqing, who charged into battle and repeatedly distinguished himself in combat, could have obtained better treatment on the strength of his military merits, but he instead actively chose to conceal his achievements and reputation and went to the most difficult places to take up work, solely in order to better build the motherland. Soldiers are also ordinary people of flesh and blood who hope for family reunion and a happy life. Yet, as soldiers bearing the sacred mission of defending home and country, when the nation needs us to step forward, we must make our choice without hesitation and be willing to sacrifice and dedicate ourselves. If one calculates personal gains and losses at every turn—speaking of national righteousness and duty on one&#39;s lips while in reality pursuing private interests and using power for personal gain—one will not only ruin one&#39;s own future but will also bring harm to the cause of the Party and the military.</p>
-  
-    
-  
-    <p>&#39;If one calculates for petty gain, why bother donning the soldier&#39;s coat?&#39; Having chosen the profession of soldier, one must cast aside selfish and distracting thoughts, merge the &#39;small self&#39; into &#39;the great affairs of the nation&#39; (国之大者), constantly harbor the heart to serve the country and constantly sharpen the resolve to serve the country, and with a sincere and devoted heart forge a steel Great Wall and guard the mountains and rivers in peace. This requires the broad ranks of officers and soldiers to persistently arm their minds with the Party&#39;s innovative theories, to constantly draw spiritual nourishment from China&#39;s outstanding traditional culture, to carry forward spiritual strength from the red gene, to continuously raise their ideological consciousness, to correct deviations in thought and behavior, and to cultivate the realm and sentiment of &#39;not pausing for private concerns.&#39; One must constantly maintain the clarity of &#39;examining oneself as though never measuring up&#39; (检身若不及), constantly practice the discipline of &#39;daily examining oneself on three points&#39; (吾日三省吾身), consciously measure oneself against predecessors, martyrs, and advanced models to identify gaps and shortcomings, conduct a &#39;physical examination&#39; against the Party constitution, Party regulations, and Party discipline, look for what gaps still exist in oneself, whether personal interests have been placed above all else, whether selfish and distracting thoughts are at work, and promptly identify and correct erroneous ideological tendencies. One must put the spirit of self-sacrifice for the nation into concrete action in the practice of refining martial skills and strengthening capabilities (精武强能): in ordinary times, stand firm at one&#39;s post, fulfill one&#39;s duties, and dedicate oneself selflessly; at critical junctures, be willing to step forward and give one&#39;s life without hesitation; and with absolute loyalty and selfless, fearless responsibility and commitment, let youth shine and write the glory of the age on the great journey of strengthening and revitalizing the military (强军兴军).</p>
-  
-</div>
-
-
-
-<details>
-  <summary>Original Chinese</summary>
-  <div class="original-body">“名编壮士籍，不得中顾私” ■向贤彪 三国时期，曹植在《白马篇》中写道：“名编壮士籍，不得中顾私。”凝练的诗句，道出古代壮士舍身为国、摒弃私念的崇高境界，不仅是对舍身报国精神的礼赞，也以其鲜明价值导向在中华优秀传统文化中熠熠生辉。 对于军人来说，“名编壮士籍”，投身军旅、肩负使命，就意味着必须以国家利益为先，将个人私念让位于身后。所不能顾的“私”，不仅是个人的安逸生活，离乡戍边、直面艰苦，也有花前月下、血脉亲情，离妻别子、千里相思。这种“忘私”并非不念人之常情，而是对军人职责担当的高度认同和自觉践行。正是因为摒弃了“顾私”的“小我”之念，所以才能激发出“捐躯赴国难，视死忽如归”的报国之志、爱国之情。 在中华民族的编年史上，为了国家的统一、人民的利益，无数将士舍家为国、舍生忘死、摒弃私念，谱写了一曲曲抵御外侮、抗敌救国的英雄篇章。 西汉名将霍去病率军取得漠北大捷后，汉武帝为表彰他抗击匈奴的战功，给他修建了府邸，他却婉言谢绝：“匈奴未灭，无以家为也。”在霍去病看来，国家边患尚未平息，个人的家庭、财富、享乐皆为次要，唯有消除边患、保家卫国才是首要使命。正是胸怀这样的大志向和人生格局，霍去病六征匈奴，封狼居胥，其舍家为国的精神穿越时空，至今仍给我们以心灵的震撼。 明代抗倭名将戚继光在《韬钤深处》中写道：“封侯非我意，但愿海波平。”此时他已战功赫赫，却始终将“平息倭患、守护海疆”作为人生的追求，而非个人功名利禄。戚继光胸怀大志，心忧天下，一生南征北战，创建戚家军，修筑防御工事、革新军事装备，“繁霜尽是心头血，洒向千峰秋叶丹”。他把功名利禄看得很轻，把家国大义看得很重，这种“受命忘家，临敌忘身”的崇高境界，令人肃然起敬。 公而忘私、以身许国，不仅是绵延千载的精神传承，也是红色基因的鲜明底色。在我党我军的历史上，舍家为国、舍生忘死的英模人物更是层出不穷。从赵一曼“未惜头颅新故国，甘将热血沃中华”的慷慨赴义，到董存瑞“为了新中国，前进”的心底呐喊；从杜富国“你退后，让我来”的生死抉择，到陈祥榕“清澈的爱，只为中国”的青春表白……他们“国而忘家、公而忘私”，彰显出共产党人和革命军人的忠诚信仰和爱国情怀。 “党和国家给我的已经足够多了，我还能再奢求什么？”这是“共和国勋章”获得者张富清时常挂在嘴边的一句话。在战场上冲锋陷阵、屡立战功的张富清，本可以凭借军功得到更好的待遇，但他却主动选择深藏功与名，到最困难的地方去参加工作，只为更好地建设祖国。军人也是有血有肉的普通人，希望家庭团聚、生活幸福。然而，身为军人，肩负着保家卫国的神圣使命，当国家需要我们挺身而出时，必须义无反顾作出选择，勇于牺牲奉献。倘若处处计较个人利益得失，嘴上说着家国大义、职责使命，实际却追逐私利、以权谋私，不仅会自毁前程，更会给党和军队的事业带来危害。 “若以小利计，何必披征衣。”既然选择了军人这一职业，就要摒弃私心杂念，把“小我”融入“国之大者”，常怀报国之心、常砺报国之志，以赤诚之心铸就钢铁长城、守护山河无恙。这就需要广大官兵坚持不懈用党的创新理论武装头脑，常从中华优秀传统文化中汲取精神滋养，从红色基因中赓续精神力量，不断提高思想觉悟，校正思想行为偏差，涵养“不得中顾私”的境界与情怀。常怀“检身若不及”的清醒，常修“吾日三省吾身”的功课，自觉对照先辈先烈、先进典型查找差距不足，对照党章党规党纪进行“体检”，找一找自身还存在哪些差距，有没有个人利益至上、有没有私心杂念作祟，及时发现并纠正错误思想苗头。要把舍身为国的精神落实到精武强能的实际行动中，平时立足岗位恪尽职守、忘我奉献，危急关头勇于挺身而出、舍生忘死，以绝对忠诚和无私无畏的责任担当，在强军兴军的伟大征程中绽放青春光彩、书写时代荣光。</div>
-</details>
-
-
-<div class="provenance">
-  <span>Relevance score: 0.60</span>
-  <span>Model: claude-sonnet-4-6</span>
-  <span>Prompt: v1</span>
-  
-    <span>Analyzed: 2026-05-08</span>
-  
-</div>
-
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    Open-source intelligence monitoring of Chinese military and security developments.
-    Source material from Chinese state media; all analysis AI-generated.
-    Not for redistribution without attribution.
-    Generated 2026-05-08 17:06 UTC.
-  </div>
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
 </footer>
 
 

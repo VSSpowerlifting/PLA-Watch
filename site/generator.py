@@ -123,9 +123,11 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
     data_dir.mkdir(exist_ok=True)
 
     # Copy static assets
-    favicon_src = Path(__file__).parent / "favicon.svg"
-    if favicon_src.exists():
-        shutil.copy2(favicon_src, output_dir / "favicon.svg")
+    _site = Path(__file__).parent
+    for asset in ("favicon.svg", "logo-icon.png", "logo-wordmark.png"):
+        src = _site / asset
+        if src.exists():
+            shutil.copy2(src, output_dir / asset)
 
     env = _make_env()
     generated_at = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")

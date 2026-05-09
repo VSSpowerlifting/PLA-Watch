@@ -7,12 +7,12 @@
   <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
 
   <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:site_name"   content="China Mil Watch">
-  <meta property="og:url"         content="https://chinamilwatch.org">
-  <meta property="og:title"       content="China Mil Watch">
-  <meta property="og:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
-  <meta property="og:image"       content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
@@ -22,43 +22,38 @@
   <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
   <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
 
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    /* ── Reset & base ──────────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --bg:          #0d0d0d;
-      --surface:     #141414;
-      --border:      #252525;
-      --border-sub:  #1d1d1d;
-      --text:        #e2e0db;
-      --text-sec:    #918f8a;
-      --text-muted:  #555350;
-      --accent:      #c8922a;
-      --accent-dim:  rgba(200, 146, 42, 0.12);
-      --link:        #8ab0cc;
-      --link-hover:  #b0ccdf;
-      --tag-bg:      #1e1e1e;
-      --tag-text:    #7a7875;
-
-      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
-      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      --max-width:   860px;
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
     }
 
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-weight: 300;
-      font-size: 0.9375rem;
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
@@ -66,293 +61,223 @@
       flex-direction: column;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-    a:hover { color: var(--link-hover); text-decoration: underline; }
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* ── Navigation ─────────────────────────────────────────────────────────── */
-    nav {
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
-    }
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      height: 52px;
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
-    .nav-brand {
-      font-family: var(--font-sans);
-      font-weight: 500;
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text);
       text-decoration: none;
+      transition: color 0.15s;
     }
-    .nav-brand:hover { color: var(--text); text-decoration: none; }
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-    }
-    .nav-links a {
-      font-size: 0.8125rem;
-      color: var(--text-sec);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--text); }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
       flex: 1;
-      max-width: var(--max-width);
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
       padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* ── Page header ─────────────────────────────────────────────────────────── */
-    .page-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
     }
-    .page-header h1 {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
     }
-    .page-header .meta {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-    .page-header .meta span + span::before {
-      content: " · ";
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
     }
 
-    /* ── Article card ────────────────────────────────────────────────────────── */
-    .article-card {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-sub);
-    }
-    .article-card:last-child { border-bottom: none; }
-
-    .article-card.significant {
-      background: var(--accent-dim);
-      border-radius: 3px;
-      padding: 1.5rem;
-      margin: 0 -1.5rem;
-      border-bottom: none;
-      margin-bottom: 1px;
-    }
-    .article-card.significant + .article-card {
-      border-top: 1px solid var(--border-sub);
-    }
-
-    .sig-flag {
-      font-family: var(--font-sans);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .sig-flag::before { content: "★  "; }
-
-    .article-title {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 1.25rem;
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-    }
-    .article-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
-
-    .article-title-zh {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem;
+      gap: 0.35rem;
       margin-bottom: 0.75rem;
     }
     .tag {
+      display: inline-block;
       font-size: 0.6875rem;
-      letter-spacing: 0.04em;
+      font-weight: 500;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid var(--border);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
       border-radius: 2px;
-      padding: 0.15rem 0.45rem;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
     }
-
-    .article-summary {
-      font-size: 0.9375rem;
-      line-height: 1.65;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .sig-reason {
-      font-size: 0.875rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--accent);
-    }
-
-    .article-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      align-items: center;
-    }
-    .article-footer a { color: var(--text-muted); }
-    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
-    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
-
-    /* ── Footer ──────────────────────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    footer a { color: var(--text-muted); }
-    footer a:hover { color: var(--link-hover); }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
     .empty-state {
-      color: var(--text-muted);
+      color: var(--color-text-muted);
       font-style: italic;
       padding: 2rem 0;
     }
 
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
     
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .back-link {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
   display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
   margin-bottom: 1.75rem;
 }
-.back-link:hover { color: var(--link-hover); text-decoration: none; }
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
 
-.article-page-header {
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 }
+
 .article-page-title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 1.75rem;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
   line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  margin-bottom: 0.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
 }
+
 .article-page-title-zh {
-  font-size: 0.9375rem;
-  color: var(--text-muted);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
   font-style: italic;
   margin-bottom: 1rem;
 }
+
 .article-page-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem 1rem;
   font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  align-items: center;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
 }
-.article-page-meta a { color: var(--text-muted); }
-.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
-.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
 
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
 .section-label {
   font-size: 0.6875rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 0.75rem;
 }
 
+/* ── Summary block ───────────────────────────────────────────────── */
 .summary-block {
-  background: var(--surface);
-  border-left: 3px solid var(--border);
-  border-radius: 0 3px 3px 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
   padding: 1.1rem 1.25rem;
   margin-bottom: 2rem;
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
 }
 .summary-block.significant {
-  border-left-color: var(--accent);
+  border-left-color: var(--color-brand);
 }
-.summary-text { color: var(--text); }
-.sig-block {
+.sig-reasoning {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
-  color: var(--accent);
-}
-.sig-block::before {
-  content: "★  ";
-  font-size: 0.75rem;
+  color: var(--color-brand);
+  line-height: 1.6;
 }
 
+/* ── Translation body ────────────────────────────────────────────── */
 .translation-body {
   font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--text);
+  line-height: 1.8;
+  color: var(--color-text-primary);
   margin-bottom: 2rem;
 }
-.translation-body p {
-  margin-bottom: 0.9rem;
-}
+.translation-body p { margin-bottom: 0.9rem; }
 .translation-body p:last-child { margin-bottom: 0; }
 
+/* ── Collapsible original ────────────────────────────────────────── */
 details {
   margin-bottom: 2rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
 details summary {
   font-size: 0.8125rem;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   padding: 0.65rem 1rem;
   cursor: pointer;
   user-select: none;
@@ -369,143 +294,146 @@ details summary::before {
   display: inline-block;
 }
 details[open] summary::before { transform: rotate(90deg); }
-details summary:hover { color: var(--text); }
+details summary:hover { color: var(--color-text-primary); }
 .original-body {
   padding: 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.9375rem;
   line-height: 1.85;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
+/* ── Provenance ──────────────────────────────────────────────────── */
 .provenance {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   line-height: 1.8;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-sub);
+  border-top: 1px solid var(--color-border);
 }
 .provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
 
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-brand">PLA Watch</a>
-    <div class="nav-links">
-      <a href="../index.html" >Daily Brief</a>
-      <a href="../archive.html" >Archive</a>
-    </div>
-  </div>
-</nav>
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
 
 <main>
   
-<a href="../index.html" class="back-link">← Daily Brief</a>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
 
-<div class="article-page-header">
+  <div class="article-header">
 
-  
+    
+      <div class="tags">
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
 
-  <h1 class="article-page-title">
-    Sing the Song of Youth on the March Toward a Strong Military
-  </h1>
+    <h1 class="article-page-title">
+      Sing the Song of Youth on the March Toward a Strong Military
+    </h1>
 
-  
-    <div class="article-page-title-zh">在强军征程上唱响青春之歌</div>
-  
+    
+      <div class="article-page-title-zh">在强军征程上唱响青春之歌</div>
+    
 
-  
-    <div class="tags">
-      
-        <span class="tag">Political Work</span>
-      
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>8 May 2026</span>
     </div>
+
+    <a href="http://www.81.cn/yw_208727/16459255.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A PLA political education article published around May Fourth Youth Day calls on young officers and soldiers to internalize Xi Jinping&#39;s recent reply to youth award recipients, frame personal ambition within national military strengthening, and prioritize combat readiness and warfighting skill development. The piece is routine ideological mobilization content—drawing on standard CCP historical references to the Long March and Yan&#39;an—and contains no new operational, organizational, or doctrinal information. It is useful only as a data point on the continuity of PLA political work messaging linking Xi&#39;s personal directives to unit-level ideological conditioning.</div>
+    
+  </div>
   
 
-  <div class="article-page-meta">
-    <span>PLA Daily (解放军报)</span>
-    <span class="sep"></span>
-    <span>8 May 2026</span>
-    <span class="sep"></span>
-    <a href="http://www.81.cn/yw_208727/16459255.html" target="_blank" rel="noopener">Original source ↗</a>
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>Sing the Song of Youth on the March Toward a Strong Military</p>
+    
+      <p>■ Zhang Yuqing</p>
+    
+      
+    
+      <p>&#34;I hope you will cherish lofty ideals, devote yourselves to hard struggle, and inspire the broad youth to integrate personal aspirations into the overall situation of national development, continuously create new achievements at your respective posts, and contribute the strength of youth on the new journey.&#34; On the occasion of the May Fourth Youth Day, Chairman Xi replied to representatives of recipients of the China Youth May Fourth Medal and the New Era Youth Vanguard Award, extending festival greetings to young people of all ethnic groups across the country and expressing earnest hopes. This is both an exhortation to youth and a call to struggle.</p>
+    
+      
+    
+      <p>In the fiery month of May, the season of youth, the broad young officers and soldiers must earnestly study and implement the spirit of Chairman Xi&#39;s reply, vigorously carry forward the May Fourth spirit, firm up their ideals, bravely shoulder their mission, not squander their prime years, and strive without cease, singing the song of youth on the march toward a strong military.</p>
+    
+      
+    
+      <p>&#34;The future of the nation, the destiny of the people, and the happiness of the people are responsibilities that contemporary Chinese youth must and will bear.&#34; For young officers and soldiers, the military camp is a stage for pouring out their youth and pursuing their dreams—a place where they are tempered and where they grow their wings; a place where they take root and grow, and where they soar. Building a strong nation depends on the broad youth stepping forward to shoulder the burden; the cause of military strengthening calls on young officers and soldiers to carry the baton and run. But one must also recognize that the road ahead will not always be smooth. Only by maintaining the sharpness of &#34;a newborn calf unafraid of tigers,&#34; summoning the drive of &#34;the more dangerous, the more forward,&#34; weathering storms, broadening experience, building talent, and strengthening resolve—by setting great ambitions, becoming strivers, seeking genuine knowledge, and honing genuine skills—can young officers and soldiers experience the true meaning of happiness through struggle and realize the value of youth through hard effort.</p>
+    
+      
+    
+      <p>The security of home and nation is the responsibility on the shoulders of youth. Youth is the era&#39;s most sensitive barometer; the responsibilities of the era are entrusted to youth, and the glory of the era belongs to youth. Throughout history, every time the era has moved forward, the figures of youth and the strength of youth have been present. When the Long March set out, the average age of officers and soldiers in Red Army combat units was around 20, and the average age of division- and regiment-level cadres was under 25; during the War of Resistance Against Japan, large numbers of young people rushed from across the country to Yan&#39;an to join the flood tide of resistance… They placed faith in their hearts and responsibility on their shoulders, feared no sacrifice, and gave selflessly, setting an example of youth with lofty ideals and a soaring spirit. Today, our living conditions have improved, but young people must not change their original aspiration or forget their mission. They must courageously take up the burden of building a strong nation and a strong military, and write the era&#39;s answer to the call of unwavering commitment to military strengthening.</p>
+    
+      
+    
+      <p>To sing the song of youth, struggle is the most beautiful melody. Marx once described with deep feeling that the radiance of youth, the key to ideals, the meaning of life, and even the survival and development of humanity are all contained in two words: struggle. Comrade Mao Zedong once said that China&#39;s youth movement has a fine revolutionary tradition, and that tradition is &#34;struggle forever.&#34; On the journey toward realizing the Chinese Dream and the dream of a strong military, the broad young officers and soldiers are &#34;born at the right time, yet bear heavy responsibilities.&#34; At border outposts where oxygen is thin, on isolated islands far from the mainland, at ordinary and unheralded combat positions, batch after batch of young officers and soldiers have shown no fear of hardship or difficulty, displaying the fearless bearing of youth and demonstrating the commitment of &#34;military strengthening depends on me.&#34; Struggle to strengthen the military—the mission calls. Only by setting their sights high while keeping their feet on the ground, daring to innovate and daring to take responsibility, can the broad young officers and soldiers display the achievements of youth, manifest the spirit of youth, contribute the strength of youth, and let their youthful dreams bloom in the cause of military strengthening.</p>
+    
+      
+    
+      <p>The military exists to fight wars; the highest dedication of a soldier is to win, and the magnificent verse of youth is victory in battle. To struggle for the cause of military strengthening, the emphasis must be on mastering military skills and strengthening capabilities, forging the hard competence to fight and win battles. This demands that the broad young officers and soldiers reinforce their consciousness as a combat force, establish the standard of combat effectiveness, play the role of combatants well, and strive to embody their love of the Party, their patriotism, and their commitment to military strengthening in the concrete actions of training for war and honing military skills—translating these into the hard competence to dare to fight and to defeat the enemy—singing with concrete action the song of youth in military strengthening and victory in battle.</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">在强军征程上唱响青春之歌 ■张雨晴 “希望你们胸怀远大理想，矢志拼搏奋斗，带动广大青年把个人追求融入国家发展大局，立足各自岗位不断创造新业绩，在新征程上贡献青春力量。”在五四青年节到来之际，习主席给中国青年五四奖章暨新时代青年先锋奖获奖者代表回信，向全国各族青年致以节日祝贺并提出殷切期望。这是对青年的嘱托，也是对奋斗的号召。 火红的五月，青春的季节。广大青年官兵要认真学习贯彻习主席回信精神，大力弘扬五四精神，坚定理想、勇担使命，不负韶华、不懈奋斗，在强军征程上唱响青春之歌。 “国家的前途，民族的命运，人民的幸福，是当代中国青年必须和必将承担的重任。”对青年官兵来说，军营是挥洒青春、追逐梦想的舞台，青年官兵在这里经受磨砺，也在这里丰满羽翼；在这里扎根成长，也在这里展翅翱翔。强国建设要靠广大青年挺膺担当，强军事业呼唤青年官兵接力奔跑。但也要认识到，前进的道路不会一路坦途，青年官兵只有保持“初生牛犊不怕虎”的锐气，鼓起“越是艰险越向前”的拼劲，经风雨、见世面、长才干、壮筋骨，立鸿鹄志、做奋斗者，求真学问、练真本领，才能在奋斗中体验幸福的真谛，在拼搏中实现青春的价值。 家国安危事，青年肩上责。青年是时代最灵敏的晴雨表，时代的责任赋予青年，时代的光荣属于青年。历史上，时代每一次向前，都有青年的身影、都有青春的力量。长征出发时，红军作战部队的官兵平均年龄在20岁左右，师团级干部平均年龄不到25岁；抗战时期，大批青年从全国各地奔赴延安，加入抗战洪流……他们把信仰放在心中，把责任扛在肩上，不怕牺牲、无私奉献，立起了青年人胸怀理想、昂扬向上的榜样。今天，我们的生活条件好了，但青年人初心不能改、使命不能忘，必须勇敢挑起强国强军的担子，书写矢志强军的时代答卷。 唱响青春之歌，奋斗是最美的旋律。马克思曾深情形容，青春的光辉、理想的钥匙、生命的意义，乃至人类的生存发展，全部包含在两个字中——奋斗。毛泽东同志曾说，中国的青年运动有很好的革命传统，这个传统就是“永久奋斗”。在实现中国梦强军梦的征途上，广大青年官兵“生逢其时，也重任在肩”，在氧气稀薄的边防哨所，在远离大陆的海疆孤岛，在默默无闻的普通战位，一批批青年官兵不怕苦、不畏难，展现出青春无畏的风采，彰显出强军有我的担当。奋斗强军，使命召唤。广大青年官兵只有志存高远、脚踏实地，勇于创新、敢于担当，才能展现青春作为、彰显青春风采、贡献青春力量，在强军事业中绽放青春梦想。 军队是要打仗的，军人的最高奉献是打赢，青春的壮美诗行是胜战。为强军事业奋斗，重在精武强能，锤炼能打仗、打胜仗的过硬本领。这要求广大青年官兵强化战斗队意识、树立战斗力标准、当好战斗员角色，努力把爱党之心、报国之情和强军之志，体现在练兵备战、精武强能的实际行动中，落实到敢打必胜、克敌制胜的过硬本领上，用实际行动奏响强军胜战的青春之歌。</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.70</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-08</span>
+    
   </div>
 
 </div>
-
-
-<div class="section-label">Summary</div>
-<div class="summary-block">
-  <div class="summary-text">A PLA political education article published around May Fourth Youth Day calls on young officers and soldiers to internalize Xi Jinping&#39;s recent reply to youth award recipients, frame personal ambition within national military strengthening, and prioritize combat readiness and warfighting skill development. The piece is routine ideological mobilization content—drawing on standard CCP historical references to the Long March and Yan&#39;an—and contains no new operational, organizational, or doctrinal information. It is useful only as a data point on the continuity of PLA political work messaging linking Xi&#39;s personal directives to unit-level ideological conditioning.</div>
-  
-</div>
-
-
-
-<div class="section-label">Translation</div>
-<div class="translation-body">
-  
-    <p>Sing the Song of Youth on the March Toward a Strong Military</p>
-  
-    <p>■ Zhang Yuqing</p>
-  
-    
-  
-    <p>&#34;I hope you will cherish lofty ideals, devote yourselves to hard struggle, and inspire the broad youth to integrate personal aspirations into the overall situation of national development, continuously create new achievements at your respective posts, and contribute the strength of youth on the new journey.&#34; On the occasion of the May Fourth Youth Day, Chairman Xi replied to representatives of recipients of the China Youth May Fourth Medal and the New Era Youth Vanguard Award, extending festival greetings to young people of all ethnic groups across the country and expressing earnest hopes. This is both an exhortation to youth and a call to struggle.</p>
-  
-    
-  
-    <p>In the fiery month of May, the season of youth, the broad young officers and soldiers must earnestly study and implement the spirit of Chairman Xi&#39;s reply, vigorously carry forward the May Fourth spirit, firm up their ideals, bravely shoulder their mission, not squander their prime years, and strive without cease, singing the song of youth on the march toward a strong military.</p>
-  
-    
-  
-    <p>&#34;The future of the nation, the destiny of the people, and the happiness of the people are responsibilities that contemporary Chinese youth must and will bear.&#34; For young officers and soldiers, the military camp is a stage for pouring out their youth and pursuing their dreams—a place where they are tempered and where they grow their wings; a place where they take root and grow, and where they soar. Building a strong nation depends on the broad youth stepping forward to shoulder the burden; the cause of military strengthening calls on young officers and soldiers to carry the baton and run. But one must also recognize that the road ahead will not always be smooth. Only by maintaining the sharpness of &#34;a newborn calf unafraid of tigers,&#34; summoning the drive of &#34;the more dangerous, the more forward,&#34; weathering storms, broadening experience, building talent, and strengthening resolve—by setting great ambitions, becoming strivers, seeking genuine knowledge, and honing genuine skills—can young officers and soldiers experience the true meaning of happiness through struggle and realize the value of youth through hard effort.</p>
-  
-    
-  
-    <p>The security of home and nation is the responsibility on the shoulders of youth. Youth is the era&#39;s most sensitive barometer; the responsibilities of the era are entrusted to youth, and the glory of the era belongs to youth. Throughout history, every time the era has moved forward, the figures of youth and the strength of youth have been present. When the Long March set out, the average age of officers and soldiers in Red Army combat units was around 20, and the average age of division- and regiment-level cadres was under 25; during the War of Resistance Against Japan, large numbers of young people rushed from across the country to Yan&#39;an to join the flood tide of resistance… They placed faith in their hearts and responsibility on their shoulders, feared no sacrifice, and gave selflessly, setting an example of youth with lofty ideals and a soaring spirit. Today, our living conditions have improved, but young people must not change their original aspiration or forget their mission. They must courageously take up the burden of building a strong nation and a strong military, and write the era&#39;s answer to the call of unwavering commitment to military strengthening.</p>
-  
-    
-  
-    <p>To sing the song of youth, struggle is the most beautiful melody. Marx once described with deep feeling that the radiance of youth, the key to ideals, the meaning of life, and even the survival and development of humanity are all contained in two words: struggle. Comrade Mao Zedong once said that China&#39;s youth movement has a fine revolutionary tradition, and that tradition is &#34;struggle forever.&#34; On the journey toward realizing the Chinese Dream and the dream of a strong military, the broad young officers and soldiers are &#34;born at the right time, yet bear heavy responsibilities.&#34; At border outposts where oxygen is thin, on isolated islands far from the mainland, at ordinary and unheralded combat positions, batch after batch of young officers and soldiers have shown no fear of hardship or difficulty, displaying the fearless bearing of youth and demonstrating the commitment of &#34;military strengthening depends on me.&#34; Struggle to strengthen the military—the mission calls. Only by setting their sights high while keeping their feet on the ground, daring to innovate and daring to take responsibility, can the broad young officers and soldiers display the achievements of youth, manifest the spirit of youth, contribute the strength of youth, and let their youthful dreams bloom in the cause of military strengthening.</p>
-  
-    
-  
-    <p>The military exists to fight wars; the highest dedication of a soldier is to win, and the magnificent verse of youth is victory in battle. To struggle for the cause of military strengthening, the emphasis must be on mastering military skills and strengthening capabilities, forging the hard competence to fight and win battles. This demands that the broad young officers and soldiers reinforce their consciousness as a combat force, establish the standard of combat effectiveness, play the role of combatants well, and strive to embody their love of the Party, their patriotism, and their commitment to military strengthening in the concrete actions of training for war and honing military skills—translating these into the hard competence to dare to fight and to defeat the enemy—singing with concrete action the song of youth in military strengthening and victory in battle.</p>
-  
-</div>
-
-
-
-<details>
-  <summary>Original Chinese</summary>
-  <div class="original-body">在强军征程上唱响青春之歌 ■张雨晴 “希望你们胸怀远大理想，矢志拼搏奋斗，带动广大青年把个人追求融入国家发展大局，立足各自岗位不断创造新业绩，在新征程上贡献青春力量。”在五四青年节到来之际，习主席给中国青年五四奖章暨新时代青年先锋奖获奖者代表回信，向全国各族青年致以节日祝贺并提出殷切期望。这是对青年的嘱托，也是对奋斗的号召。 火红的五月，青春的季节。广大青年官兵要认真学习贯彻习主席回信精神，大力弘扬五四精神，坚定理想、勇担使命，不负韶华、不懈奋斗，在强军征程上唱响青春之歌。 “国家的前途，民族的命运，人民的幸福，是当代中国青年必须和必将承担的重任。”对青年官兵来说，军营是挥洒青春、追逐梦想的舞台，青年官兵在这里经受磨砺，也在这里丰满羽翼；在这里扎根成长，也在这里展翅翱翔。强国建设要靠广大青年挺膺担当，强军事业呼唤青年官兵接力奔跑。但也要认识到，前进的道路不会一路坦途，青年官兵只有保持“初生牛犊不怕虎”的锐气，鼓起“越是艰险越向前”的拼劲，经风雨、见世面、长才干、壮筋骨，立鸿鹄志、做奋斗者，求真学问、练真本领，才能在奋斗中体验幸福的真谛，在拼搏中实现青春的价值。 家国安危事，青年肩上责。青年是时代最灵敏的晴雨表，时代的责任赋予青年，时代的光荣属于青年。历史上，时代每一次向前，都有青年的身影、都有青春的力量。长征出发时，红军作战部队的官兵平均年龄在20岁左右，师团级干部平均年龄不到25岁；抗战时期，大批青年从全国各地奔赴延安，加入抗战洪流……他们把信仰放在心中，把责任扛在肩上，不怕牺牲、无私奉献，立起了青年人胸怀理想、昂扬向上的榜样。今天，我们的生活条件好了，但青年人初心不能改、使命不能忘，必须勇敢挑起强国强军的担子，书写矢志强军的时代答卷。 唱响青春之歌，奋斗是最美的旋律。马克思曾深情形容，青春的光辉、理想的钥匙、生命的意义，乃至人类的生存发展，全部包含在两个字中——奋斗。毛泽东同志曾说，中国的青年运动有很好的革命传统，这个传统就是“永久奋斗”。在实现中国梦强军梦的征途上，广大青年官兵“生逢其时，也重任在肩”，在氧气稀薄的边防哨所，在远离大陆的海疆孤岛，在默默无闻的普通战位，一批批青年官兵不怕苦、不畏难，展现出青春无畏的风采，彰显出强军有我的担当。奋斗强军，使命召唤。广大青年官兵只有志存高远、脚踏实地，勇于创新、敢于担当，才能展现青春作为、彰显青春风采、贡献青春力量，在强军事业中绽放青春梦想。 军队是要打仗的，军人的最高奉献是打赢，青春的壮美诗行是胜战。为强军事业奋斗，重在精武强能，锤炼能打仗、打胜仗的过硬本领。这要求广大青年官兵强化战斗队意识、树立战斗力标准、当好战斗员角色，努力把爱党之心、报国之情和强军之志，体现在练兵备战、精武强能的实际行动中，落实到敢打必胜、克敌制胜的过硬本领上，用实际行动奏响强军胜战的青春之歌。</div>
-</details>
-
-
-<div class="provenance">
-  <span>Relevance score: 0.70</span>
-  <span>Model: claude-sonnet-4-6</span>
-  <span>Prompt: v1</span>
-  
-    <span>Analyzed: 2026-05-08</span>
-  
-</div>
-
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    Open-source intelligence monitoring of Chinese military and security developments.
-    Source material from Chinese state media; all analysis AI-generated.
-    Not for redistribution without attribution.
-    Generated 2026-05-08 17:06 UTC.
-  </div>
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
 </footer>
 
 

@@ -7,12 +7,12 @@
   <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
 
   <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:site_name"   content="China Mil Watch">
-  <meta property="og:url"         content="https://chinamilwatch.org">
-  <meta property="og:title"       content="China Mil Watch">
-  <meta property="og:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
-  <meta property="og:image"       content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
@@ -22,43 +22,38 @@
   <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
   <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
 
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    /* ── Reset & base ──────────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --bg:          #0d0d0d;
-      --surface:     #141414;
-      --border:      #252525;
-      --border-sub:  #1d1d1d;
-      --text:        #e2e0db;
-      --text-sec:    #918f8a;
-      --text-muted:  #555350;
-      --accent:      #c8922a;
-      --accent-dim:  rgba(200, 146, 42, 0.12);
-      --link:        #8ab0cc;
-      --link-hover:  #b0ccdf;
-      --tag-bg:      #1e1e1e;
-      --tag-text:    #7a7875;
-
-      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
-      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      --max-width:   860px;
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
     }
 
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-weight: 300;
-      font-size: 0.9375rem;
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
@@ -66,293 +61,223 @@
       flex-direction: column;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-    a:hover { color: var(--link-hover); text-decoration: underline; }
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* ── Navigation ─────────────────────────────────────────────────────────── */
-    nav {
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
-    }
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      height: 52px;
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
-    .nav-brand {
-      font-family: var(--font-sans);
-      font-weight: 500;
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text);
       text-decoration: none;
+      transition: color 0.15s;
     }
-    .nav-brand:hover { color: var(--text); text-decoration: none; }
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-    }
-    .nav-links a {
-      font-size: 0.8125rem;
-      color: var(--text-sec);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--text); }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
       flex: 1;
-      max-width: var(--max-width);
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
       padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* ── Page header ─────────────────────────────────────────────────────────── */
-    .page-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
     }
-    .page-header h1 {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
     }
-    .page-header .meta {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-    .page-header .meta span + span::before {
-      content: " · ";
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
     }
 
-    /* ── Article card ────────────────────────────────────────────────────────── */
-    .article-card {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-sub);
-    }
-    .article-card:last-child { border-bottom: none; }
-
-    .article-card.significant {
-      background: var(--accent-dim);
-      border-radius: 3px;
-      padding: 1.5rem;
-      margin: 0 -1.5rem;
-      border-bottom: none;
-      margin-bottom: 1px;
-    }
-    .article-card.significant + .article-card {
-      border-top: 1px solid var(--border-sub);
-    }
-
-    .sig-flag {
-      font-family: var(--font-sans);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .sig-flag::before { content: "★  "; }
-
-    .article-title {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 1.25rem;
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-    }
-    .article-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
-
-    .article-title-zh {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem;
+      gap: 0.35rem;
       margin-bottom: 0.75rem;
     }
     .tag {
+      display: inline-block;
       font-size: 0.6875rem;
-      letter-spacing: 0.04em;
+      font-weight: 500;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid var(--border);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
       border-radius: 2px;
-      padding: 0.15rem 0.45rem;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
     }
-
-    .article-summary {
-      font-size: 0.9375rem;
-      line-height: 1.65;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .sig-reason {
-      font-size: 0.875rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--accent);
-    }
-
-    .article-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      align-items: center;
-    }
-    .article-footer a { color: var(--text-muted); }
-    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
-    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
-
-    /* ── Footer ──────────────────────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    footer a { color: var(--text-muted); }
-    footer a:hover { color: var(--link-hover); }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
     .empty-state {
-      color: var(--text-muted);
+      color: var(--color-text-muted);
       font-style: italic;
       padding: 2rem 0;
     }
 
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
     
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .back-link {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
   display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
   margin-bottom: 1.75rem;
 }
-.back-link:hover { color: var(--link-hover); text-decoration: none; }
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
 
-.article-page-header {
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 }
+
 .article-page-title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 1.75rem;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
   line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  margin-bottom: 0.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
 }
+
 .article-page-title-zh {
-  font-size: 0.9375rem;
-  color: var(--text-muted);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
   font-style: italic;
   margin-bottom: 1rem;
 }
+
 .article-page-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem 1rem;
   font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  align-items: center;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
 }
-.article-page-meta a { color: var(--text-muted); }
-.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
-.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
 
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
 .section-label {
   font-size: 0.6875rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 0.75rem;
 }
 
+/* ── Summary block ───────────────────────────────────────────────── */
 .summary-block {
-  background: var(--surface);
-  border-left: 3px solid var(--border);
-  border-radius: 0 3px 3px 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
   padding: 1.1rem 1.25rem;
   margin-bottom: 2rem;
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
 }
 .summary-block.significant {
-  border-left-color: var(--accent);
+  border-left-color: var(--color-brand);
 }
-.summary-text { color: var(--text); }
-.sig-block {
+.sig-reasoning {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
-  color: var(--accent);
-}
-.sig-block::before {
-  content: "★  ";
-  font-size: 0.75rem;
+  color: var(--color-brand);
+  line-height: 1.6;
 }
 
+/* ── Translation body ────────────────────────────────────────────── */
 .translation-body {
   font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--text);
+  line-height: 1.8;
+  color: var(--color-text-primary);
   margin-bottom: 2rem;
 }
-.translation-body p {
-  margin-bottom: 0.9rem;
-}
+.translation-body p { margin-bottom: 0.9rem; }
 .translation-body p:last-child { margin-bottom: 0; }
 
+/* ── Collapsible original ────────────────────────────────────────── */
 details {
   margin-bottom: 2rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
 details summary {
   font-size: 0.8125rem;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   padding: 0.65rem 1rem;
   cursor: pointer;
   user-select: none;
@@ -369,167 +294,170 @@ details summary::before {
   display: inline-block;
 }
 details[open] summary::before { transform: rotate(90deg); }
-details summary:hover { color: var(--text); }
+details summary:hover { color: var(--color-text-primary); }
 .original-body {
   padding: 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.9375rem;
   line-height: 1.85;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
+/* ── Provenance ──────────────────────────────────────────────────── */
 .provenance {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   line-height: 1.8;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-sub);
+  border-top: 1px solid var(--color-border);
 }
 .provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
 
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-brand">PLA Watch</a>
-    <div class="nav-links">
-      <a href="../index.html" >Daily Brief</a>
-      <a href="../archive.html" >Archive</a>
-    </div>
-  </div>
-</nav>
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
 
 <main>
   
-<a href="../index.html" class="back-link">← Daily Brief</a>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
 
-<div class="article-page-header">
+  <div class="article-header">
 
-  
+    
+      <div class="tags">
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
 
-  <h1 class="article-page-title">
-    Ideological Front | Continuously Deepen Political Rectification Training with the Spirit of Thorough Self-Revolution
-  </h1>
+    <h1 class="article-page-title">
+      Ideological Front | Continuously Deepen Political Rectification Training with the Spirit of Thorough Self-Revolution
+    </h1>
 
-  
-    <div class="article-page-title-zh">思想战线丨以彻底的自我革命精神持续深化政治整训</div>
-  
+    
+      <div class="article-page-title-zh">思想战线丨以彻底的自我革命精神持续深化政治整训</div>
+    
 
-  
-    <div class="tags">
-      
-        <span class="tag">Political Work</span>
-      
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>8 May 2026</span>
     </div>
+
+    <a href="http://www.81.cn/yw_208727/16459257.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>An article authored by three researchers at the National Defense University&#39;s Research Center for Xi Jinping Thought calls on PLA officers to deepen ongoing political rectification training (政治整训) by internalizing Xi Jinping&#39;s directive to pursue &#39;thorough self-revolution,&#39; with explicit emphasis on purging corruption, reinforcing absolute Party loyalty, and elevating operational competencies ahead of the PLA&#39;s 2027 centenary founding goal. The piece is a doctrinal elaboration rather than a news report, but its publication by National Defense University researchers signals that the post-2023 rectification campaign targeting the Rocket Force and defense procurement sectors remains an active institutional priority rather than a concluded episode. The framing of military corruption explicitly as &#39;political betrayal&#39; that &#39;erodes the principle of the Party commanding the gun&#39; is notable: it elevates anti-corruption enforcement from a disciplinary matter to an existential political one, consistent with Xi&#39;s effort to use the campaign to reassert CMC control over the force.</div>
+    
+  </div>
   
 
-  <div class="article-page-meta">
-    <span>PLA Daily (解放军报)</span>
-    <span class="sep"></span>
-    <span>8 May 2026</span>
-    <span class="sep"></span>
-    <a href="http://www.81.cn/yw_208727/16459257.html" target="_blank" rel="noopener">Original source ↗</a>
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>Continuously Deepen Political Rectification Training with the Spirit of Thorough Self-Revolution</p>
+    
+      <p>■ Liu Guangming, Liu Ke, Chen Jiakang</p>
+    
+      
+    
+      <p>Editor&#39;s Note: Chairman Xi has explicitly required that we &#34;carry forward the spirit of thorough self-revolution (彻底的自我革命精神) and continuously deepen political rectification training (政治整训).&#34; Political rectification training is an important pathway for reshaping the People&#39;s Army and is the concrete application and unfolding of the Party&#39;s self-revolution in the practice of army-building and army-governance. Chairman Xi&#39;s strategic deployment linking self-revolution with political rectification training reflects far-sighted thinking aimed at defending the political character of the People&#39;s Army and ensuring the red regime (红色江山) endures forever. To consolidate and deepen the results of concentrated political rectification training and to forge the backbone of the strong-army enterprise, we must continuously deepen political rectification training with the spirit of thorough self-revolution, and unceasingly purify thinking (纯净思想), purify the ranks (纯洁队伍), and rectify the ecosystem (纯正生态).</p>
+    
+      
+    
+      <p>The furnace tempers the original aspiration; the quench forges a loyal soul. Standing at the new historical juncture of building a strong and prosperous military, conducting in-depth ideological rectification (思想整风) and continuously deepening political rectification training requires carrying forward the spirit of thorough self-revolution. &#34;Thorough (彻底)&#34; is the resolve and attitude of self-revolution—it means turning the blade inward (刀刃向内), scraping the bone to cure the poison (刮骨疗毒), neither concealing problems nor evading contradictions. &#34;Deepening (深化)&#34; is the path of advancement and the target orientation of political rectification training—it requires us to move from surface to substance, from symptoms to root causes, and to continuously press forward into greater depth. We must follow Chairman Xi&#39;s requirement to &#34;carry forward the spirit of thorough self-revolution and continuously deepen political rectification training,&#34; advance comprehensive and systematic governance (标本兼治、系统施治), consolidate and deepen the results of concentrated political rectification training, and drive political army-building (政治建军) to go deeper and become more substantive.</p>
+    
+      
+    
+      <p>Continuously Brighten the Political Character: Guaranteeing the Eternal Solidity of the Red Regime Through an Army That Never Degenerates</p>
+    
+      
+    
+      <p>Political nature is the essential attribute of the military, and political problems must be resolved through political means. Chairman Xi has explicitly emphasized that &#34;political rectification training must highlight the political work of returning to the source and restoring orthodoxy (正本清源),&#34; pointing the way for deepening political rectification training on the new journey. To continuously deepen political rectification training with the spirit of thorough self-revolution, one must first stand firm on political positions and grasp political logic, insisting on viewing and grasping matters from a political perspective, and always keeping taut the string of speaking politics with a clear banner (旗帜鲜明讲政治). The political character of our military is rooted in its fundamental positioning as an armed group that executes the Party&#39;s political tasks, and is manifested in the fundamental purpose of serving the people wholeheartedly. This character determines that the military must always maintain absolute loyalty to the Party and faithfully fulfill the mission tasks entrusted by the Party and the people; it must forever be rooted among the people and maintain flesh-and-blood ties with the masses. Once deviations and hidden dangers appear at this level, once bacteria and viruses breed, the harm is extreme—we must grip this tightly without letting go, address the root causes, and see it through to the end. Through sustained and in-depth political forging (政治锻造), we must thoroughly eliminate political dust and ideological impurities, purge the lingering poison and accumulated malpractices (流毒积弊), and achieve self-purification, self-improvement, self-renewal, and self-elevation. Only in this way can we ensure the forces are absolutely loyal, absolutely pure, and absolutely reliable; ensure the barrel of the gun is always in the hands of those who are loyal and reliable to the Party; and ensure the People&#39;s Army is always a heroic force that the Party and the people can fully trust.</p>
+    
+      
+    
+      <p>Since the 18th Party Congress, the Party Central Committee with Comrade Xi Jinping at its core has led the People&#39;s Army to deepen political rectification training and advance political army-building with unprecedented resolve and intensity. The People&#39;s Army has held fast to its roots and soul, set off on a path of rapid development, and won the initiative in advancing toward first-class status. At the same time, we must soberly recognize that deepening political rectification training by highlighting the political work of returning to the source and restoring orthodoxy remains an ongoing process. Chairman Xi&#39;s emphasis that &#34;there must absolutely be no one in the military who harbors a divided heart toward the Party (对党怀有二心), and there must absolutely be no place for corrupt elements to hide&#34; carries profound political significance. The essence of corruption is the abuse of power. Our Party is the people&#39;s party, and our military is the people&#39;s army; using power for personal gain is behavior that departs from the nature, purpose, and character of our Party and military—it is in essence political betrayal, disloyalty to the Party and the people. We must especially recognize that corruption in the military differs from corruption in other domains: it erodes the principle of the Party commanding the gun (党指挥枪), endangers the governing foundation of the Party, and directly affects the rise and fall, survival and demise of the Party and the state. To win the defensive battle of defending the political character of the People&#39;s Army and ensuring the eternal solidity of the red regime, we must win the annihilation campaign (歼灭战) against the adverse current of corruption, and win this major political struggle that we cannot afford to lose and absolutely must not lose. We must deeply appreciate from this height the standards and requirements of political rectification training in the current and coming period, continuously add steel and temper in the great furnace of political forging, and truly forge ourselves into &#34;steel in the political sense (政治上的钢铁).&#34; Leading cadres must take the lead in resisting the unhealthy tendencies of seeking private gain and engaging in corruption; frequently brush away &#34;ideological dust (思想尘),&#34; often reflect on &#34;the harm of greed (贪欲害),&#34; and regularly vanquish &#34;the thief within the heart (心中贼)&#34;; correctly handle the relationships between public and private, righteousness and interest, gain and loss; consciously guard the ideological line of defense, the bottom line on the exercise of power, the red line of law and discipline, and the boundary of family conduct; and set benchmarks and serve as models for officers and soldiers through a work style and actual conduct of loyalty, integrity, and responsibility.</p>
+    
+      
+    
+      <p>Continuously Carry Forward the Red Bloodline: Guaranteeing That Wholesome Conduct Prevails Through the Return of Fine Traditions</p>
+    
+      
+    
+      <p>The journey has been brilliant; the path has been bathed in blood and glory. Over the course of prolonged practice, the People&#39;s Army has advanced under the Party&#39;s banner, formed a complete set of principles for army-building and army-governance, developed the strategy and tactics of people&#39;s war, and cultivated its distinctive glorious traditions and fine conduct. These are the treasured family heirlooms (传家法宝) by which the People&#39;s Army has moved from victory to victory, and the red bloodline that the People&#39;s Army must never forget. Chairman Xi has profoundly summarized the great forces manifested in our military&#39;s march from victory to victory—the leadership of the Chinese Communist Party, ideals and convictions, reform and innovation, the fighting spirit (战斗精神), revolutionary discipline, and unity between the military and the people—and has identified &#34;restoring and carrying forward the fine traditions of political work&#34; as one of the priority tasks for advancing political army-building on the new journey, requiring the entire military to solidly advance the project of passing the red gene from generation to generation (红色基因代代传工程). To continuously deepen political rectification training with the spirit of thorough self-revolution, one must trace back to the roots and consolidate the foundation (寻根溯源、固本培元), and treat restoring and carrying forward the fine traditions of our Party and military as important content—only then can the People&#39;s Army preserve its purity and glory forever and let wholesome conduct become ever more prevalent.</p>
+    
+      
+    
+      <p>Whether fine traditions can truly be inherited and carried forward depends critically on whether tracing back to the roots has been comprehensive and thorough, whether the original aspiration and mission have been firmly established, and whether the root problems in thinking have been thoroughly resolved. Under conditions of long-term governance, factors that weaken the Party&#39;s advanced nature and damage the Party&#39;s purity are ever-present, and dangers that violate the original aspiration and mission and shake the Party&#39;s foundation are everywhere. These negative factors can very easily erode the ideals and convictions, Party character cultivation, and official virtue and personal character of Party member cadres. If not strictly guarded against and promptly rectified, over time they will inevitably become entrenched—small problems will become large problems, small seepages will become major collapses. Continuously deepening political rectification training requires closely focusing on the foundational questions (初心之问): &#34;What did you join the Party to do, what did you enlist to do, what did you become a commander to do?&#34; We must deeply examine thinking, temper Party character, and clear away confusion; sweep away ideological dust and purge lingering poison and accumulated malpractices. Leading cadres, especially senior cadres, must lead by example and take the initiative in restoring and carrying forward the fine traditions of our Party and military; take the lead in self-revolution; summon the courage to set aside face, expose shortcomings, and reveal faults; and with an attitude of digging deep to the roots and touching the soul, conduct in-depth examination and correction of problems, using their own uprightness, cleanliness, and firmness to drive a demonstration effect. We must treat the grassroots as fertile ground for carrying forward fine traditions, actively explore the laws and beneficial practices of grassroots building under new circumstances, innovate pathways and practical vehicles for transmission, and let fine traditions take root, blossom, and bear fruit at the grassroots level.</p>
+    
+      
+    
+      <p>Continuously Elevate Capabilities and Competencies: Guaranteeing the Inevitable Success of the Strong-Army Enterprise Through Iron-Shouldered Responsibility</p>
+    
+      
+    
+      <p>Political rectification training must train out both political loyalty and hard-core capabilities. To continuously deepen political rectification training with the spirit of thorough self-revolution, we must focus on elevating capabilities and tempering the competency to win battles (胜战本领), on the basis of firmly casting the military soul. Chairman Xi has emphasized: &#34;Among the various capabilities required for cadres to do their work well, political capability is paramount.&#34; This profoundly reveals the commanding position of political capability within the multi-dimensional capability system of Party member cadres. Theoretical cultivation is in turn &#34;the most fundamental competency (最根本的本领)&#34; among these—it is the foundation of political capability. Xi Jinping Thought on Socialism with Chinese Characteristics for a New Era, as the Party&#39;s innovative theory for the new era, is the fundamental source for Party member cadres to elevate political quality and the capacity to fulfill their duties. Through political rectification training, we must educate and guide the broad ranks of Party member cadres to genuinely study, understand, and apply it thoroughly; to truly study, truly understand, truly believe, and truly use it; to transform it into firm political conviction, a scientific mode of thinking, and powerful practical capability; to ensure that in complex situations they grasp the correct direction, in major struggles they stand firm on their positions, and in preparing for and fighting wars they take on responsibility and act. In particular, the worldview and methodology of the &#34;Six Must Persists (六个必须坚持)&#34; and the military view and methodology of the &#34;Five Persists (五个坚持)&#34; are deep nourishment for forging the capabilities and competencies of Party member cadres—these must be fully absorbed and effectively transformed into solid qualities, so as to truly shoulder the era&#39;s weighty responsibility of building a strong and prosperous military.</p>
+    
+      
+    
+      <p>This year marks the opening year of the &#34;14th Five-Year Plan&#34; period [Note: the original text reads &#34;15th Five-Year Plan (十五五)&#34; opening year], as well as a critical year for fighting the decisive battle to achieve the centenary goal of army-building (建军一百年奋斗目标). Deepening political rectification training in this special year requires emphasizing the strengthening of capabilities and competencies, and building up solid confidence for the strong-army enterprise and winning battles. We must deeply recognize that the more thorough the rectification training, the more capabilities are guaranteed as a baseline, the more solid the foundation for tackling hard battles, and the more assured the strong-army enterprise. We must use political rectification training as a &#34;whetstone&#34; to temper comprehensive quality, achieving coordinated development of human capabilities and qualities alongside strong-army practice. Persist in using theoretical arming to consolidate the foundation of capabilities; persist unwaveringly in using Xi Jinping Thought on Socialism with Chinese Characteristics for a New Era to forge unity of mind and soul; deeply implement Xi Jinping&#39;s Thought on Strengthening the Military (习近平强军思想), drawing from it the wisdom and strength to overcome difficulties. Persist in using problems to force the filling of capability gaps; measure against the strong-army goals and the requirements of preparing for and fighting wars; conduct in-depth examination of deficiencies in strategic quality (战略素养), joint operations quality (联合素养), command quality (指挥素养), and science and technology quality (科技素养); and with the courage to turn the blade inward, break through fixed thinking patterns and path dependence, and develop the hard skills of forcing strength through strength. Persist in tempering the sharp edge of capabilities in the furnace of practice; reflect the results of political rectification training in the intense scenes of military training and war preparation; manifest them in the courage to charge forward while bearing hardship, difficulty, heavy burdens, and danger; and transform the Party&#39;s political advantages and organizational advantages into advantages for winning. We must use strict discipline to strengthen rigid execution; through rectification training, further establish and practice a correct view of political achievements (政绩观); achieve real results through hard work; ensure that the decisions and deployments of the Party Central Committee, the Central Military Commission, and Chairman Xi are implemented without exception in all work toward achieving the centenary goal of army-building on schedule and advancing the modernization of national defense and the military at high quality; and use iron discipline to guarantee delivery on time and reporting of completion as scheduled.</p>
+    
+      
+    
+      <p>(Authors&#39; affiliation: Research Center for Xi Jinping Thought on Socialism with Chinese Characteristics for a New Era, National Defense University)</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">以彻底的自我革命精神持续深化政治整训 ■刘光明 刘 珂 陈嘉康 编者按 习主席明确要求，“发扬彻底的自我革命精神，持续深化政治整训”。政治整训是重塑人民军队的重要途径，是党的自我革命在建军治军实践中的具体运用和展开。习主席把自我革命与政治整训联系起来作出战略部署，体现了捍卫人民军队政治本色、确保红色江山永固的深谋远虑。我们要巩固深化集中政治整训成果、锻造强军事业中坚骨干，就必须以彻底的自我革命精神持续深化政治整训，不断纯净思想、纯洁队伍、纯正生态。 熔炉砺初心，淬火铸忠魂。站在强军兴军新的历史关口，深入开展思想整风、持续深化政治整训，必须发扬彻底的自我革命精神。“彻底”是自我革命的决心与态度，意味着刀刃向内、刮骨疗毒，不掩饰问题、不回避矛盾；“深化”则是政治整训的推进路径与目标指向，要求我们由表及里、由标及本，不断向纵深挺进。我们要按照习主席“发扬彻底的自我革命精神，持续深化政治整训”的要求，推进标本兼治、系统施治，巩固深化集中政治整训成果，推动政治建军走深走实。 持续擦亮政治本色，以军队永不变质保证红色江山永固 政治性是军队的本质属性，政治问题要从政治上来解决。习主席明确强调，“政治整训要突出政治上的正本清源”，为新征程深化政治整训指明了方向。以彻底的自我革命精神持续深化政治整训，首先要站稳政治立场、把握政治逻辑，坚持从政治上看、从政治上抓，始终绷紧旗帜鲜明讲政治这根弦。我军的政治本色，根植于其作为执行党的政治任务的武装集团的根本定位，彰显于全心全意为人民服务的根本宗旨。这一本色决定了军队必须始终绝对忠诚于党，忠实履行党和人民赋予的使命任务；必须永远扎根人民，保持同人民群众的血肉联系。在这一层面一旦出现偏差隐患、滋生细菌病毒，危害极大，必须紧抓不放、抓根治本、一抓到底，通过持续深入的政治锻造，彻底清除政治灰尘和思想杂质，肃清流毒积弊，实现自我净化、自我完善、自我革新、自我提高。唯有如此，才能确保部队绝对忠诚、绝对纯洁、绝对可靠，确保枪杆子始终掌握在对党忠诚可靠的人手中，确保人民军队始终是党和人民完全可以信赖的英雄部队。 党的十八大以来，以习近平同志为核心的党中央领导人民军队以前所未有的决心和力度深化政治整训、推进政治建军，人民军队守住了根和魂，走开了快速发展的步伐，赢得了迈向一流的主动。同时也要清醒看到，突出政治上的正本清源深化政治整训仍是进行时。习主席强调“军中绝不能有对党怀有二心之人，绝不能有腐败分子藏身之地”，这是有深厚政治意蕴的。腐败的本质是权力滥用。我们党是人民的党，我军是人民的军队，以权谋私是背离我党我军性质宗旨本色的行为，实质就是政治上的背叛，就是对党和人民不忠。特别要看到，军队腐败不同于其他领域腐败，它侵蚀党指挥枪原则，危害党的执政根基，直接影响党和国家盛衰存亡。我们要打赢捍卫人民军队政治本色、确保红色江山永固的保卫战，就必须打赢腐败逆流歼灭战，打赢这场输不起也决不能输的重大政治斗争。我们要从这样的高度来深刻体悟当前和未来一段时期政治整训的标准要求，在政治锻造的大熔炉中持续加钢淬火，真正把自己锻造成“政治上的钢铁”。领导干部要带头抵制谋私贪腐的歪风邪气，勤掸“思想尘”、多思“贪欲害”、常破“心中贼”，正确处理好公与私、义与利、得与失的关系，自觉守好思想防线、用权底线、法纪红线、家风界线，以忠诚干净担当的作风形象和实际行动为官兵立标杆、作表率。 持续传承红色血脉，以优良传统回归保证新风正气充盈 一路征途如虹，一路浴血荣光。在长期实践中，人民军队在党的旗帜下前进，形成了一整套建军治军原则，发展了人民战争的战略战术，培育了特有的光荣传统和优良作风。这是人民军队从胜利走向胜利的传家法宝，是人民军队必须永志不忘的红色血脉。习主席深刻总结了我军从胜利走向胜利彰显的中国共产党领导、理想信念、改革创新、战斗精神、革命纪律、军民团结的伟大力量，把“恢复和弘扬政治工作优良传统”作为新征程上推进政治建军的重点工作之一，要求全军扎实推进红色基因代代传工程。以彻底的自我革命精神持续深化政治整训，唯有寻根溯源、固本培元，把恢复和弘扬我党我军优良传统作为重要内容，才能永葆人民军队纯洁光荣，让新风正气更加充盈。 优良传统能否真正传承赓续，关键要看寻根溯源是否全面到位、初心使命是否牢固树立、思想根子问题是否彻底解决。在长期执政条件下，各种弱化党的先进性、损害党的纯洁性的因素无时不有，各种违背初心和使命、动摇党的根基的危险无处不在。这些消极因素极易侵蚀党员干部的理想信念、党性修养和官德人品，如果不严加防范、及时整治，久而久之，必将积重难返，小问题就会变成大问题、小管涌就会沦为大塌方。持续深化政治整训，要紧扣“入党干什么、当兵干什么、为将干什么”的初心之问，深刻检视思想、锤炼党性、廓清迷雾，扫除思想尘埃、肃清流毒积弊。领导干部特别是高级干部要以身作则、率先垂范，带头恢复弘扬我党我军优良传统，带头自我革命，拿出抛开面子、揭短亮丑的勇气，以深挖根源、触动灵魂的态度，深入检视查纠问题，以自身正自身净自身硬带动形成示范效应。要把基层作为赓续优良传统的沃土，积极探索新形势下基层建设规律和有益做法，创新传承路径与实践载体，让优良传统在基层落地生根、开花结果。 持续提升能力本领，以铁肩担当保证强军必成 政治整训，既要训出政治忠诚，也要训出硬核能力。以彻底的自我革命精神持续深化政治整训，要注重在铸牢军魂的基础上，聚焦能力提升锤炼胜战本领。习主席强调：“在干部干好工作所需的各种能力中，政治能力是第一位的。”这深刻揭示了政治能力在党员干部多维能力体系中的统领地位。而理论素养又是其中“最根本的本领”，是政治能力的根基所在。习近平新时代中国特色社会主义思想作为新时代党的创新理论，是党员干部提升政治素养和履职能力的根本所在。必须通过政治整训，教育引导广大党员干部切实学懂弄通做实，做到真学真懂真信真用，转化为坚定的政治信仰、科学的思维方式和强大的实践能力，确保在复杂局势中把准方向，在重大斗争中站稳立场，在备战打仗中担当作为。特别是“六个必须坚持”的世界观和方法论、“五个坚持”的军事观和方法论，是锻造党员干部能力本领的深层营养，更要充分吸收，有效转化为过硬素质，真正扛起强军兴军的时代重任。 今年是“十五五”开局之年，也是打好实现建军一百年奋斗目标攻坚战的关键一年。在这个特殊年份深化政治整训，必须注重训强能力本领，厚积强军打赢的坚实底气。要深刻认识到，整训越彻底，能力就越保底，攻坚就越托底，强军就越有底。要以政治整训为“磨刀石”锤炼综合素养，实现人的能力素质同强军实践协调发展。坚持以理论武装夯实能力根基，坚持不懈用习近平新时代中国特色社会主义思想凝心铸魂，深入贯彻习近平强军思想，从中汲取攻坚克难的智慧力量。坚持以问题倒逼补齐能力短板，对照强军目标、备战打仗要求，深入查摆在战略素养、联合素养、指挥素养、科技素养等方面的差距不足，以刀刃向内的勇气破除思维定式与路径依赖，练就向强制强的硬功夫。坚持在实践熔炉中砥砺能力锋芒，将政治整训的成效体现到练兵备战的火热场景中，彰显于担苦担难担重担险的勇于冲锋中，把党的政治优势和组织优势转化为制胜优势。要以严明纪律强化刚性执行，通过整训锻造进一步树立和践行正确政绩观，以实干创实绩，确保党中央、中央军委和习主席的决策部署不折不扣落实到如期实现建军一百年奋斗目标、高质量推进国防和军队现代化的各项工作中，以铁的纪律保证到点交卷、如期复命。 （作者单位：国防大学习近平新时代中国特色社会主义思想研究中心）</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.85</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-08</span>
+    
   </div>
 
 </div>
-
-
-<div class="section-label">Summary</div>
-<div class="summary-block">
-  <div class="summary-text">An article authored by three researchers at the National Defense University&#39;s Research Center for Xi Jinping Thought calls on PLA officers to deepen ongoing political rectification training (政治整训) by internalizing Xi Jinping&#39;s directive to pursue &#39;thorough self-revolution,&#39; with explicit emphasis on purging corruption, reinforcing absolute Party loyalty, and elevating operational competencies ahead of the PLA&#39;s 2027 centenary founding goal. The piece is a doctrinal elaboration rather than a news report, but its publication by National Defense University researchers signals that the post-2023 rectification campaign targeting the Rocket Force and defense procurement sectors remains an active institutional priority rather than a concluded episode. The framing of military corruption explicitly as &#39;political betrayal&#39; that &#39;erodes the principle of the Party commanding the gun&#39; is notable: it elevates anti-corruption enforcement from a disciplinary matter to an existential political one, consistent with Xi&#39;s effort to use the campaign to reassert CMC control over the force.</div>
-  
-</div>
-
-
-
-<div class="section-label">Translation</div>
-<div class="translation-body">
-  
-    <p>Continuously Deepen Political Rectification Training with the Spirit of Thorough Self-Revolution</p>
-  
-    <p>■ Liu Guangming, Liu Ke, Chen Jiakang</p>
-  
-    
-  
-    <p>Editor&#39;s Note: Chairman Xi has explicitly required that we &#34;carry forward the spirit of thorough self-revolution (彻底的自我革命精神) and continuously deepen political rectification training (政治整训).&#34; Political rectification training is an important pathway for reshaping the People&#39;s Army and is the concrete application and unfolding of the Party&#39;s self-revolution in the practice of army-building and army-governance. Chairman Xi&#39;s strategic deployment linking self-revolution with political rectification training reflects far-sighted thinking aimed at defending the political character of the People&#39;s Army and ensuring the red regime (红色江山) endures forever. To consolidate and deepen the results of concentrated political rectification training and to forge the backbone of the strong-army enterprise, we must continuously deepen political rectification training with the spirit of thorough self-revolution, and unceasingly purify thinking (纯净思想), purify the ranks (纯洁队伍), and rectify the ecosystem (纯正生态).</p>
-  
-    
-  
-    <p>The furnace tempers the original aspiration; the quench forges a loyal soul. Standing at the new historical juncture of building a strong and prosperous military, conducting in-depth ideological rectification (思想整风) and continuously deepening political rectification training requires carrying forward the spirit of thorough self-revolution. &#34;Thorough (彻底)&#34; is the resolve and attitude of self-revolution—it means turning the blade inward (刀刃向内), scraping the bone to cure the poison (刮骨疗毒), neither concealing problems nor evading contradictions. &#34;Deepening (深化)&#34; is the path of advancement and the target orientation of political rectification training—it requires us to move from surface to substance, from symptoms to root causes, and to continuously press forward into greater depth. We must follow Chairman Xi&#39;s requirement to &#34;carry forward the spirit of thorough self-revolution and continuously deepen political rectification training,&#34; advance comprehensive and systematic governance (标本兼治、系统施治), consolidate and deepen the results of concentrated political rectification training, and drive political army-building (政治建军) to go deeper and become more substantive.</p>
-  
-    
-  
-    <p>Continuously Brighten the Political Character: Guaranteeing the Eternal Solidity of the Red Regime Through an Army That Never Degenerates</p>
-  
-    
-  
-    <p>Political nature is the essential attribute of the military, and political problems must be resolved through political means. Chairman Xi has explicitly emphasized that &#34;political rectification training must highlight the political work of returning to the source and restoring orthodoxy (正本清源),&#34; pointing the way for deepening political rectification training on the new journey. To continuously deepen political rectification training with the spirit of thorough self-revolution, one must first stand firm on political positions and grasp political logic, insisting on viewing and grasping matters from a political perspective, and always keeping taut the string of speaking politics with a clear banner (旗帜鲜明讲政治). The political character of our military is rooted in its fundamental positioning as an armed group that executes the Party&#39;s political tasks, and is manifested in the fundamental purpose of serving the people wholeheartedly. This character determines that the military must always maintain absolute loyalty to the Party and faithfully fulfill the mission tasks entrusted by the Party and the people; it must forever be rooted among the people and maintain flesh-and-blood ties with the masses. Once deviations and hidden dangers appear at this level, once bacteria and viruses breed, the harm is extreme—we must grip this tightly without letting go, address the root causes, and see it through to the end. Through sustained and in-depth political forging (政治锻造), we must thoroughly eliminate political dust and ideological impurities, purge the lingering poison and accumulated malpractices (流毒积弊), and achieve self-purification, self-improvement, self-renewal, and self-elevation. Only in this way can we ensure the forces are absolutely loyal, absolutely pure, and absolutely reliable; ensure the barrel of the gun is always in the hands of those who are loyal and reliable to the Party; and ensure the People&#39;s Army is always a heroic force that the Party and the people can fully trust.</p>
-  
-    
-  
-    <p>Since the 18th Party Congress, the Party Central Committee with Comrade Xi Jinping at its core has led the People&#39;s Army to deepen political rectification training and advance political army-building with unprecedented resolve and intensity. The People&#39;s Army has held fast to its roots and soul, set off on a path of rapid development, and won the initiative in advancing toward first-class status. At the same time, we must soberly recognize that deepening political rectification training by highlighting the political work of returning to the source and restoring orthodoxy remains an ongoing process. Chairman Xi&#39;s emphasis that &#34;there must absolutely be no one in the military who harbors a divided heart toward the Party (对党怀有二心), and there must absolutely be no place for corrupt elements to hide&#34; carries profound political significance. The essence of corruption is the abuse of power. Our Party is the people&#39;s party, and our military is the people&#39;s army; using power for personal gain is behavior that departs from the nature, purpose, and character of our Party and military—it is in essence political betrayal, disloyalty to the Party and the people. We must especially recognize that corruption in the military differs from corruption in other domains: it erodes the principle of the Party commanding the gun (党指挥枪), endangers the governing foundation of the Party, and directly affects the rise and fall, survival and demise of the Party and the state. To win the defensive battle of defending the political character of the People&#39;s Army and ensuring the eternal solidity of the red regime, we must win the annihilation campaign (歼灭战) against the adverse current of corruption, and win this major political struggle that we cannot afford to lose and absolutely must not lose. We must deeply appreciate from this height the standards and requirements of political rectification training in the current and coming period, continuously add steel and temper in the great furnace of political forging, and truly forge ourselves into &#34;steel in the political sense (政治上的钢铁).&#34; Leading cadres must take the lead in resisting the unhealthy tendencies of seeking private gain and engaging in corruption; frequently brush away &#34;ideological dust (思想尘),&#34; often reflect on &#34;the harm of greed (贪欲害),&#34; and regularly vanquish &#34;the thief within the heart (心中贼)&#34;; correctly handle the relationships between public and private, righteousness and interest, gain and loss; consciously guard the ideological line of defense, the bottom line on the exercise of power, the red line of law and discipline, and the boundary of family conduct; and set benchmarks and serve as models for officers and soldiers through a work style and actual conduct of loyalty, integrity, and responsibility.</p>
-  
-    
-  
-    <p>Continuously Carry Forward the Red Bloodline: Guaranteeing That Wholesome Conduct Prevails Through the Return of Fine Traditions</p>
-  
-    
-  
-    <p>The journey has been brilliant; the path has been bathed in blood and glory. Over the course of prolonged practice, the People&#39;s Army has advanced under the Party&#39;s banner, formed a complete set of principles for army-building and army-governance, developed the strategy and tactics of people&#39;s war, and cultivated its distinctive glorious traditions and fine conduct. These are the treasured family heirlooms (传家法宝) by which the People&#39;s Army has moved from victory to victory, and the red bloodline that the People&#39;s Army must never forget. Chairman Xi has profoundly summarized the great forces manifested in our military&#39;s march from victory to victory—the leadership of the Chinese Communist Party, ideals and convictions, reform and innovation, the fighting spirit (战斗精神), revolutionary discipline, and unity between the military and the people—and has identified &#34;restoring and carrying forward the fine traditions of political work&#34; as one of the priority tasks for advancing political army-building on the new journey, requiring the entire military to solidly advance the project of passing the red gene from generation to generation (红色基因代代传工程). To continuously deepen political rectification training with the spirit of thorough self-revolution, one must trace back to the roots and consolidate the foundation (寻根溯源、固本培元), and treat restoring and carrying forward the fine traditions of our Party and military as important content—only then can the People&#39;s Army preserve its purity and glory forever and let wholesome conduct become ever more prevalent.</p>
-  
-    
-  
-    <p>Whether fine traditions can truly be inherited and carried forward depends critically on whether tracing back to the roots has been comprehensive and thorough, whether the original aspiration and mission have been firmly established, and whether the root problems in thinking have been thoroughly resolved. Under conditions of long-term governance, factors that weaken the Party&#39;s advanced nature and damage the Party&#39;s purity are ever-present, and dangers that violate the original aspiration and mission and shake the Party&#39;s foundation are everywhere. These negative factors can very easily erode the ideals and convictions, Party character cultivation, and official virtue and personal character of Party member cadres. If not strictly guarded against and promptly rectified, over time they will inevitably become entrenched—small problems will become large problems, small seepages will become major collapses. Continuously deepening political rectification training requires closely focusing on the foundational questions (初心之问): &#34;What did you join the Party to do, what did you enlist to do, what did you become a commander to do?&#34; We must deeply examine thinking, temper Party character, and clear away confusion; sweep away ideological dust and purge lingering poison and accumulated malpractices. Leading cadres, especially senior cadres, must lead by example and take the initiative in restoring and carrying forward the fine traditions of our Party and military; take the lead in self-revolution; summon the courage to set aside face, expose shortcomings, and reveal faults; and with an attitude of digging deep to the roots and touching the soul, conduct in-depth examination and correction of problems, using their own uprightness, cleanliness, and firmness to drive a demonstration effect. We must treat the grassroots as fertile ground for carrying forward fine traditions, actively explore the laws and beneficial practices of grassroots building under new circumstances, innovate pathways and practical vehicles for transmission, and let fine traditions take root, blossom, and bear fruit at the grassroots level.</p>
-  
-    
-  
-    <p>Continuously Elevate Capabilities and Competencies: Guaranteeing the Inevitable Success of the Strong-Army Enterprise Through Iron-Shouldered Responsibility</p>
-  
-    
-  
-    <p>Political rectification training must train out both political loyalty and hard-core capabilities. To continuously deepen political rectification training with the spirit of thorough self-revolution, we must focus on elevating capabilities and tempering the competency to win battles (胜战本领), on the basis of firmly casting the military soul. Chairman Xi has emphasized: &#34;Among the various capabilities required for cadres to do their work well, political capability is paramount.&#34; This profoundly reveals the commanding position of political capability within the multi-dimensional capability system of Party member cadres. Theoretical cultivation is in turn &#34;the most fundamental competency (最根本的本领)&#34; among these—it is the foundation of political capability. Xi Jinping Thought on Socialism with Chinese Characteristics for a New Era, as the Party&#39;s innovative theory for the new era, is the fundamental source for Party member cadres to elevate political quality and the capacity to fulfill their duties. Through political rectification training, we must educate and guide the broad ranks of Party member cadres to genuinely study, understand, and apply it thoroughly; to truly study, truly understand, truly believe, and truly use it; to transform it into firm political conviction, a scientific mode of thinking, and powerful practical capability; to ensure that in complex situations they grasp the correct direction, in major struggles they stand firm on their positions, and in preparing for and fighting wars they take on responsibility and act. In particular, the worldview and methodology of the &#34;Six Must Persists (六个必须坚持)&#34; and the military view and methodology of the &#34;Five Persists (五个坚持)&#34; are deep nourishment for forging the capabilities and competencies of Party member cadres—these must be fully absorbed and effectively transformed into solid qualities, so as to truly shoulder the era&#39;s weighty responsibility of building a strong and prosperous military.</p>
-  
-    
-  
-    <p>This year marks the opening year of the &#34;14th Five-Year Plan&#34; period [Note: the original text reads &#34;15th Five-Year Plan (十五五)&#34; opening year], as well as a critical year for fighting the decisive battle to achieve the centenary goal of army-building (建军一百年奋斗目标). Deepening political rectification training in this special year requires emphasizing the strengthening of capabilities and competencies, and building up solid confidence for the strong-army enterprise and winning battles. We must deeply recognize that the more thorough the rectification training, the more capabilities are guaranteed as a baseline, the more solid the foundation for tackling hard battles, and the more assured the strong-army enterprise. We must use political rectification training as a &#34;whetstone&#34; to temper comprehensive quality, achieving coordinated development of human capabilities and qualities alongside strong-army practice. Persist in using theoretical arming to consolidate the foundation of capabilities; persist unwaveringly in using Xi Jinping Thought on Socialism with Chinese Characteristics for a New Era to forge unity of mind and soul; deeply implement Xi Jinping&#39;s Thought on Strengthening the Military (习近平强军思想), drawing from it the wisdom and strength to overcome difficulties. Persist in using problems to force the filling of capability gaps; measure against the strong-army goals and the requirements of preparing for and fighting wars; conduct in-depth examination of deficiencies in strategic quality (战略素养), joint operations quality (联合素养), command quality (指挥素养), and science and technology quality (科技素养); and with the courage to turn the blade inward, break through fixed thinking patterns and path dependence, and develop the hard skills of forcing strength through strength. Persist in tempering the sharp edge of capabilities in the furnace of practice; reflect the results of political rectification training in the intense scenes of military training and war preparation; manifest them in the courage to charge forward while bearing hardship, difficulty, heavy burdens, and danger; and transform the Party&#39;s political advantages and organizational advantages into advantages for winning. We must use strict discipline to strengthen rigid execution; through rectification training, further establish and practice a correct view of political achievements (政绩观); achieve real results through hard work; ensure that the decisions and deployments of the Party Central Committee, the Central Military Commission, and Chairman Xi are implemented without exception in all work toward achieving the centenary goal of army-building on schedule and advancing the modernization of national defense and the military at high quality; and use iron discipline to guarantee delivery on time and reporting of completion as scheduled.</p>
-  
-    
-  
-    <p>(Authors&#39; affiliation: Research Center for Xi Jinping Thought on Socialism with Chinese Characteristics for a New Era, National Defense University)</p>
-  
-</div>
-
-
-
-<details>
-  <summary>Original Chinese</summary>
-  <div class="original-body">以彻底的自我革命精神持续深化政治整训 ■刘光明 刘 珂 陈嘉康 编者按 习主席明确要求，“发扬彻底的自我革命精神，持续深化政治整训”。政治整训是重塑人民军队的重要途径，是党的自我革命在建军治军实践中的具体运用和展开。习主席把自我革命与政治整训联系起来作出战略部署，体现了捍卫人民军队政治本色、确保红色江山永固的深谋远虑。我们要巩固深化集中政治整训成果、锻造强军事业中坚骨干，就必须以彻底的自我革命精神持续深化政治整训，不断纯净思想、纯洁队伍、纯正生态。 熔炉砺初心，淬火铸忠魂。站在强军兴军新的历史关口，深入开展思想整风、持续深化政治整训，必须发扬彻底的自我革命精神。“彻底”是自我革命的决心与态度，意味着刀刃向内、刮骨疗毒，不掩饰问题、不回避矛盾；“深化”则是政治整训的推进路径与目标指向，要求我们由表及里、由标及本，不断向纵深挺进。我们要按照习主席“发扬彻底的自我革命精神，持续深化政治整训”的要求，推进标本兼治、系统施治，巩固深化集中政治整训成果，推动政治建军走深走实。 持续擦亮政治本色，以军队永不变质保证红色江山永固 政治性是军队的本质属性，政治问题要从政治上来解决。习主席明确强调，“政治整训要突出政治上的正本清源”，为新征程深化政治整训指明了方向。以彻底的自我革命精神持续深化政治整训，首先要站稳政治立场、把握政治逻辑，坚持从政治上看、从政治上抓，始终绷紧旗帜鲜明讲政治这根弦。我军的政治本色，根植于其作为执行党的政治任务的武装集团的根本定位，彰显于全心全意为人民服务的根本宗旨。这一本色决定了军队必须始终绝对忠诚于党，忠实履行党和人民赋予的使命任务；必须永远扎根人民，保持同人民群众的血肉联系。在这一层面一旦出现偏差隐患、滋生细菌病毒，危害极大，必须紧抓不放、抓根治本、一抓到底，通过持续深入的政治锻造，彻底清除政治灰尘和思想杂质，肃清流毒积弊，实现自我净化、自我完善、自我革新、自我提高。唯有如此，才能确保部队绝对忠诚、绝对纯洁、绝对可靠，确保枪杆子始终掌握在对党忠诚可靠的人手中，确保人民军队始终是党和人民完全可以信赖的英雄部队。 党的十八大以来，以习近平同志为核心的党中央领导人民军队以前所未有的决心和力度深化政治整训、推进政治建军，人民军队守住了根和魂，走开了快速发展的步伐，赢得了迈向一流的主动。同时也要清醒看到，突出政治上的正本清源深化政治整训仍是进行时。习主席强调“军中绝不能有对党怀有二心之人，绝不能有腐败分子藏身之地”，这是有深厚政治意蕴的。腐败的本质是权力滥用。我们党是人民的党，我军是人民的军队，以权谋私是背离我党我军性质宗旨本色的行为，实质就是政治上的背叛，就是对党和人民不忠。特别要看到，军队腐败不同于其他领域腐败，它侵蚀党指挥枪原则，危害党的执政根基，直接影响党和国家盛衰存亡。我们要打赢捍卫人民军队政治本色、确保红色江山永固的保卫战，就必须打赢腐败逆流歼灭战，打赢这场输不起也决不能输的重大政治斗争。我们要从这样的高度来深刻体悟当前和未来一段时期政治整训的标准要求，在政治锻造的大熔炉中持续加钢淬火，真正把自己锻造成“政治上的钢铁”。领导干部要带头抵制谋私贪腐的歪风邪气，勤掸“思想尘”、多思“贪欲害”、常破“心中贼”，正确处理好公与私、义与利、得与失的关系，自觉守好思想防线、用权底线、法纪红线、家风界线，以忠诚干净担当的作风形象和实际行动为官兵立标杆、作表率。 持续传承红色血脉，以优良传统回归保证新风正气充盈 一路征途如虹，一路浴血荣光。在长期实践中，人民军队在党的旗帜下前进，形成了一整套建军治军原则，发展了人民战争的战略战术，培育了特有的光荣传统和优良作风。这是人民军队从胜利走向胜利的传家法宝，是人民军队必须永志不忘的红色血脉。习主席深刻总结了我军从胜利走向胜利彰显的中国共产党领导、理想信念、改革创新、战斗精神、革命纪律、军民团结的伟大力量，把“恢复和弘扬政治工作优良传统”作为新征程上推进政治建军的重点工作之一，要求全军扎实推进红色基因代代传工程。以彻底的自我革命精神持续深化政治整训，唯有寻根溯源、固本培元，把恢复和弘扬我党我军优良传统作为重要内容，才能永葆人民军队纯洁光荣，让新风正气更加充盈。 优良传统能否真正传承赓续，关键要看寻根溯源是否全面到位、初心使命是否牢固树立、思想根子问题是否彻底解决。在长期执政条件下，各种弱化党的先进性、损害党的纯洁性的因素无时不有，各种违背初心和使命、动摇党的根基的危险无处不在。这些消极因素极易侵蚀党员干部的理想信念、党性修养和官德人品，如果不严加防范、及时整治，久而久之，必将积重难返，小问题就会变成大问题、小管涌就会沦为大塌方。持续深化政治整训，要紧扣“入党干什么、当兵干什么、为将干什么”的初心之问，深刻检视思想、锤炼党性、廓清迷雾，扫除思想尘埃、肃清流毒积弊。领导干部特别是高级干部要以身作则、率先垂范，带头恢复弘扬我党我军优良传统，带头自我革命，拿出抛开面子、揭短亮丑的勇气，以深挖根源、触动灵魂的态度，深入检视查纠问题，以自身正自身净自身硬带动形成示范效应。要把基层作为赓续优良传统的沃土，积极探索新形势下基层建设规律和有益做法，创新传承路径与实践载体，让优良传统在基层落地生根、开花结果。 持续提升能力本领，以铁肩担当保证强军必成 政治整训，既要训出政治忠诚，也要训出硬核能力。以彻底的自我革命精神持续深化政治整训，要注重在铸牢军魂的基础上，聚焦能力提升锤炼胜战本领。习主席强调：“在干部干好工作所需的各种能力中，政治能力是第一位的。”这深刻揭示了政治能力在党员干部多维能力体系中的统领地位。而理论素养又是其中“最根本的本领”，是政治能力的根基所在。习近平新时代中国特色社会主义思想作为新时代党的创新理论，是党员干部提升政治素养和履职能力的根本所在。必须通过政治整训，教育引导广大党员干部切实学懂弄通做实，做到真学真懂真信真用，转化为坚定的政治信仰、科学的思维方式和强大的实践能力，确保在复杂局势中把准方向，在重大斗争中站稳立场，在备战打仗中担当作为。特别是“六个必须坚持”的世界观和方法论、“五个坚持”的军事观和方法论，是锻造党员干部能力本领的深层营养，更要充分吸收，有效转化为过硬素质，真正扛起强军兴军的时代重任。 今年是“十五五”开局之年，也是打好实现建军一百年奋斗目标攻坚战的关键一年。在这个特殊年份深化政治整训，必须注重训强能力本领，厚积强军打赢的坚实底气。要深刻认识到，整训越彻底，能力就越保底，攻坚就越托底，强军就越有底。要以政治整训为“磨刀石”锤炼综合素养，实现人的能力素质同强军实践协调发展。坚持以理论武装夯实能力根基，坚持不懈用习近平新时代中国特色社会主义思想凝心铸魂，深入贯彻习近平强军思想，从中汲取攻坚克难的智慧力量。坚持以问题倒逼补齐能力短板，对照强军目标、备战打仗要求，深入查摆在战略素养、联合素养、指挥素养、科技素养等方面的差距不足，以刀刃向内的勇气破除思维定式与路径依赖，练就向强制强的硬功夫。坚持在实践熔炉中砥砺能力锋芒，将政治整训的成效体现到练兵备战的火热场景中，彰显于担苦担难担重担险的勇于冲锋中，把党的政治优势和组织优势转化为制胜优势。要以严明纪律强化刚性执行，通过整训锻造进一步树立和践行正确政绩观，以实干创实绩，确保党中央、中央军委和习主席的决策部署不折不扣落实到如期实现建军一百年奋斗目标、高质量推进国防和军队现代化的各项工作中，以铁的纪律保证到点交卷、如期复命。 （作者单位：国防大学习近平新时代中国特色社会主义思想研究中心）</div>
-</details>
-
-
-<div class="provenance">
-  <span>Relevance score: 0.85</span>
-  <span>Model: claude-sonnet-4-6</span>
-  <span>Prompt: v1</span>
-  
-    <span>Analyzed: 2026-05-08</span>
-  
-</div>
-
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    Open-source intelligence monitoring of Chinese military and security developments.
-    Source material from Chinese state media; all analysis AI-generated.
-    Not for redistribution without attribution.
-    Generated 2026-05-08 17:06 UTC.
-  </div>
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
 </footer>
 
 

@@ -4,100 +4,124 @@
 {% block title %}{{ article.title_english or article.title_original }} — China Mil Watch{% endblock %}
 
 {% block extra_styles %}
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .back-link {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
   display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
   margin-bottom: 1.75rem;
 }
-.back-link:hover { color: var(--link-hover); text-decoration: none; }
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
 
-.article-page-header {
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 }
+
 .article-page-title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 1.75rem;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
   line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  margin-bottom: 0.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
 }
+
 .article-page-title-zh {
-  font-size: 0.9375rem;
-  color: var(--text-muted);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
   font-style: italic;
   margin-bottom: 1rem;
 }
+
 .article-page-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem 1rem;
   font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  align-items: center;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
 }
-.article-page-meta a { color: var(--text-muted); }
-.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
-.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
 
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
 .section-label {
   font-size: 0.6875rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 0.75rem;
 }
 
+/* ── Summary block ───────────────────────────────────────────────── */
 .summary-block {
-  background: var(--surface);
-  border-left: 3px solid var(--border);
-  border-radius: 0 3px 3px 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
   padding: 1.1rem 1.25rem;
   margin-bottom: 2rem;
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
 }
 .summary-block.significant {
-  border-left-color: var(--accent);
+  border-left-color: var(--color-brand);
 }
-.summary-text { color: var(--text); }
-.sig-block {
+.sig-reasoning {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
-  color: var(--accent);
-}
-.sig-block::before {
-  content: "★  ";
-  font-size: 0.75rem;
+  color: var(--color-brand);
+  line-height: 1.6;
 }
 
+/* ── Translation body ────────────────────────────────────────────── */
 .translation-body {
   font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--text);
+  line-height: 1.8;
+  color: var(--color-text-primary);
   margin-bottom: 2rem;
 }
-.translation-body p {
-  margin-bottom: 0.9rem;
-}
+.translation-body p { margin-bottom: 0.9rem; }
 .translation-body p:last-child { margin-bottom: 0; }
 
+/* ── Collapsible original ────────────────────────────────────────── */
 details {
   margin-bottom: 2rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
 details summary {
   font-size: 0.8125rem;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   padding: 0.65rem 1rem;
   cursor: pointer;
   user-select: none;
@@ -114,95 +138,98 @@ details summary::before {
   display: inline-block;
 }
 details[open] summary::before { transform: rotate(90deg); }
-details summary:hover { color: var(--text); }
+details summary:hover { color: var(--color-text-primary); }
 .original-body {
   padding: 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.9375rem;
   line-height: 1.85;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
+/* ── Provenance ──────────────────────────────────────────────────── */
 .provenance {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   line-height: 1.8;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-sub);
+  border-top: 1px solid var(--color-border);
 }
 .provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
 {% endblock %}
 
 {% block content %}
-<a href="{{ root_path }}index.html" class="back-link">← Daily Brief</a>
+<div class="article-page">
+  <a href="{{ root_path }}index.html" class="back-link">← Daily Brief</a>
 
-<div class="article-page-header">
+  <div class="article-header">
 
-  {% if article.is_significant %}
-    <div class="sig-flag" style="margin-bottom:0.6rem;">Significant</div>
-  {% endif %}
+    {% if article.category_labels %}
+      <div class="tags">
+        {% for label in article.category_labels %}
+          <span class="tag">{{ label }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
 
-  <h1 class="article-page-title">
-    {{ article.title_english or article.title_original }}
-  </h1>
+    <h1 class="article-page-title">
+      {{ article.title_english or article.title_original }}
+    </h1>
 
-  {% if article.title_original and article.source_language == 'zh' %}
-    <div class="article-page-title-zh">{{ article.title_original }}</div>
-  {% endif %}
+    {% if article.title_original and article.source_language == 'zh' %}
+      <div class="article-page-title-zh">{{ article.title_original }}</div>
+    {% endif %}
 
-  {% if article.category_labels %}
-    <div class="tags">
-      {% for label in article.category_labels %}
-        <span class="tag">{{ label }}</span>
-      {% endfor %}
+    <div class="article-page-meta">
+      <span>{{ article.source_name }}</span>
+      <span class="sep"></span>
+      <span>{{ article.published_date_fmt }}</span>
     </div>
+
+    <a href="{{ article.url }}" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  {% if article.summary_english %}
+  <div class="section-label">Summary</div>
+  <div class="summary-block{% if article.is_significant %} significant{% endif %}">
+    <div>{{ article.summary_english }}</div>
+    {% if article.is_significant and article.significance_reasoning %}
+      <div class="sig-reasoning">{{ article.significance_reasoning }}</div>
+    {% endif %}
+  </div>
   {% endif %}
 
-  <div class="article-page-meta">
-    <span>{{ article.source_name }}</span>
-    <span class="sep"></span>
-    <span>{{ article.published_date_fmt }}</span>
-    <span class="sep"></span>
-    <a href="{{ article.url }}" target="_blank" rel="noopener">Original source ↗</a>
+  {% if article.text_english %}
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    {% for para in article.text_english.split('\n') %}
+      {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if article.text_original %}
+  <details>
+    <summary>Original {{ 'Chinese' if article.source_language == 'zh' else 'text' }}</summary>
+    <div class="original-body">{{ article.text_original }}</div>
+  </details>
+  {% endif %}
+
+  <div class="provenance">
+    <span>Relevance score: {{ "%.2f"|format(article.relevance_score or 0) }}</span>
+    <span>Model: {{ article.model_id or '—' }}</span>
+    <span>Prompt: {{ article.prompt_version or '—' }}</span>
+    {% if article.analyzed_at %}
+      <span>Analyzed: {{ article.analyzed_at[:10] }}</span>
+    {% endif %}
   </div>
 
 </div>
-
-{% if article.summary_english %}
-<div class="section-label">Summary</div>
-<div class="summary-block{% if article.is_significant %} significant{% endif %}">
-  <div class="summary-text">{{ article.summary_english }}</div>
-  {% if article.is_significant and article.significance_reasoning %}
-    <div class="sig-block">{{ article.significance_reasoning }}</div>
-  {% endif %}
-</div>
-{% endif %}
-
-{% if article.text_english %}
-<div class="section-label">Translation</div>
-<div class="translation-body">
-  {% for para in article.text_english.split('\n') %}
-    {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
-  {% endfor %}
-</div>
-{% endif %}
-
-{% if article.text_original %}
-<details>
-  <summary>Original {{ 'Chinese' if article.source_language == 'zh' else 'text' }}</summary>
-  <div class="original-body">{{ article.text_original }}</div>
-</details>
-{% endif %}
-
-<div class="provenance">
-  <span>Relevance score: {{ "%.2f"|format(article.relevance_score or 0) }}</span>
-  <span>Model: {{ article.model_id or '—' }}</span>
-  <span>Prompt: {{ article.prompt_version or '—' }}</span>
-  {% if article.analyzed_at %}
-    <span>Analyzed: {{ article.analyzed_at[:10] }}</span>
-  {% endif %}
-</div>
-
 {% endblock %}
