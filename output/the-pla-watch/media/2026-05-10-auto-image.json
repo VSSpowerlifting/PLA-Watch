@@ -9,8 +9,13 @@
   "downloaded_at": "2026-05-09T19:21:44Z",
   "search_query_used": "PLA National Defense University",
   "reason_selected": "Selected because: institutional/contextual subject (National Defense University-PLA tour 120625-M-BN443-040); license verified: Public domain; 5184×3456 px; landscape orientation.",
-  "local_path": "output/the-pla-watch/media/2026-05-10-auto-image.jpg",
-  "width": 5184,
-  "height": 3456,
-  "mime": "image/jpeg"
+  "local_path": "output/the-pla-watch/media/2026-05-10-auto-image-optimized.jpg",
+  "width": 1600,
+  "height": 1067,
+  "mime": "image/jpeg",
+  "original_dimensions": {
+    "width": 5184,
+    "height": 3456
+  },
+  "optimization": "Resized to max width 1600px and re-encoded as progressive JPEG (quality 82) for web delivery; original full-resolution master remains available at the source_url above."
 }
