@@ -132,6 +132,7 @@
     }
 
     .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav .nav-short { display: none; }
     .header-nav a {
       color: var(--color-text-secondary);
       font-size: 0.75rem;
@@ -253,6 +254,10 @@
       body { font-size: 0.9375rem; background-size: 24px 24px; }
       .site-footer { padding: 2rem 1.25rem; }
     }
+    @media (max-width: 720px) {
+      .header-nav .nav-full { display: none; }
+      .header-nav .nav-short { display: inline; }
+    }
     @media (max-width: 600px) {
       .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
       .header-brand { gap: 10px; }
@@ -285,9 +290,14 @@
       </span>
     </a>
     <nav class="header-nav">
-      <a href="{{ root_path }}index.html" {% if active_page == 'index' %}class="active"{% endif %}>Daily Brief</a>
+      <a href="{{ root_path }}index.html" {% if active_page == 'index' %}class="active"{% endif %}>
+        <span class="nav-full">Daily Brief</span><span class="nav-short">Daily</span>
+      </a>
       <a href="{{ root_path }}archive.html" {% if active_page == 'archive' %}class="active"{% endif %}>Archive</a>
-      <a href="{{ root_path }}the-pla-watch/index.html" {% if active_page == 'pla_watch' %}class="active"{% endif %}>The PLA Watch</a>
+      <a href="{{ root_path }}signals.html" {% if active_page == 'signals' %}class="active"{% endif %}>Signals</a>
+      <a href="{{ root_path }}the-pla-watch/index.html" {% if active_page == 'pla_watch' %}class="active"{% endif %}>
+        <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
+      </a>
     </nav>
   </div>
 </header>

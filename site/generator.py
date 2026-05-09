@@ -18,7 +18,8 @@ import json
 import logging
 import shutil
 import sys
-from datetime import datetime
+from collections import Counter
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
@@ -229,9 +230,113 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
         count += 1
 
     logger.info("Wrote %d article pages", count)
+
+    # ── signals.html ──────────────────────────────────────────────────────────
+    _write_signals_page(env, output_dir, articles, generated_at)
+
     logger.info("Site generated → %s", output_dir)
 
     _generate_og_image(output_dir)
+
+
+def _compute_window_stats(articles: list[dict], days: int, today=None) -> dict:
+    """
+    Read-only aggregate over `articles` for a rolling window of `days` ending on `today`
+    (inclusive). Returns total count and significant count. Tolerates missing/malformed
+    published_date values by skipping them.
+    """
+    today = today or _latest_article_date(articles) or datetime.utcnow().date()
+    cutoff = today - timedelta(days=days - 1)
+    total = 0
+    significant = 0
+    for a in articles:
+        d_str = a.get("published_date")
+        if not d_str:
+            continue
+        try:
+            d = datetime.strptime(d_str, "%Y-%m-%d").date()
+        except (ValueError, TypeError):
+            continue
+        if cutoff <= d <= today:
+            total += 1
+            if a.get("is_significant"):
+                significant += 1
+    return {"total": total, "significant": significant}
+
+
+def _latest_article_date(articles: list[dict]):
+    """Return the most recent valid published_date in the corpus, or None."""
+    latest = None
+    for a in articles:
+        d_str = a.get("published_date")
+        if not d_str:
+            continue
+        try:
+            d = datetime.strptime(d_str, "%Y-%m-%d").date()
+        except (ValueError, TypeError):
+            continue
+        if latest is None or d > latest:
+            latest = d
+    return latest
+
+
+def _articles_in_window(articles: list[dict], days: int, today=None) -> list[dict]:
+    today = today or _latest_article_date(articles) or datetime.utcnow().date()
+    cutoff = today - timedelta(days=days - 1)
+    out = []
+    for a in articles:
+        d_str = a.get("published_date")
+        if not d_str:
+            continue
+        try:
+            d = datetime.strptime(d_str, "%Y-%m-%d").date()
+        except (ValueError, TypeError):
+            continue
+        if cutoff <= d <= today:
+            out.append(a)
+    return out
+
+
+def _write_signals_page(env, output_dir: Path, articles: list[dict], generated_at: str) -> None:
+    """Render output/signals.html. Read-only — never writes to the DB."""
+    in_30d = _articles_in_window(articles, 30)
+
+    cat_counter: Counter = Counter()
+    for a in in_30d:
+        for slug in a.get("categories", []) or []:
+            if slug:
+                cat_counter[slug] += 1
+    top_categories = [
+        {"slug": slug, "label": CATEGORY_LABELS.get(slug, slug), "count": count}
+        for slug, count in cat_counter.most_common(10)
+    ]
+
+    src_counter: Counter = Counter()
+    for a in in_30d:
+        name = a.get("source_name") or "Unknown"
+        src_counter[name] += 1
+    source_mix = [{"name": n, "count": c} for n, c in src_counter.most_common(10)]
+
+    significant_recent = [a for a in articles if a.get("is_significant")]
+    latest_significant = significant_recent[:6]
+
+    tmpl = env.get_template("signals.html")
+    (output_dir / "signals.html").write_text(
+        tmpl.render(
+            root_path="",
+            stats_7d=_compute_window_stats(articles, 7),
+            stats_30d=_compute_window_stats(articles, 30),
+            top_categories=top_categories,
+            source_mix=source_mix,
+            latest_significant=latest_significant,
+            generated_at=generated_at,
+        ),
+        encoding="utf-8",
+    )
+    logger.info("Wrote signals.html (7d=%s, 30d=%s, %d significant in latest list)",
+                _compute_window_stats(articles, 7),
+                _compute_window_stats(articles, 30),
+                len(latest_significant))
 
 
 def _generate_og_image(output_dir: Path) -> None:

@@ -201,6 +201,15 @@ TOOL_SCHEMA = {
                 "type": "string",
                 "description": "1-2 sentence subtitle summarizing the edition.",
             },
+            "signal": {
+                "type": "string",
+                "description": (
+                    "One short sentence (≤ 28 words) capturing this week's single signal — the one line "
+                    "you would tell a busy reader if they only had ten seconds. Optional but strongly preferred. "
+                    "Restrained, source-grounded, no superlatives. If the week is genuinely too thin to have a "
+                    "single signal, return an empty string and the template will omit the card."
+                ),
+            },
             "opening_note": {
                 "type": "string",
                 "description": "2-4 paragraphs. Human, direct opening. Paragraphs separated by double newline.",
@@ -358,6 +367,54 @@ def validate_result(result: dict) -> list[str]:
     return errors
 
 
+# ── Source-trail capping ─────────────────────────────────────────────────────
+
+SOURCE_TRAIL_CAP = 13   # Significant items first; cap total at this many.
+
+
+def build_source_trail(articles, cap: int = SOURCE_TRAIL_CAP):
+    """
+    Build the source trail entries for the post template.
+
+    Order: significant items first, then routine items by relevance score.
+    Cap at ``cap`` items unless the article count is already smaller.
+    Always preserves original source URLs and per-item ``is_significant``.
+
+    Returns a tuple ``(entries, truncated)``.
+    """
+    sig = [a for a in articles if a["is_significant"]]
+    routine = [a for a in articles if not a["is_significant"]]
+    routine.sort(key=lambda a: (a["relevance_score"] or 0.0), reverse=True)
+    ordered = sig + routine
+    truncated = len(ordered) > cap
+    chosen = ordered[:cap] if truncated else ordered
+    entries = [
+        {
+            "title":          a["title_english"],
+            "url":            a["url"],
+            "source":         a["source_name"],
+            "date":           a["published_date"],
+            "is_significant": bool(a["is_significant"]),
+        }
+        for a in chosen
+    ]
+    return entries, truncated
+
+
+# ── Edition labeling ─────────────────────────────────────────────────────────
+
+def derive_edition_label(edition_type: str, days_covered: int) -> str:
+    """
+    Compose a short, human-readable edition label combining the model-assigned
+    edition_type with a thin-week marker when applicable. Returns a string
+    suitable for display in the issue badge / sidebar.
+    """
+    base = "Significant" if edition_type == "significant" else "Routine"
+    if days_covered < 4:
+        return f"Thin week · {base.lower()}"
+    return base
+
+
 # ── HTML rendering ────────────────────────────────────────────────────────────
 
 def _build_context(*sources: dict, **extra) -> dict:
@@ -396,6 +453,9 @@ def render_post(result: dict, meta: dict) -> str:
         "n_significant": meta["n_significant"],
         "sources_seen":  meta.get("sources_seen", []),
         "articles":      meta.get("articles", []),
+        "days_covered":  meta.get("days_covered", 0),
+        "edition_label": meta.get("edition_label", ""),
+        "source_trail_truncated": meta.get("source_trail_truncated", False),
     }
     context = _build_context(result, layout_meta, root_path="../../")
     return template.render(**context)
@@ -472,6 +532,9 @@ def main():
         print("\n" + "=" * 72)
         print(result["title"])
         print(result["dek"])
+        if result.get("signal"):
+            print("\n--- THIS WEEK'S SIGNAL ---")
+            print(result["signal"])
         print("\n--- OPENING NOTE ---")
         print(result["opening_note"])
         print("\n--- WHAT STOOD OUT ---")
@@ -499,30 +562,30 @@ def main():
     pla_watch_dir.mkdir(parents=True, exist_ok=True)
     linkedin_dir.mkdir(parents=True, exist_ok=True)
 
+    days_covered = len(stats["dates_covered"])
+    edition_label = derive_edition_label(result["edition_type"], days_covered)
+    source_trail, trail_truncated = build_source_trail(articles)
+
     sidecar = {
         "date": week_ending_str,
         "week_ending": week_ending_str,
         "week_start": week_start_str,
         "title": result["title"],
         "dek": result["dek"],
+        "signal": result.get("signal", "") or "",
         "n_articles": stats["total_articles"],
         "n_significant": stats["n_significant"],
+        "days_covered": days_covered,
         "edition_type": result["edition_type"],
+        "edition_label": edition_label,
     }
 
     meta = {
         **sidecar,
         "dates_covered": stats["dates_covered"],
         "sources_seen": stats["sources_seen"],
-        "articles": [
-            {
-                "title": a["title_english"],
-                "url": a["url"],
-                "source": a["source_name"],
-                "date": a["published_date"],
-            }
-            for a in articles
-        ],
+        "articles": source_trail,
+        "source_trail_truncated": trail_truncated,
     }
 
     # Write sidecar JSON

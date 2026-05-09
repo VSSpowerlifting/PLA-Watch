@@ -1,0 +1,571 @@
+{% extends "base.html" %}
+{% set active_page = "signals" %}
+
+{% block title %}Signals & Methodology — China Mil Watch{% endblock %}
+
+{% block extra_styles %}
+.signals-wrap { max-width: 980px; margin: 0 auto; }
+
+/* Page header */
+.signals-header {
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.signals-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.6rem;
+}
+.signals-eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: var(--color-brand);
+}
+.signals-header h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2.125rem;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.15;
+}
+.signals-lede {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+/* Section heading */
+.s-section { margin-bottom: 3rem; }
+.s-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.s-section-heading::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Signals Dashboard — stat grid ─────────────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.stat-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.1rem 1.15rem 1rem;
+}
+.stat-card .label {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.4rem;
+}
+.stat-card .value {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.85rem;
+  line-height: 1;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.stat-card .value.accent { color: var(--color-brand); }
+.stat-card .value.muted {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+.stat-card .sub {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.45rem;
+}
+
+/* ── Two-column row: categories + sources ──────────────────────────────── */
+.split-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: start;
+}
+.module {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.25rem 1.4rem 1.3rem;
+}
+.module-title {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.95rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.module-sub {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.85rem;
+  margin-top: -0.6rem;
+}
+
+/* Category bars */
+.cat-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.9fr) minmax(0, 1fr) 36px;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.4rem 0;
+  font-family: var(--sans);
+  font-size: 0.825rem;
+}
+.cat-row + .cat-row { border-top: 1px solid var(--color-border-soft); }
+.cat-row .cat-label {
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cat-bar-track {
+  height: 6px;
+  background: var(--color-border-soft);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.cat-bar-fill {
+  height: 100%;
+  background: var(--color-brand);
+  opacity: 0.85;
+}
+.cat-row .cat-count {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 0.78rem;
+}
+
+/* Source list */
+.src-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border-soft);
+  font-family: var(--sans);
+  font-size: 0.825rem;
+}
+.src-row:last-child { border-bottom: none; }
+.src-row .src-name { color: var(--color-text-secondary); }
+.src-row .src-count {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 0.78rem;
+}
+
+/* Latest significant items */
+.sig-list { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1.5rem; }
+.sig-item {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-brand);
+  border-radius: 4px;
+  padding: 0.95rem 1.1rem 0.9rem;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.sig-item:hover {
+  border-color: var(--color-brand);
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.sig-item-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  color: var(--color-text-primary);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.005em;
+}
+.sig-item-meta {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+.sig-item-meta .source { color: var(--color-text-secondary); font-weight: 600; }
+.sig-item-meta .sep::before { content: " · "; }
+
+/* Empty fallback */
+.empty-card {
+  background: var(--color-bg-card);
+  border: 1px dashed var(--color-border);
+  border-radius: 4px;
+  padding: 1.1rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* ── Watchlist (B) ────────────────────────────────────────────────────── */
+.watchlist {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.5rem 1.65rem;
+}
+.watchlist-intro {
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  max-width: 640px;
+}
+.watch-item {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--color-border-soft);
+  align-items: baseline;
+}
+.watch-item:first-of-type { border-top: 1px solid var(--color-border); margin-top: 0.5rem; }
+.watch-item .marker {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: var(--color-brand);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.watch-item .item-text {
+  font-size: 0.92rem;
+  color: var(--color-text-primary);
+  line-height: 1.55;
+}
+.watch-attr {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border-soft);
+}
+
+/* ── Methodology copy block (C) ──────────────────────────────────────── */
+.method-prose {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.6rem 1.8rem;
+}
+.method-prose p {
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  max-width: 680px;
+}
+.method-prose p:last-child { margin-bottom: 0; }
+.method-prose .lim {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border-soft);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+.method-prose .lim strong {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+/* ── How to read (D) ─────────────────────────────────────────────────── */
+.read-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+.read-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.2rem 1.35rem 1.15rem;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  position: relative;
+}
+.read-card:hover {
+  border-color: var(--color-brand);
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.read-card .read-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.5rem;
+}
+.read-card .read-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.005em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.35rem;
+  line-height: 1.25;
+}
+.read-card .read-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+.read-card .read-arrow {
+  display: inline-block;
+  margin-top: 0.55rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--color-brand);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .split-row { grid-template-columns: minmax(0, 1fr); }
+  .read-grid { grid-template-columns: minmax(0, 1fr); }
+  .signals-header h1 { font-size: 1.625rem; }
+}
+@media (max-width: 480px) {
+  .stat-grid { grid-template-columns: minmax(0, 1fr); }
+}
+{% endblock %}
+
+{% block content %}
+<div class="signals-wrap">
+
+  <div class="signals-header">
+    <div class="signals-eyebrow">Signals &amp; Methodology</div>
+    <h1>Signals &amp; Methodology</h1>
+    <p class="signals-lede">Patterns drawn from the China Mil Watch monitoring archive, the editor's current watchlist, and a plain-English account of how this platform reads Chinese-language military and security media.</p>
+  </div>
+
+  {# ── A. Signals Dashboard ──────────────────────────────────────────── #}
+  <div class="s-section">
+    <div class="s-section-heading">A · Signals Dashboard</div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="label">Articles · 7 days</div>
+        <div class="value">{{ stats_7d.total if stats_7d.total else '—' }}</div>
+        <div class="sub">monitored in the last week</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Significant · 7 days</div>
+        <div class="value{% if stats_7d.significant %} accent{% else %} muted{% endif %}">{{ stats_7d.significant if stats_7d.total else '—' }}</div>
+        <div class="sub">flagged for closer reading</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Articles · 30 days</div>
+        <div class="value">{{ stats_30d.total if stats_30d.total else '—' }}</div>
+        <div class="sub">monitored in the last month</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Significant · 30 days</div>
+        <div class="value{% if stats_30d.significant %} accent{% else %} muted{% endif %}">{{ stats_30d.significant if stats_30d.total else '—' }}</div>
+        <div class="sub">flagged for closer reading</div>
+      </div>
+    </div>
+
+    <div class="split-row">
+      <div class="module">
+        <div class="module-title">Top categories · last 30 days</div>
+        {% if top_categories %}
+          {% set max_count = top_categories[0].count %}
+          {% for cat in top_categories %}
+            <div class="cat-row">
+              <span class="cat-label">{{ cat.label }}</span>
+              <div class="cat-bar-track">
+                <div class="cat-bar-fill" style="width: {{ ((cat.count / max_count) * 100) | round(1) }}%;"></div>
+              </div>
+              <span class="cat-count">{{ cat.count }}</span>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="empty-card">Category mix data is not yet available for the last 30 days.</div>
+        {% endif %}
+      </div>
+
+      <div class="module">
+        <div class="module-title">Source mix · last 30 days</div>
+        {% if source_mix %}
+          {% for src in source_mix %}
+            <div class="src-row">
+              <span class="src-name">{{ src.name }}</span>
+              <span class="src-count">{{ src.count }}</span>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="empty-card">Source data is not yet available.</div>
+        {% endif %}
+        <div class="watch-attr">Sources are normalized at the publication level. Affiliates of a single publication appear under that publication.</div>
+      </div>
+    </div>
+
+    <div class="module-title" style="margin-top: 2rem;">Latest significant items</div>
+    {% if latest_significant %}
+      <div class="sig-list">
+        {% for a in latest_significant %}
+          <a class="sig-item" href="article/{{ a.id }}.html">
+            <div class="sig-item-title">{{ a.title_english or a.title_original }}</div>
+            <div class="sig-item-meta">
+              <span class="source">{{ a.source_name }}</span>
+              <span class="sep"></span>
+              <span>{{ a.published_date_fmt }}</span>
+              {% if a.category_labels %}
+                <span class="sep"></span>
+                <span>{{ a.category_labels[:3] | join(' · ') }}</span>
+              {% endif %}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-card">No items have been flagged as significant in the recent window. Routine coverage is also tracked — see the <a href="archive.html">archive</a>.</div>
+    {% endif %}
+  </div>
+
+  {# ── B. What We're Watching ────────────────────────────────────────── #}
+  <div class="s-section">
+    <div class="s-section-heading">B · What We're Watching</div>
+
+    <div class="watchlist">
+      <div class="watchlist-intro">An editor's watchlist of recurring threads in PRC military and security media that we read more attentively. These are not predictions about what will happen — they are framings worth tracking through the daily flow.</div>
+
+      <div class="watch-item">
+        <span class="marker">01</span>
+        <span class="item-text">PLA anti-corruption and political rectification language — including how persistently rectification is framed as ongoing rather than concluded.</span>
+      </div>
+      <div class="watch-item">
+        <span class="marker">02</span>
+        <span class="item-text">Taiwan-related theater command coverage, especially Eastern Theater Command activity, exercise framing, and routine vs. signaling intent.</span>
+      </div>
+      <div class="watch-item">
+        <span class="marker">03</span>
+        <span class="item-text">South China Sea and China Coast Guard messaging — how incidents are characterized, which features are mentioned, and what the framing implies about posture.</span>
+      </div>
+      <div class="watch-item">
+        <span class="marker">04</span>
+        <span class="item-text">Military diplomacy and Xiangshan Forum framing — preparatory coverage, themes, and how Beijing positions itself against Western-led security narratives.</span>
+      </div>
+      <div class="watch-item">
+        <span class="marker">05</span>
+        <span class="item-text">Unmanned systems, training reform, and joint operations language — ground-level evidence of where combined-arms integration is being pushed.</span>
+      </div>
+
+      <div class="watch-attr">This watchlist is maintained by the editor and updated as PRC military media coverage shifts. It is not produced automatically.</div>
+    </div>
+  </div>
+
+  {# ── C. Methodology & Limitations ─────────────────────────────────── #}
+  <div class="s-section">
+    <div class="s-section-heading">C · Methodology &amp; Limitations</div>
+
+    <div class="method-prose">
+      <p>China Mil Watch monitors Chinese-language military and security media, including PLA Daily and related PRC defense sources. The platform translates Mandarin reporting, classifies articles across topic areas, and generates policy-style summaries.</p>
+      <p>A <em>significance</em> flag is used to surface analytically meaningful items, but routine coverage is also important because it establishes the baseline. A week of routine reporting is not an empty week — it is the texture against which the unusual stands out.</p>
+      <p>Official Chinese military media should be read as institutional messaging, not as transparent reporting. The framing reveals what the institution wants public; it does not by itself reveal underlying intent, capability, or readiness.</p>
+
+      <div class="lim">
+        <strong>Limitations</strong>
+        This project does not claim to measure actual PLA readiness, internal morale, or classified military activity. Translations and summaries may be AI-assisted and should be checked against original sources for serious research use. The corpus is recent and partial; historical-primacy claims are almost never warranted from this dataset alone.
+      </div>
+    </div>
+  </div>
+
+  {# ── D. How to Read This Site ─────────────────────────────────────── #}
+  <div class="s-section">
+    <div class="s-section-heading">D · How to Read This Site</div>
+
+    <div class="read-grid">
+      <a class="read-card" href="index.html">
+        <div class="read-eyebrow">Daily Brief</div>
+        <div class="read-title">Daily monitoring layer</div>
+        <div class="read-desc">Today's tracked articles from PRC military and security media, with translations and analytical summaries. The newest signals, before they have been folded into a weekly read.</div>
+        <span class="read-arrow">Read the brief →</span>
+      </a>
+      <a class="read-card" href="archive.html">
+        <div class="read-eyebrow">Archive</div>
+        <div class="read-title">Searchable source trail</div>
+        <div class="read-desc">Every analyzed article, filterable by date, category, source, and significance. Use this when you want to follow a single thread back through the corpus.</div>
+        <span class="read-arrow">Open the archive →</span>
+      </a>
+      <a class="read-card" href="signals.html">
+        <div class="read-eyebrow">Signals &amp; Methodology</div>
+        <div class="read-title">Patterns and reading guide</div>
+        <div class="read-desc">Aggregate signals from the recent window, the editor's watchlist, and an explanation of how the platform reads official Chinese military media.</div>
+        <span class="read-arrow">You're reading this</span>
+      </a>
+      <a class="read-card" href="the-pla-watch/index.html">
+        <div class="read-eyebrow">The PLA Watch</div>
+        <div class="read-title">Weekly reader-facing analysis</div>
+        <div class="read-desc">A weekly editorial brief synthesizing the daily signals into a single read for policy audiences. Magazine-style, source-grounded, and restrained in claims.</div>
+        <span class="read-arrow">Visit the publication →</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

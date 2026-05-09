@@ -1,106 +1,192 @@
 {% extends "pla-watch-base.html" %}
+{% set active_page = "archive" %}
+{% set pw_root = "" %}
 
 {% block title %}Archive — The PLA Watch{% endblock %}
 
-{% block extra_styles %}
-.page-heading {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: 0.4rem;
-}
-.page-subhead {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  margin-bottom: 2rem;
-}
+{% block masthead_left %}<span>Vol. I</span><span>Archive · {{ posts | length }} edition{{ 's' if posts | length != 1 }}</span>{% endblock %}
 
-.archive-list { display: flex; flex-direction: column; gap: 0; }
-.archive-entry {
+{% block extra_styles %}
+.archive-wrap { max-width: 820px; margin: 0 auto; }
+
+.arch-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.85rem;
   display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-  padding: 1.25rem 0;
+  align-items: center;
+  gap: 14px;
+}
+.arch-eyebrow::before {
+  content: "";
+  width: 28px; height: 2px;
+  background: var(--color-brand);
+}
+.arch-display {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2.65rem;
+  line-height: 1.1;
+  letter-spacing: -0.018em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.55rem;
+}
+.arch-display .italic { font-style: italic; font-weight: 600; color: var(--color-text-muted); margin-right: 0.18em; }
+.arch-stand {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid var(--color-border);
 }
-.archive-entry:first-child { border-top: 1px solid var(--color-border); }
 
-.archive-date-col {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  white-space: nowrap;
-  min-width: 100px;
-  padding-top: 0.15rem;
+/* ── Edition entries — large, magazine-archive feel ───────────────── */
+.entry-list { display: flex; flex-direction: column; gap: 0; }
+.entry {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 2rem;
+  padding: 1.65rem 0 1.55rem;
+  border-bottom: 1px solid var(--color-border);
+  align-items: baseline;
 }
-.archive-content { flex: 1; }
-.archive-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: 0.3rem;
-  line-height: 1.3;
-}
-.archive-title a { color: inherit; }
-.archive-title a:hover { color: var(--color-brand); text-decoration: none; }
-.archive-dek {
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  margin-bottom: 0.3rem;
-}
-.archive-meta {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-}
-.edition-badge {
-  display: inline-block;
-  font-size: 0.625rem;
+.entry:first-child { border-top: 1px solid var(--color-border); padding-top: 1.65rem; }
+
+.entry-date-col {
+  font-family: var(--sans);
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 2px 6px;
-  border-radius: 2px;
-  margin-left: 0.4rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.4rem;
+}
+.entry-date-col .we-large {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.15rem;
+  text-transform: none;
+}
+
+.entry-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.32rem;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.45rem;
+}
+.entry-title a { color: inherit; }
+.entry-title a:hover { color: var(--color-brand); text-decoration: none; }
+.entry-title .badge {
+  display: inline-block;
   vertical-align: middle;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-left: 0.45rem;
+  position: relative;
+  top: -1px;
 }
 .badge-significant { background: #FEF2F2; color: var(--color-brand); border: 1px solid #FECACA; }
 .badge-routine { background: #F9FAFB; color: var(--color-text-muted); border: 1px solid var(--color-border); }
+.badge-pilot { background: #FFF7ED; color: #9A3412; border: 1px solid #FED7AA; }
 
-.empty-state {
+.entry-dek {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.55rem;
+}
+.entry-meta {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.entry-meta .sep::before { content: " · "; }
+
+.empty-state-card {
   text-align: center;
   padding: 4rem 2rem;
   color: var(--color-text-muted);
   font-style: italic;
+  border: 1px dashed var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg-card);
+}
+
+@media (max-width: 700px) {
+  .arch-display { font-size: 2rem; }
+  .entry { grid-template-columns: minmax(0, 1fr); gap: 0.4rem; }
+  .entry-date-col { padding-top: 0; }
+  .entry-date-col .we-large { font-size: 1.05rem; display: inline; margin-right: 0.5rem; }
 }
 {% endblock %}
 
 {% block content %}
-<div class="page-heading">Archive</div>
-<div class="page-subhead">All editions of The PLA Watch, newest first.</div>
+<div class="archive-wrap">
 
-{% if posts %}
-<div class="archive-list">
-  {% for post in posts %}
-  <div class="archive-entry">
-    <div class="archive-date-col">{{ post.week_ending }}</div>
-    <div class="archive-content">
-      <div class="archive-title">
-        <a href="posts/{{ post.date }}.html">{{ post.title }}</a>
-        {% if post.edition_type == 'significant' %}
-        <span class="edition-badge badge-significant">Significant</span>
-        {% else %}
-        <span class="edition-badge badge-routine">Routine</span>
-        {% endif %}
-      </div>
-      <div class="archive-dek">{{ post.dek }}</div>
-      <div class="archive-meta">Week of {{ post.week_start }} &mdash; {{ post.n_articles }} articles</div>
+  <div class="arch-eyebrow">All editions</div>
+  <h1 class="arch-display"><span class="italic">The</span>PLA Watch Archive</h1>
+  <p class="arch-stand">Every edition of The PLA Watch, newest first. Each issue is a single editorial brief drawn from the China Mil Watch daily archive — restrained where the week is routine, focused where something stands out.</p>
+
+  {% if posts %}
+    <div class="entry-list">
+      {% for post in posts %}
+      <article class="entry">
+        <div class="entry-date-col">
+          <span class="we-large">{{ post.week_ending }}</span>
+          Week ending
+        </div>
+        <div class="entry-body">
+          <h2 class="entry-title">
+            <a href="posts/{{ post.date }}.html">{{ post.title }}</a>
+            {% if post.edition_label and 'pilot' in (post.edition_label | lower) %}
+              <span class="badge badge-pilot">{{ post.edition_label }}</span>
+            {% elif post.edition_type == 'significant' %}
+              <span class="badge badge-significant">Significant</span>
+            {% else %}
+              <span class="badge badge-routine">Routine</span>
+            {% endif %}
+          </h2>
+          <p class="entry-dek">{{ post.dek }}</p>
+          <div class="entry-meta">
+            <span>{{ post.n_articles }} articles analyzed</span>
+            {% if post.n_significant is defined %}
+              <span class="sep"></span>
+              <span>{{ post.n_significant }} significant</span>
+            {% endif %}
+            {% if post.days_covered %}
+              <span class="sep"></span>
+              <span>{{ post.days_covered }} day{{ 's' if post.days_covered != 1 }} observed</span>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
     </div>
-  </div>
-  {% endfor %}
+  {% else %}
+    <div class="empty-state-card">No editions published yet. Check back on Sunday.</div>
+  {% endif %}
+
 </div>
-{% else %}
-<div class="empty-state">No editions published yet. Check back on Sunday.</div>
-{% endif %}
 {% endblock %}
