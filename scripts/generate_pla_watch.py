@@ -360,10 +360,45 @@ def validate_result(result: dict) -> list[str]:
 
 # ── HTML rendering ────────────────────────────────────────────────────────────
 
+def _build_context(*sources: dict, **extra) -> dict:
+    """
+    Merge multiple dicts into a single template context, raising on duplicate
+    keys instead of letting Jinja's render() fail with a confusing
+    "multiple values for keyword argument" TypeError. Use this whenever a
+    render call would otherwise unpack two or more dicts together.
+    """
+    ctx: dict = {}
+    for src in sources:
+        for k, v in src.items():
+            if k in ctx:
+                raise ValueError(
+                    f"Template context collision on key {k!r}. "
+                    f"Rename one of the source keys before rendering."
+                )
+            ctx[k] = v
+    for k, v in extra.items():
+        if k in ctx:
+            raise ValueError(f"Template context collision on key {k!r}.")
+        ctx[k] = v
+    return ctx
+
+
 def render_post(result: dict, meta: dict) -> str:
     env = Environment(loader=FileSystemLoader(str(ROOT / "site" / "templates")))
     template = env.get_template("pla-watch-post.html")
-    return template.render(**result, **meta, root_path="../../")
+    # result and meta both carry a "title" key (post title vs. sidecar title).
+    # Strip layout-only fields out of meta so the post-content keys from
+    # `result` win cleanly. _build_context raises on any remaining collision.
+    layout_meta = {
+        "week_ending":   meta["week_ending"],
+        "week_start":    meta["week_start"],
+        "n_articles":    meta["n_articles"],
+        "n_significant": meta["n_significant"],
+        "sources_seen":  meta.get("sources_seen", []),
+        "articles":      meta.get("articles", []),
+    }
+    context = _build_context(result, layout_meta, root_path="../../")
+    return template.render(**context)
 
 
 def render_index(posts_meta: list[dict]) -> str:
