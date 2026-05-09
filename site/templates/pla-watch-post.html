@@ -3,43 +3,267 @@
 {% block title %}{{ title }} — The PLA Watch{% endblock %}
 
 {% block extra_styles %}
-.post-header {
+/* ── Layout ───────────────────────────────────────────────────────────── */
+.post-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 3rem;
+  align-items: flex-start;
+}
+.post-main { min-width: 0; }
+@media (max-width: 900px) {
+  .post-wrap { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+}
+
+/* ── Hero / cover card ────────────────────────────────────────────────── */
+.hero-card {
+  position: relative;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-brand);
+  border-radius: 4px;
+  padding: 2.25rem 2.25rem 1.85rem;
   margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
 }
-.post-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 2rem;
+.hero-card::after {
+  /* Typographic watermark — restrained, no imagery */
+  content: "PLA WATCH";
+  position: absolute;
+  right: -0.4rem;
+  bottom: -1.4rem;
+  font-family: var(--serif);
   font-weight: 700;
-  color: var(--color-text-primary);
-  line-height: 1.2;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.01em;
+  font-size: 6rem;
+  letter-spacing: -0.02em;
+  color: var(--color-brand);
+  opacity: 0.04;
+  pointer-events: none;
+  line-height: 1;
 }
-.post-dek {
-  font-size: 1.1rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-.post-meta {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
-  line-height: 1.6;
-}
-.post-meta .meta-sep { margin: 0 0.4rem; }
-
-.post-body { max-width: 680px; }
-
-.post-section { margin-bottom: 2.5rem; }
-.section-label {
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
   font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-brand);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+.hero-eyebrow::before {
+  content: "";
+  width: 22px; height: 2px;
+  background: var(--color-brand);
+}
+.hero-eyebrow .pilot-tag {
+  display: inline-block;
+  background: #FFF7ED;
+  color: #9A3412;
+  border: 1px solid #FED7AA;
+  padding: 1px 7px;
+  border-radius: 2px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.hero-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.85rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-dek {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  max-width: 640px;
+  position: relative;
+  z-index: 1;
+}
+.hero-meta {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  border-top: 1px solid var(--color-border-soft);
+  padding-top: 0.85rem;
+}
+.hero-meta .meta-sep { margin: 0 0.55rem; color: var(--color-border); }
+@media (max-width: 768px) {
+  .hero-card { padding: 1.6rem 1.5rem 1.4rem; }
+  .hero-title { font-size: 1.55rem; }
+  .hero-dek { font-size: 1rem; }
+  .hero-card::after { font-size: 4rem; }
+}
+
+/* ── Coverage Snapshot module ─────────────────────────────────────────── */
+.snapshot {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.4rem 1.5rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.snapshot-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--color-border-soft);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.snapshot-eyebrow::before {
+  content: "";
+  width: 16px; height: 2px;
+  background: var(--color-brand);
+}
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.snapshot-stat .num {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.85rem;
+  line-height: 1;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.35rem;
+}
+.snapshot-stat .num .accent { color: var(--color-brand); }
+.snapshot-stat .label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.snapshot-stat .sub {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.2rem;
+}
+.snapshot-bar {
+  margin-top: 1.1rem;
+  padding-top: 0.95rem;
+  border-top: 1px solid var(--color-border-soft);
+}
+.snapshot-bar-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.45rem;
+}
+.snapshot-bar-track {
+  height: 8px;
+  background: var(--color-border-soft);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+}
+.snapshot-bar-fill {
+  background: var(--color-brand);
+  height: 100%;
+}
+.snapshot-bar-rest {
+  background: var(--color-border);
+  height: 100%;
+  flex: 1;
+}
+.snapshot-bar-legend {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.45rem;
+  display: flex;
+  gap: 1.25rem;
+}
+.snapshot-bar-legend .swatch {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 1px;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+.snapshot-bar-legend .swatch-sig { background: var(--color-brand); }
+.snapshot-bar-legend .swatch-rest { background: var(--color-border); }
+@media (max-width: 600px) {
+  .snapshot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .snapshot-stat .num { font-size: 1.5rem; }
+}
+
+/* ── This week's signal card ──────────────────────────────────────────── */
+.signal-card {
+  background: var(--color-bg-sidebar);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-brand);
+  border-radius: 4px;
+  padding: 1.4rem 1.6rem 1.45rem;
+  margin-bottom: 2rem;
+}
+.signal-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.6rem;
+}
+.signal-text {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  color: var(--color-text-primary);
+  letter-spacing: -0.005em;
+}
+
+/* ── Body sections ────────────────────────────────────────────────────── */
+.post-body { max-width: 680px; }
+
+.post-section { margin-bottom: 2.25rem; }
+.section-label {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border-soft);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::before {
+  content: "";
+  width: 16px; height: 2px;
+  background: var(--color-brand);
 }
 .section-text p {
   margin-bottom: 1rem;
@@ -57,7 +281,7 @@
   padding: 1.25rem 1.5rem;
 }
 .term-word {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--serif);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-text-primary);
@@ -69,20 +293,100 @@
   line-height: 1.7;
 }
 
+/* ── Source trail as cards ────────────────────────────────────────────── */
 .source-trail { margin-bottom: 2.5rem; }
-.source-trail-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.source-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
 }
-.source-trail-list li {
-  padding: 0.3rem 0;
-  font-size: 0.875rem;
+.source-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: border-color 0.15s, transform 0.15s;
+  text-decoration: none;
+  color: inherit;
+}
+.source-card:hover {
+  border-color: var(--color-brand);
+  text-decoration: none;
+}
+.source-card-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--color-text-primary);
+}
+.source-card-meta {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.source-card-domain {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--color-brand);
+  letter-spacing: 0.04em;
+  margin-top: 0.1rem;
+  word-break: break-all;
+}
+@media (max-width: 600px) {
+  .source-cards { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ── Sidebar (sticky) ─────────────────────────────────────────────────── */
+.post-sidebar { position: sticky; top: 1.5rem; }
+.sidebar-card {
+  background: var(--color-bg-sidebar);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.25rem 1.25rem 1.15rem;
+  margin-bottom: 1rem;
+}
+.sidebar-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--color-border);
 }
-.source-trail-list li:last-child { border-bottom: none; }
-.source-trail-list a { color: var(--color-brand); }
+.sidebar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--color-border-soft);
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+}
+.sidebar-row:last-child { border-bottom: none; }
+.sidebar-row .label { color: var(--color-text-secondary); }
+.sidebar-row .value {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.sidebar-text {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+@media (max-width: 900px) {
+  .post-sidebar { position: static; }
+}
 
+/* ── Post nav ─────────────────────────────────────────────────────────── */
 .post-nav {
   display: flex;
   justify-content: space-between;
@@ -94,109 +398,182 @@
 }
 .post-nav a { color: var(--color-text-secondary); }
 .post-nav a:hover { color: var(--color-brand); }
-
-@media (max-width: 768px) {
-  .post-title { font-size: 1.5rem; }
-  .post-dek { font-size: 1rem; }
-}
 {% endblock %}
 
 {% block content %}
-<div class="post-header">
-  <div class="post-title">{{ title }}</div>
-  <div class="post-dek">{{ dek }}</div>
-  <div class="post-meta">
-    Week ending {{ week_ending }}
-    <span class="meta-sep">&middot;</span>
-    Covers {{ week_start }} to {{ week_ending }}
-    <span class="meta-sep">&middot;</span>
-    {{ n_articles }} articles analyzed
-    <span class="meta-sep">&middot;</span>
-    {{ n_significant }} significant
-    {% if sources_seen %}
-    <span class="meta-sep">&middot;</span>
-    Sources: {{ sources_seen | join(', ') }}
+<div class="post-wrap">
+  <article class="post-main">
+
+    {# ── Hero / branded cover card ─────────────────────────────────────── #}
+    <div class="hero-card">
+      <div class="hero-eyebrow">
+        The PLA Watch
+        {% if edition_label %}<span class="pilot-tag">{{ edition_label }}</span>{% endif %}
+      </div>
+      <h1 class="hero-title">{{ title }}</h1>
+      <div class="hero-dek">{{ dek }}</div>
+      <div class="hero-meta">
+        Week ending {{ week_ending }}
+        <span class="meta-sep">&middot;</span>
+        Covers {{ week_start }} to {{ week_ending }}
+        <span class="meta-sep">&middot;</span>
+        {{ n_articles }} articles analyzed
+        <span class="meta-sep">&middot;</span>
+        {{ n_significant }} significant
+        {% if sources_seen %}
+        <span class="meta-sep">&middot;</span>
+        Sources: {{ sources_seen | join(', ') }}
+        {% endif %}
+      </div>
+    </div>
+
+    {# ── Coverage Snapshot ─────────────────────────────────────────────── #}
+    <div class="snapshot">
+      <div class="snapshot-eyebrow">Coverage Snapshot</div>
+      <div class="snapshot-grid">
+        <div class="snapshot-stat">
+          <div class="num">{{ n_articles }}</div>
+          <div class="label">Articles</div>
+          <div class="sub">analyzed in this edition</div>
+        </div>
+        <div class="snapshot-stat">
+          <div class="num"><span class="accent">{{ n_significant }}</span></div>
+          <div class="label">Significant</div>
+          <div class="sub">flagged for closer reading</div>
+        </div>
+        <div class="snapshot-stat">
+          <div class="num">{{ sources_seen | length if sources_seen else 1 }}</div>
+          <div class="label">Sources</div>
+          <div class="sub">{{ sources_seen | join(', ') if sources_seen else 'PLA Daily' }}</div>
+        </div>
+        <div class="snapshot-stat">
+          <div class="num">{{ days_covered if days_covered else 7 }}</div>
+          <div class="label">Days</div>
+          <div class="sub">{{ week_start }} → {{ week_ending }}</div>
+        </div>
+      </div>
+      {% if n_articles %}
+      <div class="snapshot-bar">
+        <div class="snapshot-bar-label">Significant vs. routine coverage</div>
+        <div class="snapshot-bar-track">
+          {% set sig_pct = ((n_significant / n_articles) * 100) | round(1) %}
+          <div class="snapshot-bar-fill" style="width: {{ sig_pct }}%;"></div>
+          <div class="snapshot-bar-rest"></div>
+        </div>
+        <div class="snapshot-bar-legend">
+          <span><span class="swatch swatch-sig"></span>Significant ({{ n_significant }})</span>
+          <span><span class="swatch swatch-rest"></span>Routine ({{ n_articles - n_significant }})</span>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    {# ── This week's signal ────────────────────────────────────────────── #}
+    {% if signal %}
+    <div class="signal-card">
+      <div class="signal-eyebrow">This week's signal</div>
+      <div class="signal-text">{{ signal }}</div>
+    </div>
     {% endif %}
-  </div>
-</div>
 
-<div class="post-body">
+    {# ── Body sections ─────────────────────────────────────────────────── #}
+    <div class="post-body">
 
-  <div class="post-section">
-    <div class="section-label">Opening Note</div>
-    <div class="section-text">
-      {% for para in opening_note.split('\n\n') %}
-      {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
-      {% endfor %}
+      <div class="post-section">
+        <div class="section-label">Opening Note</div>
+        <div class="section-text">
+          {% for para in opening_note.split('\n\n') %}
+          {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="post-section">
+        <div class="section-label">What Stood Out</div>
+        <div class="section-text">
+          {% for para in what_stood_out.split('\n\n') %}
+          {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="post-section">
+        <div class="section-label">Why It Matters</div>
+        <div class="section-text">
+          {% for para in why_it_matters.split('\n\n') %}
+          {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="post-section">
+        <div class="section-label">What Was Routine</div>
+        <div class="section-text">
+          {% for para in what_was_routine.split('\n\n') %}
+          {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="post-section">
+        <div class="section-label">Term to Know</div>
+        <div class="term-box">
+          <div class="term-word">{{ term_to_know_term }}</div>
+          <div class="term-explanation">{{ term_to_know_explanation }}</div>
+        </div>
+      </div>
+
+      <div class="post-section">
+        <div class="section-label">What I'm Watching Next</div>
+        <div class="section-text">
+          {% for para in what_im_watching_next.split('\n\n') %}
+          {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="post-section source-trail">
+        <div class="section-label">Source Trail</div>
+        {% if articles %}
+        <div class="source-cards">
+          {% for article in articles %}
+          <a class="source-card" href="{{ article.url }}" target="_blank" rel="noopener">
+            <div class="source-card-title">{{ article.title }}</div>
+            <div class="source-card-meta">{{ article.source }} &middot; {{ article.date }}</div>
+            <div class="source-card-domain">{{ article.url | replace('https://', '') | replace('http://', '') | truncate(48, true, '…') }}</div>
+          </a>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p style="color: var(--color-text-muted); font-size: 0.875rem;">
+          See <a href="{{ root_path }}archive.html">China Mil Watch daily briefs</a> for source material.
+        </p>
+        {% endif %}
+      </div>
+
     </div>
-  </div>
 
-  <div class="post-section">
-    <div class="section-label">What Stood Out</div>
-    <div class="section-text">
-      {% for para in what_stood_out.split('\n\n') %}
-      {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
-      {% endfor %}
+    <div class="post-nav">
+      <a href="../archive.html">&larr; Back to Archive</a>
+      <a href="{{ root_path }}index.html">Visit China Mil Watch Daily Brief &rarr;</a>
     </div>
-  </div>
+  </article>
 
-  <div class="post-section">
-    <div class="section-label">Why It Matters</div>
-    <div class="section-text">
-      {% for para in why_it_matters.split('\n\n') %}
-      {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
-      {% endfor %}
+  <aside class="post-sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-eyebrow">Edition</div>
+      <div class="sidebar-row"><span class="label">Type</span><span class="value">{{ edition_label or 'Standard' }}</span></div>
+      <div class="sidebar-row"><span class="label">Week ending</span><span class="value">{{ week_ending }}</span></div>
+      <div class="sidebar-row"><span class="label">Articles</span><span class="value">{{ n_articles }}</span></div>
+      <div class="sidebar-row"><span class="label">Significant</span><span class="value">{{ n_significant }}</span></div>
     </div>
-  </div>
 
-  <div class="post-section">
-    <div class="section-label">What Was Routine</div>
-    <div class="section-text">
-      {% for para in what_was_routine.split('\n\n') %}
-      {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
-      {% endfor %}
+    <div class="sidebar-card">
+      <div class="sidebar-eyebrow">About</div>
+      <div class="sidebar-text">
+        Source-grounded weekly synthesis built from China Mil Watch's daily Chinese-language monitoring. Translations and synthesis are AI-assisted; original sources are linked from every claim.
+      </div>
     </div>
-  </div>
-
-  <div class="post-section">
-    <div class="section-label">Term to Know</div>
-    <div class="term-box">
-      <div class="term-word">{{ term_to_know_term }}</div>
-      <div class="term-explanation">{{ term_to_know_explanation }}</div>
-    </div>
-  </div>
-
-  <div class="post-section">
-    <div class="section-label">What I'm Watching Next</div>
-    <div class="section-text">
-      {% for para in what_im_watching_next.split('\n\n') %}
-      {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="post-section source-trail">
-    <div class="section-label">Source Trail</div>
-    {% if articles %}
-    <ul class="source-trail-list">
-      {% for article in articles %}
-      <li>
-        <a href="{{ article.url }}" target="_blank" rel="noopener">{{ article.title }}</a>
-        &mdash; {{ article.source }}, {{ article.date }}
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p style="color: var(--color-text-muted); font-size: 0.875rem;">
-      See <a href="{{ root_path }}archive.html">China Mil Watch daily briefs</a> for source material.
-    </p>
-    {% endif %}
-  </div>
-
-</div>
-
-<div class="post-nav">
-  <a href="../archive.html">&larr; Back to Archive</a>
-  <a href="{{ root_path }}index.html">Visit China Mil Watch Daily Brief &rarr;</a>
+  </aside>
 </div>
 {% endblock %}
