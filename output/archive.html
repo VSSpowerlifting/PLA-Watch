@@ -132,6 +132,7 @@
     }
 
     .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav .nav-short { display: none; }
     .header-nav a {
       color: var(--color-text-secondary);
       font-size: 0.75rem;
@@ -252,6 +253,10 @@
       main { padding: 1.75rem 1.25rem 3rem; }
       body { font-size: 0.9375rem; background-size: 24px 24px; }
       .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      .header-nav .nav-full { display: none; }
+      .header-nav .nav-short { display: inline; }
     }
     @media (max-width: 600px) {
       .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
@@ -524,9 +529,14 @@
       </span>
     </a>
     <nav class="header-nav">
-      <a href="index.html" >Daily Brief</a>
+      <a href="index.html" >
+        <span class="nav-full">Daily Brief</span><span class="nav-short">Daily</span>
+      </a>
       <a href="archive.html" class="active">Archive</a>
-      <a href="the-pla-watch/index.html" >The PLA Watch</a>
+      <a href="signals.html" >Signals</a>
+      <a href="the-pla-watch/index.html" >
+        <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
+      </a>
     </nav>
   </div>
 </header>
