@@ -2,13 +2,17 @@
 Safe local re-render for The PLA Watch.
 
 Loads existing JSON sidecars from output/the-pla-watch/posts/ and re-renders
-HTML using the current Jinja templates. Does NOT call the Anthropic API,
-does NOT scrape, does NOT run the daily pipeline.
+HTML using the current Jinja templates. Also (re)generates the editorial
+issue cover PNG for each sidecar.
+
+Does NOT call the Anthropic API, does NOT scrape, does NOT run the daily
+pipeline.
 
 Usage:
-    python scripts/rerender_pla_watch.py
+    python scripts/rerender_pla_watch.py [--force-covers] [--no-covers]
 """
 
+import argparse
 import json
 import re
 import sys
@@ -24,10 +28,12 @@ from jinja2 import Environment, FileSystemLoader
 from scripts.generate_pla_watch import (
     AUTHOR_NAME, AUTHOR_TITLE, AUTHOR_BIO, AUTHOR_LINKS,
 )
+from scripts.generate_pla_watch_cover import render_cover
 
 
 POSTS_DIR = ROOT / "output" / "the-pla-watch" / "posts"
 PLA_WATCH_DIR = ROOT / "output" / "the-pla-watch"
+MEDIA_DIR = ROOT / "output" / "the-pla-watch" / "media"
 TEMPLATES_DIR = ROOT / "site" / "templates"
 
 
@@ -82,10 +88,42 @@ def _articles_from_sidecar(sidecar: dict) -> list[dict]:
     return out
 
 
+def _cover_paths(sidecar: dict) -> tuple[str, str]:
+    """
+    Compute the in-page src and absolute OG URL for the issue cover image,
+    based on the sidecar date. Returns (cover_image, cover_image_url).
+    """
+    sidecar_date = sidecar.get("date", "")
+    if not sidecar_date:
+        return "", ""
+    rel = f"../media/{sidecar_date}-cover.png"
+    abs_url = (
+        f"https://chinamilwatch.org/the-pla-watch/media/{sidecar_date}-cover.png"
+    )
+    return rel, abs_url
+
+
 def _build_post_context(sidecar: dict) -> dict:
     term_word, term_explanation = _flatten_term(sidecar)
+    cover_image = sidecar.get("cover_image") or ""
+    cover_image_url = sidecar.get("cover_image_url") or ""
+    if not cover_image or not cover_image_url:
+        # Fill in from the sidecar date if not already present.
+        derived_rel, derived_abs = _cover_paths(sidecar)
+        cover_image = cover_image or derived_rel
+        cover_image_url = cover_image_url or derived_abs
+    # If the PNG isn't actually on disk, blank both so the template falls
+    # back to the sitewide og-image.png and skips the in-page figure.
+    if cover_image:
+        sidecar_date = sidecar.get("date", "")
+        png_path = MEDIA_DIR / f"{sidecar_date}-cover.png"
+        if not png_path.exists():
+            cover_image = ""
+            cover_image_url = ""
+
     return {
         # Hero / metadata
+        "date":          sidecar.get("date", ""),
         "title":         sidecar.get("title", ""),
         "dek":           sidecar.get("dek", ""),
         "signal":        sidecar.get("signal", "") or "",
@@ -96,6 +134,10 @@ def _build_post_context(sidecar: dict) -> dict:
         "days_covered":  sidecar.get("days_covered", 0),
         "edition_label": sidecar.get("edition_label", ""),
         "sources_seen":  sidecar.get("sources_seen", []),
+
+        # Cover image
+        "cover_image":     cover_image,
+        "cover_image_url": cover_image_url,
 
         # Body
         "opening_note":          sidecar.get("opening_note", ""),
@@ -120,11 +162,26 @@ def _build_post_context(sidecar: dict) -> dict:
     }
 
 
+def _parse_args():
+    p = argparse.ArgumentParser(
+        description="Re-render PLA Watch HTML and refresh issue cover PNGs from "
+                    "existing JSON sidecars. No API calls, no scraping."
+    )
+    p.add_argument("--no-covers", action="store_true",
+                   help="Skip cover-image (re)generation; only re-render HTML.")
+    p.add_argument("--force-covers", action="store_true",
+                   help="Overwrite existing cover PNGs even if up to date.")
+    return p.parse_args()
+
+
 def main() -> int:
+    args = _parse_args()
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)))
     post_tmpl = env.get_template("pla-watch-post.html")
     index_tmpl = env.get_template("pla-watch-index.html")
     archive_tmpl = env.get_template("pla-watch-archive.html")
+
+    MEDIA_DIR.mkdir(parents=True, exist_ok=True)
 
     # Render every post sidecar.
     sidecars = []
@@ -134,6 +191,23 @@ def main() -> int:
         # landing-page byline, even if the on-disk JSON predates this layer.
         sidecar.setdefault("author_name", AUTHOR_NAME)
         sidecar.setdefault("author_title", AUTHOR_TITLE)
+
+        # Cover image — generate or refresh PNG, then ensure sidecar carries
+        # the path fields so the index/archive templates can show a thumbnail.
+        sidecar_date = sidecar.get("date", "")
+        png_path = MEDIA_DIR / f"{sidecar_date}-cover.png" if sidecar_date else None
+        if not args.no_covers and png_path is not None:
+            if args.force_covers or not png_path.exists():
+                try:
+                    render_cover(sidecar, png_path)
+                    print(f"Wrote {png_path.relative_to(ROOT)}")
+                except Exception as exc:
+                    print(f"WARN: cover generation failed for "
+                          f"{sidecar_date}: {exc!r}")
+        rel, abs_url = _cover_paths(sidecar)
+        if png_path is not None and png_path.exists():
+            sidecar.setdefault("cover_image", rel)
+            sidecar.setdefault("cover_image_url", abs_url)
         sidecars.append(sidecar)
 
         ctx = _build_post_context(sidecar)

@@ -4,23 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}The PLA Watch — Weekly signals from Chinese military media{% endblock %}</title>
-  <meta name="description" content="The PLA Watch is the reader-facing weekly publication from China Mil Watch, translating Chinese military and security media into accessible analysis.">
+  <meta name="description" content="{% block meta_description %}The PLA Watch is the reader-facing weekly publication from China Mil Watch, translating Chinese military and security media into accessible analysis.{% endblock %}">
 
   <!-- Open Graph -->
-  <meta property="og:type"         content="website">
+  <meta property="og:type"         content="{% block og_type %}website{% endblock %}">
   <meta property="og:site_name"    content="The PLA Watch">
-  <meta property="og:url"          content="https://chinamilwatch.org/the-pla-watch/">
-  <meta property="og:title"        content="The PLA Watch">
-  <meta property="og:description"  content="Weekly signals from Chinese military media. Published every Sunday by China Mil Watch.">
-  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:url"          content="{% block og_url %}https://chinamilwatch.org/the-pla-watch/{% endblock %}">
+  <meta property="og:title"        content="{% block og_title %}The PLA Watch{% endblock %}">
+  <meta property="og:description"  content="{% block og_description %}Weekly signals from Chinese military media. Published every Sunday by China Mil Watch.{% endblock %}">
+  <meta property="og:image"        content="{% block og_image %}https://chinamilwatch.org/og-image.png{% endblock %}">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="The PLA Watch">
-  <meta name="twitter:description" content="Weekly signals from Chinese military media. Published every Sunday by China Mil Watch.">
-  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+  <meta name="twitter:title"       content="{% block twitter_title %}{{ self.og_title() }}{% endblock %}">
+  <meta name="twitter:description" content="{% block twitter_description %}{{ self.og_description() }}{% endblock %}">
+  <meta name="twitter:image"       content="{% block twitter_image %}{{ self.og_image() }}{% endblock %}">
 
   <link rel="icon" type="image/png" href="{{ root_path }}logo-icon.png">
   <link rel="apple-touch-icon" href="{{ root_path }}logo-icon.png">

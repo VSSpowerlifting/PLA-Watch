@@ -232,6 +232,22 @@
   font-weight: 600;
 }
 
+/* ── Thumbnail strip on latest-edition card ─────────────────────────── */
+.issue-cover-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  background: var(--color-bg-card);
+  margin: 0 0 1.4rem;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 600px) {
+  .issue-cover-thumb { margin-bottom: 1.1rem; }
+}
+
 /* ── Section heading ─────────────────────────────────────────────────── */
 .section-heading {
   display: flex;
@@ -440,6 +456,14 @@
           </div>
         </div>
         <h2 class="issue-cover-title"><a href="posts/{{ latest_post.date }}.html">{{ latest_post.title }}</a></h2>
+        {% if latest_post.cover_image %}
+        <a href="posts/{{ latest_post.date }}.html" aria-label="Read this edition">
+          <img class="issue-cover-thumb"
+               src="{{ latest_post.cover_image | replace('../', '') }}"
+               alt="The PLA Watch — {{ latest_post.title }} (issue cover)"
+               width="1200" height="630" loading="lazy">
+        </a>
+        {% endif %}
         <p class="issue-cover-dek">{{ latest_post.dek }}</p>
         {% if latest_post.author_name %}
         <div class="issue-cover-byline">By <span class="byline-name">{{ latest_post.author_name }}</span></div>

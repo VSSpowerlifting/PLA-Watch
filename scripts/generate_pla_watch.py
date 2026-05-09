@@ -464,6 +464,7 @@ def render_post(result: dict, meta: dict) -> str:
     # Strip layout-only fields out of meta so the post-content keys from
     # `result` win cleanly. _build_context raises on any remaining collision.
     layout_meta = {
+        "date":          meta.get("date", meta["week_ending"]),
         "week_ending":   meta["week_ending"],
         "week_start":    meta["week_start"],
         "n_articles":    meta["n_articles"],
@@ -472,6 +473,8 @@ def render_post(result: dict, meta: dict) -> str:
         "articles":      meta.get("articles", []),
         "days_covered":  meta.get("days_covered", 0),
         "edition_label": meta.get("edition_label", ""),
+        "cover_image":     meta.get("cover_image", ""),
+        "cover_image_url": meta.get("cover_image_url", ""),
         "source_trail_truncated": meta.get("source_trail_truncated", False),
         "author_name":   meta.get("author_name", AUTHOR_NAME),
         "author_title":  meta.get("author_title", AUTHOR_TITLE),
@@ -577,15 +580,22 @@ def main():
     # Build output paths
     posts_dir = ROOT / "output" / "the-pla-watch" / "posts"
     pla_watch_dir = ROOT / "output" / "the-pla-watch"
+    media_dir = ROOT / "output" / "the-pla-watch" / "media"
     linkedin_dir = ROOT / "the-pla-watch" / "linkedin"
 
     posts_dir.mkdir(parents=True, exist_ok=True)
     pla_watch_dir.mkdir(parents=True, exist_ok=True)
+    media_dir.mkdir(parents=True, exist_ok=True)
     linkedin_dir.mkdir(parents=True, exist_ok=True)
 
     days_covered = len(stats["dates_covered"])
     edition_label = derive_edition_label(result["edition_type"], days_covered)
     source_trail, trail_truncated = build_source_trail(articles)
+
+    cover_image_rel = f"../media/{week_ending_str}-cover.png"
+    cover_image_url = (
+        f"https://chinamilwatch.org/the-pla-watch/media/{week_ending_str}-cover.png"
+    )
 
     sidecar = {
         "date": week_ending_str,
@@ -599,6 +609,8 @@ def main():
         "days_covered": days_covered,
         "edition_type": result["edition_type"],
         "edition_label": edition_label,
+        "cover_image":     cover_image_rel,
+        "cover_image_url": cover_image_url,
         "author_name":  AUTHOR_NAME,
         "author_title": AUTHOR_TITLE,
         "author_bio":   AUTHOR_BIO,
@@ -616,6 +628,17 @@ def main():
     # Write sidecar JSON
     json_path = posts_dir / f"{week_ending_str}.json"
     json_path.write_text(json.dumps(sidecar, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # Generate the editorial issue cover PNG (no API call, no scraping —
+    # uses sidecar fields the template already has).
+    try:
+        from scripts.generate_pla_watch_cover import render_cover
+        cover_path = media_dir / f"{week_ending_str}-cover.png"
+        render_cover({**sidecar, "date": week_ending_str}, cover_path)
+        print(f"Wrote cover: {cover_path}")
+    except Exception as exc:
+        print(f"WARN: cover image generation failed ({exc!r}); "
+              "post will fall back to sitewide og-image.png")
 
     # Render and write post HTML
     post_html = render_post(result, meta)
