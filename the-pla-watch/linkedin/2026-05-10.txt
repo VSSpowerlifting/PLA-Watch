@@ -1,0 +1,79 @@
+# The PLA Watch: Two Defense Ministers, One Sentencing Pattern
+
+This pilot edition covers three days of observed data — May 7, 8, and 9, 2026 — not a full weekly readout. Across 42 articles from PLA Daily and affiliated outlets, one item stood apart: the sentencing of Wei Fenghe and Li Shangfu.
+
+---
+
+## What stood out
+
+On May 7, Chinese military courts handed down first-instance verdicts against Wei Fenghe and Li Shangfu — two consecutive former Ministers of National Defense and members of the Central Military Commission. Both received suspended death sentences with permanent deprivation of political rights, full asset confiscation, and an explicit bar on sentence reduction or parole.
+
+The symmetry of the sentencing structure is the detail worth sitting with. Two men, two consecutive tenures in the same office, one nearly identical sentencing pattern. The framing is not only individualized. It reads institutionally. The message the structure projects is clear: CMC-level rank provides no immunity from severe punishment once discipline cases are made public at this level.
+
+The next day, a May 8 article from National Defense University researchers described political rectification training as an active institutional priority, not a concluded episode. Published immediately after the verdicts, that framing fits the pattern of a campaign still being consolidated, though the available data does not allow us to establish direct coordination between the two pieces of coverage.
+
+---
+
+## Why it matters
+
+The PLA's officer corps watches what happens to people at the top. The sentencing of two consecutive defense ministers to severe punishment, with no possibility of early release, is a deterrence signal directed at that audience. It does not require a speech. The sentence structure carries the message itself.
+
+The NDU article's framing of anti-corruption enforcement as a continuing priority, tied explicitly to the PLA's 2027 centenary goal, suggests that the Rocket Force and defense procurement corruption investigations that became public in 2023 remain active institutional reference points. Read together, the verdicts and rectification messaging suggest that PLA anti-corruption enforcement remains an active theme in official military discourse, not a closed episode.
+
+What the verdicts do not tell us is just as important: how deeply the underlying problems have been addressed, or how effectively they have been managed internally. Official judicial proceedings are evidence of messaging and enforcement action. They are not a transparent record of institutional health.
+
+---
+
+## What was routine
+
+Most of the 42 articles in the days observed fit familiar patterns.
+
+The China Coast Guard patrol near the Diaoyu Islands on May 7, and the CCG spokesperson statement on a South China Sea incident near Houteng Reef, both followed established baselines. Neither, by itself, suggests a change in operational posture.
+
+The two articles on Japan's "new militarism" — one from AMS-affiliated researchers, one from a CPC Central Committee Party School researcher — reflect a framing campaign that has been running for some time. The pieces consolidate discrete Japanese defense policy developments into a single narrative. Worth tracking as a data point; not a new signal on its own.
+
+The training reform articles — simulation networking at an army brigade, joint pre-assignment officer training at the 83rd Group Army, and unmanned systems coordination at the 73rd Group Army — are useful as ground-level evidence of where combined-arms integration is being pushed. They fit a pattern visible across many prior weeks.
+
+Standard political education content, motivational profiles, recruitment notices, and May Fourth Youth Day messaging made up much of the remaining volume. Routine in format and substance, but useful as baseline material.
+
+---
+
+## Term to know: 政治整训 (Political Rectification Training)
+
+Political rectification training is a structured, CMC-directed campaign requiring PLA units and officers to undergo intensive ideological review, self-criticism, and loyalty reaffirmation. It is distinct from routine political education: rectification is launched in response to a specific perceived failure — in this case, the corruption scandals inside the Rocket Force and defense procurement establishment that became public in 2023.
+
+The goal, as framed in official PLA sources, is to purge erroneous thinking, reinforce the principle that the Party commands the gun, and reassert CMC authority over the force. A May 8 NDU article describes the campaign as ongoing and links it to the PLA's 2027 centenary founding goal. In this edition's limited dataset, the term matters less as a new concept than as a sign that rectification remains an active institutional frame.
+
+---
+
+## What I'm watching next
+
+The most immediate question is whether the Wei Fenghe and Li Shangfu verdicts produce a second round of visible messaging in PLA Daily: follow-on commentary, political work directives, or signals about the broader accountability process. First-instance verdicts in China's military court system can be appealed; whether and how that process is covered will be worth noting.
+
+The Xiangshan Forum preparatory meeting held May 8 points toward an autumn forum that Beijing appears to be positioning with care. The chosen theme — "Global Security Governance: Challenges and the Way Forward" — and the 20th-anniversary framing suggest intent to use the forum to contest Western-led security narratives. Coverage leading up to the forum may offer useful evidence of how the PLA is framing its international posture in the second half of 2026.
+
+On the training side, the unmanned systems coordination article from the 73rd Group Army — documenting signal interference, overlapping UAV coverage, and near-collisions during a mixed-formation exercise — is the kind of ground-level readiness detail worth watching for patterns across future editions. Whether similar problems surface in coverage of other units would help establish whether this is localized or broader.
+
+As always: three days of data is a thin basis for confident trend claims. The days not yet observed may carry material that changes the picture.
+
+---
+
+## Source trail
+
+- Wei Fenghe / Li Shangfu verdicts: http://www.81.cn/yw_208727/16459190.html
+- NDU political rectification article: http://www.81.cn/yw_208727/16459257.html
+- Xiangshan Forum preparatory meeting: http://www.81.cn/yw_208727/16459472.html
+- 73rd Group Army unmanned systems coordination: http://www.81.cn/yw_208727/16459090.html
+- 83rd Group Army joint pre-assignment training: http://www.81.cn/yw_208727/16459465.html
+- Army brigade simulation training upgrade (PLA Daily): http://www.81.cn/yw_208727/16459261.html
+- Japan "new militarism" framing (AMS researchers): http://www.81.cn/yw_208727/16459471.html
+- Japan "new militarism" framing (Party School researcher): http://www.81.cn/yw_208727/16459269.html
+- China Coast Guard Diaoyu Islands patrol: http://www.81.cn/yw_208727/16459188.html
+- CCG spokesperson / South China Sea: http://www.81.cn/yw_208727/16459230.html
+- Rocket Force "Golden Idea" suggestion system: http://www.81.cn/yw_208727/16459467.html
+- National defense mobilization doctrine article: http://www.81.cn/yw_208727/16459103.html
+- JLSF No. 910 Hospital medical support reform: http://www.81.cn/yw_208727/16459495.html
+
+---
+
+I welcome comments or corrections from people working on Chinese military media, PLA studies, or U.S.-China security.
