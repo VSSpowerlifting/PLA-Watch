@@ -1,0 +1,47 @@
+name: Deploy Rendered Output
+
+# Manual-only. Publishes the already-committed output/ directory from main
+# to the gh-pages branch. Does NOT run the pipeline, does NOT scrape, does
+# NOT call the Anthropic API, does NOT install Python.
+#
+# Use this when output/ has been re-rendered locally (e.g. after a template
+# or design change) and you want it live before the next scheduled daily run.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify output/ exists
+        run: |
+          if [ ! -d output ] || [ -z "$(ls -A output)" ]; then
+            echo "ERROR: output/ is missing or empty — nothing to deploy."
+            exit 1
+          fi
+          echo "output/ contents:"
+          ls -la output/
+
+      # Same deploy step the daily workflow uses, including the CNAME.
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          publish_branch: gh-pages
+          cname: chinamilwatch.org
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_message: 'Deploy (output-only): ${{ github.run_id }}'
