@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Military Sports | A Wireman&#39;s Road to Chasing His Dream — China Mil Watch</title>
+  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="China Mil Watch">
+  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
+    }
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
+    }
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+      border-radius: 2px;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
+    
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.article-page-title-zh {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Provenance ──────────────────────────────────────────────────── */
+.provenance {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+.provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
+
+<main>
+  
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+    
+      <div class="tags">
+        
+          <span class="tag">Exercises</span>
+        
+      </div>
+    
+
+    <h1 class="article-page-title">
+      Military Sports | A Wireman&#39;s Road to Chasing His Dream
+    </h1>
+
+    
+      <div class="article-page-title-zh">军事体育丨一名有线兵的追梦路</div>
+    
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>9 May 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16459488.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A PLA Daily feature profiles Private First Class Xiong Zhuocheng, a wireman in an unidentified brigade, who set a brigade record of 135 pull-up bar muscle-ups after a ten-month training progression that began in 2024 and culminated at a brigade military sports competition in early 2025. The article is a routine PLA Daily motivational piece focused on individual physical training achievement and contains no new information about unit posture, capability, or doctrine.</div>
+    
+  </div>
+  
+
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>A Wireman&#39;s Road to Chasing His Dream</p>
+    
+      <p>■ Yan Tao, Liu Fangfang, Contributing Reporters, PLA Daily</p>
+    
+      
+    
+      <p>&#34;133, 134, 135… a brigade record!&#34;</p>
+    
+      
+    
+      <p>On the training ground in early summer, amid the shouts of his comrades, Private First Class Xiong Zhuocheng summoned every last ounce of strength to complete his final pull-up bar muscle-up (单杠卷身上), then dropped heavily to the ground. Though both arms were trembling uncontrollably and sweat was streaming down from the tips of his hair, his face broke into a brilliant, proud smile.</p>
+    
+      
+    
+      <p>That night, lying in his bunk, the training scenes of the past ten months played through his mind like a film—</p>
+    
+      
+    
+      <p>When he first began practicing the pull-up bar muscle-up, he could barely complete a single-digit count. Looking at his far-from-powerful arms and his dismal scores, Xiong Zhuocheng felt deeply discouraged.</p>
+    
+      
+    
+      <p>Not long after, as specialized training got underway, he threw himself wholeheartedly into pole-climbing—the &#34;stumbling block&#34; for privates—as a wireman. To accelerate his progress, Squad Leader Wu Zhiqiang required him to train &#34;without touching the ground&#34;: jumping from the ground, pushing off the pole, driving with force, climbing up to the top of a four-meter pole, dropping two meters, then climbing back up again. He would often train until his palms burned and stung, his arms ached and swelled, and his legs went weak, yet he still had to grit his teeth and push through. Gratifyingly, six months later his training scores broke into the top three among soldiers of the same year.</p>
+    
+      
+    
+      <p>&#34;There&#39;s a mass military skills competition coming up in the battalion soon—why not sign up?&#34; one day, after pole-climbing training, Wu Zhiqiang suggested.</p>
+    
+      
+    
+      <p>&#34;I don&#39;t have any strong events. I&#39;ll pass.&#34;</p>
+    
+      
+    
+      <p>Hearing this, Wu Zhiqiang frowned: &#34;Your specialized training scores are outstanding—why can&#39;t you take a shot at the pull-up bar muscle-up?&#34;</p>
+    
+      
+    
+      <p>Seeing Xiong Zhuocheng&#39;s reluctant expression, Wu Zhiqiang pulled him to the training ground and started from scratch—teaching him how to grip the bar, first practicing the thigh-contact drill, then the bar-rotation drill. At first, unable to find the right contact point, he frequently bruised his inner thighs black and blue. But in a test half a month later, he managed to pull off 10 repetitions, and his misgivings evaporated.</p>
+    
+      
+    
+      <p>As pull-up bar muscle-up training and pole-climbing training alternated more frequently, Xiong Zhuocheng noticed that specialized training and bar training seemed to share common ground: the gripping and driving motion of the hands tightly clasping the pole during climbing closely matched the gripping and driving force of the pull-up bar muscle-up; during the climb, when the body is suspended in mid-air, continuously tightening the core and maintaining body balance is precisely the key to the &#34;abdominal curl and body linkage (卷腹发力、身体衔接)&#34; in the pull-up bar muscle-up.</p>
+    
+      
+    
+      <p>Rising and falling on the bar tempers the sinews and bones; climbing to the top of the pole forges the will. From 10 repetitions to 20, then breaking through 30, Xiong Zhuocheng grew ever more convinced of this intrinsic connection and continued to reinforce it. In early 2025, the battalion organized a mass military skills competition. At the examiner&#39;s command, the grip, abdominal curl, and bar rotation flowed in one unbroken sequence. Though slightly dizzy, the core control and upper-body strength honed through pole-climbing carried him to 46 repetitions, breaking the battalion record.</p>
+    
+      
+    
+      <p>&#34;This private is no ordinary soldier!&#34; Watching Xiong Zhuocheng&#39;s performance, his comrades broke into exclamations of admiration. After he came off the bar, they noticed that the blisters on his palms had long since been worn open, with faint traces of blood visible. Squad Leader Wu Zhiqiang disinfected his hands with iodine, his heart aching for him. Xiong Zhuocheng just grinned: &#34;Broke the record—no matter how hard it was, it was worth it!&#34;</p>
+    
+      
+    
+      <p>This unexpected gain gave Xiong Zhuocheng a surge of confidence, and he set his sights on the brigade military sports games. Learning that the best score in last year&#39;s pull-up bar muscle-up event was 118 repetitions, he proactively sought out the champion, Huang Pengyi, for guidance. &#34;Don&#39;t fixate on spinning around repeatedly—train specifically with wrist curls, vertical curls, hanging leg raises, and arm strength…&#34; Huang Pengyi held nothing back.</p>
+    
+      
+    
+      <p>Back on the training ground, Xiong Zhuocheng launched a specialized training regimen: he hammered his core strength with weighted five-kilogram bent-arm hang leg raises, reinforced his forearm muscle groups with 20 sets each of dumbbell curls and wrist curls, and even added a few sets of push-ups after coming off duty in the evenings. One month later his score broke through 60, but there was still a considerable gap to close before reaching his target.</p>
+    
+      
+    
+      <p>Through consulting specialized materials and videos, he added new training content: push-ups performed with wide-arm, narrow-arm, and normal-arm variations, 20 repetitions of each, 10 sets per day, while also practicing hanging with sandbags strapped to his legs.</p>
+    
+      
+    
+      <p>&#34;After that, every small step forward was a completely new challenge!&#34; Xiong Zhuocheng reflected with deep feeling when recalling the breakthrough from 80 to 100 repetitions.</p>
+    
+      
+    
+      <p>&#34;Strapping a dumbbell around your waist and doing hanging leg raises on the bar can improve arm endurance and core endurance.&#34; One day, after coming across a fitness blogger&#39;s video, Xiong Zhuocheng was thrilled. He immediately found a backpack, loaded it with dumbbell plates, put it on, and began training. After a period of time, his pull-up bar muscle-up count broke through 112, and his pole-climbing score also jumped to first place in the entire battalion.</p>
+    
+      
+    
+      <p>Every drop of sweat on the training ground is a stepping stone on the road to the extreme. To keep improving his scores, Xiong Zhuocheng turned his attention to more professional training methods in the field and asked a coach to correct his technique. After the corrections, his leg-raise and head-tilt movements became more coordinated, and he exerted less effort when pulling on the bar. Two months later, he finally surpassed the previous mark, reaching 135 repetitions—and so came the scene described at the opening.</p>
+    
+      
+    
+      <p>All silent effort will ultimately become the foundation of courage to break through oneself. Today, Xiong Zhuocheng has become a training backbone in his company, motivating more comrades to strengthen their capabilities from their own posts.</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">一名有线兵的追梦路 ■闫 涛 解放军报特约记者 刘芳芳 “133、134、135……创造旅纪录！” 初夏的训练场上，在战友们的呼喊中，上等兵熊茁成用尽全身力气拉完最后一个单杠卷身上，然后重重落地。虽然两只胳膊在不住地颤抖，汗水顺着发梢直往下淌，但他的脸上露出了灿烂而自豪的笑容。 晚上躺在床上，10个月来的训练情景像放电影一样浮现在他的脑海—— 刚开始练习单杠卷身上时，他只能勉强完成个位数，看着并不强壮的双臂和惨不忍睹的成绩，熊茁成心中很是沮丧。 不久后，随着专业训练展开，作为一名有线兵，他全身心投入到列兵的“拦路虎”——爬杆训练上。为尽快提升训练水平，班长吴志强要求他进行“不落地”训练：从地面起跳、蹬杆、发力、上攀到4米高的杆顶，往下落2米，再继续往上爬，常常练到掌心发烫刺痛，双臂酸胀、双腿发软，还得咬牙硬撑。让人欣慰的是，6个月后，他的训练成绩跨入同年兵前三名。 “过段时间，营里将组织群众性练兵比武，报个名吧？”一天，爬杆训练结束后，吴志强提议。 “我没什么优势课目，还是算了吧？” 听闻此言，吴志强眉头一皱：“你专业训练成绩突出，为啥不能挑战一把单杠卷身上？” 见熊茁成面露难色，吴志强把他拉到训练场，从握杠方式教起，先进行大腿根部触杠练习，再进行绕杠训练。起初，由于找不准接触点，他大腿根部经常碰得青一块、紫一块，但在半个月后的测试中，他竟然拉了10个，顾虑随之烟消云散。 随着单杠卷身上和爬杆训练频繁交替，熊茁成觉察到专业训练似乎与单杠训练有相通之处：爬杆时双手紧握杆体的发力动作，与单杠卷身上的抓握发力很契合；上攀过程中，身体悬空时需持续收紧核心、保持身体平衡，这恰是单杠卷身上“卷腹发力、身体衔接”的关键。 杠上起落磨筋骨，杆上登高砺意志。从10个到20个，再突破30个，熊茁成愈加确信这种内在关联，并持续加以强化。2025年初，营里组织群众性练兵比武。随着考官一声令下，握杠、卷腹、绕杠等动作一气呵成，虽然略有眩晕，但爬杆打磨的核心控制力和上肢力量，让他坚持到了46个，打破了全营纪录。 “这个列兵不简单！”看到熊茁成的表现，战友们发出了赞叹声。下杠后，大家才发现他手掌上的水泡早已磨破，斑斑血迹隐约可见。班长吴志强一边拿碘伏为他消毒，一边心疼他。熊茁成却咧嘴一笑：“破纪录了，再苦也值！” 这份意外收获，让熊茁成信心倍增，他将目标投向了旅军事体育运动会。得知去年单杠卷身上项目的最好成绩是118个，他主动向冠军黄鹏毅请教。“不执着于反复转圈，针对性训练腕弯举、垂直弯举和悬垂举腿以及臂力……”黄鹏毅知无不言。 回到训练场，熊茁成开启了专项训练模式，他以负重5公斤的屈臂悬垂举腿锤炼核心力量，用20组哑铃弯举和腕弯举强化前臂肌群，甚至在晚上下岗后还要加练几组俯卧撑。1个月后，他的成绩突破60个，可距离目标还有不小差距。 通过查阅专业资料和视频，他增加了新的训练内容：按照宽臂、窄臂、正常臂的方式做俯卧撑，每种做20个，每天做10组，同时在腿上绑沙袋练悬垂。 “此后每个小进步，都是一次全新挑战！”回忆起从80个到100个的突破时，熊茁成感慨万分。 “在腰间绑上一块哑铃进行杠上举腿训练，可以提升手臂耐力和腰腹耐力。”一次，刷到一个健身博主的视频后，熊茁成兴奋不已，他立即找出背包装上哑铃片，背在身上开始训练。一段时间后，他单杠卷身上突破了112个，爬杆成绩也跃居全营第一。 训练场上的每一滴汗，都是通往极致的铺路石。为继续提高成绩，熊茁成把眼光投向了业内更专业的训练方法，请教练为自己纠正动作。经过修正，他的举腿和仰头动作更加协调，拉杠时更加省力了。2个月后，他终于实现了超越，拉到了135个，便有了开头一幕。 所有默默付出，终会化作突破自我的底气。如今，熊茁成已成为连队训练骨干，带动更多战友立足岗位强本领。</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.70</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-09</span>
+    
+  </div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
+</footer>
+
+
+</body>
+</html>
