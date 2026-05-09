@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Rocket Force Unit Pools the Wisdom and Unifies the Will of Its Personnel to Break Through Development Bottlenecks — China Mil Watch</title>
+  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="China Mil Watch">
+  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-brand:          #B3132B;
+      --color-brand-dark:     #8B0E20;
+      --color-brand-light:    #D11C36;
+      --color-bg:             #F6F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FBFAF6;
+      --color-text-primary:   #161616;
+      --color-text-secondary: #4A4A4A;
+      --color-text-muted:     #7A7A7A;
+      --color-border:         #E2DFD8;
+      --color-border-soft:    #ECE9E2;
+      --color-accent:         #B3132B;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      /* Faint paper grid — barely-visible cross pattern for desktop polish */
+      background-image:
+        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: -1px -1px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 0 0 0 transparent, 0 2px 0 0 var(--color-brand);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a.active {
+      color: var(--color-text-primary);
+    }
+    .header-nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+    }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-card);
+      border-radius: 2px;
+      padding: 2px 8px;
+      line-height: 1.4;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
+
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    
+.article-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.article-page-title-zh {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Provenance ──────────────────────────────────────────────────── */
+.provenance {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+.provenance span + span::before { content: " · "; }
+
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
+}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title">China Mil Watch</span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../the-pla-watch/index.html" >The PLA Watch</a>
+    </nav>
+  </div>
+</header>
+
+
+
+<main>
+  
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+    
+      <div class="tags">
+        
+          <span class="tag">Nuclear</span>
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
+
+    <h1 class="article-page-title">
+      A Rocket Force Unit Pools the Wisdom and Unifies the Will of Its Personnel to Break Through Development Bottlenecks
+    </h1>
+
+    
+      <div class="article-page-title-zh">火箭军某部集兵智聚兵心破解发展难题</div>
+    
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>9 May 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/hjj_208561/16459535.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>An unidentified PLA Rocket Force unit has institutionalized a bottom-up suggestion mechanism—including regular &#39;Zhuge Liang Meetings,&#39; a dedicated Qiangjun Net feedback channel, and a &#39;Golden Idea&#39; award—that has produced over 20 adopted recommendations addressing training, equipment maintenance, and operational planning, including one that reduced required security force allocation by nearly 20 percent. The report is useful as evidence of a deliberate Rocket Force effort to extract tactical and technical knowledge from enlisted and non-commissioned personnel, likely in response to identified gaps between officer-level planning and ground-level operational realities. The mechanism&#39;s formalized feedback loop and public recognition structure suggest this is a sustained institutional initiative rather than an ad hoc campaign, though the unit&#39;s identity and the specific equipment systems referenced remain undisclosed.</div>
+    
+  </div>
+  
+
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>In late spring, a Rocket Force unit organized a training after-action review, at which Sergeant Ding Zhenhang&#39;s &#34;alternating-cover transition optimization plan&#34; was adopted on the spot. Upon re-grouping and war-gaming the plan, the unit found that adopting it could reduce the required security and defense force by nearly twenty percent. &#34;I never expected that my suggestion would prove so useful!&#34; Ding Zhenhang could barely conceal his excitement as he walked out of the training hall.</p>
+    
+      
+    
+      <p>&#34;Placing importance on drawing out the wisdom of officers and soldiers allows combat-capability building to take fewer wrong turns.&#34; The unit&#39;s leadership told reporters that their emphasis on keeping channels open for officers and soldiers to offer suggestions and recommendations stemmed from the lessons of a previous mission failure.</p>
+    
+      
+    
+      <p>On that occasion, a company of the unit conducted a cross-regional movement to an unfamiliar area to carry out an exercise evaluation mission. During plan formulation, several squad leaders, taking into account the complex terrain of the mission area, proposed &#34;dispatching road-control forces in advance,&#34; but the company commander did not adopt the recommendation. Once the evaluation began, due to the tight timeline for nighttime operations, poor ambient lighting, insufficient terrain reconnaissance, and unreasonable force allocation, the road-control effect fell short of expectations, affecting mission progress.</p>
+    
+      
+    
+      <p>This mission failure drew the attention of the unit&#39;s leadership. Drawing on this case, they studied and decided to explore establishing a long-term mechanism to encourage officers and soldiers to contribute their talents and wisdom: grassroots units hold regular &#34;Zhuge Liang Meetings&#34; (诸葛亮会), guiding officers and soldiers to offer suggestions and ideas on training, education, support, and other work; columns such as &#34;My One Stratagem for Training&#34; (我为训练献一计) and &#34;Soldier Situation Express Lane&#34; (兵情直通车) were opened on the Qiangjun Net (强军网), building a closed-loop chain of &#34;opinion collection—categorized review—designated responsibility—time-limited feedback—results publication&#34;; a &#34;Golden Idea&#34; (金点子) award was established to promptly commend and reward officers and soldiers whose suggestions and recommendations prove significantly useful.</p>
+    
+      
+    
+      <p>When this mechanism was first introduced, many officers and soldiers adopted a wait-and-see attitude and showed little enthusiasm for participation. In response, Political Instructor Hu of one company collected, on a &#34;point-to-point&#34; basis, suggestions and recommendations from cadres and key personnel on improving educational methods and enriching instructional content, made targeted adjustments in subsequent educational instruction sessions, and commended the cadres and key personnel who had offered the suggestions. This initiative greatly stimulated the enthusiasm and initiative of the entire company&#39;s officers and soldiers to participate in unit building, and everyone put forward many practical and useful &#34;golden ideas&#34; concerning the company&#39;s all-around development.</p>
+    
+      
+    
+      <p>The unit subsequently promoted this company&#39;s experience and practices across the board, encouraging each sub-unit to combine its own actual circumstances to keep channels open for officers and soldiers to offer suggestions and recommendations; a working mechanism of &#34;monthly summaries, quarterly reports, and semi-annual reviews&#34; was established to ensure that every piece of feedback from officers and soldiers receives a response and every matter is followed through to resolution; regular coordination meetings to resolve difficulties and provide assistance are convened to compile and examine the various issues of concern to officers and soldiers, and to drive their resolution one by one through categorized and tiered approaches.</p>
+    
+      
+    
+      <p>First-Class Master Sergeant Squad Leader Lü drew on his own practical experience to innovate a vehicle maintenance and inspection model, significantly improving the quality and efficiency of vehicle fault diagnosis and repair; Third-Class Master Sergeant Squad Leader Wu led technical backbone personnel in sustained research to resolve a problem of inadequate braking performance in a certain type of equipment; First-Class Staff Sergeant Squad Leader Li optimized the operating procedures for a new type of equipment, effectively reducing the rate of operating errors… The unit&#39;s leadership introduced that, under the incentive of the new mechanism, grassroots officers and soldiers came forward enthusiastically with suggestions and recommendations; after research and deliberation by the headquarters organs, more than 20 &#34;golden ideas&#34; from officers and soldiers were absorbed and adopted, becoming &#34;golden keys&#34; for unit building and helping to break through a number of problems that had long plagued the unit&#39;s all-around development.</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">暮春时节，火箭军某部组织一场训练复盘会，军士丁振航提出的“交替掩护衔接优化方案”被当场采纳。该部重新编组推演发现，采用这一方案，所需警戒防卫力量可减少近两成。 “没想到，我的意见建议能派上大用场！”走出训练大厅，丁振航仍难掩兴奋。 “重视发挥官兵智慧，战斗力建设少走弯路。”该部领导告诉记者，他们注重畅通官兵建言献策渠道，源于此前一次任务失利的教训。 那次，该部某连跨区机动至某陌生地域执行演练考核任务。制订方案时，几名班长针对任务地域地形复杂的实际，提出“提前遣送道路封控力量”的建议，但该连主官未予采纳。考核展开后，因夜间行动时间紧、环境光线弱，加之地形勘察不仔细、兵力分配不合理，道路封控效果不及预期，影响任务进度。 这次任务失利，引起该部领导关注。他们结合这一事例研究决定，探索建立鼓励官兵贡献才智的长效机制：各基层单位定期召开“诸葛亮会”，引导官兵围绕训练、教育、保障等工作提建议谈想法；在强军网上开设“我为训练献一计”“兵情直通车”等专栏，构建“意见收集—分类研判—专人负责—限时反馈—成效公示”的闭环链路；设立“金点子”奖，对提出意见建议发挥作用较大的官兵，及时予以表彰奖励。 这一机制推出之初，不少官兵持观望态度，参与积极性不高。针对这种现象，某连胡指导员“点对点”收集干部骨干对改进教育方式、丰富授课内容的意见建议，在随后的教育授课中进行针对性调整，并对提出意见建议的干部骨干予以表扬。此举极大激发全连官兵参与抓建的积极性主动性，大家围绕连队全面建设提出不少实用管用的“金点子”。 随后，该部全面推广该连的经验做法，鼓励各分队结合自身实际，畅通官兵建言献策渠道；建立“月有小结、季有报告、半年讲评”工作机制，确保官兵意见建议条条有回音、件件有着落；定期召开解难帮困协调会，汇总查摆官兵关注的各类问题，分类分层逐一推动解决。 一级军士长吕班长结合自身实践经验，创新车辆保养检查模式，大幅提升车辆故障检修质效；三级军士长吴班长带领技术骨干持续攻关，解决某型设备制动效果不佳的问题；一级上士李班长优化某新型装备操作方法，有效降低操作失误率……该部领导介绍，在新机制激励下，基层官兵踊跃建言献策，经过机关研究论证，20多条官兵“金点子”被吸收采纳，成为抓建“金钥匙”，助力破解一批长期困扰部队全面建设的难题。</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.85</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-09</span>
+    
+  </div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. Translations and analytical summaries are AI-assisted; original sources are linked from every article.</div>
+  </div>
+</footer>
+
+
+</body>
+</html>
