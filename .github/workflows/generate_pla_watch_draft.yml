@@ -1,0 +1,58 @@
+name: Generate PLA Watch Draft
+
+# Manual-only. Generates a weekly PLA Watch edition and uploads the output
+# as a downloadable artifact for review. Does NOT commit to main, does NOT
+# deploy to gh-pages, does NOT publish anything live.
+
+on:
+  workflow_dispatch:
+    inputs:
+      week_ending:
+        description: 'Week ending date (YYYY-MM-DD). Leave blank for the next Sunday.'
+        required: false
+        type: string
+
+concurrency:
+  group: pla-watch-draft
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate PLA Watch draft
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -n "${{ github.event.inputs.week_ending }}" ]; then
+            python scripts/generate_pla_watch.py --week-ending "${{ github.event.inputs.week_ending }}"
+          else
+            python scripts/generate_pla_watch.py
+          fi
+
+      - name: Upload draft artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pla-watch-draft-${{ github.run_id }}
+          path: |
+            output/the-pla-watch/
+            the-pla-watch/linkedin/
+          if-no-files-found: warn
+          retention-days: 14
