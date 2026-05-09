@@ -7,12 +7,12 @@
   <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
 
   <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:site_name"   content="China Mil Watch">
-  <meta property="og:url"         content="https://chinamilwatch.org">
-  <meta property="og:title"       content="China Mil Watch">
-  <meta property="og:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
-  <meta property="og:image"       content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
@@ -22,43 +22,38 @@
   <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
   <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
 
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    /* ── Reset & base ──────────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --bg:          #0d0d0d;
-      --surface:     #141414;
-      --border:      #252525;
-      --border-sub:  #1d1d1d;
-      --text:        #e2e0db;
-      --text-sec:    #918f8a;
-      --text-muted:  #555350;
-      --accent:      #c8922a;
-      --accent-dim:  rgba(200, 146, 42, 0.12);
-      --link:        #8ab0cc;
-      --link-hover:  #b0ccdf;
-      --tag-bg:      #1e1e1e;
-      --tag-text:    #7a7875;
-
-      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
-      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      --max-width:   860px;
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
     }
 
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-weight: 300;
-      font-size: 0.9375rem;
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
@@ -66,293 +61,223 @@
       flex-direction: column;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-    a:hover { color: var(--link-hover); text-decoration: underline; }
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* ── Navigation ─────────────────────────────────────────────────────────── */
-    nav {
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
-    }
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      height: 52px;
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
-    .nav-brand {
-      font-family: var(--font-sans);
-      font-weight: 500;
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text);
       text-decoration: none;
+      transition: color 0.15s;
     }
-    .nav-brand:hover { color: var(--text); text-decoration: none; }
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-    }
-    .nav-links a {
-      font-size: 0.8125rem;
-      color: var(--text-sec);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--text); }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
       flex: 1;
-      max-width: var(--max-width);
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
       padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* ── Page header ─────────────────────────────────────────────────────────── */
-    .page-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
     }
-    .page-header h1 {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
     }
-    .page-header .meta {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-    .page-header .meta span + span::before {
-      content: " · ";
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
     }
 
-    /* ── Article card ────────────────────────────────────────────────────────── */
-    .article-card {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-sub);
-    }
-    .article-card:last-child { border-bottom: none; }
-
-    .article-card.significant {
-      background: var(--accent-dim);
-      border-radius: 3px;
-      padding: 1.5rem;
-      margin: 0 -1.5rem;
-      border-bottom: none;
-      margin-bottom: 1px;
-    }
-    .article-card.significant + .article-card {
-      border-top: 1px solid var(--border-sub);
-    }
-
-    .sig-flag {
-      font-family: var(--font-sans);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .sig-flag::before { content: "★  "; }
-
-    .article-title {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 1.25rem;
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-    }
-    .article-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
-
-    .article-title-zh {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem;
+      gap: 0.35rem;
       margin-bottom: 0.75rem;
     }
     .tag {
+      display: inline-block;
       font-size: 0.6875rem;
-      letter-spacing: 0.04em;
+      font-weight: 500;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid var(--border);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
       border-radius: 2px;
-      padding: 0.15rem 0.45rem;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
     }
-
-    .article-summary {
-      font-size: 0.9375rem;
-      line-height: 1.65;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .sig-reason {
-      font-size: 0.875rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--accent);
-    }
-
-    .article-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      align-items: center;
-    }
-    .article-footer a { color: var(--text-muted); }
-    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
-    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
-
-    /* ── Footer ──────────────────────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    footer a { color: var(--text-muted); }
-    footer a:hover { color: var(--link-hover); }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
     .empty-state {
-      color: var(--text-muted);
+      color: var(--color-text-muted);
       font-style: italic;
       padding: 2rem 0;
     }
 
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
     
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .back-link {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
   display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
   margin-bottom: 1.75rem;
 }
-.back-link:hover { color: var(--link-hover); text-decoration: none; }
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
 
-.article-page-header {
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 }
+
 .article-page-title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 1.75rem;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
   line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  margin-bottom: 0.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
 }
+
 .article-page-title-zh {
-  font-size: 0.9375rem;
-  color: var(--text-muted);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
   font-style: italic;
   margin-bottom: 1rem;
 }
+
 .article-page-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem 1rem;
   font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  align-items: center;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
 }
-.article-page-meta a { color: var(--text-muted); }
-.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
-.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
 
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
 .section-label {
   font-size: 0.6875rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 0.75rem;
 }
 
+/* ── Summary block ───────────────────────────────────────────────── */
 .summary-block {
-  background: var(--surface);
-  border-left: 3px solid var(--border);
-  border-radius: 0 3px 3px 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
   padding: 1.1rem 1.25rem;
   margin-bottom: 2rem;
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
 }
 .summary-block.significant {
-  border-left-color: var(--accent);
+  border-left-color: var(--color-brand);
 }
-.summary-text { color: var(--text); }
-.sig-block {
+.sig-reasoning {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
-  color: var(--accent);
-}
-.sig-block::before {
-  content: "★  ";
-  font-size: 0.75rem;
+  color: var(--color-brand);
+  line-height: 1.6;
 }
 
+/* ── Translation body ────────────────────────────────────────────── */
 .translation-body {
   font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--text);
+  line-height: 1.8;
+  color: var(--color-text-primary);
   margin-bottom: 2rem;
 }
-.translation-body p {
-  margin-bottom: 0.9rem;
-}
+.translation-body p { margin-bottom: 0.9rem; }
 .translation-body p:last-child { margin-bottom: 0; }
 
+/* ── Collapsible original ────────────────────────────────────────── */
 details {
   margin-bottom: 2rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
 details summary {
   font-size: 0.8125rem;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   padding: 0.65rem 1rem;
   cursor: pointer;
   user-select: none;
@@ -369,225 +294,228 @@ details summary::before {
   display: inline-block;
 }
 details[open] summary::before { transform: rotate(90deg); }
-details summary:hover { color: var(--text); }
+details summary:hover { color: var(--color-text-primary); }
 .original-body {
   padding: 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.9375rem;
   line-height: 1.85;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
+/* ── Provenance ──────────────────────────────────────────────────── */
 .provenance {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   line-height: 1.8;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-sub);
+  border-top: 1px solid var(--color-border);
 }
 .provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
 
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-brand">PLA Watch</a>
-    <div class="nav-links">
-      <a href="../index.html" >Daily Brief</a>
-      <a href="../archive.html" >Archive</a>
-    </div>
-  </div>
-</nav>
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
 
 <main>
   
-<a href="../index.html" class="back-link">← Daily Brief</a>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
 
-<div class="article-page-header">
+  <div class="article-header">
 
-  
+    
+      <div class="tags">
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
 
-  <h1 class="article-page-title">
-    &#34;I Taught Soldiers How to Choose a Path, and Found the One I Wanted to Walk Myself&#34;
-  </h1>
+    <h1 class="article-page-title">
+      &#34;I Taught Soldiers How to Choose a Path, and Found the One I Wanted to Walk Myself&#34;
+    </h1>
 
-  
-    <div class="article-page-title-zh">&#34;我教会战士选择路，也找到了自己想走的那条路”</div>
-  
+    
+      <div class="article-page-title-zh">&#34;我教会战士选择路，也找到了自己想走的那条路”</div>
+    
 
-  
-    <div class="tags">
-      
-        <span class="tag">Political Work</span>
-      
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>8 May 2026</span>
     </div>
+
+    <a href="http://www.81.cn/yw_208727/16459273.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>The Information Support Force&#39;s official newspaper profiles Guo Kai, a company commander in an unspecified ISF unit, who re-enlisted in 2019 after a career as a geography teacher, was commissioned in 2021, and in 2024 was tasked with standing up a drone company on a coastal tidal-flat training area. The article is a routine human-interest recruitment and morale piece and contains no operationally significant information, though its publication in Information Support News confirms that the ISF is actively building out drone-capable company-level units in coastal terrain and is using personnel profiles to normalize the force&#39;s still-nascent institutional identity following the 2024 reorganization.</div>
+    
+  </div>
   
 
-  <div class="article-page-meta">
-    <span>PLA Daily (解放军报)</span>
-    <span class="sep"></span>
-    <span>8 May 2026</span>
-    <span class="sep"></span>
-    <a href="http://www.81.cn/yw_208727/16459273.html" target="_blank" rel="noopener">Original source ↗</a>
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>Company Commander Guo Kai of a Certain Unit of the Information Support Force——</p>
+    
+      <p>&#34;Teaching Soldiers to Choose a Path&#34;</p>
+    
+      <p>■ Zeng Hengjie, Information Support News Reporter Ma Jing</p>
+    
+      
+    
+      <p>The first time he gave a class to officers and soldiers, Guo Kai, company commander of a certain unit of the Information Support Force, was mid-lecture when he casually let slip: &#34;Look here—traveling from Point A to Point B, this hilly terrain is an unavoidable passage...&#34;</p>
+    
+      
+    
+      <p>A few soldiers in the audience exchanged glances. &#34;What hilly terrain?&#34; &#34;Isn&#39;t that just the slope between the equipment room and the launch position?&#34;</p>
+    
+      
+    
+      <p>After class, one soldier couldn&#39;t help asking: &#34;Company Commander, were you a teacher before?&#34;</p>
+    
+      
+    
+      <p>Guo Kai smiled. He really had been.</p>
+    
+      
+    
+      <p>In 2014, Guo Kai—then a university student—enlisted for the first time, serving successively as a wireman, a cook, and an assault vehicle gunner. After leaving the service, he returned to campus, bringing with him the solid work ethic he had forged in the military. Through persistent effort, the student who had ranked at the bottom of his class before enlisting ended up winning a national scholarship. After graduation, he became a geography teacher. Though he felt a surge of pride every time he drew China&#39;s topographic map on the blackboard, he always sensed something was missing. He eventually figured out what it was: the purity and intensity of military life that kept pulling at him.</p>
+    
+      
+    
+      <p>In 2019, Guo Kai enlisted a second time. Returning to the barracks, he was assigned to a communications unit. He began viewing everything around him through the professional lens of a geography teacher.</p>
+    
+      
+    
+      <p>Where others looked at cables and saw cables, he looked at cables and saw contour lines, terrain cross-sections, and optimal routing paths. His apprentice Zhang Ming had spent a month running cable routes with him before finally blurting out: &#34;Sergeant, your approach to laying cable is a bit strange—how do you think about it?&#34;</p>
+    
+      
+    
+      <p>Guo Kai crouched on the ground, a coil of fiber-optic cable in his hands, not looking up: &#34;Look at this hill. If you need to run a line from the base to the summit, what&#39;s the best way to do it?&#34;</p>
+    
+      
+    
+      <p>Zhang Ming pointed in the direction of the straight line.</p>
+    
+      
+    
+      <p>Guo Kai shook his head: &#34;The straight line is the shortest, but it&#39;s not the best. Look at this gradient—gentle on this side, steep on that side. Taking the gentle slope adds 50 meters, but it&#39;s easier to maintain, and it&#39;s less likely to break in wind and rain.&#34;</p>
+    
+      
+    
+      <p>Zhang Ming had a sudden realization: &#34;Sergeant, you&#39;ve really got something!&#34;</p>
+    
+      
+    
+      <p>&#34;It&#39;s nothing much—I taught geography for a few years.&#34;</p>
+    
+      
+    
+      <p>Before long, the fact that &#34;Sergeant Guo used to be a geography teacher&#34; had spread through the company. Everyone teased him: &#34;Guo Kai is really cut out for this—he looks at everything like he&#39;s reading a topographic map...&#34;</p>
+    
+      
+    
+      <p>In 2021, Guo Kai passed the officer promotion examination and became a commissioned officer. In 2024, he was ordered to stand up a drone company in a certain coastal area. The location was a stretch of tidal flats with highly complex terrain.</p>
+    
+      
+    
+      <p>How to proceed? Where to begin? On the first day, Guo Kai led six soldiers, standing in the mud, buffeted by a cold wind, holding a few scattered aerial photographs.</p>
+    
+      
+    
+      <p>Guo Kai spread the photos on the ground, crouched down, and moved his finger along the coastline: &#34;This is the wind gap—wind speeds run five to six on the Beaufort scale year-round, so the launch window is only in the early morning and evening. This is the tidal flat—the silt is deep, so landing zones must avoid it. This is the hilly terrain—it&#39;s a natural barrier, and also a signal dead zone...&#34;</p>
+    
+      
+    
+      <p>The soldiers gathered in a circle, watching him mark point after point on the terrain map.</p>
+    
+      
+    
+      <p>One month later, they had covered the entire area on foot, mapping out every takeoff point, every flight route, and every signal dead zone with complete clarity. When the company later expanded to more than sixty personnel, newly arrived soldiers who received this terrain analysis material assumed it was a professional survey report issued by higher headquarters.</p>
+    
+      
+    
+      <p>&#34;Company Commander, you read the terrain really carefully.&#34;</p>
+    
+      
+    
+      <p>Guo Kai said: &#34;When I was teaching geography, the very first lesson I gave students was—you read terrain in order to fight...&#34;</p>
+    
+      
+    
+      <p>When he was a teacher, the textbook had a chapter called &#34;Interpretation and Application of Topographic Maps.&#34; Every time he taught that chapter, he would say: &#34;Don&#39;t think topographic maps are just exam questions—on the battlefield, terrain is life.&#34; When he said it then, the students below showed no reaction. Now when he says it, the soldiers below are all nodding.</p>
+    
+      
+    
+      <p>Guo Kai has a distinctive approach to leading soldiers: he likes to help them think through &#34;how to walk the road ahead.&#34; For those wanting to apply to a military academy, he helps them work out a time budget—how many hours a day can be squeezed out for study, which subject to start reinforcing, what score on a practice exam counts as solid footing. For those wanting to learn a technical skill, he draws up a reading list, clearly marking which book lays the foundation, which advances the skill, and which to tackle last. When someone wants to change their specialty track, he pulls out his own experience of switching roles and walks them through it, telling them which hurdle is the hardest to clear after the transition and how to get through it.</p>
+    
+      
+    
+      <p>Someone joked with him: &#34;Company Commander, this doesn&#39;t feel like leading soldiers—it feels like teaching students.&#34;</p>
+    
+      
+    
+      <p>Guo Kai said in earnest: &#34;Leading soldiers is sometimes really just like teaching students. You have to let people know where the road is and how to walk it most steadily.&#34;</p>
+    
+      
+    
+      <p>The soldiers hold him in high regard—not only because he can read terrain. Someone told the reporter: &#34;From Sergeant Guo to Teacher Guo to Company Commander Guo—he has walked every step of that road with real seriousness.&#34;</p>
+    
+      
+    
+      <p>Someone once asked him what all that back-and-forth was worth. Guo Kai thought for a moment, then looked out toward the distant sea: &#34;That&#39;s not back-and-forth. The road of a person&#39;s life is far more complex than any topographic map. I taught soldiers how to choose a path, and I found the one I wanted to walk myself.&#34;</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">信息支援部队某部连长呙凯—— “教会战士选择路” ■曾恒洁 信息支援报记者 马 璟 第一次给官兵上课时，信息支援部队某部连长呙凯讲着讲着随口冒出一句：“大家看，从A点走向B点，这片丘陵地带是必经之地……” 台下几名战士面面相觑——“啥丘陵地带？”“不就是机房到发射阵地那片山坡嘛……” 课后，有战士忍不住问：“连长，您以前当过老师吧？” 呙凯笑了笑，他还真当过。 2014年，大学在读的呙凯首次入伍，先后当过有线兵、炊事员和突击车炮手。退伍后，他重返校园，也把在部队锤炼的好作风带了回来。经过不懈努力，入伍前那个“垫底生”，最后竟成了国家奖学金获得者。毕业后，他当了一名地理老师。虽说每次在黑板上画中国地形图，他都满心自豪，可心里总觉得少了点东西。后来他想明白了，是部队生活的纯粹和热烈，让他念兹在兹。 2019年，呙凯二次入伍。再次步入军营，呙凯被分配到通信部队。他开始以地理老师的专业眼光，检视着身边的一切—— 别人看线缆就是线缆，他看线缆，脑子里浮现的是等高线、地形剖面、最优路径。他的徒弟张明跟着他跑了一个月线路，终于憋不住问：“班长，你布线的思路有点怪，咋想的？” 呙凯蹲在地上，手里攥着一捆光缆，头也不抬：“你看这片山，要从山脚到山顶架条线，怎么架最好？” 张明指了指直线方向。 呙凯摇头：“直线最近，但不是最优。你看这个坡度，这边缓那边陡，走缓坡虽然远了50米，但维护方便，风雨天也不容易断。” 张明恍然大悟：“班长，有两下子啊！” “倒也没啥，我教过几年地理。” 很快，“呙班长当过地理老师”这件事在连队传开了。大家打趣他：“呙凯确实是这块料，看什么都像在看地形图……” 2021年，呙凯通过提干考试，成为军官。2024年，他受命组建一支无人机连队，地点在某沿海区域。那里一片滩涂，地形十分复杂。 怎么干？从哪开始干？头一天，呙凯带着6个兵，站在泥地里，吹着冷飕飕的风，攥着几张零散的航拍图。 呙凯把图铺在地上，蹲下来，手指沿着海岸线移动：“这里是风口，风速常年五六级，起飞窗口只有早晚。这里是滩涂，淤泥较厚，降落点要避开。这里是丘陵，是天然屏障，还是信号盲区……” 战士们围成一圈，看着他在地形图上标注一个又一个点位。 一个月后，他们靠双脚走遍了这片区域，把每一处起飞点、每一条航线、每一个信号盲区都摸得一清二楚。后来，连队扩充到60多人，新来的战士拿到这份地形分析资料，都以为是上级配发的专业勘察报告。 “连长，你这地形看得真细。” 呙凯说：“我以前教地理，第一课就跟学生讲——看地形是为了打仗……” 他当老师那会儿，教材上有一章叫“地形图的判读与应用”。每次讲到这一章，他都会说一句：“别以为地形图只是考试题，到了战场，地形就是命。”那时他说这话，底下的学生没什么反应。现在他说这话，底下的战士都在点头。 呙凯带兵有个特点，他喜欢帮战士想“路怎么走”。想考军校的，他帮着算时间账——每天能挤出几个小时学习、从哪科开始补、模考到什么水平算稳当；想学技术的，他列出书单，标清楚哪本打底、哪本进阶、哪本最后啃；有人想转专业方向，他就把自己当年换岗的经验翻出来讲一遍，告诉人家转过去之后，最难熬的是哪一关，怎么熬过去。 有人跟他开玩笑：“连长，你这不像带兵，像带学生。” 呙凯认真地说：“带兵有时真还就像带学生，都得让人知道路在哪儿、怎么走最稳当。” 战士们对他很信服，不光是因为他会看地形。有人告诉记者：“从呙班长、呙老师，再到呙连长，这一路他走得很认真。” 有人问过他，折腾这么一大圈图啥，呙凯想了想，望向远处的海：“这不叫折腾，人生的路可比地形图复杂得多，我教会战士选择路，也找到了自己想走的那条路。”</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.72</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-08</span>
+    
   </div>
 
 </div>
-
-
-<div class="section-label">Summary</div>
-<div class="summary-block">
-  <div class="summary-text">The Information Support Force&#39;s official newspaper profiles Guo Kai, a company commander in an unspecified ISF unit, who re-enlisted in 2019 after a career as a geography teacher, was commissioned in 2021, and in 2024 was tasked with standing up a drone company on a coastal tidal-flat training area. The article is a routine human-interest recruitment and morale piece and contains no operationally significant information, though its publication in Information Support News confirms that the ISF is actively building out drone-capable company-level units in coastal terrain and is using personnel profiles to normalize the force&#39;s still-nascent institutional identity following the 2024 reorganization.</div>
-  
-</div>
-
-
-
-<div class="section-label">Translation</div>
-<div class="translation-body">
-  
-    <p>Company Commander Guo Kai of a Certain Unit of the Information Support Force——</p>
-  
-    <p>&#34;Teaching Soldiers to Choose a Path&#34;</p>
-  
-    <p>■ Zeng Hengjie, Information Support News Reporter Ma Jing</p>
-  
-    
-  
-    <p>The first time he gave a class to officers and soldiers, Guo Kai, company commander of a certain unit of the Information Support Force, was mid-lecture when he casually let slip: &#34;Look here—traveling from Point A to Point B, this hilly terrain is an unavoidable passage...&#34;</p>
-  
-    
-  
-    <p>A few soldiers in the audience exchanged glances. &#34;What hilly terrain?&#34; &#34;Isn&#39;t that just the slope between the equipment room and the launch position?&#34;</p>
-  
-    
-  
-    <p>After class, one soldier couldn&#39;t help asking: &#34;Company Commander, were you a teacher before?&#34;</p>
-  
-    
-  
-    <p>Guo Kai smiled. He really had been.</p>
-  
-    
-  
-    <p>In 2014, Guo Kai—then a university student—enlisted for the first time, serving successively as a wireman, a cook, and an assault vehicle gunner. After leaving the service, he returned to campus, bringing with him the solid work ethic he had forged in the military. Through persistent effort, the student who had ranked at the bottom of his class before enlisting ended up winning a national scholarship. After graduation, he became a geography teacher. Though he felt a surge of pride every time he drew China&#39;s topographic map on the blackboard, he always sensed something was missing. He eventually figured out what it was: the purity and intensity of military life that kept pulling at him.</p>
-  
-    
-  
-    <p>In 2019, Guo Kai enlisted a second time. Returning to the barracks, he was assigned to a communications unit. He began viewing everything around him through the professional lens of a geography teacher.</p>
-  
-    
-  
-    <p>Where others looked at cables and saw cables, he looked at cables and saw contour lines, terrain cross-sections, and optimal routing paths. His apprentice Zhang Ming had spent a month running cable routes with him before finally blurting out: &#34;Sergeant, your approach to laying cable is a bit strange—how do you think about it?&#34;</p>
-  
-    
-  
-    <p>Guo Kai crouched on the ground, a coil of fiber-optic cable in his hands, not looking up: &#34;Look at this hill. If you need to run a line from the base to the summit, what&#39;s the best way to do it?&#34;</p>
-  
-    
-  
-    <p>Zhang Ming pointed in the direction of the straight line.</p>
-  
-    
-  
-    <p>Guo Kai shook his head: &#34;The straight line is the shortest, but it&#39;s not the best. Look at this gradient—gentle on this side, steep on that side. Taking the gentle slope adds 50 meters, but it&#39;s easier to maintain, and it&#39;s less likely to break in wind and rain.&#34;</p>
-  
-    
-  
-    <p>Zhang Ming had a sudden realization: &#34;Sergeant, you&#39;ve really got something!&#34;</p>
-  
-    
-  
-    <p>&#34;It&#39;s nothing much—I taught geography for a few years.&#34;</p>
-  
-    
-  
-    <p>Before long, the fact that &#34;Sergeant Guo used to be a geography teacher&#34; had spread through the company. Everyone teased him: &#34;Guo Kai is really cut out for this—he looks at everything like he&#39;s reading a topographic map...&#34;</p>
-  
-    
-  
-    <p>In 2021, Guo Kai passed the officer promotion examination and became a commissioned officer. In 2024, he was ordered to stand up a drone company in a certain coastal area. The location was a stretch of tidal flats with highly complex terrain.</p>
-  
-    
-  
-    <p>How to proceed? Where to begin? On the first day, Guo Kai led six soldiers, standing in the mud, buffeted by a cold wind, holding a few scattered aerial photographs.</p>
-  
-    
-  
-    <p>Guo Kai spread the photos on the ground, crouched down, and moved his finger along the coastline: &#34;This is the wind gap—wind speeds run five to six on the Beaufort scale year-round, so the launch window is only in the early morning and evening. This is the tidal flat—the silt is deep, so landing zones must avoid it. This is the hilly terrain—it&#39;s a natural barrier, and also a signal dead zone...&#34;</p>
-  
-    
-  
-    <p>The soldiers gathered in a circle, watching him mark point after point on the terrain map.</p>
-  
-    
-  
-    <p>One month later, they had covered the entire area on foot, mapping out every takeoff point, every flight route, and every signal dead zone with complete clarity. When the company later expanded to more than sixty personnel, newly arrived soldiers who received this terrain analysis material assumed it was a professional survey report issued by higher headquarters.</p>
-  
-    
-  
-    <p>&#34;Company Commander, you read the terrain really carefully.&#34;</p>
-  
-    
-  
-    <p>Guo Kai said: &#34;When I was teaching geography, the very first lesson I gave students was—you read terrain in order to fight...&#34;</p>
-  
-    
-  
-    <p>When he was a teacher, the textbook had a chapter called &#34;Interpretation and Application of Topographic Maps.&#34; Every time he taught that chapter, he would say: &#34;Don&#39;t think topographic maps are just exam questions—on the battlefield, terrain is life.&#34; When he said it then, the students below showed no reaction. Now when he says it, the soldiers below are all nodding.</p>
-  
-    
-  
-    <p>Guo Kai has a distinctive approach to leading soldiers: he likes to help them think through &#34;how to walk the road ahead.&#34; For those wanting to apply to a military academy, he helps them work out a time budget—how many hours a day can be squeezed out for study, which subject to start reinforcing, what score on a practice exam counts as solid footing. For those wanting to learn a technical skill, he draws up a reading list, clearly marking which book lays the foundation, which advances the skill, and which to tackle last. When someone wants to change their specialty track, he pulls out his own experience of switching roles and walks them through it, telling them which hurdle is the hardest to clear after the transition and how to get through it.</p>
-  
-    
-  
-    <p>Someone joked with him: &#34;Company Commander, this doesn&#39;t feel like leading soldiers—it feels like teaching students.&#34;</p>
-  
-    
-  
-    <p>Guo Kai said in earnest: &#34;Leading soldiers is sometimes really just like teaching students. You have to let people know where the road is and how to walk it most steadily.&#34;</p>
-  
-    
-  
-    <p>The soldiers hold him in high regard—not only because he can read terrain. Someone told the reporter: &#34;From Sergeant Guo to Teacher Guo to Company Commander Guo—he has walked every step of that road with real seriousness.&#34;</p>
-  
-    
-  
-    <p>Someone once asked him what all that back-and-forth was worth. Guo Kai thought for a moment, then looked out toward the distant sea: &#34;That&#39;s not back-and-forth. The road of a person&#39;s life is far more complex than any topographic map. I taught soldiers how to choose a path, and I found the one I wanted to walk myself.&#34;</p>
-  
-</div>
-
-
-
-<details>
-  <summary>Original Chinese</summary>
-  <div class="original-body">信息支援部队某部连长呙凯—— “教会战士选择路” ■曾恒洁 信息支援报记者 马 璟 第一次给官兵上课时，信息支援部队某部连长呙凯讲着讲着随口冒出一句：“大家看，从A点走向B点，这片丘陵地带是必经之地……” 台下几名战士面面相觑——“啥丘陵地带？”“不就是机房到发射阵地那片山坡嘛……” 课后，有战士忍不住问：“连长，您以前当过老师吧？” 呙凯笑了笑，他还真当过。 2014年，大学在读的呙凯首次入伍，先后当过有线兵、炊事员和突击车炮手。退伍后，他重返校园，也把在部队锤炼的好作风带了回来。经过不懈努力，入伍前那个“垫底生”，最后竟成了国家奖学金获得者。毕业后，他当了一名地理老师。虽说每次在黑板上画中国地形图，他都满心自豪，可心里总觉得少了点东西。后来他想明白了，是部队生活的纯粹和热烈，让他念兹在兹。 2019年，呙凯二次入伍。再次步入军营，呙凯被分配到通信部队。他开始以地理老师的专业眼光，检视着身边的一切—— 别人看线缆就是线缆，他看线缆，脑子里浮现的是等高线、地形剖面、最优路径。他的徒弟张明跟着他跑了一个月线路，终于憋不住问：“班长，你布线的思路有点怪，咋想的？” 呙凯蹲在地上，手里攥着一捆光缆，头也不抬：“你看这片山，要从山脚到山顶架条线，怎么架最好？” 张明指了指直线方向。 呙凯摇头：“直线最近，但不是最优。你看这个坡度，这边缓那边陡，走缓坡虽然远了50米，但维护方便，风雨天也不容易断。” 张明恍然大悟：“班长，有两下子啊！” “倒也没啥，我教过几年地理。” 很快，“呙班长当过地理老师”这件事在连队传开了。大家打趣他：“呙凯确实是这块料，看什么都像在看地形图……” 2021年，呙凯通过提干考试，成为军官。2024年，他受命组建一支无人机连队，地点在某沿海区域。那里一片滩涂，地形十分复杂。 怎么干？从哪开始干？头一天，呙凯带着6个兵，站在泥地里，吹着冷飕飕的风，攥着几张零散的航拍图。 呙凯把图铺在地上，蹲下来，手指沿着海岸线移动：“这里是风口，风速常年五六级，起飞窗口只有早晚。这里是滩涂，淤泥较厚，降落点要避开。这里是丘陵，是天然屏障，还是信号盲区……” 战士们围成一圈，看着他在地形图上标注一个又一个点位。 一个月后，他们靠双脚走遍了这片区域，把每一处起飞点、每一条航线、每一个信号盲区都摸得一清二楚。后来，连队扩充到60多人，新来的战士拿到这份地形分析资料，都以为是上级配发的专业勘察报告。 “连长，你这地形看得真细。” 呙凯说：“我以前教地理，第一课就跟学生讲——看地形是为了打仗……” 他当老师那会儿，教材上有一章叫“地形图的判读与应用”。每次讲到这一章，他都会说一句：“别以为地形图只是考试题，到了战场，地形就是命。”那时他说这话，底下的学生没什么反应。现在他说这话，底下的战士都在点头。 呙凯带兵有个特点，他喜欢帮战士想“路怎么走”。想考军校的，他帮着算时间账——每天能挤出几个小时学习、从哪科开始补、模考到什么水平算稳当；想学技术的，他列出书单，标清楚哪本打底、哪本进阶、哪本最后啃；有人想转专业方向，他就把自己当年换岗的经验翻出来讲一遍，告诉人家转过去之后，最难熬的是哪一关，怎么熬过去。 有人跟他开玩笑：“连长，你这不像带兵，像带学生。” 呙凯认真地说：“带兵有时真还就像带学生，都得让人知道路在哪儿、怎么走最稳当。” 战士们对他很信服，不光是因为他会看地形。有人告诉记者：“从呙班长、呙老师，再到呙连长，这一路他走得很认真。” 有人问过他，折腾这么一大圈图啥，呙凯想了想，望向远处的海：“这不叫折腾，人生的路可比地形图复杂得多，我教会战士选择路，也找到了自己想走的那条路。”</div>
-</details>
-
-
-<div class="provenance">
-  <span>Relevance score: 0.72</span>
-  <span>Model: claude-sonnet-4-6</span>
-  <span>Prompt: v1</span>
-  
-    <span>Analyzed: 2026-05-08</span>
-  
-</div>
-
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    Open-source intelligence monitoring of Chinese military and security developments.
-    Source material from Chinese state media; all analysis AI-generated.
-    Not for redistribution without attribution.
-    Generated 2026-05-08 17:06 UTC.
-  </div>
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
 </footer>
 
 

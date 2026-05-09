@@ -7,12 +7,12 @@
   <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
 
   <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:site_name"   content="China Mil Watch">
-  <meta property="og:url"         content="https://chinamilwatch.org">
-  <meta property="og:title"       content="China Mil Watch">
-  <meta property="og:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
-  <meta property="og:image"       content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
@@ -22,43 +22,38 @@
   <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
   <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
 
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    /* ── Reset & base ──────────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --bg:          #0d0d0d;
-      --surface:     #141414;
-      --border:      #252525;
-      --border-sub:  #1d1d1d;
-      --text:        #e2e0db;
-      --text-sec:    #918f8a;
-      --text-muted:  #555350;
-      --accent:      #c8922a;
-      --accent-dim:  rgba(200, 146, 42, 0.12);
-      --link:        #8ab0cc;
-      --link-hover:  #b0ccdf;
-      --tag-bg:      #1e1e1e;
-      --tag-text:    #7a7875;
-
-      --font-serif:  'EB Garamond', 'Georgia', 'Times New Roman', serif;
-      --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-      --max-width:   860px;
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
     }
 
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-weight: 300;
-      font-size: 0.9375rem;
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
@@ -66,293 +61,223 @@
       flex-direction: column;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-    a:hover { color: var(--link-hover); text-decoration: underline; }
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* ── Navigation ─────────────────────────────────────────────────────────── */
-    nav {
-      border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
-    }
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      height: 52px;
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-shrink: 0;
     }
-    .nav-brand {
-      font-family: var(--font-sans);
-      font-weight: 500;
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text);
       text-decoration: none;
+      transition: color 0.15s;
     }
-    .nav-brand:hover { color: var(--text); text-decoration: none; }
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-    }
-    .nav-links a {
-      font-size: 0.8125rem;
-      color: var(--text-sec);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-    }
-    .nav-links a:hover { color: var(--text); text-decoration: none; }
-    .nav-links a.active { color: var(--text); }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
       flex: 1;
-      max-width: var(--max-width);
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
       padding: 2.5rem 1.5rem 4rem;
     }
 
-    /* ── Page header ─────────────────────────────────────────────────────────── */
-    .page-header {
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--border);
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
     }
-    .page-header h1 {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 0.5rem;
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
     }
-    .page-header .meta {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-    .page-header .meta span + span::before {
-      content: " · ";
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
     }
 
-    /* ── Article card ────────────────────────────────────────────────────────── */
-    .article-card {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border-sub);
-    }
-    .article-card:last-child { border-bottom: none; }
-
-    .article-card.significant {
-      background: var(--accent-dim);
-      border-radius: 3px;
-      padding: 1.5rem;
-      margin: 0 -1.5rem;
-      border-bottom: none;
-      margin-bottom: 1px;
-    }
-    .article-card.significant + .article-card {
-      border-top: 1px solid var(--border-sub);
-    }
-
-    .sig-flag {
-      font-family: var(--font-sans);
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-    .sig-flag::before { content: "★  "; }
-
-    .article-title {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 1.25rem;
-      line-height: 1.35;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-    }
-    .article-title a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .article-title a:hover { color: var(--link-hover); text-decoration: none; }
-
-    .article-title-zh {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-style: italic;
-    }
-
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.3rem;
+      gap: 0.35rem;
       margin-bottom: 0.75rem;
     }
     .tag {
+      display: inline-block;
       font-size: 0.6875rem;
-      letter-spacing: 0.04em;
+      font-weight: 500;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border: 1px solid var(--border);
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
       border-radius: 2px;
-      padding: 0.15rem 0.45rem;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
     }
-
-    .article-summary {
-      font-size: 0.9375rem;
-      line-height: 1.65;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .sig-reason {
-      font-size: 0.875rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      padding-left: 0.75rem;
-      border-left: 2px solid var(--accent);
-    }
-
-    .article-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      margin-top: 0.75rem;
-      align-items: center;
-    }
-    .article-footer a { color: var(--text-muted); }
-    .article-footer a:hover { color: var(--link-hover); text-decoration: none; }
-    .article-footer .sep::before { content: "·"; margin-right: 1rem; }
-
-    /* ── Footer ──────────────────────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    footer a { color: var(--text-muted); }
-    footer a:hover { color: var(--link-hover); }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
     .empty-state {
-      color: var(--text-muted);
+      color: var(--color-text-muted);
       font-style: italic;
       padding: 2rem 0;
     }
 
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
     
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .back-link {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
   display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
   margin-bottom: 1.75rem;
 }
-.back-link:hover { color: var(--link-hover); text-decoration: none; }
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
 
-.article-page-header {
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 }
+
 .article-page-title {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: 1.75rem;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
   line-height: 1.25;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  margin-bottom: 0.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
 }
+
 .article-page-title-zh {
-  font-size: 0.9375rem;
-  color: var(--text-muted);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
   font-style: italic;
   margin-bottom: 1rem;
 }
+
 .article-page-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.25rem 1rem;
   font-size: 0.8125rem;
-  color: var(--text-muted);
-  margin-top: 0.75rem;
-  align-items: center;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
 }
-.article-page-meta a { color: var(--text-muted); }
-.article-page-meta a:hover { color: var(--link-hover); text-decoration: none; }
-.article-page-meta .sep::before { content: "·"; margin-right: 1rem; }
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
 
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
 .section-label {
   font-size: 0.6875rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 0.75rem;
 }
 
+/* ── Summary block ───────────────────────────────────────────────── */
 .summary-block {
-  background: var(--surface);
-  border-left: 3px solid var(--border);
-  border-radius: 0 3px 3px 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
   padding: 1.1rem 1.25rem;
   margin-bottom: 2rem;
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
 }
 .summary-block.significant {
-  border-left-color: var(--accent);
+  border-left-color: var(--color-brand);
 }
-.summary-text { color: var(--text); }
-.sig-block {
+.sig-reasoning {
   margin-top: 0.75rem;
   padding-top: 0.75rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
-  color: var(--accent);
-}
-.sig-block::before {
-  content: "★  ";
-  font-size: 0.75rem;
+  color: var(--color-brand);
+  line-height: 1.6;
 }
 
+/* ── Translation body ────────────────────────────────────────────── */
 .translation-body {
   font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--text);
+  line-height: 1.8;
+  color: var(--color-text-primary);
   margin-bottom: 2rem;
 }
-.translation-body p {
-  margin-bottom: 0.9rem;
-}
+.translation-body p { margin-bottom: 0.9rem; }
 .translation-body p:last-child { margin-bottom: 0; }
 
+/* ── Collapsible original ────────────────────────────────────────── */
 details {
   margin-bottom: 2rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }
 details summary {
   font-size: 0.8125rem;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   padding: 0.65rem 1rem;
   cursor: pointer;
   user-select: none;
@@ -369,181 +294,184 @@ details summary::before {
   display: inline-block;
 }
 details[open] summary::before { transform: rotate(90deg); }
-details summary:hover { color: var(--text); }
+details summary:hover { color: var(--color-text-primary); }
 .original-body {
   padding: 1rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   font-size: 0.9375rem;
   line-height: 1.85;
-  color: var(--text-sec);
+  color: var(--color-text-secondary);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
+/* ── Provenance ──────────────────────────────────────────────────── */
 .provenance {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
   line-height: 1.8;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-sub);
+  border-top: 1px solid var(--color-border);
 }
 .provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
 
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-brand">PLA Watch</a>
-    <div class="nav-links">
-      <a href="../index.html" >Daily Brief</a>
-      <a href="../archive.html" >Archive</a>
-    </div>
-  </div>
-</nav>
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
 
 <main>
   
-<a href="../index.html" class="back-link">← Daily Brief</a>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
 
-<div class="article-page-header">
+  <div class="article-header">
 
-  
+    
+      <div class="tags">
+        
+          <span class="tag">Internal Security</span>
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
 
-  <h1 class="article-page-title">
-    Atop the Snow-Capped Mountains, a Young Soldier Completed His Own &#34;Coming-of-Age Ceremony&#34;
-  </h1>
+    <h1 class="article-page-title">
+      Atop the Snow-Capped Mountains, a Young Soldier Completed His Own &#34;Coming-of-Age Ceremony&#34;
+    </h1>
 
-  
-    <div class="article-page-title-zh">雪山之巅，年轻的战士完成了自己的“成人礼”</div>
-  
+    
+      <div class="article-page-title-zh">雪山之巅，年轻的战士完成了自己的“成人礼”</div>
+    
 
-  
-    <div class="tags">
-      
-        <span class="tag">Internal Security</span>
-      
-        <span class="tag">Political Work</span>
-      
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>7 May 2026</span>
     </div>
+
+    <a href="http://www.81.cn/yw_208727/16459118.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>PLA Daily profiles Private Song Chengxin, a 19-year-old soldier assigned to a Xinjiang Military Region high-altitude training station at Kangxiwar in the Kunlun Mountains, recounting a birthday celebration organized by his squad amid austere plateau conditions. The article is a standard PLA Daily human-interest piece designed to promote recruitment and unit cohesion narratives—emphasizing sacrifice, camaraderie, and intergenerational military service—and contains no operationally significant information.</div>
+    
+  </div>
   
 
-  <div class="article-page-meta">
-    <span>PLA Daily (解放军报)</span>
-    <span class="sep"></span>
-    <span>7 May 2026</span>
-    <span class="sep"></span>
-    <a href="http://www.81.cn/yw_208727/16459118.html" target="_blank" rel="noopener">Original source ↗</a>
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>Atop the Snow-Capped Mountains, Candlelight Bears Witness to Growth</p>
+    
+      <p>■ Zeng Xiande, PLA Daily Special Correspondent Yan Ziyi</p>
+    
+      
+    
+      <p>At the birthday party, officers and soldiers blow out the candles together. Photo by Wang Shiquan</p>
+    
+      
+    
+      <p>Deep in the Kunlun Mountains, the cold wind cuts like a blade and the snowfields stretch endlessly. This is Kangxiwar, at the westernmost edge of the motherland&#39;s territory—a high-altitude training station for a unit of the Xinjiang Military Region, connected to the outside world by only a single winding, precipitous mountain road.</p>
+    
+      
+    
+      <p>It was in this &#34;forbidden zone for life&#34; that a simple yet warm birthday party quietly took place, with its guest of honor being Private Song Chengxin, who had just turned 19.</p>
+    
+      
+    
+      <p>This was Song Chengxin&#39;s first birthday spent in the military camp. Squad leader Liu Junye had recorded this special day early on in the notebook he always carried. With the training station at high altitude and far from supply routes, fresh cake could not be transported up the mountain in time, and giving a new soldier a birthday with candlelight and cake was no easy thing to arrange.</p>
+    
+      
+    
+      <p>Song Chengxin&#39;s home is in a southern city, and he had been posted to the plateau immediately after joining his unit. The squad leader had originally worried he would not be able to hold on, but Song Chengxin displayed a toughness beyond his peers—something that put Liu Junye greatly at ease and made him want to give the young soldier some encouragement.</p>
+    
+      
+    
+      <p>A &#34;secret operation&#34; quietly got underway while Song Chengxin was on sentry duty. Deputy squad leader Pang Jingze stacked compressed biscuits layer by layer to form a cake base; Sergeant Liu Ke carefully spread condensed milk as frosting and decorated it with a few fruit candies; Private First Class Tian Shengfei folded a birthday hat out of colored paper; and Sergeant Chen Fuhao found several candles. Liu Junye dipped a toothpick in jam and carefully wrote out the four characters for &#34;Happy Birthday&#34;—the whole squad pitched in, and a one-of-a-kind &#34;cake&#34; was born.</p>
+    
+      
+    
+      <p>This inventive plan had its origins in something that had happened a few days earlier. That night, Song Chengxin&#39;s altitude sickness suddenly worsened; he lay awake with a pounding headache but gritted his teeth and endured, afraid of disturbing his comrades&#39; rest. Liu Junye noticed, quietly got up, went over to check on him, brought the altitude medicine kept on hand, and draped his own military overcoat over Song Chengxin.</p>
+    
+      
+    
+      <p>When Liu Junye woke the next morning, he found that at some point during the night the overcoat had been placed back over himself. In that moment, the veteran soldier&#39;s heart was warmed through, and his resolve was set: the whole squad would act together to give this considerate young man an unforgettable military-camp birthday.</p>
+    
+      
+    
+      <p>Song Chengxin returned from sentry duty and froze when he pushed open the door—faint candlelight flickered, reflected in the smiling faces of his comrades, and illuminated that extraordinary &#34;cake.&#34; A song rang out, cutting through the sound of the wind outside the barracks, and the birthday wishes struck him in the heart.</p>
+    
+      
+    
+      <p>Just as he was about to blow out the candles, a comrade handed him a phone—on the screen was the familiar face of his father, 3,000 kilometers away: &#34;Son, happy birthday!&#34;</p>
+    
+      
+    
+      <p>Song Chengxin instantly recalled that morning before he enlisted, when his father had taken an old military uniform, washed to a pale white, from deep in the wardrobe, with a medal of merit pinned to the chest. His father had also been a soldier; the words &#34;family and nation&#34; (家国) were engraved on his chest as well.</p>
+    
+      
+    
+      <p>&#34;Everything at home is fine. You are guarding the border on the plateau—we are proud of you.&#34; In the frame, his mother was wiping away tears at his side. &#34;This birthday spent in the military camp is especially warm,&#34; Song Chengxin said, his own eyes reddening. He looked at the comrades around him and said to his parents in the camera, &#34;This is also my home.&#34;</p>
+    
+      
+    
+      <p>The candles were blown out, the &#34;cake&#34; was shared, and the camp gradually grew quiet. But Song Chengxin&#39;s heart remained unsettled for a long time.</p>
+    
+      
+    
+      <p>After his college entrance examination, he had chosen to enlist, boarded a westbound train, and set off all the way toward the Kunlun. Now, he truly understood the hardship of a soldier&#39;s steadfast duty—the upright bearing in the biting wind, the unyielding resolve to press through snow and gale on patrol. In this moment, the birthday candlelight his comrades had lit for him let him feel a bond of comradeship (战友情) that was pure and genuine.</p>
+    
+      
+    
+      <p>The wind had not stopped, the night had grown deep, yet warmth flowed through the barracks. Atop the snow-capped mountains, the young soldier had completed his own &#34;coming-of-age ceremony&#34; (成人礼).</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">雪山之巅，烛光见证成长 ■曾宪德 解放军报特约记者 晏子祎 生日会上，官兵一起吹蜡烛。王时权摄 昆仑山脉深处，寒风如刀，雪原茫茫。这里是祖国版图最西端的康西瓦，新疆军区某部的高原驻训地，仅有一条蜿蜒陡峭的天路连接着外面的世界。 就在这片“生命禁区”，一场简单却温暖的生日会悄然进行，主角是刚满19岁的列兵宋诚信。 这是宋诚信在军营度过的第一个生日。班长刘军业早早就把这个特殊的日子记在随身的本子上。驻训地海拔高、路途远，新鲜蛋糕短时间运不上山，给新兵过个有烛光有蛋糕的生日，并不容易实现。 宋诚信的家在南方城市，刚下连就守在了高原。班长原本担心他坚持不下来，没想到他却表现出超出同龄人的坚强。这让刘军业欣慰不已，一直想给他一点鼓励。 一场“秘密行动”在宋诚信站哨时悄然展开。副班长庞竞泽用压缩饼干一层层垒成蛋糕坯，中士刘科小心地抹上炼乳当奶油，再点缀几颗水果糖；上等兵田盛飞用彩纸折了一顶生日帽，中士陈富豪找来几根蜡烛。刘军业拿着牙签蘸着果酱，认真写下“生日快乐”四个大字——全班齐动手，一个别具特色的“蛋糕”诞生了。 这次别出心裁的策划，源于几天前发生的一件事。那晚，宋诚信的高原反应骤然加剧，他头疼难眠却咬牙坚持，生怕打扰战友休息。刘军业察觉后悄悄起身，过去询问情况，拿来常备的高原药，把自己的军大衣盖在宋诚信身上。 第二天早晨醒来，刘军业发现军大衣不知何时又被盖到了自己的身上。一时间，老兵的心被暖得烫烫的，他也在那一刻更加下定了决心：全班行动起来，一起给这个懂事的小伙子过一次难忘的军营生日。 宋诚信站哨归来，推开房门愣住了——微弱的烛光跃动，映着战友的笑脸，也照亮了那个特殊的“蛋糕”。歌声响起，穿透营房外的风声，“生日快乐”的祝福敲在他心上。 就在准备吹蜡烛时，战友递来手机——屏幕上，是远在3000公里外父亲熟悉的面容：“儿子，生日快乐！” 宋诚信瞬间想起入伍前那个清晨，父亲从衣柜深处取出一套洗得发白的旧军装，胸前别着军功章。父亲也曾是一名军人，“家国”二字同样也铭刻在他的胸膛。 “家里一切都好。你在高原守边，我们为你骄傲。”镜头中，母亲在一旁抹着眼泪。“在军营过的这个生日格外温暖。”宋诚信也红了眼眶，他望了望身边的战友，对镜头中的父母说，“这里也是我的家。” 吹灭蜡烛，分享完“蛋糕”，营区渐渐安静。宋诚信的心潮却久久难平。 高考后，他选择参军入伍，踏上西行的列车，一路奔向昆仑。如今，他才真正明白了军人坚守的不易——那是寒风中挺拔的身姿，是巡逻路上顶风冒雪的坚毅。此刻，战友为他点亮的生日烛光，让他感受到纯粹而真挚的战友情。 风未止，夜已深，营房里却暖意流淌。雪山之巅，年轻的战士完成了自己的“成人礼”。</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.70</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-08</span>
+    
   </div>
 
 </div>
-
-
-<div class="section-label">Summary</div>
-<div class="summary-block">
-  <div class="summary-text">PLA Daily profiles Private Song Chengxin, a 19-year-old soldier assigned to a Xinjiang Military Region high-altitude training station at Kangxiwar in the Kunlun Mountains, recounting a birthday celebration organized by his squad amid austere plateau conditions. The article is a standard PLA Daily human-interest piece designed to promote recruitment and unit cohesion narratives—emphasizing sacrifice, camaraderie, and intergenerational military service—and contains no operationally significant information.</div>
-  
-</div>
-
-
-
-<div class="section-label">Translation</div>
-<div class="translation-body">
-  
-    <p>Atop the Snow-Capped Mountains, Candlelight Bears Witness to Growth</p>
-  
-    <p>■ Zeng Xiande, PLA Daily Special Correspondent Yan Ziyi</p>
-  
-    
-  
-    <p>At the birthday party, officers and soldiers blow out the candles together. Photo by Wang Shiquan</p>
-  
-    
-  
-    <p>Deep in the Kunlun Mountains, the cold wind cuts like a blade and the snowfields stretch endlessly. This is Kangxiwar, at the westernmost edge of the motherland&#39;s territory—a high-altitude training station for a unit of the Xinjiang Military Region, connected to the outside world by only a single winding, precipitous mountain road.</p>
-  
-    
-  
-    <p>It was in this &#34;forbidden zone for life&#34; that a simple yet warm birthday party quietly took place, with its guest of honor being Private Song Chengxin, who had just turned 19.</p>
-  
-    
-  
-    <p>This was Song Chengxin&#39;s first birthday spent in the military camp. Squad leader Liu Junye had recorded this special day early on in the notebook he always carried. With the training station at high altitude and far from supply routes, fresh cake could not be transported up the mountain in time, and giving a new soldier a birthday with candlelight and cake was no easy thing to arrange.</p>
-  
-    
-  
-    <p>Song Chengxin&#39;s home is in a southern city, and he had been posted to the plateau immediately after joining his unit. The squad leader had originally worried he would not be able to hold on, but Song Chengxin displayed a toughness beyond his peers—something that put Liu Junye greatly at ease and made him want to give the young soldier some encouragement.</p>
-  
-    
-  
-    <p>A &#34;secret operation&#34; quietly got underway while Song Chengxin was on sentry duty. Deputy squad leader Pang Jingze stacked compressed biscuits layer by layer to form a cake base; Sergeant Liu Ke carefully spread condensed milk as frosting and decorated it with a few fruit candies; Private First Class Tian Shengfei folded a birthday hat out of colored paper; and Sergeant Chen Fuhao found several candles. Liu Junye dipped a toothpick in jam and carefully wrote out the four characters for &#34;Happy Birthday&#34;—the whole squad pitched in, and a one-of-a-kind &#34;cake&#34; was born.</p>
-  
-    
-  
-    <p>This inventive plan had its origins in something that had happened a few days earlier. That night, Song Chengxin&#39;s altitude sickness suddenly worsened; he lay awake with a pounding headache but gritted his teeth and endured, afraid of disturbing his comrades&#39; rest. Liu Junye noticed, quietly got up, went over to check on him, brought the altitude medicine kept on hand, and draped his own military overcoat over Song Chengxin.</p>
-  
-    
-  
-    <p>When Liu Junye woke the next morning, he found that at some point during the night the overcoat had been placed back over himself. In that moment, the veteran soldier&#39;s heart was warmed through, and his resolve was set: the whole squad would act together to give this considerate young man an unforgettable military-camp birthday.</p>
-  
-    
-  
-    <p>Song Chengxin returned from sentry duty and froze when he pushed open the door—faint candlelight flickered, reflected in the smiling faces of his comrades, and illuminated that extraordinary &#34;cake.&#34; A song rang out, cutting through the sound of the wind outside the barracks, and the birthday wishes struck him in the heart.</p>
-  
-    
-  
-    <p>Just as he was about to blow out the candles, a comrade handed him a phone—on the screen was the familiar face of his father, 3,000 kilometers away: &#34;Son, happy birthday!&#34;</p>
-  
-    
-  
-    <p>Song Chengxin instantly recalled that morning before he enlisted, when his father had taken an old military uniform, washed to a pale white, from deep in the wardrobe, with a medal of merit pinned to the chest. His father had also been a soldier; the words &#34;family and nation&#34; (家国) were engraved on his chest as well.</p>
-  
-    
-  
-    <p>&#34;Everything at home is fine. You are guarding the border on the plateau—we are proud of you.&#34; In the frame, his mother was wiping away tears at his side. &#34;This birthday spent in the military camp is especially warm,&#34; Song Chengxin said, his own eyes reddening. He looked at the comrades around him and said to his parents in the camera, &#34;This is also my home.&#34;</p>
-  
-    
-  
-    <p>The candles were blown out, the &#34;cake&#34; was shared, and the camp gradually grew quiet. But Song Chengxin&#39;s heart remained unsettled for a long time.</p>
-  
-    
-  
-    <p>After his college entrance examination, he had chosen to enlist, boarded a westbound train, and set off all the way toward the Kunlun. Now, he truly understood the hardship of a soldier&#39;s steadfast duty—the upright bearing in the biting wind, the unyielding resolve to press through snow and gale on patrol. In this moment, the birthday candlelight his comrades had lit for him let him feel a bond of comradeship (战友情) that was pure and genuine.</p>
-  
-    
-  
-    <p>The wind had not stopped, the night had grown deep, yet warmth flowed through the barracks. Atop the snow-capped mountains, the young soldier had completed his own &#34;coming-of-age ceremony&#34; (成人礼).</p>
-  
-</div>
-
-
-
-<details>
-  <summary>Original Chinese</summary>
-  <div class="original-body">雪山之巅，烛光见证成长 ■曾宪德 解放军报特约记者 晏子祎 生日会上，官兵一起吹蜡烛。王时权摄 昆仑山脉深处，寒风如刀，雪原茫茫。这里是祖国版图最西端的康西瓦，新疆军区某部的高原驻训地，仅有一条蜿蜒陡峭的天路连接着外面的世界。 就在这片“生命禁区”，一场简单却温暖的生日会悄然进行，主角是刚满19岁的列兵宋诚信。 这是宋诚信在军营度过的第一个生日。班长刘军业早早就把这个特殊的日子记在随身的本子上。驻训地海拔高、路途远，新鲜蛋糕短时间运不上山，给新兵过个有烛光有蛋糕的生日，并不容易实现。 宋诚信的家在南方城市，刚下连就守在了高原。班长原本担心他坚持不下来，没想到他却表现出超出同龄人的坚强。这让刘军业欣慰不已，一直想给他一点鼓励。 一场“秘密行动”在宋诚信站哨时悄然展开。副班长庞竞泽用压缩饼干一层层垒成蛋糕坯，中士刘科小心地抹上炼乳当奶油，再点缀几颗水果糖；上等兵田盛飞用彩纸折了一顶生日帽，中士陈富豪找来几根蜡烛。刘军业拿着牙签蘸着果酱，认真写下“生日快乐”四个大字——全班齐动手，一个别具特色的“蛋糕”诞生了。 这次别出心裁的策划，源于几天前发生的一件事。那晚，宋诚信的高原反应骤然加剧，他头疼难眠却咬牙坚持，生怕打扰战友休息。刘军业察觉后悄悄起身，过去询问情况，拿来常备的高原药，把自己的军大衣盖在宋诚信身上。 第二天早晨醒来，刘军业发现军大衣不知何时又被盖到了自己的身上。一时间，老兵的心被暖得烫烫的，他也在那一刻更加下定了决心：全班行动起来，一起给这个懂事的小伙子过一次难忘的军营生日。 宋诚信站哨归来，推开房门愣住了——微弱的烛光跃动，映着战友的笑脸，也照亮了那个特殊的“蛋糕”。歌声响起，穿透营房外的风声，“生日快乐”的祝福敲在他心上。 就在准备吹蜡烛时，战友递来手机——屏幕上，是远在3000公里外父亲熟悉的面容：“儿子，生日快乐！” 宋诚信瞬间想起入伍前那个清晨，父亲从衣柜深处取出一套洗得发白的旧军装，胸前别着军功章。父亲也曾是一名军人，“家国”二字同样也铭刻在他的胸膛。 “家里一切都好。你在高原守边，我们为你骄傲。”镜头中，母亲在一旁抹着眼泪。“在军营过的这个生日格外温暖。”宋诚信也红了眼眶，他望了望身边的战友，对镜头中的父母说，“这里也是我的家。” 吹灭蜡烛，分享完“蛋糕”，营区渐渐安静。宋诚信的心潮却久久难平。 高考后，他选择参军入伍，踏上西行的列车，一路奔向昆仑。如今，他才真正明白了军人坚守的不易——那是寒风中挺拔的身姿，是巡逻路上顶风冒雪的坚毅。此刻，战友为他点亮的生日烛光，让他感受到纯粹而真挚的战友情。 风未止，夜已深，营房里却暖意流淌。雪山之巅，年轻的战士完成了自己的“成人礼”。</div>
-</details>
-
-
-<div class="provenance">
-  <span>Relevance score: 0.70</span>
-  <span>Model: claude-sonnet-4-6</span>
-  <span>Prompt: v1</span>
-  
-    <span>Analyzed: 2026-05-08</span>
-  
-</div>
-
 
 </main>
 
-<footer>
-  <div class="footer-inner">
-    Open-source intelligence monitoring of Chinese military and security developments.
-    Source material from Chinese state media; all analysis AI-generated.
-    Not for redistribution without attribution.
-    Generated 2026-05-08 17:06 UTC.
-  </div>
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
 </footer>
 
 
