@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}China Mil Watch — Open-Source Intelligence on Chinese Military and Security Developments{% endblock %}</title>
-  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <title>{% block title %}The PLA Watch — Weekly signals from Chinese military media{% endblock %}</title>
+  <meta name="description" content="The PLA Watch is the reader-facing weekly publication from China Mil Watch, translating Chinese military and security media into accessible analysis.">
 
   <!-- Open Graph -->
   <meta property="og:type"         content="website">
-  <meta property="og:site_name"    content="China Mil Watch">
-  <meta property="og:url"          content="https://chinamilwatch.org">
-  <meta property="og:title"        content="China Mil Watch">
-  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:site_name"    content="The PLA Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org/the-pla-watch/">
+  <meta property="og:title"        content="The PLA Watch">
+  <meta property="og:description"  content="Weekly signals from Chinese military media. Published every Sunday by China Mil Watch.">
   <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="China Mil Watch">
-  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:title"       content="The PLA Watch">
+  <meta name="twitter:description" content="Weekly signals from Chinese military media. Published every Sunday by China Mil Watch.">
   <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
 
   <link rel="icon" type="image/png" href="{{ root_path }}logo-icon.png">
@@ -75,11 +75,20 @@
       justify-content: space-between;
       flex-shrink: 0;
     }
-    .header-logo { display: flex; align-items: center; }
-    .header-logo img { height: 36px; display: block; }
-    .header-logo:hover { text-decoration: none; }
 
-    .header-nav { display: flex; gap: 2rem; }
+    .header-wordmark {
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+    .header-wordmark:hover { text-decoration: none; color: rgba(255,255,255,0.9); }
+
+    .header-nav { display: flex; gap: 2rem; align-items: center; }
     .header-nav a {
       color: rgba(255, 255, 255, 0.8);
       font-size: 0.75rem;
@@ -91,6 +100,10 @@
     }
     .header-nav a:hover,
     .header-nav a.active { color: #ffffff; text-decoration: none; }
+    .header-nav .nav-sep {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.75rem;
+    }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
@@ -118,27 +131,18 @@
       font-size: 0.8rem;
       color: var(--color-text-muted);
       line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto 0.75rem;
     }
-
-    /* ── Tags / chips ────────────────────────────────────────────────────────── */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-bottom: 0.75rem;
-    }
-    .tag {
-      display: inline-block;
-      font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      border: 1px solid var(--color-accent);
-      border-radius: 2px;
-      padding: 2px 8px;
-      background: transparent;
-      line-height: 1.4;
+    .footer-transparency {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+      border-top: 1px solid var(--color-border);
+      padding-top: 0.75rem;
+      margin-top: 0.75rem;
     }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
@@ -151,7 +155,6 @@
     /* ── Mobile ─────────────────────────────────────────────────────────────── */
     @media (max-width: 768px) {
       .site-header { padding: 0 16px; }
-      .header-logo img { height: 28px; }
       .header-nav { gap: 1.25rem; }
       .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
       main { padding: 1.5rem 1rem 3rem; }
@@ -165,13 +168,12 @@
 <body>
 
 <header class="site-header">
-  <a href="{{ root_path }}index.html" class="header-logo">
-    <img src="{{ root_path }}logo-wordmark.png" alt="China Mil Watch">
-  </a>
+  <a href="index.html" class="header-wordmark">The PLA Watch</a>
   <nav class="header-nav">
-    <a href="{{ root_path }}index.html" {% if active_page == 'index' %}class="active"{% endif %}>Daily Brief</a>
-    <a href="{{ root_path }}archive.html" {% if active_page == 'archive' %}class="active"{% endif %}>Archive</a>
-    <a href="{{ root_path }}the-pla-watch/index.html" {% if active_page == 'pla_watch' %}class="active"{% endif %}>The PLA Watch</a>
+    <a href="index.html" {% if active_page == 'index' %}class="active"{% endif %}>Latest Edition</a>
+    <a href="archive.html" {% if active_page == 'archive' %}class="active"{% endif %}>Archive</a>
+    <span class="nav-sep">|</span>
+    <a href="{{ root_path }}index.html">China Mil Watch &rarr;</a>
   </nav>
 </header>
 
@@ -182,8 +184,13 @@
 </main>
 
 <footer class="site-footer">
-  <div class="footer-name">China Mil Watch</div>
-  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
+  <div class="footer-name">The PLA Watch</div>
+  <div class="footer-desc">The reader-facing weekly publication from China Mil Watch.</div>
+  <div class="footer-transparency">
+    The PLA Watch is generated from China Mil Watch daily outputs and designed as a reader-facing synthesis layer.
+    It is source-grounded and may include AI-assisted drafting workflows.
+    It is not a substitute for expert judgment or original source review.
+  </div>
 </footer>
 
 {% block scripts %}{% endblock %}

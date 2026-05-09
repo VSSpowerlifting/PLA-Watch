@@ -1,0 +1,202 @@
+{% extends "pla-watch-base.html" %}
+
+{% block title %}{{ title }} — The PLA Watch{% endblock %}
+
+{% block extra_styles %}
+.post-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.post-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+.post-dek {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.post-meta {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+.post-meta .meta-sep { margin: 0 0.4rem; }
+
+.post-body { max-width: 680px; }
+
+.post-section { margin-bottom: 2.5rem; }
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.75rem;
+}
+.section-text p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+  font-size: 0.9875rem;
+  color: var(--color-text-primary);
+}
+.section-text p:last-child { margin-bottom: 0; }
+
+.term-box {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-brand);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+}
+.term-word {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+.term-explanation {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.source-trail { margin-bottom: 2.5rem; }
+.source-trail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.source-trail-list li {
+  padding: 0.3rem 0;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.source-trail-list li:last-child { border-bottom: none; }
+.source-trail-list a { color: var(--color-brand); }
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+}
+.post-nav a { color: var(--color-text-secondary); }
+.post-nav a:hover { color: var(--color-brand); }
+
+@media (max-width: 768px) {
+  .post-title { font-size: 1.5rem; }
+  .post-dek { font-size: 1rem; }
+}
+{% endblock %}
+
+{% block content %}
+<div class="post-header">
+  <div class="post-title">{{ title }}</div>
+  <div class="post-dek">{{ dek }}</div>
+  <div class="post-meta">
+    Week ending {{ week_ending }}
+    <span class="meta-sep">&middot;</span>
+    Covers {{ week_start }} to {{ week_ending }}
+    <span class="meta-sep">&middot;</span>
+    {{ n_articles }} articles analyzed
+    <span class="meta-sep">&middot;</span>
+    {{ n_significant }} significant
+    {% if sources_seen %}
+    <span class="meta-sep">&middot;</span>
+    Sources: {{ sources_seen | join(', ') }}
+    {% endif %}
+  </div>
+</div>
+
+<div class="post-body">
+
+  <div class="post-section">
+    <div class="section-label">Opening Note</div>
+    <div class="section-text">
+      {% for para in opening_note.split('\n\n') %}
+      {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="post-section">
+    <div class="section-label">What Stood Out</div>
+    <div class="section-text">
+      {% for para in what_stood_out.split('\n\n') %}
+      {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="post-section">
+    <div class="section-label">Why It Matters</div>
+    <div class="section-text">
+      {% for para in why_it_matters.split('\n\n') %}
+      {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="post-section">
+    <div class="section-label">What Was Routine</div>
+    <div class="section-text">
+      {% for para in what_was_routine.split('\n\n') %}
+      {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="post-section">
+    <div class="section-label">Term to Know</div>
+    <div class="term-box">
+      <div class="term-word">{{ term_to_know_term }}</div>
+      <div class="term-explanation">{{ term_to_know_explanation }}</div>
+    </div>
+  </div>
+
+  <div class="post-section">
+    <div class="section-label">What I'm Watching Next</div>
+    <div class="section-text">
+      {% for para in what_im_watching_next.split('\n\n') %}
+      {% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="post-section source-trail">
+    <div class="section-label">Source Trail</div>
+    {% if articles %}
+    <ul class="source-trail-list">
+      {% for article in articles %}
+      <li>
+        <a href="{{ article.url }}" target="_blank" rel="noopener">{{ article.title }}</a>
+        &mdash; {{ article.source }}, {{ article.date }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p style="color: var(--color-text-muted); font-size: 0.875rem;">
+      See <a href="{{ root_path }}archive.html">China Mil Watch daily briefs</a> for source material.
+    </p>
+    {% endif %}
+  </div>
+
+</div>
+
+<div class="post-nav">
+  <a href="../archive.html">&larr; Back to Archive</a>
+  <a href="{{ root_path }}index.html">Visit China Mil Watch Daily Brief &rarr;</a>
+</div>
+{% endblock %}

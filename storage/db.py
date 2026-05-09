@@ -322,3 +322,31 @@ def get_recent_dates(limit: int = 30) -> list[str]:
             (limit,),
         ).fetchall()
     return [r["published_date"] for r in rows]
+
+
+def get_articles_for_date_range(start_date: str, end_date: str) -> list[sqlite3.Row]:
+    """
+    Return all analyzed articles published between start_date and end_date (inclusive).
+    Used by the weekly PLA Watch generator. Read-only.
+    """
+    with get_conn() as conn:
+        return conn.execute(
+            """
+            SELECT a.*,
+                   s.slug          AS source_slug,
+                   s.display_name  AS source_name,
+                   GROUP_CONCAT(c.slug) AS category_slugs
+              FROM articles a
+              JOIN sources s ON s.id = a.source_id
+              LEFT JOIN article_categories ac ON ac.article_id = a.id
+              LEFT JOIN categories c ON c.id = ac.category_id
+             WHERE a.passed_relevance = 1
+               AND a.analyzed_at IS NOT NULL
+               AND a.published_date >= ?
+               AND a.published_date <= ?
+             GROUP BY a.id
+             ORDER BY a.published_date DESC, a.is_significant DESC,
+                      a.relevance_score DESC
+            """,
+            (start_date, end_date),
+        ).fetchall()

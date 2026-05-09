@@ -1,0 +1,193 @@
+{% extends "pla-watch-base.html" %}
+
+{% block title %}The PLA Watch — Weekly signals from Chinese military media{% endblock %}
+
+{% block extra_styles %}
+.hero-strip {
+  background: var(--color-brand);
+  color: #fff;
+  padding: 3rem 1.5rem 2.5rem;
+  text-align: center;
+}
+.hero-strip h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.hero-strip .tagline {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0.35rem;
+}
+.hero-strip .publish-note {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.latest-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.latest-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.75rem;
+}
+.latest-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+.latest-dek {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.latest-meta {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+}
+.btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.btn {
+  display: inline-block;
+  padding: 0.55rem 1.25rem;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.btn:hover { opacity: 0.88; text-decoration: none; }
+.btn-primary { background: var(--color-brand); color: #fff; }
+.btn-secondary { background: transparent; color: var(--color-text-secondary); border: 1px solid var(--color-border); }
+
+.section-heading {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.archive-grid { display: flex; flex-direction: column; gap: 1rem; }
+.archive-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.archive-date {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  padding-top: 0.2rem;
+  min-width: 90px;
+}
+.archive-body { flex: 1; }
+.archive-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+.archive-title a { color: inherit; }
+.archive-title a:hover { color: var(--color-brand); text-decoration: none; }
+.archive-dek {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.coming-soon {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-text-muted);
+}
+.coming-soon h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.desc-block {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 620px;
+}
+{% endblock %}
+
+{% block hero %}
+<div class="hero-strip">
+  <h1>The PLA Watch</h1>
+  <div class="tagline">Weekly signals from Chinese military media.</div>
+  <div class="publish-note">Published every Sunday</div>
+</div>
+{% endblock %}
+
+{% block content %}
+{% if latest_post %}
+<div class="latest-card">
+  <div class="latest-label">Latest Edition</div>
+  <div class="latest-title">{{ latest_post.title }}</div>
+  <div class="latest-dek">{{ latest_post.dek }}</div>
+  <div class="latest-meta">Week ending {{ latest_post.week_ending }} &mdash; {{ latest_post.n_articles }} articles, {{ latest_post.n_significant }} significant</div>
+  <div class="btn-row">
+    <a href="posts/{{ latest_post.date }}.html" class="btn btn-primary">Read latest edition</a>
+    <a href="{{ root_path }}index.html" class="btn btn-secondary">Visit China Mil Watch</a>
+  </div>
+</div>
+
+{% if archive_posts %}
+<div class="section-heading">Previous Editions</div>
+<div class="archive-grid">
+  {% for post in archive_posts %}
+  <div class="archive-card">
+    <div class="archive-date">{{ post.week_ending }}</div>
+    <div class="archive-body">
+      <div class="archive-title"><a href="posts/{{ post.date }}.html">{{ post.title }}</a></div>
+      <div class="archive-dek">{{ post.dek }}</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% else %}
+<div class="desc-block">
+  The PLA Watch is the reader-facing publication from China Mil Watch, translating Chinese military
+  and security media into accessible weekly analysis.
+</div>
+<div class="coming-soon">
+  <h2>Coming soon</h2>
+  <p>The first weekly edition will appear here on Sunday. Check back then, or visit
+  <a href="{{ root_path }}index.html">China Mil Watch</a> for the daily brief.</p>
+</div>
+{% endif %}
+{% endblock %}
