@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preparatory Meeting for the 2026 Beijing Xiangshan Forum Held in Beijing — China Mil Watch</title>
+  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="China Mil Watch">
+  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
+    }
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
+    }
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+      border-radius: 2px;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
+    
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.article-page-title-zh {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Provenance ──────────────────────────────────────────────────── */
+.provenance {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+.provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
+
+<main>
+  
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+    
+      <div class="tags">
+        
+          <span class="tag">Doctrine</span>
+        
+          <span class="tag">Military Diplomacy</span>
+        
+      </div>
+    
+
+    <h1 class="article-page-title">
+      Preparatory Meeting for the 2026 Beijing Xiangshan Forum Held in Beijing
+    </h1>
+
+    
+      <div class="article-page-title-zh">2026年北京香山论坛先导会在京举行</div>
+    
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>9 May 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16459472.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>On May 8, the PLA hosted a preparatory meeting in Beijing for the 13th Beijing Xiangshan Forum, drawing official representatives, experts, and scholars from more than 40 countries and international organizations across four roundtable discussions covering international order, Asia-Pacific security, and military applications of emerging technologies. The meeting is a standard pre-forum coordination event, but the chosen theme—&#39;Global Security Governance: Challenges and the Way Forward&#39;—and the emphasis on a &#39;just and equitable&#39; governance system reflect Beijing&#39;s consistent effort to use the Xiangshan Forum as a platform for contesting Western-led security frameworks and positioning the PLA as a constructive actor in multilateral security dialogue. The 20th-anniversary framing signals an intent to elevate the forum&#39;s institutional profile ahead of the autumn plenary.</div>
+    
+  </div>
+  
+
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>PLA Daily, Beijing, May 8 — Reported by correspondents Lü Desheng and Xie Fei: The opening ceremony of the preparatory meeting for the 2026 Beijing Xiangshan Forum was held in Beijing on the morning of May 8, with more than 120 guests in attendance, including official representatives, experts, and scholars from more than 40 countries and international organizations.</p>
+    
+      
+    
+      <p>The meeting was held under the theme &#34;Global Security Governance: Challenges and the Way Forward&#34; and featured four roundtable discussions: &#34;International Order and the Rule of International Law,&#34; &#34;New Challenges to Asia-Pacific Security,&#34; &#34;Responsibility for Safeguarding International Common Security,&#34; and &#34;Risk Management of Military Applications of Emerging Technologies.&#34; The meeting is designed to serve a forward-looking and preparatory function, laying the groundwork for the 13th Beijing Xiangshan Forum planned for this autumn. Participants engaged in joint discussion of security issues and deliberated on approaches to peace, contributing their insights toward building a more just and equitable global governance system.</p>
+    
+      
+    
+      <p>This year marks the 20th anniversary of the founding of the Beijing Xiangshan Forum. At the special thematic exchange session held that afternoon — &#34;The Role of International Forums in Global Security Governance: Special Session Commemorating the 20th Anniversary of the Beijing Xiangshan Forum&#34; — participants jointly reviewed the 20-year development of the Beijing Xiangshan Forum, explored the distinctive value of international security forums in promoting equal dialogue, building consensus, and resolving differences, and sought viable paths toward advancing international security dialogue and deepening sustained cooperation.</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">解放军报北京5月8日电 记者吕德胜、谢菲报道：2026年北京香山论坛先导会开幕式8日上午在北京举行，来自40余个国家和国际组织的官方代表、专家学者等120余名嘉宾出席。 此次会议以“全球安全治理：挑战与出路”为主题，设有“国际秩序与国际法治”“亚太安全新挑战”“维护国际共同安全的责任”及“新兴技术军事应用的风险管控”4场圆桌研讨，旨在发挥前瞻与预热功能，为计划于今秋举办的第十三届北京香山论坛奠定基础。与会嘉宾共话安全议题、共商和平良策，为构建更加公正合理的全球治理体系贡献智慧。 今年是北京香山论坛创立20周年。当天下午举行的“国际论坛在全球安全治理中的作用——北京香山论坛20周年纪念特别专题交流”活动中，与会嘉宾共同回顾北京香山论坛20年发展历程，探讨国际安全论坛在平等对话、凝聚共识、化解分歧等方面的独特价值，为推动国际安全对话与持续深化合作探寻可行路径。</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.70</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-09</span>
+    
+  </div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
+</footer>
+
+
+</body>
+</html>

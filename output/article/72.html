@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forging Ahead Toward the Centenary of Army Building · New Appearance, New Actions | Examining the Transformation of the Military&#39;s Scientific Research Ecosystem Through the Growth of One Civilian Personnel Member — China Mil Watch</title>
+  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="China Mil Watch">
+  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
+    }
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
+    }
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+      border-radius: 2px;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
+    
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.article-page-title-zh {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Provenance ──────────────────────────────────────────────────── */
+.provenance {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+.provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
+
+<main>
+  
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+    
+      <div class="tags">
+        
+          <span class="tag">Modernization</span>
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
+
+    <h1 class="article-page-title">
+      Forging Ahead Toward the Centenary of Army Building · New Appearance, New Actions | Examining the Transformation of the Military&#39;s Scientific Research Ecosystem Through the Growth of One Civilian Personnel Member
+    </h1>
+
+    
+      <div class="article-page-title-zh">攻坚建军百年·新样貌 新作为丨从一名文职人员成长之路看军队科研生态之变</div>
+    
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>9 May 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16459481.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A PLA Daily feature profiles Chen Junxian, a civilian personnel member at an Academy of Military Sciences research institute, whose six-year trajectory from Peking University doctorate to lead researcher on a PLA-wide project is presented as evidence of institutional reform in the military&#39;s scientific research ecosystem following political rectification training (政治整训). The article signals that the Academy of Military Sciences is actively publicizing cultural and procedural changes—replacing seniority-based resource allocation and passive leadership with merit-based evaluation and hands-on mentorship—as part of a broader effort to attract and retain civilian scientific talent in uniform. For analysts tracking PLA defense innovation, the piece is useful as evidence of persistent structural friction in military R&amp;D culture (credentialism, risk aversion, detachment of senior leaders from technical work) that rectification campaigns are explicitly targeting, though the profile format limits independent verification of the claimed improvements.</div>
+    
+  </div>
+  
+
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>A Wholesome Atmosphere Helps One &#34;Break Free from the Cocoon&#34; — Examining the Transformation of the Military&#39;s Scientific Research Ecosystem Through the Growth of One Civilian Personnel Member</p>
+    
+      <p>■ Wang Jiayin, PLA Daily Reporter Jia Qilong, Special Correspondent Wei Yin</p>
+    
+      
+    
+      <p>This spring, good news arrived from a certain research institute under the Academy of Military Sciences: civilian personnel member Chen Junxian, who leads a major PLA-wide project, has achieved a breakthrough. Only six years after graduating with a doctorate from Peking University and donning the &#34;peacock blue&#34; uniform, this young scientific and technological talent has taken on a leading role at the military&#39;s scientific research frontline.</p>
+    
+      
+    
+      <p>&#34;My growth and progress are inseparable from the sound scientific research ecosystem at my unit,&#34; Chen Junxian reflected. Her trajectory of growth is precisely a microcosm of the deepened political rectification training (政治整训) and purification of the political ecosystem in the military&#39;s scientific research domain in recent years.</p>
+    
+      
+    
+      <p>Not long ago, Director Ma of the research institute gave her an unforgettable &#34;lesson in details&#34; — the project application she had stayed up through many sleepless nights to complete was returned to her.</p>
+    
+      
+    
+      <p>When she opened it, the annotations were dense, covering everything from the argumentation framework to terminology standards, from chart labels to document formatting. This was the result of Director Ma going through it word by word, character by character, late into the previous night.</p>
+    
+      
+    
+      <p>&#34;Director Ma could simply have signed off with &#39;rewrite&#39; or &#39;refine further,&#39; yet he chose this method to engrave into my mind the work ethic of responsibility, rigor, and meticulousness,&#34; Chen Junxian said.</p>
+    
+      
+    
+      <p>In the past, individual scientific research units exhibited tendencies such as &#34;prioritizing project approval over process&#34; and &#34;prioritizing written instructions over hands-on guidance.&#34; Individual leading cadres were content merely to set the general direction, or were accustomed to waiting for subordinates to come to them with requests for instructions, lacking the good work ethic of &#34;rolling up their sleeves to lead and teaching hands-on.&#34;</p>
+    
+      
+    
+      <p>The shift from &#34;instructing&#34; to &#34;correcting,&#34; from &#34;waiting&#34; to &#34;leading,&#34; reflects a deep transformation in the philosophy and work ethic of scientific research management. &#34;Every set of data is a solemn commitment to the lives and safety of frontline officers and soldiers. If leaders do not take the lead in being exacting, how can we speak of a strong work ethic?&#34; Since deepening political rectification training, the research institute&#39;s Party committee resolved to turn the blade inward and forge work ethic from the top down. They recognized that leading cadres, as the &#34;lead geese,&#34; must not only set a good example themselves, but also do more to build platforms for young talent and serve as their backing.</p>
+    
+      
+    
+      <p>Transition was the hardest hurdle for Chen Junxian to clear. Shifting from a specialty she had cultivated for nearly a decade to an unfamiliar research domain, she at one point felt she was &#34;like a chrysalis trapped in a cocoon, unable to find direction.&#34;</p>
+    
+      
+    
+      <p>While participating in a research project on comprehensive protection in extreme environments, this Peking University doctorate was repeatedly daunted. Her project spanned multiple fields, and any misstep could drag down overall progress.</p>
+    
+      
+    
+      <p>When she anxiously sought help from Senior Engineer Sheng at the research institute, this seasoned expert encouraged and reassured her: &#34;Don&#39;t be afraid. The institute has left ample room for young people to make mistakes and learn. If you&#39;re unfamiliar with the specialty, we&#39;ll guide you; if you&#39;re short on resources, we&#39;ll coordinate!&#34;</p>
+    
+      
+    
+      <p>Senior Engineer Sheng&#39;s words of encouragement and reassurance gave Chen Junxian a great boost.</p>
+    
+      
+    
+      <p>Previously, individual scientific research units showed pronounced tendencies toward &#34;credentialism&#34; (唯帽子) and &#34;title-worship&#34; (唯头衔). Young people found it difficult to apply for projects, difficult to compete for resources, and even more difficult to earn trust. A mentality of fearing responsibility, fearing failure, and fearing embarrassment caused many seeds of innovation to wither at the demonstration stage.</p>
+    
+      
+    
+      <p>In conjunction with deepening political rectification training, the research institute built an evaluation system oriented toward innovation value, capability, and contribution, explicitly &#34;encouraging innovation and tolerating exploration,&#34; and at the institutional level relieved young talent of constraints and burdens while providing guidance and support.</p>
+    
+      
+    
+      <p>During the research process, Senior Engineer Sheng not only coordinated resources and assembled a team for Chen Junxian, but also cut to the heart of problems during each phased report, guiding her to optimize her direction in close alignment with battlefield requirements. Senior Engineer Zhang of the research institute frequently took her to factories and workshops, teaching her hands-on to find the optimal balance among material performance, cost, and efficiency.</p>
+    
+      
+    
+      <p>From verification in humid and hot environments to extreme cold conditions, from low-oxygen trials on the Qinghai-Tibet Plateau to data analysis — over the past two years, the two veteran experts have regularly taken Chen Junxian to the frontline for research and problem-solving. They patiently guided the optimization of research plans and listened carefully to every technical detail…</p>
+    
+      
+    
+      <p>&#34;Before, it was hard to imagine senior leaders and veteran experts cooperating with us in doing research,&#34; Chen Junxian said. Now at the research institute, &#34;willingly serving as a stepping stone and encouraging younger talent&#34; (甘为人梯、奖掖后学) has become a prevailing norm.</p>
+    
+      
+    
+      <p>Not long ago, Chen Junxian proposed a research concept for building a certain intelligent piece of equipment. At first, many people had serious reservations — similar explorations had previously fallen short of expectations, so would investing more effort really work?</p>
+    
+      
+    
+      <p>The research institute&#39;s Party committee took a clear stance: &#34;As long as the direction is right and it closely serves combat capability building, go ahead boldly and research it deeply! We will absolutely not allow the thinking of &#39;fear of making mistakes&#39; to bind the hands and feet of scientific research personnel.&#34;</p>
+    
+      
+    
+      <p>In planning the &#34;15th Five-Year&#34; scientific research plan, Director Ma led Chen Junxian and other young core members on research and demonstration visits to grassroots units and relevant organizations, ultimately incorporating a certain intelligent equipment research project into the plan. This not only broadened their scientific research perspective, but also conveyed a clear orientation: the scientific research ecosystem of integrity and wholesome atmosphere (风清气正) must be continuously cultivated, so that more young talent can break free from their cocoons and soar.</p>
+    
+      
+    
+      <p>From &#34;fighting alone&#34; to &#34;team-based problem-solving,&#34; from &#34;fear of making mistakes&#34; to &#34;daring to try and fail,&#34; from &#34;seniority-based advancement&#34; (论资排辈) to &#34;selecting people solely on merit&#34; (唯才是举) — Chen Junxian&#39;s growth has become a vivid footnote to the deepening of political rectification training in the military&#39;s scientific research domain. Recently, multiple technological achievements developed by her team passed combat-realistic testing in a single evaluation, providing solid equipment and material support for officers and soldiers in carrying out missions.</p>
+    
+      
+    
+      <p>Reporter&#39;s Notes</p>
+    
+      
+    
+      <p>Encouraging Explorers, Backing Those Who Take Responsibility</p>
+    
+      
+    
+      <p>The transformation of the scientific research ecosystem is often hidden in the details. From &#34;instructing&#34; to &#34;correcting&#34; — a difference of one word — reflects the transformation in the work ethic of leading cadres who have set aside their airs and bent down to the task. From &#34;fear&#34; to &#34;daring&#34; — a shift in a single thought — mirrors the transformation in orientation of an organization that encourages explorers and backs those who take responsibility.</p>
+    
+      
+    
+      <p>Chen Junxian&#39;s &#34;breaking free from the cocoon&#34; is not one person&#39;s breakthrough, but the collective lifting-up by a group of people. Practice has proven that a wholesome atmosphere of integrity (清风正气) is the best formula for nurturing talent. When establishing oneself through actual performance becomes a shared understanding and willingly serving as a stepping stone becomes the prevailing norm, more young people will inevitably accelerate their growth in the fertile soil of the military camp.</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">清风正气助“破茧” ——从一名文职人员成长之路看军队科研生态之变 ■王佳音 解放军报记者 贾启龙 特约记者 魏 寅 春日，军事科学院某研究所传来好消息：文职人员陈珺娴负责的全军某重大项目取得突破性进展。从北京大学博士毕业、穿上“孔雀蓝”仅6年，这名青年科技人才便在军队科研一线挑起大梁。 “我的成长进步，离不开单位良好的科研生态。”陈珺娴感慨。她的成长轨迹，恰是这些年军队科研领域深化政治整训、纯正政治生态的一个缩影。 前段时间，该研究所马所长给她上了一堂印象深刻的“细节课”——那份她熬了多个不眠之夜的课题申报书，被退了回来。 她翻开一看，从论证框架到术语规范，从图表标注到文档格式，批注密密麻麻。这是前一天，马所长逐字逐句改到深夜的成果。 “马所长本可以简单签上‘重写’‘再完善’，却用这样的方式，把责任、严谨、细致等作风刻进我的脑子里。”陈珺娴说。 以往，个别科研单位存在“重立项轻过程”“重批示轻指导”等倾向，个别领导干部仅满足于把关定向，或习惯于坐等请示上门，缺乏这样“扑下身子带、手把手教”的好作风。 从“批”到“改”、从“等”到“带”，折射的是科研管理理念和作风的深层转变。“每一组数据，都是对一线官兵生命安全的郑重承诺。如果领导不带头较真，何谈作风过硬？”深化政治整训以来，该研究所党委下决心刀刃向内、自上而下锤炼作风。他们感到，领导干部作为“领头雁”，不仅自己要作好表率，还要多为年轻人才搭舞台、当后盾。 转型，是陈珺娴最难迈过的那道坎。从深耕近十年的专业转向陌生的研究领域，她一度感觉自己“像困在茧里的蛹，找不到方向”。 在参与某极端环境下综合防护课题时，这名北大博士多次犯怵。因为她的课题横跨多个领域，稍有不慎就可能拖累整体进度。 当她忐忑不安地找到研究所绳高工求援时，这名业务“大拿”鼓励安慰她：“别怕，所里给年轻人留足了试错空间。专业不熟，我们来帮带你；缺资源，我们来协调！” 老高工的“打气”“宽心”，让陈珺娴深受鼓舞。 此前，个别科研单位“唯帽子”“唯头衔”倾向明显，年轻人申请课题难、争取资源难、获得信任更难。怕担责、怕失败、怕“打脸”的心态，让不少创新萌芽止步于论证阶段。 结合深化政治整训，该研究所构建起以创新价值、能力、贡献为导向的评价体系，明确“鼓励创新、宽容探索”，从制度层面为青年人才松绑减负和服务帮带。 科研过程中，绳高工不仅为陈珺娴协调资源、搭建团队，还在每次阶段性汇报中直击要害提问题，引导她紧扣战场需求优化方向；研究所张高工则常带着她下工厂、跑车间，手把手教她在材料性能、成本与效率之间寻找最优解。 从湿热环境到极寒条件下验证，从青藏高原低氧试验到数据分析，这两年，两名老专家经常带着陈珺娴赴一线调研攻关。他们耐心指导优化研究方案，认真倾听每个技术细节…… “以前，很难想象老领导、老专家配合我们做科研。”陈珺娴说，如今在研究所，“甘为人梯、奖掖后学”已蔚然成风。 前段时间，陈珺娴提出构建某智能装备的课题设想。起初，不少人顾虑重重——此前类似探索未达到预期，再投入力量能行吗？ 该研究所党委态度鲜明：“只要方向对、紧贴战斗力建设，就大胆去闯、深入去研！绝不让‘怕出错’的思想束缚科研人员手脚。” 在筹划“十五五”科研规划时，马所长带领陈珺娴等青年骨干赴基层部队和相关单位调研论证，最终将某智能装备研究纳入规划。这不仅为他们打开了科研视角，更传递出鲜明导向：必须持续打造风清气正的科研生态，让更多青年人才破茧成蝶、振翅高飞。 从“单兵作战”到“团队攻关”，从“怕出错”到“敢试错”，从“论资排辈”到“唯才是举”——陈珺娴的成长，成为军队科研领域深化政治整训的一个生动注脚。前不久，她所在团队研发的多个技术成果一次性通过实战化测试，为官兵遂行任务提供坚实装备物资保障。 记者手记 为探索者鼓劲 为担当者撑腰 科研生态之变，往往藏在细节里。从“批”到“改”，一字之差，折射的是领导干部放下架子、俯下身子的作风之变；从“怕”到“敢”，一念之间，映照的是组织为探索者鼓劲、为担当者撑腰的导向之变。 陈珺娴的“破茧”，不是一个人的突围，而是一群人的托举。实践证明，清风正气是最好的育才密码。当凭实绩立身成为共识、甘为人梯成为风尚，必将有更多青年在军营沃土加速生长。</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.72</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-09</span>
+    
+  </div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Military Physical Training | From &#39;March in Step&#39; to &#39;Precision Training&#39; — China Mil Watch</title>
+  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="China Mil Watch">
+  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-brand:          #C8102E;
+      --color-brand-dark:     #9B0B22;
+      --color-brand-light:    #E8193A;
+      --color-bg:             #F8F7F5;
+      --color-bg-card:        #FFFFFF;
+      --color-text-primary:   #1A1A1A;
+      --color-text-secondary: #555555;
+      --color-text-muted:     #888888;
+      --color-border:         #E5E3DF;
+      --color-accent:         #C8102E;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ─────────────────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-brand);
+      border-bottom: 2px solid var(--color-brand-dark);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .header-logo { display: flex; align-items: center; }
+    .header-logo img { height: 36px; display: block; }
+    .header-logo:hover { text-decoration: none; }
+
+    .header-nav { display: flex; gap: 2rem; }
+    .header-nav a {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover,
+    .header-nav a.active { color: #ffffff; text-decoration: none; }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 40px;
+      text-align: center;
+    }
+    .footer-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.35rem;
+    }
+    .footer-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid var(--color-accent);
+      border-radius: 2px;
+      padding: 2px 8px;
+      background: transparent;
+      line-height: 1.4;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    /* ── Mobile ─────────────────────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-header { padding: 0 16px; }
+      .header-logo img { height: 28px; }
+      .header-nav { gap: 1.25rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.5rem 1rem 3rem; }
+      .site-footer { padding: 28px 16px; }
+      body { font-size: 0.9375rem; }
+    }
+
+    
+.article-page {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.875rem;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.article-page-title-zh {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Provenance ──────────────────────────────────────────────────── */
+.provenance {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+.provenance span + span::before { content: " · "; }
+
+@media (max-width: 768px) {
+  .article-page-title { font-size: 1.375rem; }
+}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../index.html" class="header-logo">
+    <img src="../logo-wordmark.png" alt="China Mil Watch">
+  </a>
+  <nav class="header-nav">
+    <a href="../index.html" >Daily Brief</a>
+    <a href="../archive.html" >Archive</a>
+  </nav>
+</header>
+
+
+
+<main>
+  
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+    
+      <div class="tags">
+        
+          <span class="tag">Doctrine</span>
+        
+      </div>
+    
+
+    <h1 class="article-page-title">
+      Military Physical Training | From &#39;March in Step&#39; to &#39;Precision Training&#39;
+    </h1>
+
+    
+      <div class="article-page-title-zh">军事体育丨从“齐步走”到“精准练”</div>
+    
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>9 May 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16459487.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A battalion of the PLA&#39;s 83rd Group Army has restructured its physical training program by replacing uniform battalion-wide drills with a tiered, position-differentiated system that assigns armor, infantry, and support personnel distinct training regimens based on individual fitness files and &#39;training prescriptions.&#39; The reform reflects a broader PLA effort to move from mass standardization toward individualized, data-informed readiness preparation, using tools such as heart rate monitoring and progressive load protocols. The article is routine in character and signals incremental institutional adoption of sports-science methods rather than any shift in operational posture or capability.</div>
+    
+  </div>
+  
+
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>From &#39;March in Step&#39; to &#39;Precision Training&#39;</p>
+    
+      <p>■ Yu Daqi, PLA Daily Special Correspondent Liu Yang</p>
+    
+      
+    
+      <p>In front of the bulletin board at a battalion training ground of the 83rd Group Army, a &#34;Second-Quarter Military Physical Training Tiered Instruction Plan&#34; has drawn the attention of many officers and soldiers. Personnel are checking the plan to find their own training tasks.</p>
+    
+      
+    
+      <p>Unlike the previous battalion-wide military physical training model of &#34;unified content, unified assessment,&#34; this year the battalion has divided officers and soldiers into three categories based on combat position—armor, infantry, and support—with each category further broken down into different tiers of training requirements. A few thin pages of paper reflect the battalion&#39;s shift in military physical training from &#34;march in step&#34; to &#34;precision training.&#34;</p>
+    
+      
+    
+      <p>When officers and soldiers of different ability levels train on identical content during military physical training, the result is not only low efficiency but also a risk of training injuries. This year, following the approach of &#34;foundational physical fitness as a baseline plus position-specific skill reinforcement&#34; (基础体能托底+岗位专长强化), the battalion designed differentiated military physical training content around the actual physical fitness needs of personnel in different positions. Armor positions emphasize anti-vertigo and core abdominal strength training; infantry positions emphasize load-bearing endurance and equipment-carrying mobility fitness training; support positions emphasize upper-limb strength and load-bearing transport fitness training. This changes the previous problem of &#34;one plan for the whole battalion,&#34; and the targeted nature of training has improved substantially.</p>
+    
+      
+    
+      <p>Corporal Li Zhongchao, a tank driver in a certain tank company, had long been troubled by &#34;uneven development&#34; (偏科). His upper-limb strength was solid, but his core strength was weak and his anti-vertigo capacity was insufficient; after long-duration driving maneuvers he always needed to rest for a while before recovering. After the new military physical training plan was introduced, pull-up bar and push-up training were removed from his training list, and three sessions per week of core abdominal strength training and anti-vertigo roller training were added. After the first quarter of training, he can now dismount and rapidly enter a combat-ready state after completing long-distance maneuvers over rough terrain.</p>
+    
+      
+    
+      <p>Lu Weiming, an infantry carrier soldier in a certain company, had a weak physical fitness baseline. When he first enlisted and trained alongside the main body of troops on 3,000-meter runs, he could never keep up, and the more he trained the less confidence he had. Now, with tiered training in place, the military physical training instructor designed a progressive specialized plan for him incorporating slow jogging and interval running, paired with lower-limb strength reinforcement training, and his 3,000-meter run performance has improved noticeably.</p>
+    
+      
+    
+      <p>Drawing on the previous year&#39;s military physical training assessment scores, training injury history, and position capability requirements, military physical training instructors in each company across the battalion have established a physical fitness file for every officer and soldier and issued each person a personalized &#34;training prescription.&#34;</p>
+    
+      
+    
+      <p>Previously, during 3,000-meter run training, some officers and soldiers believed that running more meant more progress, only to end up with knee pain and swollen ankles, with performance improving slowly as a result. This year, the battalion added scientifically grounded training content to its training plan—including dynamic warm-ups, heart rate monitoring, and tiered strength training—arranging 15 minutes of targeted warm-up before each training session and pairing different training content with different cool-down and stretching protocols.</p>
+    
+      
+    
+      <p>Not long ago, the battalion organized armed cross-country training. Before training, military physical training instructors measured each officer and soldier&#39;s heart rate threshold; during training, sports wristbands were used to monitor heart rates, and training intensity was adjusted immediately whenever readings exceeded the safe range. After more than three months of training, the battalion&#39;s average five-kilometer armed cross-country time improved by 1 minute and 40 seconds.</p>
+    
+      
+    
+      <p>&#34;Now our training must not only produce results—it must also build health and build longevity, laying a solid foundation for long-term service,&#34; said Liu Chang, a military physical training backbone instructor.</p>
+    
+      
+    
+      <p>The change in a single military physical training plan has produced concrete improvements in training quality and effectiveness. Going forward, the battalion will continue to optimize its instruction model, establish a dynamic physical fitness analysis ledger for officers and soldiers, and continuously raise the level of scientific and precision-based military physical training.</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">从“齐步走”到“精准练” ■于大棋 解放军报特约通讯员 刘 扬 在第83集团军某营训练场的公告栏前，一张《第二季度军体训练分层施训计划表》吸引了不少官兵的目光。大家正对照这张军体训练计划表查找自己的训练任务。 和以往全营军体训练采用“统一内容、统一考核”的模式不同，今年该营按战斗岗位将官兵分成了装甲、步兵、保障3个类别，每个类别又细化出不同层级的训练清单。薄薄几页纸，反映出该营在军事体育训练中从“齐步走”到“精准练”的变化。 不同能力水平的官兵在军体训练时训练内容同质化，不仅效率不高，还存在伤病隐患。今年，按照“基础体能托底+岗位专长强化”的思路，该营围绕不同岗位官兵的实际体能需求，设计差异化军事体育训练内容。装甲岗位侧重抗眩晕、腰腹核心力量训练；步兵岗位侧重负重耐力、携装机动体能训练；保障岗位侧重上肢力量、负重搬运体能训练，改变了过去“一个计划管全营”的问题，训练的针对性大幅提升。 某坦克连驾驶员中士李中超过去一直受到“偏科”困扰，他的上肢力量不错，可核心力量偏弱，抗眩晕能力也有所不足，长时间开车机动后总是要休息一会儿才能缓过来。新的军体训练计划推行后，他的训练清单里减掉了单杠、俯卧撑训练，每周增加3次腰腹核心力量训练、抗眩晕滚轮训练。经过第一季度的训练后，现在完成长距离颠簸路面机动后，他下车就能快速投入战斗状态。 某连步兵载员卢威名体能基础弱，刚入伍时跟着大部队一起进行3000米跑训练，他每次都跟不上，越练越没信心。现在进行分层训练后，军体教员给他设计了包含慢跑、间歇跑等逐步提升的专项计划，搭配下肢力量强化训练，他的3000米跑成绩有了明显提升。 结合上年度的军事体育考核成绩、训练伤病史和岗位能力需求，全营各个连队的军体教员为每名官兵建立了体能档案，给每个人开出了专属的“训练处方”。 以前进行3000米跑训练，有的官兵觉得跑得多才能有进步，结果跑完膝盖疼、脚腕肿，成绩反而提升慢。今年，该营在训练计划里新增了动态热身、心率监测、力量分层训练等科学训练内容，不仅在每节训练课前安排15分钟针对性热身，还为不同训练内容配套不同的放松拉伸方案。 前不久，该营组织武装越野训练。训练前，军体教员先给每名官兵测定心率阈值，训练中借助运动手环监测心率，一旦超出安全区间立即调整训练强度。经过3个多月的训练后，全营官兵的五公里武装越野平均成绩提升了1分40秒。 “现在我们训练不仅要出成绩，更要练得健康、练得长久，为长期服役打牢基础。”军体训练骨干刘昌介绍说。 一张军体训练计划表的变化，带来了训练质效实打实的提升。下一步，该营将继续优化施训模式，建立官兵体能动态分析台账，不断提升军体训练的科学化、精准化水平。</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.72</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-09</span>
+    
+  </div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-name">China Mil Watch</div>
+  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
+</footer>
+
+
+</body>
+</html>
