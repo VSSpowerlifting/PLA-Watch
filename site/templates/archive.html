@@ -4,13 +4,18 @@
 {% block title %}China Mil Watch — Archive{% endblock %}
 
 {% block extra_styles %}
+/* ── Archive container — narrower than full main width ──────────── */
+.archive-wrap { max-width: 880px; margin: 0 auto; }
+
 /* ── Filter bar ──────────────────────────────────────────────────── */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 2rem;
-  padding: 1.25rem 0 1.5rem;
-  border-bottom: 1px solid var(--color-border);
+  padding: 1.25rem 1.25rem 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg-card);
   margin-bottom: 1.75rem;
   align-items: flex-start;
 }
@@ -190,21 +195,44 @@
 
 /* ── Archive page header ─────────────────────────────────────────── */
 .archive-page-header {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.archive-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.6rem;
+}
+.archive-eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: var(--color-brand);
 }
 .archive-page-header h1 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--serif);
   font-weight: 700;
-  font-size: 1.75rem;
+  font-size: 2.125rem;
+  letter-spacing: -0.01em;
   color: var(--color-text-primary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.15;
 }
 .archive-page-header .meta {
   font-size: 0.8125rem;
   color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .filter-bar { gap: 0.75rem 1.5rem; }
   .filter-group input[type="text"],
   .filter-group input[type="date"] { width: 160px; }
@@ -212,13 +240,17 @@
   .row-title { font-size: 0.875rem; }
   .article-row { grid-template-columns: 1fr; gap: 0.1rem; }
   .row-source { display: none; }
+  .archive-page-header h1 { font-size: 1.625rem; }
 }
 {% endblock %}
 
 {% block content %}
+<div class="archive-wrap">
+
 <div class="archive-page-header">
-  <h1>Archive</h1>
-  <div class="meta">{{ total_articles }} article{{ 's' if total_articles != 1 }}</div>
+  <div class="archive-eyebrow">Archive</div>
+  <h1>All articles</h1>
+  <div class="meta">{{ total_articles }} article{{ 's' if total_articles != 1 }} indexed</div>
 </div>
 
 <div class="filter-bar">
@@ -257,6 +289,8 @@
 
 <div class="filter-count" id="filter-count"></div>
 <div id="archive-list"></div>
+
+</div>
 {% endblock %}
 
 {% block scripts %}

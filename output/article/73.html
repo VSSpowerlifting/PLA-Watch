@@ -27,21 +27,26 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
 
   <style>
     /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --color-brand:          #C8102E;
-      --color-brand-dark:     #9B0B22;
-      --color-brand-light:    #E8193A;
-      --color-bg:             #F8F7F5;
+      --color-brand:          #B3132B;
+      --color-brand-dark:     #8B0E20;
+      --color-brand-light:    #D11C36;
+      --color-bg:             #F6F4EF;
       --color-bg-card:        #FFFFFF;
-      --color-text-primary:   #1A1A1A;
-      --color-text-secondary: #555555;
-      --color-text-muted:     #888888;
-      --color-border:         #E5E3DF;
-      --color-accent:         #C8102E;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FBFAF6;
+      --color-text-primary:   #161616;
+      --color-text-secondary: #4A4A4A;
+      --color-text-muted:     #7A7A7A;
+      --color-border:         #E2DFD8;
+      --color-border-soft:    #ECE9E2;
+      --color-accent:         #B3132B;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     }
 
     /* ── Reset ──────────────────────────────────────────────────────────────── */
@@ -49,12 +54,18 @@
     html { font-size: 16px; }
 
     body {
-      background: var(--color-bg);
+      background-color: var(--color-bg);
+      /* Faint paper grid — barely-visible cross pattern for desktop polish */
+      background-image:
+        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: -1px -1px;
       color: var(--color-text-primary);
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-family: var(--sans);
       font-weight: 400;
       font-size: 1rem;
-      line-height: 1.7;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
       display: flex;
@@ -64,60 +75,122 @@
     a { color: var(--color-brand); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── Header ─────────────────────────────────────────────────────────────── */
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
     .site-header {
-      background: var(--color-brand);
-      border-bottom: 2px solid var(--color-brand-dark);
-      padding: 0 48px;
-      height: 64px;
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 0 0 0 transparent, 0 2px 0 0 var(--color-brand);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
       flex-shrink: 0;
     }
-    .header-logo { display: flex; align-items: center; }
-    .header-logo img { height: 36px; display: block; }
-    .header-logo:hover { text-decoration: none; }
-
-    .header-nav { display: flex; gap: 2rem; }
-    .header-nav a {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.75rem;
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
       font-weight: 500;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
       transition: color 0.15s;
     }
-    .header-nav a:hover,
-    .header-nav a.active { color: #ffffff; text-decoration: none; }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a.active {
+      color: var(--color-text-primary);
+    }
+    .header-nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+    }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
       flex: 1;
-      max-width: 900px;
+      max-width: 1180px;
       width: 100%;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+      padding: 2.5rem 2rem 4rem;
     }
 
     /* ── Footer ─────────────────────────────────────────────────────────────── */
     .site-footer {
       background: var(--color-bg-card);
       border-top: 1px solid var(--color-border);
-      padding: 40px;
+      padding: 2.25rem 2rem;
       text-align: center;
     }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
     .footer-name {
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
       color: var(--color-text-primary);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
     }
     .footer-desc {
-      font-size: 0.8rem;
+      font-size: 0.8125rem;
       color: var(--color-text-muted);
       line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
     }
 
     /* ── Tags / chips ────────────────────────────────────────────────────────── */
@@ -129,15 +202,16 @@
     }
     .tag {
       display: inline-block;
+      font-family: var(--sans);
       font-size: 0.6875rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
+      font-weight: 600;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--color-accent);
-      border: 1px solid var(--color-accent);
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-card);
       border-radius: 2px;
       padding: 2px 8px;
-      background: transparent;
       line-height: 1.4;
     }
 
@@ -147,27 +221,68 @@
       font-style: italic;
       padding: 2rem 0;
     }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
 
-    /* ── Mobile ─────────────────────────────────────────────────────────────── */
-    @media (max-width: 768px) {
-      .site-header { padding: 0 16px; }
-      .header-logo img { height: 28px; }
-      .header-nav { gap: 1.25rem; }
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
       .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
-      main { padding: 1.5rem 1rem 3rem; }
-      .site-footer { padding: 28px 16px; }
-      body { font-size: 0.9375rem; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
     }
 
     
 .article-page {
-  max-width: 720px;
+  max-width: 740px;
   margin: 0 auto;
 }
 
 .back-link {
   display: inline-block;
-  font-size: 0.8125rem;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
   margin-bottom: 1.75rem;
 }
@@ -181,19 +296,21 @@
 }
 
 .article-page-title {
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-family: var(--serif);
   font-weight: 700;
-  font-size: 1.875rem;
-  line-height: 1.25;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   color: var(--color-text-primary);
   margin-bottom: 0.5rem;
-  margin-top: 0.75rem;
+  margin-top: 0.85rem;
 }
 
 .article-page-title-zh {
+  font-family: var(--sans);
   font-size: 0.875rem;
   color: var(--color-text-muted);
-  font-style: italic;
+  font-style: normal;
   margin-bottom: 1rem;
 }
 
@@ -227,12 +344,22 @@
 
 /* ── Section label ───────────────────────────────────────────────── */
 .section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
   font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text-muted);
   margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
 }
 
 /* ── Summary block ───────────────────────────────────────────────── */
@@ -315,8 +442,9 @@ details summary:hover { color: var(--color-text-primary); }
 }
 .provenance span + span::before { content: " · "; }
 
-@media (max-width: 768px) {
-  .article-page-title { font-size: 1.375rem; }
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
 }
 
   </style>
@@ -324,13 +452,20 @@ details summary:hover { color: var(--color-text-primary); }
 <body>
 
 <header class="site-header">
-  <a href="../index.html" class="header-logo">
-    <img src="../logo-wordmark.png" alt="China Mil Watch">
-  </a>
-  <nav class="header-nav">
-    <a href="../index.html" >Daily Brief</a>
-    <a href="../archive.html" >Archive</a>
-  </nav>
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title">China Mil Watch</span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >Daily Brief</a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../the-pla-watch/index.html" >The PLA Watch</a>
+    </nav>
+  </div>
 </header>
 
 
@@ -556,8 +691,10 @@ details summary:hover { color: var(--color-text-primary); }
 </main>
 
 <footer class="site-footer">
-  <div class="footer-name">China Mil Watch</div>
-  <div class="footer-desc">Open-source intelligence pipeline monitoring Chinese-language military and security media.</div>
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. Translations and analytical summaries are AI-assisted; original sources are linked from every article.</div>
+  </div>
 </footer>
 
 

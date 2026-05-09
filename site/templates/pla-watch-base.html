@@ -27,21 +27,26 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
 
   <style>
     /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --color-brand:          #C8102E;
-      --color-brand-dark:     #9B0B22;
-      --color-brand-light:    #E8193A;
-      --color-bg:             #F8F7F5;
+      --color-brand:          #B3132B;
+      --color-brand-dark:     #8B0E20;
+      --color-brand-light:    #D11C36;
+      --color-bg:             #F6F4EF;
       --color-bg-card:        #FFFFFF;
-      --color-text-primary:   #1A1A1A;
-      --color-text-secondary: #555555;
-      --color-text-muted:     #888888;
-      --color-border:         #E5E3DF;
-      --color-accent:         #C8102E;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FBFAF6;
+      --color-text-primary:   #161616;
+      --color-text-secondary: #4A4A4A;
+      --color-text-muted:     #7A7A7A;
+      --color-border:         #E2DFD8;
+      --color-border-soft:    #ECE9E2;
+      --color-accent:         #B3132B;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     }
 
     /* ── Reset ──────────────────────────────────────────────────────────────── */
@@ -49,12 +54,17 @@
     html { font-size: 16px; }
 
     body {
-      background: var(--color-bg);
+      background-color: var(--color-bg);
+      background-image:
+        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: -1px -1px;
       color: var(--color-text-primary);
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-family: var(--sans);
       font-weight: 400;
       font-size: 1rem;
-      line-height: 1.7;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
       display: flex;
@@ -64,71 +74,115 @@
     a { color: var(--color-brand); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── Header ─────────────────────────────────────────────────────────────── */
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
     .site-header {
-      background: var(--color-brand);
-      border-bottom: 2px solid var(--color-brand-dark);
-      padding: 0 48px;
-      height: 64px;
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 2px 0 0 var(--color-brand);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-shrink: 0;
+      gap: 2rem;
     }
-
-    .header-wordmark {
+    .header-brand {
       display: flex;
       align-items: center;
-      color: #ffffff;
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
+      gap: 14px;
+      color: inherit;
       text-decoration: none;
     }
-    .header-wordmark:hover { text-decoration: none; color: rgba(255,255,255,0.9); }
-
-    .header-nav { display: flex; gap: 2rem; align-items: center; }
-    .header-nav a {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.75rem;
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
       font-weight: 500;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
       transition: color 0.15s;
     }
-    .header-nav a:hover,
-    .header-nav a.active { color: #ffffff; text-decoration: none; }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a.active { color: var(--color-text-primary); }
+    .header-nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+    }
     .header-nav .nav-sep {
-      color: rgba(255,255,255,0.3);
-      font-size: 0.75rem;
+      color: var(--color-border);
+      font-weight: 400;
     }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
       flex: 1;
-      max-width: 900px;
+      max-width: 1180px;
       width: 100%;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+      padding: 2.5rem 2rem 4rem;
     }
 
     /* ── Footer ─────────────────────────────────────────────────────────────── */
     .site-footer {
       background: var(--color-bg-card);
       border-top: 1px solid var(--color-border);
-      padding: 40px;
+      padding: 2.25rem 2rem;
       text-align: center;
     }
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
     .footer-name {
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
       color: var(--color-text-primary);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
     }
     .footer-desc {
-      font-size: 0.8rem;
+      font-size: 0.8125rem;
       color: var(--color-text-muted);
       line-height: 1.6;
       max-width: 540px;
@@ -139,10 +193,9 @@
       color: var(--color-text-muted);
       line-height: 1.6;
       max-width: 600px;
-      margin: 0 auto;
-      border-top: 1px solid var(--color-border);
+      margin: 0.75rem auto 0;
+      border-top: 1px solid var(--color-border-soft);
       padding-top: 0.75rem;
-      margin-top: 0.75rem;
     }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
@@ -152,14 +205,35 @@
       padding: 2rem 0;
     }
 
-    /* ── Mobile ─────────────────────────────────────────────────────────────── */
-    @media (max-width: 768px) {
-      .site-header { padding: 0 16px; }
-      .header-nav { gap: 1.25rem; }
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
       .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
-      main { padding: 1.5rem 1rem 3rem; }
-      .site-footer { padding: 28px 16px; }
-      body { font-size: 0.9375rem; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+      .header-nav .nav-sep { display: none; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+      .header-nav a[href$="archive.html"] { display: none; }
     }
 
     {% block extra_styles %}{% endblock %}
@@ -168,13 +242,21 @@
 <body>
 
 <header class="site-header">
-  <a href="index.html" class="header-wordmark">The PLA Watch</a>
-  <nav class="header-nav">
-    <a href="index.html" {% if active_page == 'index' %}class="active"{% endif %}>Latest Edition</a>
-    <a href="archive.html" {% if active_page == 'archive' %}class="active"{% endif %}>Archive</a>
-    <span class="nav-sep">|</span>
-    <a href="{{ root_path }}index.html">China Mil Watch &rarr;</a>
-  </nav>
+  <div class="site-header-inner">
+    <a href="index.html" class="header-brand" aria-label="The PLA Watch home">
+      <img src="{{ root_path }}logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title">The PLA Watch</span>
+        <span class="kicker">A weekly publication of China Mil Watch</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html" {% if active_page == 'index' %}class="active"{% endif %}>Latest Edition</a>
+      <a href="archive.html" {% if active_page == 'archive' %}class="active"{% endif %}>Archive</a>
+      <span class="nav-sep">|</span>
+      <a href="{{ root_path }}index.html">China Mil Watch &rarr;</a>
+    </nav>
+  </div>
 </header>
 
 {% block hero %}{% endblock %}
@@ -184,12 +266,14 @@
 </main>
 
 <footer class="site-footer">
-  <div class="footer-name">The PLA Watch</div>
-  <div class="footer-desc">The reader-facing weekly publication from China Mil Watch.</div>
-  <div class="footer-transparency">
-    The PLA Watch is generated from China Mil Watch daily outputs and designed as a reader-facing synthesis layer.
-    It is source-grounded and may include AI-assisted drafting workflows.
-    It is not a substitute for expert judgment or original source review.
+  <div class="footer-inner">
+    <div class="footer-name">The PLA Watch</div>
+    <div class="footer-desc">The reader-facing weekly publication from China Mil Watch.</div>
+    <div class="footer-transparency">
+      The PLA Watch is generated from China Mil Watch daily outputs and designed as a reader-facing synthesis layer.
+      It is source-grounded and may include AI-assisted drafting workflows.
+      It is not a substitute for expert judgment or original source review.
+    </div>
   </div>
 </footer>
 
