@@ -231,6 +231,24 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
 
     logger.info("Wrote %d article pages", count)
 
+    # Prune orphan per-article pages whose article was removed from the DB
+    # (e.g. by scripts/cleanup_duplicates.py). Without this, deleted articles
+    # remain reachable via their direct URL even though nothing links to them.
+    expected_ids = {a["id"] for a in articles}
+    removed = 0
+    for path in article_dir.glob("*.html"):
+        try:
+            file_id = int(path.stem)
+        except ValueError:
+            continue
+        if file_id not in expected_ids:
+            path.unlink()
+            removed += 1
+    if removed:
+        logger.info("Pruned %d stale article page(s)", removed)
+    else:
+        logger.info("Pruned 0 stale article pages")
+
     # ── signals.html ──────────────────────────────────────────────────────────
     _write_signals_page(env, output_dir, articles, generated_at)
 

@@ -35,6 +35,7 @@ from datetime import date, datetime
 from typing import Optional
 
 from config import ANTHROPIC_API_KEY, CACHE_DIR, DB_PATH, OUTPUT_DIR
+from processing.dedup import dedup_articles
 from processing.deduplicator import deduplicate
 from processing.metadata import normalize_article
 from processing.relevance import (
@@ -110,7 +111,14 @@ def run(
 
     # ── Stages 4–6: Normalize, dedup, keyword filter ──────────────────────────
     normalized  = [normalize_article(a) for a in all_scraped]
-    new_articles = deduplicate(normalized)
+    # Collapse PLA Daily syndicated reposts (same Chinese title across
+    # multiple service-branch sub-paths) before the URL/hash dedup.
+    title_deduped = dedup_articles(normalized)
+    logger.info(
+        "Title-dedup: %d in → %d out (%d syndicated reposts removed)",
+        len(normalized), len(title_deduped), len(normalized) - len(title_deduped),
+    )
+    new_articles = deduplicate(title_deduped)
     kw_passed, kw_rejected = keyword_filter(new_articles)
 
     if dry_run:
