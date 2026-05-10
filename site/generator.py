@@ -234,6 +234,14 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
     # ── signals.html ──────────────────────────────────────────────────────────
     _write_signals_page(env, output_dir, articles, generated_at)
 
+    # ── methodology.html ──────────────────────────────────────────────────────
+    tmpl_method = env.get_template("methodology.html")
+    (output_dir / "methodology.html").write_text(
+        tmpl_method.render(root_path="", generated_at=generated_at),
+        encoding="utf-8",
+    )
+    logger.info("Wrote methodology.html")
+
     logger.info("Site generated → %s", output_dir)
 
     _generate_og_image(output_dir)

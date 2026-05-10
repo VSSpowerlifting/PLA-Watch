@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% set active_page = "methodology" %}
+
+{% block title %}Methodology — China Mil Watch{% endblock %}
+
+{% block extra_styles %}
+.methodology-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.methodology-page h1 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.methodology-page h2 {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.methodology-page p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.methodology-page p:last-child { margin-bottom: 0; }
+
+.methodology-page a { color: var(--color-brand); }
+
+@media (max-width: 900px) {
+  .methodology-page { max-width: 100%; }
+  .methodology-page h1 { font-size: 1.65rem; }
+  .methodology-page h2 { font-size: 1.15rem; }
+  .methodology-page p { font-size: 0.9375rem; }
+}
+{% endblock %}
+
+{% block content %}
+<article class="methodology-page">
+  <h1>Methodology</h1>
+
+  <p>China Mil Watch is an open-source intelligence pipeline that monitors Chinese-language military and security media on a daily schedule. This page documents how the pipeline works, what role automation plays, and what limitations readers should keep in mind.</p>
+
+  <h2>What the pipeline does</h2>
+  <p>Each day, the pipeline pulls newly published articles from PLA Daily (解放军报), the official newspaper of the People's Liberation Army. Articles are filtered for relevance to military and security topics, translated from Mandarin to English, and given a short analytical summary. Summaries are categorized across fourteen topic areas including Taiwan, the South China Sea, modernization, military diplomacy, and political work.</p>
+  <p>Every article links to its original Chinese-language source. Readers who want to verify any claim can read the original text directly.</p>
+
+  <h2>Role of automation</h2>
+  <p>Translations and analytical summaries are produced using large language models, with a defined prompt structure that instructs the model to translate accurately, identify the analytically significant elements of each article, and assess each piece as routine reporting or as a meaningful signal.</p>
+  <p>Every article is reviewed before publication. Translations are checked against the original Chinese source. Summaries are evaluated for accuracy, category assignment, and significance flagging. Articles that fail review are corrected or excluded.</p>
+
+  <h2>What the pipeline is not</h2>
+  <p>China Mil Watch is not a substitute for primary source reading. It is a triage and synthesis tool. Its purpose is to make Chinese-language military reporting accessible to English-language readers who do not have time to monitor PLA Daily directly, and to surface items that warrant closer attention. The original Chinese source is the authoritative text in every case.</p>
+  <p>The pipeline does not assess classified information, reproduce non-public reporting, or generate independent intelligence. It works only with publicly available Chinese-language military media.</p>
+
+  <h2>Limitations</h2>
+  <p>PLA Daily is a Party-controlled outlet. Its content reflects the messaging priorities of the Central Military Commission and the Political Work Department. Readers should treat the pipeline's outputs as a window into PRC official military communications rather than as a neutral account of PLA activity.</p>
+  <p>Translation and summarization by language models can introduce errors, including subtle mistranslation of technical terms, misattribution of speakers, and loss of rhetorical nuance. Where a summary or translation matters for serious analytical use, readers should consult the original Chinese text.</p>
+  <p>The pipeline currently monitors a single source. Expansion to additional Chinese-language military and security publications is planned.</p>
+
+  <h2>Operator</h2>
+  <p>China Mil Watch is built and maintained by Benjamin Yang, an undergraduate at the George Washington University Elliott School of International Affairs working on U.S.–China relations and national security. Related research is available on SSRN.</p>
+  <p>For corrections, feedback, or inquiries: [contact email].</p>
+</article>
+{% endblock %}

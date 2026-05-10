@@ -437,15 +437,15 @@ details summary:hover { color: var(--color-text-primary); }
   word-break: break-word;
 }
 
-/* ── Provenance ──────────────────────────────────────────────────── */
-.provenance {
+/* ── About-this-analysis link ────────────────────────────────────── */
+.about-analysis {
+  display: inline-block;
+  margin-top: 0.85rem;
   font-size: 0.75rem;
   color: var(--color-text-muted);
-  line-height: 1.8;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border);
 }
-.provenance span + span::before { content: " · "; }
+.about-analysis a { color: var(--color-text-muted); text-decoration: underline; }
+.about-analysis a:hover { color: var(--color-brand); }
 
 @media (max-width: 900px) {
   .article-page { max-width: 100%; }
@@ -474,6 +474,7 @@ details summary:hover { color: var(--color-text-primary); }
       <a href="../the-pla-watch/index.html" >
         <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
       </a>
+      <a href="../methodology.html" >Methodology</a>
     </nav>
   </div>
 </header>
@@ -512,6 +513,10 @@ details summary:hover { color: var(--color-text-primary); }
     </div>
 
     <a href="http://www.81.cn/yw_208727/16459104.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+    <div class="about-analysis">
+      <a href="../methodology.html">About this analysis</a>
+    </div>
 
   </div>
 
@@ -575,14 +580,6 @@ details summary:hover { color: var(--color-text-primary); }
   </details>
   
 
-  <div class="provenance">
-    <span>Relevance score: 0.60</span>
-    <span>Model: claude-sonnet-4-6</span>
-    <span>Prompt: v1</span>
-    
-      <span>Analyzed: 2026-05-08</span>
-    
-  </div>
 
 </div>
 
@@ -591,7 +588,7 @@ details summary:hover { color: var(--color-text-primary); }
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-name">China Mil Watch</div>
-    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. Translations and analytical summaries are AI-assisted; original sources are linked from every article.</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. <a href="../methodology.html">Methodology</a> · <a href="../archive.html">Archive</a></div>
   </div>
 </footer>
 

@@ -165,15 +165,15 @@ details summary:hover { color: var(--color-text-primary); }
   word-break: break-word;
 }
 
-/* ── Provenance ──────────────────────────────────────────────────── */
-.provenance {
+/* ── About-this-analysis link ────────────────────────────────────── */
+.about-analysis {
+  display: inline-block;
+  margin-top: 0.85rem;
   font-size: 0.75rem;
   color: var(--color-text-muted);
-  line-height: 1.8;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border);
 }
-.provenance span + span::before { content: " · "; }
+.about-analysis a { color: var(--color-text-muted); text-decoration: underline; }
+.about-analysis a:hover { color: var(--color-brand); }
 
 @media (max-width: 900px) {
   .article-page { max-width: 100%; }
@@ -211,6 +211,10 @@ details summary:hover { color: var(--color-text-primary); }
 
     <a href="{{ article.url }}" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
 
+    <div class="about-analysis">
+      <a href="{{ root_path }}methodology.html">About this analysis</a>
+    </div>
+
   </div>
 
   {% if article.summary_english %}
@@ -239,14 +243,6 @@ details summary:hover { color: var(--color-text-primary); }
   </details>
   {% endif %}
 
-  <div class="provenance">
-    <span>Relevance score: {{ "%.2f"|format(article.relevance_score or 0) }}</span>
-    <span>Model: {{ article.model_id or '—' }}</span>
-    <span>Prompt: {{ article.prompt_version or '—' }}</span>
-    {% if article.analyzed_at %}
-      <span>Analyzed: {{ article.analyzed_at[:10] }}</span>
-    {% endif %}
-  </div>
 
 </div>
 {% endblock %}
