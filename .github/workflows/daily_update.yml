@@ -2,7 +2,11 @@ name: Daily PLA Watch Update
 
 on:
   schedule:
-    - cron: '0 12 * * *'   # 12:00 UTC — 8:00 AM ET
+    # GitHub Actions cron is UTC. 8 AM America/New_York is 12:00 UTC during
+    # EDT and 13:00 UTC during EST. We schedule both and gate with a runtime
+    # guard so the full pipeline runs exactly once per day at 8 AM NY time.
+    - cron: '0 12 * * *'
+    - cron: '0 13 * * *'
   workflow_dispatch:         # Manual trigger from Actions tab
 
 concurrency:
@@ -23,33 +27,68 @@ jobs:
         with:
           fetch-depth: 0        # Full history needed for the push-back step
 
-      # ── 2. Python setup ────────────────────────────────────────────────────
+      # ── 2. New York time guard ─────────────────────────────────────────────
+      # Manual dispatch always runs. Scheduled runs only proceed when the
+      # current hour in America/New_York is 8 — this keeps behavior correct
+      # across DST transitions despite the two UTC cron entries above.
+      - name: Check New York time
+        id: timecheck
+        run: |
+          python - <<'PY'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          now = datetime.now(ZoneInfo("America/New_York"))
+          print(f"Current New York time: {now:%Y-%m-%d %H:%M:%S %Z}")
+
+          event = os.environ.get("GITHUB_EVENT_NAME", "")
+          if event == "workflow_dispatch":
+              should_run = "true"
+              print("Manual dispatch — running regardless of hour.")
+          elif now.hour == 8:
+              should_run = "true"
+              print("It is 8 AM New York time; continuing daily update.")
+          else:
+              should_run = "false"
+              print("Not 8 AM New York time; exiting without running daily update.")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"should_run={should_run}\n")
+          PY
+
+      # ── 3. Python setup ────────────────────────────────────────────────────
       - name: Set up Python 3.9
+        if: steps.timecheck.outputs.should_run == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.9'
           cache: 'pip'
 
-      # ── 3. Dependencies ────────────────────────────────────────────────────
+      # ── 4. Dependencies ────────────────────────────────────────────────────
       - name: Install dependencies
+        if: steps.timecheck.outputs.should_run == 'true'
         run: pip install -r requirements.txt
 
       - name: Install Playwright browser
+        if: steps.timecheck.outputs.should_run == 'true'
         run: playwright install chromium --with-deps
 
-      # ── 4. Run pipeline ────────────────────────────────────────────────────
+      # ── 5. Run pipeline ────────────────────────────────────────────────────
       - name: Run pipeline
+        if: steps.timecheck.outputs.should_run == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python pipeline.py --source pla_daily
 
-      # ── 5. Commit DB + site output back to main ────────────────────────────
+      # ── 6. Commit DB + site output back to main ────────────────────────────
       #
       # pla_watch.db must persist across runs — committing it to main is
       # simpler than external storage for a project at this scale.
       # output/ is committed so the rendered site lives alongside the code.
       #
       - name: Commit updated database and site output
+        if: steps.timecheck.outputs.should_run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -62,8 +101,9 @@ jobs:
             git push
           fi
 
-      # ── 6. Deploy output/ to gh-pages ─────────────────────────────────────
+      # ── 7. Deploy output/ to gh-pages ─────────────────────────────────────
       - name: Deploy to GitHub Pages
+        if: steps.timecheck.outputs.should_run == 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
