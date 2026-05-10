@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 13th Birthday to the Naval Carrier-Based Aviation Force! — China Mil Watch</title>
+  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="China Mil Watch">
+  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-brand:          #B3132B;
+      --color-brand-dark:     #8B0E20;
+      --color-brand-light:    #D11C36;
+      --color-bg:             #F6F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FBFAF6;
+      --color-text-primary:   #161616;
+      --color-text-secondary: #4A4A4A;
+      --color-text-muted:     #7A7A7A;
+      --color-border:         #E2DFD8;
+      --color-border-soft:    #ECE9E2;
+      --color-accent:         #B3132B;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      /* Faint paper grid — barely-visible cross pattern for desktop polish */
+      background-image:
+        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: -1px -1px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 0 0 0 transparent, 0 2px 0 0 var(--color-brand);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav .nav-short { display: none; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a.active {
+      color: var(--color-text-primary);
+    }
+    .header-nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+    }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-card);
+      border-radius: 2px;
+      padding: 2px 8px;
+      line-height: 1.4;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
+
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      .header-nav .nav-full { display: none; }
+      .header-nav .nav-short { display: inline; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    
+.article-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.article-page-title-zh {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── Provenance ──────────────────────────────────────────────────── */
+.provenance {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+.provenance span + span::before { content: " · "; }
+
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
+}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title">China Mil Watch</span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >
+        <span class="nav-full">Daily Brief</span><span class="nav-short">Daily</span>
+      </a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../signals.html" >Signals</a>
+      <a href="../the-pla-watch/index.html" >
+        <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+
+
+<main>
+  
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+    
+      <div class="tags">
+        
+          <span class="tag">Exercises</span>
+        
+          <span class="tag">Modernization</span>
+        
+      </div>
+    
+
+    <h1 class="article-page-title">
+      Happy 13th Birthday to the Naval Carrier-Based Aviation Force!
+    </h1>
+
+    
+      <div class="article-page-title-zh">海军舰载航空兵部队，13岁生日快乐！</div>
+    
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>10 May 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/hj_208557/16459619.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block significant">
+    <div>China&#39;s naval carrier-based aviation force marked its 13th anniversary on May 10, 2025, with a PLA media retrospective cataloguing the force&#39;s progression from its formal establishment on the shores of Bohai Bay in 2013 through a series of declared firsts: the J-15&#39;s inaugural carrier landing aboard Liaoning in 2012, first anti-ship missile launch in 2016, first Western Pacific deployment, first dual-carrier formation exercise in October 2024, and—most significantly—the first catapult takeoff and arrested landing training aboard Fujian by the J-15T, J-35, and KJ-600 airborne early warning aircraft in 2025. The confirmation that all three next-generation carrier aircraft types have now conducted catapult operations aboard Fujian is the most operationally significant disclosure in the piece, indicating that Fujian&#39;s air wing integration is advancing across strike, multirole, and airborne early warning missions simultaneously, which directly bears on assessments of when the carrier will achieve meaningful operational readiness.</div>
+    
+      <div class="sig-reasoning">The article explicitly confirms that the J-15T, J-35, and KJ-600 have all completed catapult takeoff and arrested landing training aboard the Fujian in 2025, constituting the first official public acknowledgment of the KJ-600 carrier-based AEW aircraft conducting carrier qualifications on the Fujian.</div>
+    
+  </div>
+  
+
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>&#34;Dancing on the Blade&#39;s Tip&#34; on the carrier deck — today, this force turns 13!</p>
+    
+      
+    
+      <p>On May 10, 2013,</p>
+    
+      <p>with approval from the Central Military Commission,</p>
+    
+      <p>the Navy&#39;s first carrier-based aviation force</p>
+    
+      <p>was formally established on the shores of Bohai Bay.</p>
+    
+      <p>The People&#39;s Navy&#39;s order of battle</p>
+    
+      <p>gained yet another new type of main combat force.</p>
+    
+      
+    
+      <p>On November 23, 2012,</p>
+    
+      <p>the J-15 carrier-based fighter</p>
+    
+      <p>successfully completed its first takeoff and landing aboard the Liaoning,</p>
+    
+      <p>and the &#34;Flying Shark&#34; soared across sea and sky.</p>
+    
+      
+    
+      <p>In 2016,</p>
+    
+      <p>the J-15 carrier-based fighter launched an anti-ship missile for the first time.</p>
+    
+      <p>In December, it deployed with the Liaoning carrier strike group</p>
+    
+      <p>to the Western Pacific for open-ocean training —</p>
+    
+      <p>the first time Chinese carrier-based fighters</p>
+    
+      <p>flew over the Western Pacific.</p>
+    
+      
+    
+      <p>In 2017,</p>
+    
+      <p>the technical challenge of nighttime takeoff and landing was overcome.</p>
+    
+      
+    
+      <p>In 2020,</p>
+    
+      <p>night aerial partner refueling training was completed for the first time.</p>
+    
+      
+    
+      <p>In 2023,</p>
+    
+      <p>the force deployed with the Shandong carrier strike group</p>
+    
+      <p>to the Western Pacific for training.</p>
+    
+      
+    
+      <p>In October 2024, the Liaoning and Shandong conducted the first dual-carrier formation exercise.</p>
+    
+      
+    
+      <p>In October 2024,</p>
+    
+      <p>the Liaoning and Shandong formations</p>
+    
+      <p>conducted the first dual-carrier formation exercise.</p>
+    
+      <p>J-15 fighters formed a wedge formation</p>
+    
+      <p>and flew over the dual-carrier formation.</p>
+    
+      
+    
+      <p>The J-15T carrier-based fighter takes off via electromagnetic catapult from the Navy&#39;s Fujian; a J-35 carrier-based fighter is preparing for takeoff.</p>
+    
+      <p>The J-35 carrier-based fighter takes off via electromagnetic catapult from the Navy&#39;s Fujian — the moment the aircraft leaves the ship.</p>
+    
+      <p>The KJ-600 carrier-based airborne early warning aircraft takes off via electromagnetic catapult from the Navy&#39;s Fujian — the moment the aircraft leaves the ship.</p>
+    
+      
+    
+      <p>In 2025,</p>
+    
+      <p>the J-15T, J-35, and KJ-600 —</p>
+    
+      <p>three types of carrier-based aircraft —</p>
+    
+      <p>completed their first catapult takeoff and arrested landing training</p>
+    
+      <p>aboard the Fujian.</p>
+    
+      
+    
+      <p>……</p>
+    
+      
+    
+      <p>From single aircraft to a system of systems,</p>
+    
+      <p>from shore-based to carrier-based,</p>
+    
+      <p>from ski-jump to catapult,</p>
+    
+      <p>from being able to fly to being able to fight —</p>
+    
+      <p>a series of time markers,</p>
+    
+      <p>a succession of technical breakthroughs,</p>
+    
+      <p>trace the growth of this force over 13 years.</p>
+    
+      
+    
+      <p>But what has written this history</p>
+    
+      <p>has never been cold, lifeless numbers —</p>
+    
+      <p>it has been a group of people who have entrusted their lives to sea and sky.</p>
+    
+      <p>Generation after generation of &#34;dancers on the blade&#39;s tip&#34; (刀尖上的舞者),</p>
+    
+      <p>with blood and resolve,</p>
+    
+      <p>have continuously broken through the &#34;forbidden zones&#34; of combat-realistic training.</p>
+    
+      
+    
+      <p>From &#34;able to fly and able to board the ship&#34;</p>
+    
+      <p>to &#34;able to fight and able to conduct joint operations&#34; —</p>
+    
+      <p>daring to fight and certain to win, boldly scaling new heights:</p>
+    
+      <p>this is their fighting spirit (血性).</p>
+    
+      
+    
+      <p>Thirteen years cleaving through waves,</p>
+    
+      <p>thirteen years soaring in pursuit of a dream —</p>
+    
+      <p>this young and valiant force,</p>
+    
+      <p>in the posture of a &#34;naval and air iron fist&#34; (海空铁拳),</p>
+    
+      <p>guards the motherland&#39;s ten-thousand-li maritime frontier.</p>
+    
+      
+    
+      <p>Today, let us all say together:</p>
+    
+      <p>People&#39;s Navy Carrier-Based Aviation Force —</p>
+    
+      <p>at 13, happy birthday!</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">到航母甲板上的“刀尖起舞” 今天，这支部队13岁了！ 2013年5月10日 经中央军委批准 海军首支舰载航空兵部队 在渤海湾畔正式组建 我国海军战斗序列 又增添一支新型主战力量 2012年11月23日 歼-15舰载战斗机 首次在辽宁舰上成功起降 “飞鲨”奋飞海天 2016年 歼-15舰载战斗机首次发射反舰导弹 12月随辽宁舰航母编队 赴西太平洋海域开展远海训练 中国舰载战斗机 第一次飞翔在西太平洋 2017年 攻克夜间起降技术难关 2020年 首次完成夜间空中伙伴加油训练 2023年 随山东舰航母编队 赴西太平洋海域训练 2024年10月，辽宁舰、山东舰编队首次开展双航母编队演练。 2024年10月 辽宁舰、山东舰编队 首次开展双航母编队演练 歼-15战机组成楔形编队 飞过双航母编队上空 歼-15T舰载战斗机在海军福建舰电磁弹射起飞，歼-35舰载战斗机正在进行起飞准备。 歼-35舰载战斗机在海军福建舰电磁弹射起飞，这是战机离舰瞬间。 空警-600舰载预警机在海军福建舰电磁弹射起飞，这是战机离舰瞬间。 2025年 歼-15T、歼-35和空警-600三型舰载机 完成在福建舰上 首次弹射起飞和着舰训练 …… 从单机到体系 从岸基到舰基 从滑跃到弹射 从能飞到能战 一串串时间节点 一项项技术突破 勾勒出这支部队13年来的成长轨迹 但书写这些历史的 从来不是冷冰冰的数字 而是一群把生命交给海天的人 一代代“刀尖上的舞者” 以热血与担当 不断突破实战实训“禁区” 从“能飞能上舰” 到“能战能联合” 敢打必胜、勇攀高峰 就是他们的血性 13载劈波斩浪 13载奋飞逐梦 这支年轻而英勇的部队 以“海空铁拳”的姿态 守护着祖国的万里海疆 今天，让我们一起说一声： 人民海军舰载航空兵部队 13岁，生日快乐！</div>
+  </details>
+  
+
+  <div class="provenance">
+    <span>Relevance score: 0.85</span>
+    <span>Model: claude-sonnet-4-6</span>
+    <span>Prompt: v1</span>
+    
+      <span>Analyzed: 2026-05-10</span>
+    
+  </div>
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. Translations and analytical summaries are AI-assisted; original sources are linked from every article.</div>
+  </div>
+</footer>
+
+
+</body>
+</html>
