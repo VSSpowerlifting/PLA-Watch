@@ -32,13 +32,21 @@ import tempfile
 from datetime import date as date_cls
 from pathlib import Path
 from typing import Optional
+from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
 POSTS_DIR = ROOT / "output" / "the-pla-watch" / "posts"
 COVERS_DIR = ROOT / "output" / "the-pla-watch" / "covers"
+MEDIA_DIR = ROOT / "output" / "the-pla-watch" / "media"
+CURATED_IMAGE_DIRS = [
+    ROOT / "assets" / "pla-watch" / "covers",
+    ROOT / "assets" / "pla-watch" / "media",
+    ROOT / "output" / "the-pla-watch" / "curated-media",
+]
 
 WIDTH, HEIGHT = 1200, 630
 THUMB_WIDTH, THUMB_HEIGHT = 600, 315
+IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp"}
 
 # ── Date formatting ───────────────────────────────────────────────────────────
 
@@ -88,6 +96,7 @@ _PLACEHOLDER_WEEK_ENDING = "___COVER_WEEK_ENDING___"
 _PLACEHOLDER_N_ARTICLES = "___COVER_N_ARTICLES___"
 _PLACEHOLDER_N_SIGNIFICANT = "___COVER_N_SIGNIFICANT___"
 _PLACEHOLDER_EDITION_STAT = "___COVER_EDITION_STAT___"
+_PLACEHOLDER_BACKGROUND = "___COVER_BACKGROUND___"
 
 _HTML_TEMPLATE = f"""\
 <!DOCTYPE html>
@@ -108,12 +117,49 @@ body {{
   width: 1200px;
   height: 630px;
   overflow: hidden;
-  /* Atmospheric deep-navy gradient: darker corners, lighter mid-left band */
+  background: #16253d;
+}}
+.photo-bg {{
+  position: absolute;
+  inset: 0;
+  background-image: {_PLACEHOLDER_BACKGROUND};
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.01);
+  filter: brightness(0.82) saturate(0.90);
+}}
+.photo-treatment {{
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(ellipse 900px 560px at 38% 45%,
-      rgba(34, 58, 95, 0.85) 0%,
+    linear-gradient(90deg,
+      rgba(5, 12, 24, 0.94) 0%,
+      rgba(7, 17, 32, 0.84) 38%,
+      rgba(7, 17, 32, 0.38) 72%,
+      rgba(7, 17, 32, 0.14) 100%),
+    linear-gradient(180deg,
+      rgba(5, 12, 24, 0.22) 0%,
+      rgba(5, 12, 24, 0.08) 48%,
+      rgba(5, 12, 24, 0.72) 100%),
+    radial-gradient(ellipse 720px 500px at 28% 46%,
+      rgba(5, 12, 24, 0.52) 0%,
+      transparent 72%);
+}}
+.title-shield {{
+  position: absolute;
+  left: 42px;
+  top: 165px;
+  width: 790px;
+  height: 245px;
+  background:
+    linear-gradient(90deg,
+      rgba(5, 12, 24, 0.50) 0%,
+      rgba(5, 12, 24, 0.34) 54%,
       transparent 100%),
-    linear-gradient(160deg, #111e30 0%, #1a2e4a 40%, #16253d 70%, #111e30 100%);
+    radial-gradient(ellipse 620px 230px at 22% 55%,
+      rgba(5, 12, 24, 0.42),
+      transparent 74%);
+  pointer-events: none;
 }}
 /* Layers rendered back-to-front */
 .grid-svg {{
@@ -127,12 +173,7 @@ body {{
   left: 0; right: 0;
   bottom: 0;
   height: 220px;
-  background: linear-gradient(
-    to top,
-    rgba(18, 32, 55, 0.72) 0%,
-    rgba(20, 38, 65, 0.35) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(to top, rgba(6, 14, 27, 0.62), transparent);
   pointer-events: none;
 }}
 /* Radar rings — lower right */
@@ -143,7 +184,7 @@ body {{
   width: 480px;
   height: 480px;
   border-radius: 50%;
-  border: 1px solid rgba(100,165,235,0.09);
+  border: 1px solid rgba(100,165,235,0.04);
   pointer-events: none;
 }}
 .radar::before {{
@@ -151,14 +192,14 @@ body {{
   position: absolute;
   inset: 76px;
   border-radius: 50%;
-  border: 1px solid rgba(100,165,235,0.065);
+  border: 1px solid rgba(100,165,235,0.03);
 }}
 .radar::after {{
   content: '';
   position: absolute;
   inset: 156px;
   border-radius: 50%;
-  border: 1px solid rgba(100,165,235,0.045);
+  border: 1px solid rgba(100,165,235,0.025);
 }}
 /* Outer frame */
 .frame-outer {{
@@ -180,10 +221,10 @@ body {{
   top: 12px;
   left: 12px;
   right: 12px;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(90deg,
-    rgba(80,150,225,0.95) 0%,
-    rgba(80,150,225,0.4) 60%,
+    rgba(120,175,230,0.68) 0%,
+    rgba(120,175,230,0.22) 48%,
     transparent 100%);
 }}
 /* Crosshair corners */
@@ -202,7 +243,7 @@ body {{
   top: 50%;
   left: 0; right: 0;
   height: 1px;
-  background: rgba(100,165,235,0.4);
+  background: rgba(150,185,215,0.22);
   transform: translateY(-50%);
 }}
 .ch-tl::after, .ch-tr::after {{
@@ -211,7 +252,7 @@ body {{
   left: 50%;
   top: 0; bottom: 0;
   width: 1px;
-  background: rgba(100,165,235,0.4);
+  background: rgba(150,185,215,0.22);
   transform: translateX(-50%);
 }}
 /* Main content column */
@@ -230,7 +271,7 @@ body {{
   font-weight: 700;
   letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: rgba(110,175,240,0.7);
+  color: #a9c4d8;
   margin-bottom: 11px;
   display: flex;
   align-items: center;
@@ -239,18 +280,18 @@ body {{
 .eyebrow-line {{
   width: 28px;
   height: 1px;
-  background: rgba(100,165,235,0.55);
+  background: rgba(169,196,216,0.52);
   display: inline-block;
   flex-shrink: 0;
 }}
 .pub-title {{
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 80px;
+  font-size: 68px;
   font-weight: 700;
-  line-height: 0.92;
-  letter-spacing: -0.028em;
-  color: #FFFFFF;
-  margin-bottom: 14px;
+  line-height: 0.98;
+  letter-spacing: -0.018em;
+  color: #e8f1f7;
+  margin-bottom: 12px;
   /* Subtle text shadow adds depth against the gradient */
   text-shadow: 0 2px 24px rgba(0,0,0,0.45);
 }}
@@ -258,8 +299,8 @@ body {{
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
   font-size: 14.5px;
-  color: rgba(180,215,248,0.62);
-  margin-bottom: 18px;
+  color: #b7c9d8;
+  margin-bottom: 20px;
   letter-spacing: 0.01em;
   line-height: 1.42;
   max-width: 640px;
@@ -271,28 +312,28 @@ body {{
     rgba(255,255,255,0.14) 0%,
     rgba(255,255,255,0.05) 65%,
     transparent 100%);
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }}
 .issue-title {{
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 34px;
+  font-size: 33px;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.014em;
-  color: rgba(255,255,255,0.96);
+  color: #f0f5f8;
   flex: 1;
   max-width: 720px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  text-shadow: 0 1px 12px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 18px rgba(0,0,0,0.58);
 }}
 .coverage {{
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
   font-size: 13px;
-  color: rgba(160,200,240,0.52);
+  color: rgba(183,201,216,0.70);
   margin-top: 9px;
   letter-spacing: 0.01em;
 }}
@@ -300,52 +341,58 @@ body {{
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  border-top: 1px solid rgba(255,255,255,0.09);
-  padding-top: 13px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding: 12px 18px 12px;
   margin-top: auto;
+  margin-left: -18px;
+  margin-right: -18px;
+  background: rgba(5, 12, 24, 0.58);
+  box-shadow: 0 -18px 44px rgba(5, 12, 24, 0.32);
 }}
 .stats {{
   display: flex;
-  gap: 30px;
-  align-items: flex-end;
+  gap: 34px;
+  align-items: flex-start;
 }}
 .stat {{
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px;
+  min-width: 112px;
 }}
 .stat-label {{
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(110,175,240,0.58);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.045em;
+  color: #a9c4d8;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.55);
 }}
 .stat-value {{
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #e8f1f7;
   line-height: 1;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.62);
 }}
 .stat-value.date-val {{
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
   font-style: normal;
   letter-spacing: 0.02em;
 }}
 .stat-value.text-val {{
-  font-size: 13px;
-  font-style: italic;
-  color: rgba(195,220,248,0.78);
+  font-size: 15px;
+  font-style: normal;
+  color: #e8f1f7;
 }}
 .footer {{
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(130,185,235,0.42);
+  color: rgba(183,201,216,0.72);
   text-align: right;
   line-height: 1.4;
 }}
@@ -353,36 +400,38 @@ body {{
 </head>
 <body>
 <div class="canvas">
+  <div class="photo-bg"></div>
+  <div class="photo-treatment"></div>
+  <div class="title-shield"></div>
   <svg class="grid-svg" xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
     <defs>
-      <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-        <path d="M 60 0 L 0 0 0 60" fill="none"
-              stroke="rgba(90,155,225,0.5)" stroke-width="0.4"/>
+      <pattern id="grid" width="96" height="96" patternUnits="userSpaceOnUse">
+        <path d="M 96 0 L 0 0 0 96" fill="none"
+              stroke="rgba(125,185,240,0.28)" stroke-width="0.28"/>
       </pattern>
-      <!-- Fade mask: grid visible center, fades at edges -->
-      <radialGradient id="gridFade" cx="40%" cy="45%" r="65%">
-        <stop offset="0%" stop-color="white" stop-opacity="1"/>
-        <stop offset="100%" stop-color="white" stop-opacity="0.15"/>
-      </radialGradient>
+      <linearGradient id="gridFade" x1="1" y1="0" x2="0.45" y2="0.65">
+        <stop offset="0%" stop-color="white" stop-opacity="0.62"/>
+        <stop offset="100%" stop-color="white" stop-opacity="0"/>
+      </linearGradient>
       <mask id="gridMask">
-        <rect width="1200" height="630" fill="url(#gridFade)"/>
+        <rect x="760" y="34" width="390" height="235" fill="url(#gridFade)"/>
       </mask>
     </defs>
-    <rect width="1200" height="630" fill="url(#grid)" opacity="0.16" mask="url(#gridMask)"/>
+    <rect x="760" y="34" width="390" height="235" fill="url(#grid)" opacity="0.035" mask="url(#gridMask)"/>
 
     <!-- Diagonal bearing lines: subtle, angled, top-right quadrant -->
     <line x1="800" y1="0" x2="1200" y2="360"
-          stroke="rgba(80,150,225,0.045)" stroke-width="1.2"/>
+          stroke="rgba(150,185,215,0.026)" stroke-width="1"/>
     <line x1="900" y1="0" x2="1200" y2="240"
-          stroke="rgba(80,150,225,0.03)" stroke-width="1"/>
+          stroke="rgba(150,185,215,0.018)" stroke-width="1"/>
 
     <!-- Coastline contour paths — irregular smooth curves, lower-right -->
     <path d="M 620 580 C 680 555, 760 570, 840 548 S 960 510, 1060 530 S 1160 555, 1200 540"
-          fill="none" stroke="rgba(90,160,230,0.08)" stroke-width="1.5"/>
+          fill="none" stroke="rgba(150,185,215,0.035)" stroke-width="1.2"/>
     <path d="M 700 610 C 780 590, 860 608, 940 588 S 1080 552, 1160 572 S 1200 590, 1200 590"
-          fill="none" stroke="rgba(90,160,230,0.055)" stroke-width="1.2"/>
+          fill="none" stroke="rgba(150,185,215,0.025)" stroke-width="1"/>
     <path d="M 560 560 C 640 538, 730 552, 820 530 S 960 490, 1040 508 S 1130 528, 1200 510"
-          fill="none" stroke="rgba(90,160,230,0.04)" stroke-width="1"/>
+          fill="none" stroke="rgba(150,185,215,0.02)" stroke-width="1"/>
   </svg>
 
   <div class="mist"></div>
@@ -406,7 +455,7 @@ body {{
     <div class="bottom-strip">
       <div class="stats">
         <div class="stat">
-          <div class="stat-label">Week Ending</div>
+          <div class="stat-label">Week ending</div>
           <div class="stat-value date-val">{_PLACEHOLDER_WEEK_ENDING}</div>
         </div>
         <div class="stat">
@@ -425,6 +474,69 @@ body {{
 </div>
 </body>
 </html>"""
+
+
+def _local_image_path(raw_path: str) -> Optional[Path]:
+    if not raw_path:
+        return None
+    parsed = urlparse(raw_path)
+    if parsed.scheme and parsed.scheme != "file":
+        return None
+    candidate = Path(parsed.path if parsed.scheme == "file" else raw_path)
+    if not candidate.is_absolute():
+        if raw_path.startswith("../media/"):
+            candidate = MEDIA_DIR / raw_path.removeprefix("../media/")
+        else:
+            candidate = ROOT / raw_path
+    if candidate.suffix.lower() in IMAGE_EXTS and candidate.exists():
+        return candidate.resolve()
+    return None
+
+
+def _iter_sidecar_strings(value):
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, dict):
+        for nested in value.values():
+            yield from _iter_sidecar_strings(nested)
+    elif isinstance(value, list):
+        for nested in value:
+            yield from _iter_sidecar_strings(nested)
+
+
+def resolve_background_image(sidecar: dict) -> Optional[Path]:
+    """Choose a deterministic local photo/visual before using the abstract fallback."""
+    media_items = sidecar.get("media_items") or []
+    if isinstance(media_items, list):
+        for item in media_items:
+            if not isinstance(item, dict):
+                continue
+            if item.get("type") and item.get("type") != "image":
+                continue
+            for key in ("src", "local_path", "path", "optimized_path"):
+                img = _local_image_path(str(item.get(key) or ""))
+                if img:
+                    return img
+
+    for key in ("visual_image", "context_image", "media_image", "image", "local_path"):
+        img = _local_image_path(str(sidecar.get(key) or ""))
+        if img:
+            return img
+
+    for raw_path in _iter_sidecar_strings(sidecar):
+        if "output/the-pla-watch/media/" not in raw_path and "../media/" not in raw_path:
+            continue
+        img = _local_image_path(raw_path)
+        if img:
+            return img
+
+    for directory in CURATED_IMAGE_DIRS:
+        if not directory.exists():
+            continue
+        for img in sorted(directory.iterdir()):
+            if img.suffix.lower() in IMAGE_EXTS:
+                return img.resolve()
+    return None
 
 
 def _build_html(sidecar: dict) -> str:
@@ -451,12 +563,20 @@ def _build_html(sidecar: dict) -> str:
             "</div>"
         )
 
+    bg_path = resolve_background_image(sidecar)
+    bg_css = (
+        f"url('{html_lib.escape(bg_path.as_uri(), quote=True)}')"
+        if bg_path else
+        "radial-gradient(ellipse 900px 560px at 38% 45%, rgba(34, 58, 95, 0.85) 0%, transparent 100%), linear-gradient(160deg, #111e30 0%, #1a2e4a 40%, #16253d 70%, #111e30 100%)"
+    )
+
     return (
         _HTML_TEMPLATE
+        .replace(_PLACEHOLDER_BACKGROUND, bg_css)
         .replace(_PLACEHOLDER_TITLE, html_lib.escape(title))
         .replace(_PLACEHOLDER_COVERAGE, coverage_html)
         .replace(_PLACEHOLDER_WEEK_ENDING,
-                 html_lib.escape(week_ending or "—"))
+                 html_lib.escape(_fmt_long(week_ending) if week_ending else "—"))
         .replace(_PLACEHOLDER_N_ARTICLES,
                  html_lib.escape(str(sidecar.get("n_articles", 0))))
         .replace(_PLACEHOLDER_N_SIGNIFICANT,
@@ -596,33 +716,53 @@ def _truncate_lines(draw, lines, font, max_width, max_lines):
 
 def _render_with_pil(sidecar: dict, out_path: Path) -> None:
     """PIL-based cover renderer — blue-gray palette fallback."""
-    from PIL import Image, ImageDraw  # type: ignore
+    from PIL import Image, ImageDraw, ImageEnhance, ImageOps  # type: ignore
 
-    img = Image.new("RGB", (WIDTH, HEIGHT), _BG)
+    bg_path = resolve_background_image(sidecar)
+    if bg_path:
+        img = Image.open(bg_path).convert("RGB")
+        img = ImageOps.fit(img, (WIDTH, HEIGHT), method=Image.LANCZOS)
+        img = ImageEnhance.Brightness(img).enhance(0.82)
+        img = ImageEnhance.Color(img).enhance(0.90)
+    else:
+        img = Image.new("RGB", (WIDTH, HEIGHT), _BG)
+        gradient = Image.new("RGB", (WIDTH, HEIGHT), _BG)
+        for x in range(WIDTH):
+            blend = int(x / WIDTH * 18)
+            c = tuple(min(255, _BG[i] + blend) for i in range(3))
+            for y in range(HEIGHT):
+                gradient.putpixel((x, y), c)
+        img.paste(gradient)
 
-    # Gradient-ish background: lighten the right half slightly
-    gradient = Image.new("RGB", (WIDTH, HEIGHT), _BG)
+    treatment = Image.new("RGBA", (WIDTH, HEIGHT), (8, 18, 34, 0))
+    tdraw = ImageDraw.Draw(treatment)
     for x in range(WIDTH):
-        blend = int(x / WIDTH * 18)
-        c = tuple(min(255, _BG[i] + blend) for i in range(3))
-        for y in range(HEIGHT):
-            gradient.putpixel((x, y), c)
-    img.paste(gradient)
+        alpha = int(240 - (x / WIDTH) * 204)
+        tdraw.line([(x, 0), (x, HEIGHT)], fill=(5, 12, 24, max(36, alpha)))
+    for y2 in range(HEIGHT):
+        alpha = int(max(0, (y2 - 340) / (HEIGHT - 340)) * 150)
+        if alpha:
+            tdraw.line([(0, y2), (WIDTH, y2)], fill=(5, 12, 24, alpha))
+    tdraw.ellipse(
+        [(-220, -30), (820, 720)],
+        fill=(5, 12, 24, 72),
+    )
+    img = Image.alpha_composite(img.convert("RGBA"), treatment).convert("RGB")
 
     draw = ImageDraw.Draw(img)
 
-    # Subtle grid lines
-    for x in range(0, WIDTH, 60):
-        draw.line([(x, 0), (x, HEIGHT)], fill=(100, 165, 235, 28), width=1)
-    for y in range(0, HEIGHT, 60):
-        draw.line([(0, y), (WIDTH, y)], fill=(100, 165, 235, 28), width=1)
+    # Faint technical texture, confined to the upper-right corner.
+    for x in range(780, 1160, 96):
+        draw.line([(x, 40), (x, 270)], fill=(150, 185, 215, 8), width=1)
+    for y in range(48, 270, 96):
+        draw.line([(780, y), (1160, y)], fill=(150, 185, 215, 8), width=1)
 
     # Radar circles (lower-right)
     for r in [260, 180, 100]:
         draw.ellipse(
             [(WIDTH - 110 - r, HEIGHT - 110 - r),
              (WIDTH - 110 + r, HEIGHT - 110 + r)],
-            outline=(100, 165, 235, 25),
+            outline=(150, 185, 215, 7),
         )
 
     # Frame border
@@ -630,21 +770,21 @@ def _render_with_pil(sidecar: dict, out_path: Path) -> None:
                    outline=(255, 255, 255, 22), width=1)
 
     # Blue accent bar (top inside frame)
-    draw.rectangle([(14, 14), (WIDTH - 14, 17)],
-                   fill=(90, 155, 225, 200))
+    draw.rectangle([(14, 14), (WIDTH - 14, 16)],
+                   fill=(169, 196, 216, 135))
 
     # Crosshair TL
     cx, cy = 30, 30
     draw.line([(cx - 10, cy), (cx + 10, cy)],
-              fill=(100, 165, 235, 90), width=1)
+              fill=(150, 185, 215, 52), width=1)
     draw.line([(cx, cy - 10), (cx, cy + 10)],
-              fill=(100, 165, 235, 90), width=1)
+              fill=(150, 185, 215, 52), width=1)
     # Crosshair TR
     cx2, cy2 = WIDTH - 30, 30
     draw.line([(cx2 - 10, cy2), (cx2 + 10, cy2)],
-              fill=(100, 165, 235, 90), width=1)
+              fill=(150, 185, 215, 52), width=1)
     draw.line([(cx2, cy2 - 10), (cx2, cy2 + 10)],
-              fill=(100, 165, 235, 90), width=1)
+              fill=(150, 185, 215, 52), width=1)
 
     draw = ImageDraw.Draw(img)
     margin_x = 64
@@ -653,40 +793,59 @@ def _render_with_pil(sidecar: dict, out_path: Path) -> None:
 
     # Eyebrow
     eye_font = _find_font(_SANS_BOLD, 13)
-    eye_text = "  ".join("CHINA MIL WATCH")
+    eye_text = "CHINA MIL WATCH"
     draw.text((margin_x, y), eye_text, font=eye_font,
-              fill=tuple(int(c * 0.75) for c in _MUTED))
+              fill=(169, 196, 216))
     y += 32
 
     # Publication title
-    title_font = _find_font(_SERIF_BOLD, 80)
-    draw.text((margin_x, y), "THE PLA WATCH", font=title_font, fill=_WHITE)
-    y += 90
+    title_font = _find_font(_SERIF_BOLD, 68)
+    draw.text((margin_x, y), "THE PLA WATCH", font=title_font,
+              fill=(232, 241, 247))
+    y += 78
 
     # Subtitle
     sub_font = _find_font(_SERIF_ITALIC, 16)
     draw.text((margin_x, y),
               "Weekly Briefing on Chinese Military and Security Developments",
-              font=sub_font, fill=(*_TXT2[:3], 172))
-    y += 34
+              font=sub_font, fill=(183, 201, 216))
+    y += 36
 
     # Hairline
     draw.line([(margin_x, y), (WIDTH - margin_x, y)],
               fill=(255, 255, 255, 25), width=1)
-    y += 22
+    y += 24
 
     # Issue title
+    title_shield = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
+    shield_draw = ImageDraw.Draw(title_shield)
+    shield_top = y - 16
+    shield_bottom = y + 150
+    for x in range(margin_x - 22, margin_x + 790):
+        rel = (x - (margin_x - 22)) / 812
+        alpha = int(120 * max(0, 1 - rel))
+        shield_draw.line(
+            [(x, shield_top), (x, shield_bottom)],
+            fill=(5, 12, 24, alpha),
+        )
+    shield_draw.ellipse(
+        [(margin_x - 110, y - 70), (margin_x + 710, y + 210)],
+        fill=(5, 12, 24, 54),
+    )
+    img = Image.alpha_composite(img.convert("RGBA"), title_shield).convert("RGB")
+    draw = ImageDraw.Draw(img)
+
     title = sidecar.get("title", "").strip()
     for pfx in ("The PLA Watch:", "The PLA Watch —", "PLA Watch:"):
         if title.lower().startswith(pfx.lower()):
             title = title[len(pfx):].strip()
             break
-    hed_font = _find_font(_SERIF_BOLD, 38)
+    hed_font = _find_font(_SERIF_BOLD, 36)
     hed_lines = _wrap(draw, title, hed_font, inner_w - 40)
     hed_lines = _truncate_lines(draw, hed_lines, hed_font, inner_w - 40, 3)
     for line in hed_lines:
-        draw.text((margin_x, y), line, font=hed_font, fill=_WHITE)
-        y += 48
+        draw.text((margin_x, y), line, font=hed_font, fill=(240, 245, 248))
+        y += 46
     y += 6
 
     # Coverage
@@ -696,51 +855,50 @@ def _render_with_pil(sidecar: dict, out_path: Path) -> None:
     if cov:
         cov_font = _find_font(_SERIF_ITALIC, 15)
         draw.text((margin_x, y), f"Coverage: {cov}", font=cov_font,
-                  fill=(*_MUTED[:3], 148))
+                  fill=(183, 201, 216))
         y += 26
 
     # Bottom strip
     strip_y = HEIGHT - 96
+    draw.rectangle([(margin_x - 18, strip_y - 1), (WIDTH - margin_x + 18, HEIGHT - 34)],
+                   fill=(5, 12, 24, 150))
     draw.line([(margin_x, strip_y), (WIDTH - margin_x, strip_y)],
-              fill=(255, 255, 255, 25), width=1)
+              fill=(255, 255, 255, 34), width=1)
 
-    lbl_font = _find_font(_SANS_BOLD, 9)
-    num_font = _find_font(_SERIF_BOLD, 28)
-    sm_font = _find_font(_SERIF_ITALIC, 15)
-    date_font = _find_font(_SERIF_BOLD, 17)
+    lbl_font = _find_font(_SANS_REG, 12)
+    num_font = _find_font(_SERIF_BOLD, 23)
+    sm_font = _find_font(_SERIF_REG, 16)
+    date_font = _find_font(_SERIF_BOLD, 16)
 
     cells = [
-        ("WEEK ENDING", week_ending or "—", "date"),
-        ("ARTICLES", str(sidecar.get("n_articles", 0)), "num"),
-        ("SIGNIFICANT", str(sidecar.get("n_significant", 0)), "num"),
+        ("Week ending", _fmt_long(week_ending) if week_ending else "—", "date"),
+        ("Articles", str(sidecar.get("n_articles", 0)), "num"),
+        ("Significant", str(sidecar.get("n_significant", 0)), "num"),
     ]
     edition_label = (sidecar.get("edition_label") or "").strip()
     if edition_label:
-        cells.append(("EDITION", edition_label, "text"))
+        cells.append(("Edition", edition_label, "text"))
 
     col_w = inner_w / len(cells)
-    label_y = strip_y + 16
-    value_y = strip_y + 34
+    label_y = strip_y + 11
+    value_y = strip_y + 31
     for i, (lbl, val, kind) in enumerate(cells):
         cx = margin_x + int(i * col_w)
-        spaced = "  ".join(lbl)
-        draw.text((cx, label_y), spaced, font=lbl_font,
-                  fill=(*_MUTED[:3], 160))
+        draw.text((cx, label_y), lbl, font=lbl_font,
+                  fill=(169, 196, 216))
         if kind == "num":
-            draw.text((cx, value_y), val, font=num_font, fill=_WHITE)
-            nw, nh = _measure(draw, val, num_font)
-            draw.rectangle([(cx, value_y + nh + 5),
-                             (cx + 22, value_y + nh + 7)],
-                            fill=_ACCENT)
+            draw.text((cx, value_y), val, font=num_font, fill=(232, 241, 247))
         elif kind == "date":
-            draw.text((cx, value_y + 6), val, font=date_font, fill=_WHITE)
+            draw.text((cx, value_y + 4), val, font=date_font,
+                      fill=(232, 241, 247))
         else:
-            draw.text((cx, value_y + 8), val, font=sm_font, fill=_TXT2)
+            draw.text((cx, value_y + 5), val, font=sm_font,
+                      fill=(232, 241, 247))
 
     # Footer
     foot_font = _find_font(_SANS_REG, 12)
     draw.text((margin_x, HEIGHT - 30), "China Mil Watch",
-              font=foot_font, fill=(*_MUTED[:3], 128))
+              font=foot_font, fill=(183, 201, 216))
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     img.save(out_path, format="PNG", optimize=True)
