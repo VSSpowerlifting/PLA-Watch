@@ -28,12 +28,13 @@ from jinja2 import Environment, FileSystemLoader
 from scripts.generate_pla_watch import (
     AUTHOR_NAME, AUTHOR_TITLE, AUTHOR_BIO, AUTHOR_LINKS,
 )
-from scripts.generate_pla_watch_cover import render_cover
+from scripts.generate_pla_watch_cover import render_cover, render_thumbnail
 
 
 POSTS_DIR = ROOT / "output" / "the-pla-watch" / "posts"
 PLA_WATCH_DIR = ROOT / "output" / "the-pla-watch"
 MEDIA_DIR = ROOT / "output" / "the-pla-watch" / "media"
+COVERS_DIR = ROOT / "output" / "the-pla-watch" / "covers"
 TEMPLATES_DIR = ROOT / "site" / "templates"
 
 
@@ -88,37 +89,40 @@ def _articles_from_sidecar(sidecar: dict) -> list[dict]:
     return out
 
 
-def _cover_paths(sidecar: dict) -> tuple[str, str]:
+def _cover_paths(sidecar: dict) -> tuple[str, str, str]:
     """
-    Compute the in-page src and absolute OG URL for the issue cover image,
-    based on the sidecar date. Returns (cover_image, cover_image_url).
+    Compute the in-page src, thumbnail src, and absolute OG URL for the
+    issue cover. Returns (cover_image, cover_thumb, cover_image_url).
     """
     sidecar_date = sidecar.get("date", "")
     if not sidecar_date:
-        return "", ""
-    rel = f"../media/{sidecar_date}-cover.png"
+        return "", "", ""
+    rel = f"../covers/{sidecar_date}.png"
+    thumb = f"../covers/{sidecar_date}-thumb.png"
     abs_url = (
-        f"https://chinamilwatch.org/the-pla-watch/media/{sidecar_date}-cover.png"
+        f"https://chinamilwatch.org/the-pla-watch/covers/{sidecar_date}.png"
     )
-    return rel, abs_url
+    return rel, thumb, abs_url
 
 
 def _build_post_context(sidecar: dict) -> dict:
     term_word, term_explanation = _flatten_term(sidecar)
     cover_image = sidecar.get("cover_image") or ""
+    cover_thumb = sidecar.get("cover_thumb") or ""
     cover_image_url = sidecar.get("cover_image_url") or ""
     if not cover_image or not cover_image_url:
-        # Fill in from the sidecar date if not already present.
-        derived_rel, derived_abs = _cover_paths(sidecar)
+        derived_rel, derived_thumb, derived_abs = _cover_paths(sidecar)
         cover_image = cover_image or derived_rel
+        cover_thumb = cover_thumb or derived_thumb
         cover_image_url = cover_image_url or derived_abs
-    # If the PNG isn't actually on disk, blank both so the template falls
-    # back to the sitewide og-image.png and skips the in-page figure.
+    # If the PNG isn't on disk, blank both so the template falls back
+    # to the sitewide og-image.png and skips the in-page figure.
     if cover_image:
         sidecar_date = sidecar.get("date", "")
-        png_path = MEDIA_DIR / f"{sidecar_date}-cover.png"
+        png_path = COVERS_DIR / f"{sidecar_date}.png"
         if not png_path.exists():
             cover_image = ""
+            cover_thumb = ""
             cover_image_url = ""
 
     return {
@@ -137,6 +141,7 @@ def _build_post_context(sidecar: dict) -> dict:
 
         # Cover image
         "cover_image":     cover_image,
+        "cover_thumb":     cover_thumb,
         "cover_image_url": cover_image_url,
 
         # Body
@@ -189,20 +194,22 @@ def main() -> int:
     archive_tmpl = env.get_template("pla-watch-archive.html")
 
     MEDIA_DIR.mkdir(parents=True, exist_ok=True)
+    COVERS_DIR.mkdir(parents=True, exist_ok=True)
 
     # Render every post sidecar.
     sidecars = []
     for json_path in sorted(POSTS_DIR.glob("*.json"), reverse=True):
         sidecar = json.loads(json_path.read_text(encoding="utf-8"))
-        # Make sure the in-memory sidecar carries author metadata for the
+        # Ensure the in-memory sidecar carries author metadata for the
         # landing-page byline, even if the on-disk JSON predates this layer.
         sidecar.setdefault("author_name", AUTHOR_NAME)
         sidecar.setdefault("author_title", AUTHOR_TITLE)
 
-        # Cover image — generate or refresh PNG, then ensure sidecar carries
-        # the path fields so the index/archive templates can show a thumbnail.
+        # Cover image — generate or refresh PNG + thumbnail, then ensure
+        # sidecar carries the path fields so index/archive templates show them.
         sidecar_date = sidecar.get("date", "")
-        png_path = MEDIA_DIR / f"{sidecar_date}-cover.png" if sidecar_date else None
+        png_path = COVERS_DIR / f"{sidecar_date}.png" if sidecar_date else None
+        thumb_path = COVERS_DIR / f"{sidecar_date}-thumb.png" if sidecar_date else None
         if not args.no_covers and png_path is not None:
             if args.force_covers or not png_path.exists():
                 try:
@@ -211,10 +218,21 @@ def main() -> int:
                 except Exception as exc:
                     print(f"WARN: cover generation failed for "
                           f"{sidecar_date}: {exc!r}")
-        rel, abs_url = _cover_paths(sidecar)
+            if png_path.exists() and thumb_path is not None:
+                if args.force_covers or not thumb_path.exists():
+                    try:
+                        render_thumbnail(png_path, thumb_path)
+                        print(f"Wrote {thumb_path.relative_to(ROOT)}")
+                    except Exception as exc:
+                        print(f"WARN: thumbnail generation failed for "
+                              f"{sidecar_date}: {exc!r}")
+        rel, thumb_rel, abs_url = _cover_paths(sidecar)
         if png_path is not None and png_path.exists():
-            sidecar.setdefault("cover_image", rel)
-            sidecar.setdefault("cover_image_url", abs_url)
+            # Always write canonical covers/ paths — overwrites any old
+            # ../media/... paths that predate this directory scheme.
+            sidecar["cover_image"] = rel
+            sidecar["cover_thumb"] = thumb_rel
+            sidecar["cover_image_url"] = abs_url
         sidecars.append(sidecar)
 
         ctx = _build_post_context(sidecar)

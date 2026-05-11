@@ -124,6 +124,20 @@
 }
 .entry-meta .sep::before { content: " · "; }
 
+/* ── Entry thumbnail ──────────────────────────────────────────────── */
+.entry-thumb-link {
+  display: block;
+  margin-top: 0.6rem;
+}
+.entry-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  background: var(--color-bg-card);
+}
+
 .empty-state-card {
   text-align: center;
   padding: 4rem 2rem;
@@ -156,6 +170,16 @@
         <div class="entry-date-col">
           <span class="we-large">{{ post.week_ending }}</span>
           Week ending
+          {% set _thumb = (post.cover_thumb or post.cover_image or '') | replace('../', '') %}
+          {% if _thumb %}
+          <a href="posts/{{ post.date }}.html" class="entry-thumb-link" tabindex="-1" aria-hidden="true">
+            <img class="entry-thumb"
+                 src="{{ _thumb }}"
+                 alt=""
+                 width="150" height="79"
+                 loading="lazy">
+          </a>
+          {% endif %}
         </div>
         <div class="entry-body">
           <h2 class="entry-title">

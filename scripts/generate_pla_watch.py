@@ -580,24 +580,23 @@ def main():
     # Build output paths
     posts_dir = ROOT / "output" / "the-pla-watch" / "posts"
     pla_watch_dir = ROOT / "output" / "the-pla-watch"
-    media_dir = ROOT / "output" / "the-pla-watch" / "media"
+    media_dir = ROOT / "output" / "the-pla-watch" / "media"   # for Wikipedia images
+    covers_dir = ROOT / "output" / "the-pla-watch" / "covers"
     linkedin_dir = ROOT / "the-pla-watch" / "linkedin"
 
     posts_dir.mkdir(parents=True, exist_ok=True)
     pla_watch_dir.mkdir(parents=True, exist_ok=True)
     media_dir.mkdir(parents=True, exist_ok=True)
+    covers_dir.mkdir(parents=True, exist_ok=True)
     linkedin_dir.mkdir(parents=True, exist_ok=True)
 
     days_covered = len(stats["dates_covered"])
     edition_label = derive_edition_label(result["edition_type"], days_covered)
     source_trail, trail_truncated = build_source_trail(articles)
 
-    cover_image_rel = f"../media/{week_ending_str}-cover.png"
-    cover_image_url = (
-        f"https://chinamilwatch.org/the-pla-watch/media/{week_ending_str}-cover.png"
-    )
-
-    sidecar = {
+    # Build sidecar without cover paths first — they are added only after the
+    # files are confirmed to exist on disk.
+    sidecar: dict = {
         "date": week_ending_str,
         "week_ending": week_ending_str,
         "week_start": week_start_str,
@@ -609,14 +608,45 @@ def main():
         "days_covered": days_covered,
         "edition_type": result["edition_type"],
         "edition_label": edition_label,
-        "cover_image":     cover_image_rel,
-        "cover_image_url": cover_image_url,
         "author_name":  AUTHOR_NAME,
         "author_title": AUTHOR_TITLE,
         "author_bio":   AUTHOR_BIO,
         "author_links": AUTHOR_LINKS,
     }
 
+    # Generate the editorial cover PNG. This must run before the sidecar JSON
+    # is written so the JSON only records paths that actually exist.
+    cover_path = covers_dir / f"{week_ending_str}.png"
+    thumb_path = covers_dir / f"{week_ending_str}-thumb.png"
+    try:
+        from scripts.generate_pla_watch_cover import render_cover, render_thumbnail
+        render_cover(sidecar, cover_path)
+        if cover_path.exists():
+            sidecar["cover_image"] = f"../covers/{week_ending_str}.png"
+            sidecar["cover_image_url"] = (
+                f"https://chinamilwatch.org/the-pla-watch/covers/{week_ending_str}.png"
+            )
+            print(f"Wrote cover: {cover_path.relative_to(ROOT)}")
+            try:
+                render_thumbnail(cover_path, thumb_path)
+                if thumb_path.exists():
+                    sidecar["cover_thumb"] = f"../covers/{week_ending_str}-thumb.png"
+                    print(f"Wrote thumbnail: {thumb_path.relative_to(ROOT)}")
+            except Exception as thumb_exc:
+                print(f"WARN: thumbnail generation failed ({thumb_exc!r})")
+        else:
+            print("WARN: cover render returned but file not found; "
+                  "post will render without a cover image")
+    except Exception as exc:
+        print(f"WARN: cover image generation failed ({exc!r}); "
+              "post will render without a cover image")
+
+    # Write sidecar JSON — cover fields are now present only if files exist.
+    json_path = posts_dir / f"{week_ending_str}.json"
+    json_path.write_text(json.dumps(sidecar, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # Build meta from the finalised sidecar so the HTML template gets the
+    # same truthful cover paths (or their absence).
     meta = {
         **sidecar,
         "dates_covered": stats["dates_covered"],
@@ -624,21 +654,6 @@ def main():
         "articles": source_trail,
         "source_trail_truncated": trail_truncated,
     }
-
-    # Write sidecar JSON
-    json_path = posts_dir / f"{week_ending_str}.json"
-    json_path.write_text(json.dumps(sidecar, indent=2, ensure_ascii=False), encoding="utf-8")
-
-    # Generate the editorial issue cover PNG (no API call, no scraping —
-    # uses sidecar fields the template already has).
-    try:
-        from scripts.generate_pla_watch_cover import render_cover
-        cover_path = media_dir / f"{week_ending_str}-cover.png"
-        render_cover({**sidecar, "date": week_ending_str}, cover_path)
-        print(f"Wrote cover: {cover_path}")
-    except Exception as exc:
-        print(f"WARN: cover image generation failed ({exc!r}); "
-              "post will fall back to sitewide og-image.png")
 
     # Render and write post HTML
     post_html = render_post(result, meta)
