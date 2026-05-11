@@ -242,6 +242,79 @@
   .row-source { display: none; }
   .archive-page-header h1 { font-size: 1.625rem; }
 }
+
+/* ── Extraction-issue badge (archive rows + static list) ─────────── */
+.extraction-issue-badge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #92400E;
+  background: #FEF3C7;
+  border: 1px solid #FDE68A;
+  padding: 1px 5px;
+  border-radius: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Server-rendered static list (progressive enhancement) ───────── */
+.static-archive-notice {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding: 0.55rem 1rem;
+  background: var(--color-bg-sidebar);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  margin-bottom: 1.25rem;
+}
+.static-entry {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.static-entry.is-significant { border-left: 3px solid var(--color-brand); padding-left: 0.75rem; }
+.static-entry-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+  flex-wrap: wrap;
+}
+.static-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.static-title:hover { color: var(--color-brand); text-decoration: none; }
+.static-sig-badge {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  padding: 1px 6px;
+  border-radius: 2px;
+}
+.static-entry-meta {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.3rem;
+}
+.static-entry-summary {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+.static-entry-collection-note {
+  font-size: 0.8rem;
+  color: #92400E;
+  font-style: italic;
+  margin-top: 0.2rem;
+}
 {% endblock %}
 
 {% block content %}
@@ -288,7 +361,16 @@
 </div>
 
 <div class="filter-count" id="filter-count"></div>
-<div id="archive-list"></div>
+
+<div id="archive-list">
+  <p class="static-archive-notice" id="static-notice">Showing the most recent {{ articles_static | length }} articles. Enable JavaScript for full search and filter.</p>
+{% for a in articles_static %}
+  <div class="static-entry{% if a.is_significant %} is-significant{% endif %}">
+    <div class="static-entry-header"><a href="{{ a.article_path }}" class="static-title">{{ a.title_en or a.title_zh }}</a>{% if a.is_significant %} <span class="static-sig-badge">Significant</span>{% endif %}{% if a.extraction_issue %} <span class="extraction-issue-badge">Collection issue</span>{% endif %}</div>
+    <div class="static-entry-meta">{{ a.date_fmt }} · {{ a.source }}{% for label in a.category_labels %} · {{ label }}{% endfor %}</div>{% if a.extraction_issue %}<div class="static-entry-collection-note">Article text was incomplete, mismatched, or not suitable for normal analysis. <a href="{{ a.article_path }}">View item</a> · <a href="{{ a.url }}" target="_blank" rel="noopener">Original source ↗</a></div>{% elif a.summary %}<div class="static-entry-summary">{{ a.summary[:260] }}{% if a.summary | length > 260 %}…{% endif %}</div>{% endif %}
+  </div>
+{% endfor %}
+</div>
 
 </div>
 {% endblock %}
@@ -316,12 +398,15 @@ function renderRow(a) {
   const sig = a.is_significant
     ? '<span class="sig-dot" title="Significant"></span>'
     : '<span class="sig-dot-placeholder"></span>';
+  const issueBadge = a.extraction_issue
+    ? ' <span class="extraction-issue-badge">Collection issue</span>'
+    : '';
   const searchText = escapeHtml((a.title_en + ' ' + a.title_zh + ' ' + a.summary).toLowerCase());
   const catList = a.categories.join(',');
-  return `<div class="article-row" data-date="${a.date}" data-cats="${catList}" data-sig="${a.is_significant ? 1 : 0}" data-search="${searchText}">
+  return `<div class="article-row" data-date="${a.date}" data-cats="${catList}" data-sig="${a.is_significant ? 1 : 0}" data-extr="${a.extraction_issue ? 1 : 0}" data-search="${searchText}">
   <div class="row-left">
     ${sig}
-    <a href="${escapeHtml(a.article_path)}" class="row-title">${escapeHtml(a.title_en || a.title_zh)}</a>
+    <a href="${escapeHtml(a.article_path)}" class="row-title">${escapeHtml(a.title_en || a.title_zh)}</a>${issueBadge}
   </div>
   <span class="row-source">${escapeHtml(a.source)}</span>
 </div>`;
@@ -341,6 +426,7 @@ function renderGroup(date) {
 }
 
 const listEl = document.getElementById('archive-list');
+// Replace the server-rendered static list with the JS-driven grouped view
 listEl.innerHTML = dates.map(renderGroup).join('');
 
 // Clicking a date label filters to that date

@@ -100,7 +100,7 @@ body {{
   width: 1200px;
   height: 630px;
   overflow: hidden;
-  background: #182840;
+  background: #16253d;
   font-family: Georgia, 'Times New Roman', serif;
 }}
 .canvas {{
@@ -108,53 +108,101 @@ body {{
   width: 1200px;
   height: 630px;
   overflow: hidden;
-  background: linear-gradient(150deg, #182840 0%, #1f3352 55%, #182a3f 100%);
+  /* Atmospheric deep-navy gradient: darker corners, lighter mid-left band */
+  background:
+    radial-gradient(ellipse 900px 560px at 38% 45%,
+      rgba(34, 58, 95, 0.85) 0%,
+      transparent 100%),
+    linear-gradient(160deg, #111e30 0%, #1a2e4a 40%, #16253d 70%, #111e30 100%);
 }}
+/* Layers rendered back-to-front */
 .grid-svg {{
   position: absolute;
   inset: 0;
   pointer-events: none;
 }}
+/* Mist/horizon gradient — fades in from the lower third */
+.mist {{
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 0;
+  height: 220px;
+  background: linear-gradient(
+    to top,
+    rgba(18, 32, 55, 0.72) 0%,
+    rgba(20, 38, 65, 0.35) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}}
+/* Radar rings — lower right */
 .radar {{
   position: absolute;
-  right: -110px;
-  bottom: -110px;
-  width: 520px;
-  height: 520px;
+  right: -90px;
+  bottom: -90px;
+  width: 480px;
+  height: 480px;
   border-radius: 50%;
-  border: 1px solid rgba(100,165,235,0.1);
+  border: 1px solid rgba(100,165,235,0.09);
   pointer-events: none;
 }}
 .radar::before {{
   content: '';
   position: absolute;
-  inset: 80px;
+  inset: 76px;
   border-radius: 50%;
-  border: 1px solid rgba(100,165,235,0.07);
+  border: 1px solid rgba(100,165,235,0.065);
 }}
 .radar::after {{
   content: '';
   position: absolute;
-  inset: 165px;
+  inset: 156px;
   border-radius: 50%;
-  border: 1px solid rgba(100,165,235,0.05);
+  border: 1px solid rgba(100,165,235,0.045);
 }}
-.ch-tl, .ch-tr {{
+/* Outer frame */
+.frame-outer {{
   position: absolute;
-  top: 30px;
-  width: 20px;
-  height: 20px;
+  inset: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
   pointer-events: none;
 }}
-.ch-tl {{ left: 30px; }}
-.ch-tr {{ right: 30px; }}
+/* Inner double-border — gives the think-tank report feel */
+.frame-inner {{
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(255,255,255,0.045);
+  pointer-events: none;
+}}
+/* Accent bar — just inside outer frame */
+.accent-bar {{
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  height: 3px;
+  background: linear-gradient(90deg,
+    rgba(80,150,225,0.95) 0%,
+    rgba(80,150,225,0.4) 60%,
+    transparent 100%);
+}}
+/* Crosshair corners */
+.ch-tl, .ch-tr {{
+  position: absolute;
+  top: 32px;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}}
+.ch-tl {{ left: 32px; }}
+.ch-tr {{ right: 32px; }}
 .ch-tl::before, .ch-tr::before {{
   content: '';
   position: absolute;
   top: 50%;
   left: 0; right: 0;
   height: 1px;
-  background: rgba(100,165,235,0.35);
+  background: rgba(100,165,235,0.4);
   transform: translateY(-50%);
 }}
 .ch-tl::after, .ch-tr::after {{
@@ -163,29 +211,13 @@ body {{
   left: 50%;
   top: 0; bottom: 0;
   width: 1px;
-  background: rgba(100,165,235,0.35);
+  background: rgba(100,165,235,0.4);
   transform: translateX(-50%);
 }}
-.frame {{
-  position: absolute;
-  inset: 14px;
-  border: 1px solid rgba(255,255,255,0.09);
-  pointer-events: none;
-}}
-.accent-bar {{
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  right: 14px;
-  height: 3px;
-  background: linear-gradient(90deg,
-    rgba(90,155,225,0.9) 0%,
-    rgba(90,155,225,0.3) 70%,
-    transparent 100%);
-}}
+/* Main content column */
 .content {{
   position: absolute;
-  top: 46px;
+  top: 48px;
   left: 64px;
   right: 64px;
   bottom: 44px;
@@ -194,79 +226,87 @@ body {{
 }}
 .eyebrow {{
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: rgba(120,180,240,0.75);
-  margin-bottom: 10px;
+  color: rgba(110,175,240,0.7);
+  margin-bottom: 11px;
   display: flex;
   align-items: center;
   gap: 10px;
 }}
 .eyebrow-line {{
-  width: 26px;
+  width: 28px;
   height: 1px;
-  background: rgba(100,165,235,0.5);
+  background: rgba(100,165,235,0.55);
   display: inline-block;
   flex-shrink: 0;
 }}
 .pub-title {{
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 76px;
+  font-size: 80px;
   font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.025em;
+  line-height: 0.92;
+  letter-spacing: -0.028em;
   color: #FFFFFF;
-  margin-bottom: 13px;
+  margin-bottom: 14px;
+  /* Subtle text shadow adds depth against the gradient */
+  text-shadow: 0 2px 24px rgba(0,0,0,0.45);
 }}
 .subtitle {{
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
-  font-size: 15px;
-  color: rgba(185,215,245,0.68);
-  margin-bottom: 20px;
+  font-size: 14.5px;
+  color: rgba(180,215,248,0.62);
+  margin-bottom: 18px;
   letter-spacing: 0.01em;
-  line-height: 1.4;
+  line-height: 1.42;
+  max-width: 640px;
 }}
 .divider {{
   width: 100%;
   height: 1px;
-  background: rgba(255,255,255,0.1);
-  margin-bottom: 20px;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.14) 0%,
+    rgba(255,255,255,0.05) 65%,
+    transparent 100%);
+  margin-bottom: 18px;
 }}
 .issue-title {{
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.012em;
-  color: rgba(255,255,255,0.95);
+  line-height: 1.2;
+  letter-spacing: -0.014em;
+  color: rgba(255,255,255,0.96);
   flex: 1;
-  max-width: 730px;
+  max-width: 720px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.3);
 }}
 .coverage {{
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
-  font-size: 14px;
-  color: rgba(170,205,240,0.58);
-  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(160,200,240,0.52);
+  margin-top: 9px;
+  letter-spacing: 0.01em;
 }}
 .bottom-strip {{
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.09);
+  padding-top: 13px;
   margin-top: auto;
 }}
 .stats {{
   display: flex;
-  gap: 32px;
+  gap: 30px;
   align-items: flex-end;
 }}
 .stat {{
@@ -276,11 +316,11 @@ body {{
 }}
 .stat-label {{
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 8.5px;
+  font-size: 8px;
   font-weight: 700;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(120,180,240,0.62);
+  color: rgba(110,175,240,0.58);
 }}
 .stat-value {{
   font-family: Georgia, 'Times New Roman', serif;
@@ -290,24 +330,24 @@ body {{
   line-height: 1;
 }}
 .stat-value.date-val {{
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   font-style: normal;
   letter-spacing: 0.02em;
 }}
 .stat-value.text-val {{
-  font-size: 14px;
+  font-size: 13px;
   font-style: italic;
-  color: rgba(195,220,245,0.82);
+  color: rgba(195,220,248,0.78);
 }}
 .footer {{
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.14em;
+  font-size: 10px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(140,190,235,0.5);
+  color: rgba(130,185,235,0.42);
   text-align: right;
-  line-height: 1.3;
+  line-height: 1.4;
 }}
 </style>
 </head>
@@ -317,20 +357,42 @@ body {{
     <defs>
       <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
         <path d="M 60 0 L 0 0 0 60" fill="none"
-              stroke="rgba(100,165,235,0.5)" stroke-width="0.45"/>
+              stroke="rgba(90,155,225,0.5)" stroke-width="0.4"/>
       </pattern>
+      <!-- Fade mask: grid visible center, fades at edges -->
+      <radialGradient id="gridFade" cx="40%" cy="45%" r="65%">
+        <stop offset="0%" stop-color="white" stop-opacity="1"/>
+        <stop offset="100%" stop-color="white" stop-opacity="0.15"/>
+      </radialGradient>
+      <mask id="gridMask">
+        <rect width="1200" height="630" fill="url(#gridFade)"/>
+      </mask>
     </defs>
-    <rect width="1200" height="630" fill="url(#grid)" opacity="0.14"/>
-    <line x1="780" y1="0" x2="1200" y2="380"
-          stroke="rgba(90,155,225,0.055)" stroke-width="1"/>
-    <line x1="880" y1="0" x2="1200" y2="280"
-          stroke="rgba(90,155,225,0.035)" stroke-width="1"/>
+    <rect width="1200" height="630" fill="url(#grid)" opacity="0.16" mask="url(#gridMask)"/>
+
+    <!-- Diagonal bearing lines: subtle, angled, top-right quadrant -->
+    <line x1="800" y1="0" x2="1200" y2="360"
+          stroke="rgba(80,150,225,0.045)" stroke-width="1.2"/>
+    <line x1="900" y1="0" x2="1200" y2="240"
+          stroke="rgba(80,150,225,0.03)" stroke-width="1"/>
+
+    <!-- Coastline contour paths — irregular smooth curves, lower-right -->
+    <path d="M 620 580 C 680 555, 760 570, 840 548 S 960 510, 1060 530 S 1160 555, 1200 540"
+          fill="none" stroke="rgba(90,160,230,0.08)" stroke-width="1.5"/>
+    <path d="M 700 610 C 780 590, 860 608, 940 588 S 1080 552, 1160 572 S 1200 590, 1200 590"
+          fill="none" stroke="rgba(90,160,230,0.055)" stroke-width="1.2"/>
+    <path d="M 560 560 C 640 538, 730 552, 820 530 S 960 490, 1040 508 S 1130 528, 1200 510"
+          fill="none" stroke="rgba(90,160,230,0.04)" stroke-width="1"/>
   </svg>
+
+  <div class="mist"></div>
   <div class="radar"></div>
   <div class="ch-tl"></div>
   <div class="ch-tr"></div>
-  <div class="frame"></div>
+  <div class="frame-outer"></div>
+  <div class="frame-inner"></div>
   <div class="accent-bar"></div>
+
   <div class="content">
     <div class="eyebrow">
       <span class="eyebrow-line"></span>

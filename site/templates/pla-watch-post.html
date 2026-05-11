@@ -427,36 +427,35 @@
 .term-explanation p { margin-bottom: 0.85rem; }
 .term-explanation p:last-child { margin-bottom: 0; }
 
-/* ── Source Trail — card grid ──────────────────────────────────────── */
+/* ── Source Trail — vertical list ──────────────────────────────────── */
 .source-trail { margin-bottom: 2.5rem; }
 .source-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 .source-card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
-  padding: 0.95rem 1.1rem;
+  border-top: none;
+  padding: 0.85rem 1.1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.3rem;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: background 0.15s;
   position: relative;
 }
-.source-card:hover {
-  border-color: var(--color-brand);
-  text-decoration: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
+.source-card:first-child { border-top: 1px solid var(--color-border); border-radius: 4px 4px 0 0; }
+.source-card:last-child { border-radius: 0 0 4px 4px; }
+.source-card:only-child { border-top: 1px solid var(--color-border); border-radius: 4px; }
+.source-card:hover { background: var(--color-bg-sidebar); text-decoration: none; }
 .source-card.is-significant { border-left: 3px solid var(--color-brand); padding-left: calc(1.1rem - 2px); }
 .source-card-title {
   font-family: var(--serif);
   font-weight: 700;
-  font-size: 0.97rem;
+  font-size: 0.95rem;
   line-height: 1.35;
   color: var(--color-text-primary);
 }
@@ -465,20 +464,28 @@
   font-size: 0.72rem;
   color: var(--color-text-muted);
   font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 }
+.source-card-meta .sep { color: var(--color-border); }
 .source-card-meta .sig-tag {
   color: var(--color-brand);
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  padding: 1px 6px;
+  border-radius: 2px;
+  font-size: 0.625rem;
 }
 .source-card-domain {
   font-family: var(--sans);
-  font-size: 0.7rem;
-  color: var(--color-brand);
-  letter-spacing: 0.04em;
-  word-break: break-all;
-  margin-top: 0.05rem;
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
 }
 .source-trail-cap {
   font-family: var(--sans);
@@ -486,9 +493,6 @@
   color: var(--color-text-muted);
   margin-top: 0.85rem;
   font-style: italic;
-}
-@media (max-width: 600px) {
-  .source-cards { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ── Closing note ──────────────────────────────────────────────────── */
@@ -871,7 +875,9 @@
           <a class="source-card{% if article.is_significant %} is-significant{% endif %}" href="{{ article.url }}" target="_blank" rel="noopener">
             <div class="source-card-title">{{ article.title }}</div>
             <div class="source-card-meta">
-              {% if article.is_significant %}<span class="sig-tag">Significant</span> · {% endif %}{{ article.source }} &middot; {{ article.date }}
+              {% if article.is_significant %}<span class="sig-tag">Significant</span>{% endif %}
+              <span>{{ article.source }}</span>
+              {% if article.date %}<span class="sep">·</span><span>{{ article.date }}</span>{% endif %}
             </div>
             <div class="source-card-domain">{{ article.url | replace('https://', '') | replace('http://', '') | truncate(48, true, '…') }}</div>
           </a>

@@ -16,6 +16,7 @@ import argparse
 import json
 import re
 import sys
+from datetime import date as date_cls
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -65,6 +66,21 @@ def _flatten_term(sidecar: dict) -> tuple[str, str]:
         sidecar.get("term_to_know_term", ""),
         sidecar.get("term_to_know_explanation", ""),
     )
+
+
+def _days_covered(sidecar: dict) -> int:
+    """Compute days covered from week_start/week_ending if not explicit."""
+    explicit = sidecar.get("days_covered")
+    if explicit:
+        return int(explicit)
+    start = sidecar.get("week_start", "")
+    end = sidecar.get("week_ending", "") or sidecar.get("date", "")
+    try:
+        ds = date_cls.fromisoformat(start)
+        de = date_cls.fromisoformat(end)
+        return max(1, (de - ds).days + 1)
+    except Exception:
+        return 0
 
 
 def _articles_from_sidecar(sidecar: dict) -> list[dict]:
@@ -135,7 +151,7 @@ def _build_post_context(sidecar: dict) -> dict:
         "week_start":    sidecar.get("week_start", ""),
         "n_articles":    sidecar.get("n_articles", 0),
         "n_significant": sidecar.get("n_significant", 0),
-        "days_covered":  sidecar.get("days_covered", 0),
+        "days_covered":  _days_covered(sidecar),
         "edition_label": sidecar.get("edition_label", ""),
         "sources_seen":  sidecar.get("sources_seen", []),
 

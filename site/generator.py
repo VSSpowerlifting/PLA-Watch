@@ -73,6 +73,21 @@ _CATEGORY_PRIORITY: dict[str, int] = {
 }
 
 
+_EXTRACTION_SIGNALS = (
+    "does not match",
+    "body does not match",
+    "cannot be meaningfully analyzed",
+    "mismatch between headline",
+    "insufficient substantive content",
+    "visible text does not",
+)
+
+
+def _is_extraction_issue(article: dict) -> bool:
+    summary = (article.get("summary_english") or "").lower()
+    return any(s in summary for s in _EXTRACTION_SIGNALS)
+
+
 def _format_date(date_str: str) -> str:
     """'2026-05-07' → '7 May 2026'"""
     try:
@@ -98,6 +113,7 @@ def _row_to_dict(row) -> dict:
     d["categories"] = [s for s in slugs.split(",") if s]
     d["category_labels"] = [CATEGORY_LABELS.get(s, s) for s in d["categories"]]
     d["published_date_fmt"] = _format_date(d.get("published_date", ""))
+    d["extraction_issue"] = _is_extraction_issue(d)
     return d
 
 
@@ -108,6 +124,8 @@ def _make_env() -> Environment:
     env = Environment(
         loader=FileSystemLoader(str(templates_dir)),
         autoescape=True,
+        trim_blocks=True,
+        lstrip_blocks=True,
     )
     env.filters["format_date"] = _format_date
     return env
@@ -195,6 +213,7 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
             "relevance_score":  round(a.get("relevance_score") or 0.0, 2),
             "url":              a.get("url") or "",
             "article_path":     f"article/{a['id']}.html",
+            "extraction_issue": bool(a.get("extraction_issue")),
         }
         for a in articles
     ]
@@ -204,6 +223,8 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
         encoding="utf-8",
     )
 
+    articles_static = sorted(archive_json, key=lambda a: a.get("date") or "", reverse=True)[:100]
+
     tmpl_archive = env.get_template("archive.html")
     (output_dir / "archive.html").write_text(
         tmpl_archive.render(
@@ -211,6 +232,7 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
             page_url="https://chinamilwatch.org/archive.html",
             total_articles=len(articles),
             articles_json=json.dumps(archive_json, ensure_ascii=False),
+            articles_static=articles_static,
             category_labels=CATEGORY_LABELS,
             generated_at=generated_at,
         ),

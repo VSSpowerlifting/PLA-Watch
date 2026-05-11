@@ -169,17 +169,14 @@
       <article class="entry">
         <div class="entry-date-col">
           <span class="we-large">{{ post.week_ending }}</span>
-          Week ending
-          {% set _thumb = (post.cover_thumb or post.cover_image or '') | replace('../', '') %}
-          {% if _thumb %}
+          Week ending{% set _thumb = (post.cover_thumb or post.cover_image or '') | replace('../', '') %}{% if _thumb %}
           <a href="posts/{{ post.date }}.html" class="entry-thumb-link" tabindex="-1" aria-hidden="true">
             <img class="entry-thumb"
                  src="{{ _thumb }}"
                  alt=""
                  width="150" height="79"
                  loading="lazy">
-          </a>
-          {% endif %}
+          </a>{% endif %}
         </div>
         <div class="entry-body">
           <h2 class="entry-title">

@@ -62,7 +62,7 @@
 
   <h2>Role of automation</h2>
   <p>Translations and analytical summaries are produced using large language models, with a defined prompt structure that instructs the model to translate accurately, identify the analytically significant elements of each article, and assess each piece as routine reporting or as a meaningful signal.</p>
-  <p>Every article is reviewed before publication. Translations are checked against the original Chinese source. Summaries are evaluated for accuracy, category assignment, and significance flagging. Articles that fail review are corrected or excluded.</p>
+  <p>Daily article translations and summaries are generated through a structured automated pipeline. The system uses prompts, relevance thresholds, and significance criteria to reduce overclaiming. Significant items, weekly editions, and flagged anomalies receive closer human review; corrections are made when errors are identified.</p>
 
   <h2>What the pipeline is not</h2>
   <p>China Mil Watch is not a substitute for primary source reading. It is a triage and synthesis tool. Its purpose is to make Chinese-language military reporting accessible to English-language readers who do not have time to monitor PLA Daily directly, and to surface items that warrant closer attention. The original Chinese source is the authoritative text in every case.</p>
@@ -73,8 +73,11 @@
   <p>Translation and summarization by language models can introduce errors, including subtle mistranslation of technical terms, misattribution of speakers, and loss of rhetorical nuance. Where a summary or translation matters for serious analytical use, readers should consult the original Chinese text.</p>
   <p>Some sources may return zero articles on a given day. Xinhua Military remains in development because its listings are JavaScript/API-rendered.</p>
 
+  <h2>Corrections and limitations</h2>
+  <p>Readers are encouraged to report translation, attribution, or source-matching errors. Corrections may be made after publication.</p>
+
   <h2>Operator</h2>
-  <p>China Mil Watch is built and maintained by Benjamin Yang, an undergraduate at the George Washington University Elliott School of International Affairs working on U.S.–China relations and national security. Related research is available on SSRN.</p>
+  <p>China Mil Watch is built and maintained by Benjamin Yang, an incoming undergraduate at the George Washington University Elliott School of International Affairs working on U.S.–China relations and national security. Related research is available on SSRN.</p>
   <p>For corrections, feedback, or inquiries: <a href="mailto:ben.yang@gwmail.gwu.edu">ben.yang@gwmail.gwu.edu</a>.</p>
 </article>
 {% endblock %}

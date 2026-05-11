@@ -255,6 +255,73 @@
   letter-spacing: 0.04em;
 }
 
+/* ── How to read note ────────────────────────────────────────────── */
+.brief-context-note {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  padding: 0.55rem 0 1.25rem;
+  border-bottom: 1px solid var(--color-border-soft);
+  margin-bottom: 1.5rem;
+}
+.brief-context-note a {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+}
+.brief-context-note a:hover { color: var(--color-brand); text-decoration-color: var(--color-brand); }
+
+/* ── Extraction issues panel ─────────────────────────────────────── */
+.extraction-panel {
+  background: var(--color-bg-sidebar);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1rem 1.35rem 1.1rem;
+  margin-top: 1.5rem;
+}
+.extraction-panel-heading {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.extraction-panel-heading::before {
+  content: "";
+  width: 18px; height: 2px;
+  background: var(--color-border);
+}
+.extraction-item {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--color-border-soft);
+}
+.extraction-item:first-of-type { border-top: none; }
+.extraction-item-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.3rem;
+}
+.extraction-item-message {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin-bottom: 0.35rem;
+  font-style: italic;
+}
+.extraction-item-links {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+.extraction-item-links a { color: var(--color-text-muted); }
+.extraction-item-links a:hover { color: var(--color-brand); text-decoration: none; }
+
 /* ── Tablet / mobile ────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .brief-layout {
@@ -291,9 +358,14 @@
       </div>
     </div>
 
-    {% if articles %}
+    <p class="brief-context-note">China Mil Watch tracks official Chinese military and security media. Official coverage is read as institutional messaging, not as neutral reporting or evidence of classified activity. <a href="{{ root_path }}methodology.html">Methodology →</a></p>
+
+    {% set normal_articles = articles | rejectattr('extraction_issue') | list %}
+    {% set issue_articles = articles | selectattr('extraction_issue') | list %}
+
+    {% if normal_articles %}
       <div class="article-list">
-        {% for a in articles %}
+        {% for a in normal_articles %}
         <article class="article-card{% if a.is_significant %} significant{% endif %}">
 
           {% if a.category_labels %}
@@ -327,8 +399,27 @@
         </article>
         {% endfor %}
       </div>
-    {% else %}
+    {% elif not issue_articles %}
       <p class="empty-state">No articles available for this date.</p>
+    {% endif %}
+
+    {% if issue_articles %}
+    <div class="extraction-panel">
+      <div class="extraction-panel-heading">Collection notes</div>
+      {% for a in issue_articles %}
+      <div class="extraction-item">
+        <div class="extraction-item-title">{{ a.title_english or a.title_original }}</div>
+        <div class="extraction-item-message">This item was collected, but the visible article text did not match the headline or was too incomplete for normal analysis.</div>
+        <div class="extraction-item-links">
+          <span class="source-name">{{ a.source_name }}</span>
+          <span class="sep"></span>
+          <a href="{{ a.url }}" target="_blank" rel="noopener">Original source ↗</a>
+          <span class="sep"></span>
+          <a href="article/{{ a.id }}.html">View collected item →</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
     {% endif %}
 
   </div>

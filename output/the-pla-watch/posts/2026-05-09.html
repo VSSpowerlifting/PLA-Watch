@@ -7,15 +7,15 @@
   <meta name="description" content="Pilot edition based on three days of observed data (7–9 May 2026), not a full weekly readout. Across 42 articles from PLA Daily and affiliated outlets, the suspended death sentences against Wei Fenghe and Li Shangfu — two consecutive former defense ministers — stand apart from otherwise routine coverage.">
 
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://chinamilwatch.org/the-pla-watch/posts/2026-05-10.html">
+  <link rel="canonical" href="https://chinamilwatch.org/the-pla-watch/posts/2026-05-09.html">
 
   <!-- Open Graph -->
   <meta property="og:type"         content="article">
   <meta property="og:site_name"    content="The PLA Watch">
-  <meta property="og:url"          content="https://chinamilwatch.org/the-pla-watch/posts/2026-05-10.html">
+  <meta property="og:url"          content="https://chinamilwatch.org/the-pla-watch/posts/2026-05-09.html">
   <meta property="og:title"        content="The PLA Watch: Two Defense Ministers, One Verdict">
   <meta property="og:description"  content="Pilot edition based on three days of observed data (7–9 May 2026), not a full weekly readout. Across 42 articles from PLA Daily and affiliated outlets, the suspended death sentences against Wei Fenghe and Li Shangfu — two consecutive former defense ministers — stand apart from otherwise routine coverage.">
-  <meta property="og:image"        content="https://chinamilwatch.org/the-pla-watch/covers/2026-05-10.png">
+  <meta property="og:image"        content="https://chinamilwatch.org/the-pla-watch/covers/2026-05-09.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
@@ -23,7 +23,7 @@
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="The PLA Watch: Two Defense Ministers, One Verdict">
   <meta name="twitter:description" content="Pilot edition based on three days of observed data (7–9 May 2026), not a full weekly readout. Across 42 articles from PLA Daily and affiliated outlets, the suspended death sentences against Wei Fenghe and Li Shangfu — two consecutive former defense ministers — stand apart from otherwise routine coverage.">
-  <meta name="twitter:image"       content="https://chinamilwatch.org/the-pla-watch/covers/2026-05-10.png">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/the-pla-watch/covers/2026-05-09.png">
 
   <link rel="icon" type="image/png" href="../../logo-icon.png">
   <link rel="apple-touch-icon" href="../../logo-icon.png">
@@ -288,7 +288,7 @@
       .pw-nav a[href$="archive.html"]:not(.active) { display: none; }
     }
 
-    
+
 /* ── Two-column post layout ─────────────────────────────────────────── */
 .post-wrap {
   display: grid;
@@ -702,36 +702,35 @@
 .term-explanation p { margin-bottom: 0.85rem; }
 .term-explanation p:last-child { margin-bottom: 0; }
 
-/* ── Source Trail — card grid ──────────────────────────────────────── */
+/* ── Source Trail — vertical list ──────────────────────────────────── */
 .source-trail { margin-bottom: 2.5rem; }
 .source-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 .source-card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
-  padding: 0.95rem 1.1rem;
+  border-top: none;
+  padding: 0.85rem 1.1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.3rem;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: background 0.15s;
   position: relative;
 }
-.source-card:hover {
-  border-color: var(--color-brand);
-  text-decoration: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
+.source-card:first-child { border-top: 1px solid var(--color-border); border-radius: 4px 4px 0 0; }
+.source-card:last-child { border-radius: 0 0 4px 4px; }
+.source-card:only-child { border-top: 1px solid var(--color-border); border-radius: 4px; }
+.source-card:hover { background: var(--color-bg-sidebar); text-decoration: none; }
 .source-card.is-significant { border-left: 3px solid var(--color-brand); padding-left: calc(1.1rem - 2px); }
 .source-card-title {
   font-family: var(--serif);
   font-weight: 700;
-  font-size: 0.97rem;
+  font-size: 0.95rem;
   line-height: 1.35;
   color: var(--color-text-primary);
 }
@@ -740,20 +739,28 @@
   font-size: 0.72rem;
   color: var(--color-text-muted);
   font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 }
+.source-card-meta .sep { color: var(--color-border); }
 .source-card-meta .sig-tag {
   color: var(--color-brand);
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  padding: 1px 6px;
+  border-radius: 2px;
+  font-size: 0.625rem;
 }
 .source-card-domain {
   font-family: var(--sans);
-  font-size: 0.7rem;
-  color: var(--color-brand);
-  letter-spacing: 0.04em;
-  word-break: break-all;
-  margin-top: 0.05rem;
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
 }
 .source-trail-cap {
   font-family: var(--sans);
@@ -761,9 +768,6 @@
   color: var(--color-text-muted);
   margin-top: 0.85rem;
   font-style: italic;
-}
-@media (max-width: 600px) {
-  .source-cards { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ── Closing note ──────────────────────────────────────────────────── */
@@ -977,12 +981,12 @@
 
 
 <main>
-  
+
 <div class="post-wrap">
 
   <article class="post-main">
 
-    
+
     <div class="hero">
       <div class="hero-meta-top">
         <div class="hero-eyebrow">The PLA Watch</div>
@@ -993,38 +997,38 @@
       </div>
       <h1 class="hero-title">The PLA Watch: Two Defense Ministers, One Verdict</h1>
       <div class="hero-dek">Pilot edition based on three days of observed data (7–9 May 2026), not a full weekly readout. Across 42 articles from PLA Daily and affiliated outlets, the suspended death sentences against Wei Fenghe and Li Shangfu — two consecutive former defense ministers — stand apart from otherwise routine coverage.</div>
-      
+
       <div class="byline">
         By <span class="byline-name">Benjamin Yang</span>
         <span class="byline-title">Founder & Principal Analyst, China Mil Watch</span>
       </div>
-      
+
       <div class="hero-meta">
         <span class="meta-item">Covers <span class="num">2026-05-07</span> → <span class="num">2026-05-09</span></span>
-        
+        <span class="meta-item"><span class="num">3</span> days observed</span>
         <span class="meta-item"><span class="num">42</span> articles analyzed</span>
         <span class="meta-item"><span class="num">1</span> significant</span>
-        
+
           <span class="meta-item">PLA Daily (81.cn)</span>
-        
+
       </div>
     </div>
 
-    
-    
+
+
     <figure class="cover-figure">
-      <img src="../covers/2026-05-10.png"
+      <img src="../covers/2026-05-09.png"
            alt="The PLA Watch — The PLA Watch: Two Defense Ministers, One Verdict (issue cover)"
            width="1200" height="630" loading="eager">
       <figcaption>Issue cover · The PLA Watch · 2026-05-09</figcaption>
     </figure>
-    
 
-    
-    
+
+
+
     <section class="visual-context" aria-label="Visual context">
       <div class="mod-heading brand">Visual Context</div>
-      
+
       <figure class="media-card">
         <img src="../media/2026-05-10-auto-image-optimized.jpg"
              alt="National Defense University-PLA tour 120625-M-BN443-040"
@@ -1033,20 +1037,20 @@
           <div class="media-caption">Visual context for this week's issue. The image is included to illustrate the institutional setting around Chinese military politics, not as evidence of the specific events discussed.</div>
           <div class="media-meta">
             <span>Roberto Villa Jr · Public domain · via Wikimedia Commons</span>
-            
+
             <span class="sep">·</span><a href="https://commons.wikimedia.org/wiki/File:National_Defense_University-PLA_tour_120625-M-BN443-040.jpg" target="_blank" rel="noopener nofollow">Source</a>
           </div>
           <div class="media-note">Selected because: institutional/contextual subject (National Defense University-PLA tour 120625-M-BN443-040); license verified: Public domain; 5184×3456 px; landscape orientation.</div>
         </figcaption>
       </figure>
-      
+
     </section>
-    
 
-    
-    
 
-    
+
+
+
+
     <div class="snapshot">
       <div class="mod-heading brand">Coverage Snapshot</div>
       <div class="snapshot-grid">
@@ -1066,16 +1070,16 @@
           <div class="sub">PLA Daily (81.cn)</div>
         </div>
         <div class="snap-stat">
-          <div class="num">7</div>
+          <div class="num">3</div>
           <div class="label">Days</div>
           <div class="sub">2026-05-07 → 2026-05-09</div>
         </div>
       </div>
-      
+
       <div class="snap-bar">
         <div class="snap-bar-label">Significant vs. routine coverage</div>
         <div class="snap-bar-track">
-          
+
           <div class="snap-bar-fill" style="width: 2.4%;"></div>
           <div class="snap-bar-rest"></div>
         </div>
@@ -1084,238 +1088,264 @@
           <span><span class="swatch swatch-rest"></span>Routine (41)</span>
         </div>
       </div>
-      
+
     </div>
 
-    
+
     <div class="post-body">
 
-      
+
       <div class="post-section opening">
         <div class="mod-heading brand">Opening Note</div>
         <div class="section-text">
-          
+
           <p>This pilot edition covers three days of observed data — May 7, 8, and 9, 2026 — not a full weekly readout. Across 42 articles from PLA Daily and affiliated outlets, one item stood apart: the sentencing of Wei Fenghe and Li Shangfu.</p>
-          
+
         </div>
       </div>
-      
 
-      
+
+
       <div class="post-section">
         <div class="mod-heading brand">What Stood Out</div>
         <div class="section-text">
-          
+
           <p>On May 7, Chinese military courts handed down first-instance verdicts against Wei Fenghe and Li Shangfu — two consecutive former Ministers of National Defense and members of the Central Military Commission. Both received suspended death sentences with permanent deprivation of political rights, full asset confiscation, and an explicit bar on sentence reduction or parole.</p>
-          
+
           <p>The symmetry of the sentencing structure is the detail worth sitting with. Two men, two consecutive tenures in the same office, one nearly identical sentencing pattern. The framing is not only individualized. It reads institutionally. The message the structure projects is clear: CMC-level rank provides no immunity from severe punishment once discipline cases are made public at this level.</p>
-          
+
           <p>The next day, a May 8 article from National Defense University researchers described political rectification training as an active institutional priority, not a concluded episode. Published immediately after the verdicts, that framing fits the pattern of a campaign still being consolidated, though the available data does not allow us to establish direct coordination between the two pieces of coverage.</p>
-          
+
         </div>
       </div>
-      
 
-      
+
+
       <div class="post-section">
         <div class="mod-heading brand">Why It Matters</div>
         <div class="section-text">
-          
+
           <p>The PLA's officer corps watches what happens to people at the top. The sentencing of two consecutive defense ministers to severe punishment, with no possibility of early release, is a deterrence signal directed at that audience. It does not require a speech. The sentence structure carries the message itself.</p>
-          
+
           <p>The NDU article's framing of anti-corruption enforcement as a continuing priority, tied explicitly to the PLA's 2027 centenary goal, suggests that the Rocket Force and defense procurement corruption investigations that became public in 2023 remain active institutional reference points. Read together, the verdicts and rectification messaging suggest that PLA anti-corruption enforcement remains an active theme in official military discourse, not a closed episode.</p>
-          
+
           <p>What the verdicts do not tell us is just as important: how deeply the underlying problems have been addressed, or how effectively they have been managed internally. Official judicial proceedings are evidence of messaging and enforcement action. They are not a transparent record of institutional health.</p>
-          
+
         </div>
       </div>
-      
 
-      
+
+
       <div class="post-section">
         <div class="mod-heading brand">Routine Baseline</div>
         <div class="section-text">
-          
+
           <p>Most of the 42 articles in the days observed fit familiar patterns.</p>
-          
+
           <p>The China Coast Guard patrol near the Diaoyu Islands on May 7, and the CCG spokesperson statement on a South China Sea incident near Houteng Reef, both followed established baselines. Neither, by itself, suggests a change in operational posture.</p>
-          
+
           <p>The two articles on Japan's "new militarism" — one from AMS-affiliated researchers, one from a CPC Central Committee Party School researcher — reflect a framing campaign that has been running for some time. The pieces consolidate discrete Japanese defense policy developments into a single narrative. Worth tracking as a data point; not a new signal on its own.</p>
-          
+
           <p>The training reform articles — simulation networking at an army brigade, joint pre-assignment officer training at the 83rd Group Army, and unmanned systems coordination at the 73rd Group Army — are useful as ground-level evidence of where combined-arms integration is being pushed. They fit a pattern visible across many prior weeks.</p>
-          
+
           <p>Standard political education content, motivational profiles, recruitment notices, and May Fourth Youth Day messaging made up much of the remaining volume. Routine in format and substance, but useful as baseline material.</p>
-          
+
         </div>
       </div>
-      
 
-      
+
+
       <div class="post-section">
         <div class="mod-heading brand">Term to Know</div>
         <div class="term-box">
           <div class="term-word">政治整训 — Political Rectification Training</div>
           <div class="term-explanation">
-            
+
             <p>Political rectification training is a structured, CMC-directed campaign requiring PLA units and officers to undergo intensive ideological review, self-criticism, and loyalty reaffirmation. It is distinct from routine political education: rectification is launched in response to a specific perceived failure — in this case, the corruption scandals inside the Rocket Force and defense procurement establishment that became public in 2023.</p>
-            
+
             <p>The goal, as framed in official PLA sources, is to purge erroneous thinking, reinforce the principle that the Party commands the gun, and reassert CMC authority over the force. A May 8 NDU article describes the campaign as ongoing and links it to the PLA's 2027 centenary founding goal. In this edition's limited dataset, the term matters less as a new concept than as a sign that rectification remains an active institutional frame.</p>
-            
+
           </div>
         </div>
       </div>
-      
 
-      
+
+
       <div class="post-section">
         <div class="mod-heading brand">What I'm Watching Next</div>
         <div class="section-text">
-          
+
           <p>The most immediate question is whether the Wei Fenghe and Li Shangfu verdicts produce a second round of visible messaging in PLA Daily: follow-on commentary, political work directives, or signals about the broader accountability process. First-instance verdicts in China's military court system can be appealed; whether and how that process is covered will be worth noting.</p>
-          
+
           <p>The Xiangshan Forum preparatory meeting held May 8 points toward an autumn forum that Beijing appears to be positioning with care. The chosen theme — "Global Security Governance: Challenges and the Way Forward" — and the 20th-anniversary framing suggest intent to use the forum to contest Western-led security narratives. Coverage leading up to the forum may offer useful evidence of how the PLA is framing its international posture in the second half of 2026.</p>
-          
+
           <p>On the training side, the unmanned systems coordination article from the 73rd Group Army — documenting signal interference, overlapping UAV coverage, and near-collisions during a mixed-formation exercise — is the kind of ground-level readiness detail worth watching for patterns across future editions. Whether similar problems surface in coverage of other units would help establish whether this is localized or broader.</p>
-          
+
           <p>As always: three days of data is a thin basis for confident trend claims. The days not yet observed may carry material that changes the picture.</p>
-          
+
         </div>
       </div>
-      
+
 
       <div class="post-section source-trail">
         <div class="mod-heading brand">Source Trail</div>
-        
+
         <div class="source-cards">
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459190.html" target="_blank" rel="noopener">
             <div class="source-card-title">Wei Fenghe / Li Shangfu verdicts</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459190.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459257.html" target="_blank" rel="noopener">
             <div class="source-card-title">NDU political rectification article</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459257.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459472.html" target="_blank" rel="noopener">
             <div class="source-card-title">Xiangshan Forum preparatory meeting</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459472.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459090.html" target="_blank" rel="noopener">
             <div class="source-card-title">73rd Group Army unmanned systems coordination</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459090.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459465.html" target="_blank" rel="noopener">
             <div class="source-card-title">83rd Group Army joint pre-assignment training</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459465.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459261.html" target="_blank" rel="noopener">
             <div class="source-card-title">Army brigade simulation training upgrade (PLA Daily)</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459261.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459471.html" target="_blank" rel="noopener">
             <div class="source-card-title">Japan "new militarism" framing (AMS researchers)</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459471.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459269.html" target="_blank" rel="noopener">
             <div class="source-card-title">Japan "new militarism" framing (Party School researcher)</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459269.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459188.html" target="_blank" rel="noopener">
             <div class="source-card-title">China Coast Guard Diaoyu Islands patrol</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459188.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459230.html" target="_blank" rel="noopener">
             <div class="source-card-title">CCG spokesperson / South China Sea</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459230.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459467.html" target="_blank" rel="noopener">
             <div class="source-card-title">Rocket Force "Golden Idea" suggestion system</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459467.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459103.html" target="_blank" rel="noopener">
             <div class="source-card-title">National defense mobilization doctrine article</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459103.html</div>
           </a>
-          
+
           <a class="source-card" href="http://www.81.cn/yw_208727/16459495.html" target="_blank" rel="noopener">
             <div class="source-card-title">JLSF No. 910 Hospital medical support reform</div>
             <div class="source-card-meta">
-              PLA Daily (81.cn) &middot; 
+
+              <span>PLA Daily (81.cn)</span>
+
             </div>
             <div class="source-card-domain">www.81.cn/yw_208727/16459495.html</div>
           </a>
-          
+
         </div>
-        
-        
+
+
       </div>
 
       <div class="closing-note">
         I welcome comments or corrections from people working on Chinese military media, PLA studies, or U.S.-China security.
       </div>
 
-      
+
       <div class="author-block">
         <div class="author-block-eyebrow">Author</div>
         <div class="author-block-name">Benjamin Yang</div>
         <div class="author-block-title">Founder & Principal Analyst, China Mil Watch</div>
         <div class="author-block-bio">Benjamin Yang is the founder of China Mil Watch and an incoming International Affairs student at George Washington University’s Elliott School, focused on U.S.-China relations, public diplomacy, and security affairs.</div>
-        
+
         <div class="author-chips">
           <a class="author-chip" href="https://www.linkedin.com/in/benjamin-yang-42b525294" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
           <a class="author-chip" href="mailto:ben.yang@gwmail.gwu.edu">Email <span class="arrow">→</span></a>
           <a class="author-chip" href="../../index.html">China Mil Watch <span class="arrow">→</span></a>
         </div>
-        
+
       </div>
-      
+
 
     </div>
 
@@ -1330,7 +1360,7 @@
       <div class="sb-eyebrow">Edition</div>
       <div class="sb-row"><span class="label">Type</span><span class="value">Pilot edition</span></div>
       <div class="sb-row"><span class="label">Week ending</span><span class="value">2026-05-09</span></div>
-      
+      <div class="sb-row"><span class="label">Days observed</span><span class="value">3</span></div>
       <div class="sb-row"><span class="label">Articles</span><span class="value">42</span></div>
       <div class="sb-row"><span class="label">Significant</span><span class="value">1</span></div>
     </div>
