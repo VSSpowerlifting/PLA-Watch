@@ -255,6 +255,7 @@ def run(
             logger.info("Site generated → %s", OUTPUT_DIR)
         except Exception as exc:
             logger.error("Site generation failed: %s", exc)
+            sys.exit(1)
 
 
 # ── Terminal summary ──────────────────────────────────────────────────────────

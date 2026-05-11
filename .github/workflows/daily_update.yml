@@ -2,11 +2,15 @@ name: Daily PLA Watch Update
 
 on:
   schedule:
-    # GitHub Actions cron is UTC. 8 AM America/New_York is 12:00 UTC during
-    # EDT and 13:00 UTC during EST. We schedule both and gate with a runtime
-    # guard so the full pipeline runs exactly once per day at 8 AM NY time.
-    - cron: '0 12 * * *'
-    - cron: '0 13 * * *'
+    # GitHub Actions cron is UTC.  8 AM America/New_York spans:
+    #   EDT (UTC-4): 12:00 UTC  |  EST (UTC-5): 13:00 UTC
+    # We fire at :17 and :47 past each of those hours, plus a safety
+    # window at 14:17 UTC, avoiding GitHub's top-of-hour load spikes.
+    # A runtime window guard (8:00–10:30 NY) and a once-per-day state
+    # file ensure the pipeline runs at most once per calendar day.
+    - cron: '17,47 12 * * *'
+    - cron: '17,47 13 * * *'
+    - cron: '17 14 * * *'
   workflow_dispatch:         # Manual trigger from Actions tab
 
 concurrency:
@@ -22,16 +26,20 @@ jobs:
 
     steps:
       # ── 1. Checkout ────────────────────────────────────────────────────────
+      # ref: main ensures a queued run (serialized by concurrency group)
+      # checks out the tip of main at job-start time, not the trigger SHA.
+      # This way a second queued run sees the state file written by the first.
       - name: Check out repository
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0        # Full history needed for the push-back step
 
-      # ── 2. New York time guard ─────────────────────────────────────────────
-      # Manual dispatch always runs. Scheduled runs only proceed when the
-      # current hour in America/New_York is 8 — this keeps behavior correct
-      # across DST transitions despite the two UTC cron entries above.
-      - name: Check New York time
+      # ── 2. Scheduling guard ────────────────────────────────────────────────
+      # Manual dispatch: always run.
+      # Scheduled: run only if NY time is 08:00–10:30 AND today has not
+      # already succeeded (tracked in .github/state/last_daily_run_date.txt).
+      - name: Scheduling guard
         id: timecheck
         run: |
           python - <<'PY'
@@ -39,22 +47,58 @@ jobs:
           from datetime import datetime
           from zoneinfo import ZoneInfo
 
-          now = datetime.now(ZoneInfo("America/New_York"))
-          print(f"Current New York time: {now:%Y-%m-%d %H:%M:%S %Z}")
+          STATE_FILE        = ".github/state/last_daily_run_date.txt"
+          WINDOW_START_HOUR = 8
+          WINDOW_END_HOUR   = 10
+          WINDOW_END_MINUTE = 30
 
-          event = os.environ.get("GITHUB_EVENT_NAME", "")
-          if event == "workflow_dispatch":
+          event     = os.environ.get("GITHUB_EVENT_NAME", "")
+          now       = datetime.now(ZoneInfo("America/New_York"))
+          today_str = now.strftime("%Y-%m-%d")
+          is_manual = event == "workflow_dispatch"
+
+          # Read last-run date from state file (may not exist on first deploy)
+          last_run = ""
+          try:
+              with open(STATE_FILE) as f:
+                  last_run = f.read().strip()
+          except FileNotFoundError:
+              pass
+
+          in_window = (
+              now.hour >= WINDOW_START_HOUR
+              and (
+                  now.hour < WINDOW_END_HOUR
+                  or (now.hour == WINDOW_END_HOUR and now.minute <= WINDOW_END_MINUTE)
+              )
+          )
+
+          print(f"GitHub event:        {event}")
+          print(f"New York time:       {now:%Y-%m-%d %H:%M:%S %Z}")
+          print(f"Is manual dispatch:  {is_manual}")
+          print(f"Inside 08:00-10:30:  {in_window}")
+          print(f"Last run date:       {last_run!r}")
+          print(f"Today (NY):          {today_str}")
+
+          if is_manual:
               should_run = "true"
-              print("Manual dispatch — running regardless of hour.")
-          elif now.hour == 8:
-              should_run = "true"
-              print("It is 8 AM New York time; continuing daily update.")
-          else:
+              reason = "manual dispatch — skipping all guards"
+          elif not in_window:
               should_run = "false"
-              print("Not 8 AM New York time; exiting without running daily update.")
+              reason = f"NY time {now:%H:%M} is outside 08:00-10:30 window"
+          elif last_run == today_str:
+              should_run = "false"
+              reason = f"already ran successfully today ({today_str})"
+          else:
+              should_run = "true"
+              reason = f"NY time {now:%H:%M} is inside window and today has not yet run"
+
+          print(f"Decision:            should_run={should_run}")
+          print(f"Reason:              {reason}")
 
           with open(os.environ["GITHUB_OUTPUT"], "a") as f:
               f.write(f"should_run={should_run}\n")
+              f.write(f"today_ny={today_str}\n")
           PY
 
       # ── 3. Python setup ────────────────────────────────────────────────────
@@ -74,19 +118,14 @@ jobs:
         if: steps.timecheck.outputs.should_run == 'true'
         run: playwright install chromium --with-deps
 
-      # ── 5. Run pipeline ────────────────────────────────────────────────────
+      # ── 5. Run pipeline (all sources) ─────────────────────────────────────
       - name: Run pipeline
         if: steps.timecheck.outputs.should_run == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python pipeline.py
 
-      # ── 6. Commit DB + site output back to main ────────────────────────────
-      #
-      # pla_watch.db must persist across runs — committing it to main is
-      # simpler than external storage for a project at this scale.
-      # output/ is committed so the rendered site lives alongside the code.
-      #
+      # ── 6. Commit DB + site output back to main ───────────────────────────
       - name: Commit updated database and site output
         if: steps.timecheck.outputs.should_run == 'true'
         run: |
@@ -113,3 +152,28 @@ jobs:
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
           commit_message: 'Deploy: ${{ github.run_id }}'
+
+      # ── 8. Record successful run (scheduled only) ──────────────────────────
+      # Written here — after deploy — so a deploy failure does not mark today
+      # as done. Steps run with implicit success() so this is skipped if any
+      # earlier step failed. Manual runs skip this entirely so a mid-day
+      # manual trigger never blocks the next morning's automatic run.
+      - name: Record successful scheduled run
+        if: >
+          steps.timecheck.outputs.should_run == 'true' &&
+          github.event_name != 'workflow_dispatch'
+        env:
+          TODAY_NY: ${{ steps.timecheck.outputs.today_ny }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p .github/state
+          echo "$TODAY_NY" > .github/state/last_daily_run_date.txt
+          git add .github/state/last_daily_run_date.txt
+          if git diff --cached --quiet; then
+            echo "State file already up to date."
+          else
+            git pull --rebase origin main
+            git commit -m "State: mark ${TODAY_NY} complete"
+            git push
+          fi
