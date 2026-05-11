@@ -29,7 +29,11 @@ from jinja2 import Environment, FileSystemLoader
 from scripts.generate_pla_watch import (
     AUTHOR_NAME, AUTHOR_TITLE, AUTHOR_BIO, AUTHOR_LINKS,
 )
-from scripts.generate_pla_watch_cover import render_cover, render_thumbnail
+from scripts.generate_pla_watch_cover import (
+    render_cover,
+    render_thumbnail,
+    resolve_background_image,
+)
 
 
 POSTS_DIR = ROOT / "output" / "the-pla-watch" / "posts"
@@ -121,8 +125,95 @@ def _cover_paths(sidecar: dict) -> tuple[str, str, str]:
     return rel, thumb, abs_url
 
 
+def _normalize_url(url: str) -> str:
+    try:
+        parsed = urlparse(url.strip())
+        host = parsed.netloc.lower()
+        path = re.sub(r"/+$", "", parsed.path)
+        return f"{parsed.scheme.lower()}://{host}{path}" if host else path
+    except Exception:
+        return url.strip()
+
+
+def _resolve_media_path(raw_path: str):
+    if not raw_path:
+        return None
+    parsed = urlparse(raw_path)
+    if parsed.scheme and parsed.scheme != "file":
+        return None
+    candidate = Path(parsed.path if parsed.scheme == "file" else raw_path)
+    if not candidate.is_absolute():
+        if raw_path.startswith("../media/"):
+            candidate = MEDIA_DIR / raw_path.removeprefix("../media/")
+        else:
+            candidate = ROOT / raw_path
+    return candidate.resolve() if candidate.exists() else None
+
+
+def _media_matches_cover(media_item: dict, cover_bg) -> bool:
+    if not cover_bg:
+        return False
+    cover_bg = cover_bg.resolve()
+    paths = [
+        _resolve_media_path(str(media_item.get(key) or ""))
+        for key in ("src", "local_path", "path", "optimized_path")
+    ]
+    if any(path == cover_bg for path in paths if path):
+        return True
+
+    cover_url = _normalize_url(cover_bg.as_uri())
+    urls = [
+        _normalize_url(str(media_item.get(key) or ""))
+        for key in ("src", "source_url", "image_url", "url")
+    ]
+    if cover_url in urls:
+        return True
+
+    cover_name = cover_bg.name.lower()
+    return any(
+        Path(str(media_item.get(key) or "")).name.lower() == cover_name
+        for key in ("src", "local_path", "path", "optimized_path", "image_url")
+    )
+
+
+def _media_label(media_item: dict) -> str:
+    raw = (
+        media_item.get("label")
+        or media_item.get("media_label")
+        or media_item.get("kind")
+        or media_item.get("role")
+        or ""
+    )
+    normalized = str(raw).strip().lower()
+    labels = {
+        "map": "Map",
+        "source_image": "Source Image",
+        "source image": "Source Image",
+        "document_excerpt": "Document Excerpt",
+        "document excerpt": "Document Excerpt",
+        "chart": "Chart",
+    }
+    return labels.get(normalized, "Visual Context")
+
+
+def _split_media_items(sidecar: dict):
+    cover_bg = resolve_background_image(sidecar)
+    body_media = []
+    cover_credit = None
+    for item in sidecar.get("media_items", []) or []:
+        if not isinstance(item, dict):
+            continue
+        enriched = {**item, "display_label": _media_label(item)}
+        if item.get("type") == "image" and _media_matches_cover(item, cover_bg):
+            cover_credit = cover_credit or enriched
+        else:
+            body_media.append(enriched)
+    return body_media, cover_credit
+
+
 def _build_post_context(sidecar: dict) -> dict:
     term_word, term_explanation = _flatten_term(sidecar)
+    body_media_items, cover_media_item = _split_media_items(sidecar)
     cover_image = sidecar.get("cover_image") or ""
     cover_thumb = sidecar.get("cover_thumb") or ""
     cover_image_url = sidecar.get("cover_image_url") or ""
@@ -174,7 +265,8 @@ def _build_post_context(sidecar: dict) -> dict:
         "source_trail_truncated": sidecar.get("source_trail_truncated", False),
 
         # Visual context (license-verified outside images, if any)
-        "media_items": sidecar.get("media_items", []) or [],
+        "media_items": body_media_items,
+        "cover_media_item": cover_media_item,
 
         # Author identity (graceful fallbacks: missing keys → chip omitted)
         "author_name":  sidecar.get("author_name",  AUTHOR_NAME),

@@ -46,6 +46,31 @@
   margin-top: 0.55rem;
   text-align: right;
 }
+.cover-credit-note {
+  margin: -1.25rem 0 2.25rem;
+  padding: 0.75rem 0.95rem;
+  border: 1px solid var(--color-border-soft);
+  border-left: 3px solid var(--color-brand);
+  border-radius: 4px;
+  background: var(--color-bg-card);
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+.cover-credit-note .label {
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+.cover-credit-note a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+}
+.cover-credit-note a:hover {
+  color: var(--color-brand);
+  text-decoration-color: var(--color-brand);
+}
 
 /* ── Visual Context — restrained editorial image card ───────────────── */
 .visual-context {
@@ -720,12 +745,24 @@
       <figcaption>Issue cover · The PLA Watch · {{ week_ending }}</figcaption>
     </figure>
     {% endif %}
+    {% if cover_media_item %}
+    <div class="cover-credit-note">
+      <span class="label">Cover image:</span>
+      {% if cover_media_item.credit %}<span>{{ cover_media_item.credit }}</span>{% endif %}
+      {% if cover_media_item.license and not (cover_media_item.credit and cover_media_item.license in cover_media_item.credit) %}
+        <span>·</span>
+        <span>{% if cover_media_item.license_url %}<a href="{{ cover_media_item.license_url }}" target="_blank" rel="noopener nofollow">{{ cover_media_item.license }}</a>{% else %}{{ cover_media_item.license }}{% endif %}</span>
+      {% endif %}
+      {% if cover_media_item.source_url %}<span>·</span> <a href="{{ cover_media_item.source_url }}" target="_blank" rel="noopener nofollow">Source</a>{% endif %}
+      <span>· Visual context only; not evidence of the specific events discussed.</span>
+    </div>
+    {% endif %}
 
     {# ── Visual Context — outside images, license-verified ─────────── #}
     {% if media_items %}
     <section class="visual-context" aria-label="Visual context">
-      <div class="mod-heading brand">Visual Context</div>
       {% for m in media_items if m.type == 'image' and m.src %}
+      <div class="mod-heading brand">{{ m.display_label or 'Visual Context' }}</div>
       <figure class="media-card">
         <img src="{{ m.src }}"
              alt="{{ m.alt or 'Visual context image' }}"
