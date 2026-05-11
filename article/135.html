@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Rocket Force Unit Enhances the Wartime Political Work Capabilities of Political Cadres — China Mil Watch</title>
+  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="China Mil Watch">
+  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-brand:          #B3132B;
+      --color-brand-dark:     #8B0E20;
+      --color-brand-light:    #D11C36;
+      --color-bg:             #F6F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FBFAF6;
+      --color-text-primary:   #161616;
+      --color-text-secondary: #4A4A4A;
+      --color-text-muted:     #7A7A7A;
+      --color-border:         #E2DFD8;
+      --color-border-soft:    #ECE9E2;
+      --color-accent:         #B3132B;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      /* Faint paper grid — barely-visible cross pattern for desktop polish */
+      background-image:
+        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: -1px -1px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 0 0 0 transparent, 0 2px 0 0 var(--color-brand);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav .nav-short { display: none; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a.active {
+      color: var(--color-text-primary);
+    }
+    .header-nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+    }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-card);
+      border-radius: 2px;
+      padding: 2px 8px;
+      line-height: 1.4;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
+
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      .header-nav .nav-full { display: none; }
+      .header-nav .nav-short { display: inline; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    
+.article-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.article-page-title-zh {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── About-this-analysis link ────────────────────────────────────── */
+.about-analysis {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.about-analysis a { color: var(--color-text-muted); text-decoration: underline; }
+.about-analysis a:hover { color: var(--color-brand); }
+
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
+}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title">China Mil Watch</span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >
+        <span class="nav-full">Daily Brief</span><span class="nav-short">Daily</span>
+      </a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../signals.html" >Signals</a>
+      <a href="../the-pla-watch/index.html" >
+        <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
+      </a>
+      <a href="../methodology.html" >Methodology</a>
+    </nav>
+  </div>
+</header>
+
+
+
+<main>
+  
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+    
+      <div class="tags">
+        
+          <span class="tag">Exercises</span>
+        
+          <span class="tag">Nuclear</span>
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
+
+    <h1 class="article-page-title">
+      A Rocket Force Unit Enhances the Wartime Political Work Capabilities of Political Cadres
+    </h1>
+
+    
+      <div class="article-page-title-zh">火箭军某部提升政治干部作战中政治工作能力</div>
+    
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>11 May 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16459831.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+    <div class="about-analysis">
+      <a href="../methodology.html">About this analysis</a>
+    </div>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>An unidentified PLA Rocket Force unit conducted a full-process combat-realistic exercise in which political cadres were embedded with missile combat vehicles to perform wartime political work functions—including battlefield agitation, public opinion control, merit citation, and command succession when the company commander was notionally killed in action. The exercise reflects a sustained PLA effort to integrate political work officers into operational command structures rather than treat them as rear-echelon functions, with explicit training in combat document drafting, equipment operation, and command decision-making. This is consistent with the broader post-2016 PLA reform emphasis on making political work combat-effective, and the detail on political cadres assuming tactical command under casualty conditions is a useful data point for assessing how the Rocket Force intends to maintain unit cohesion and command continuity during strike operations.</div>
+    
+  </div>
+  
+
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>A Rocket Force Unit Enhances the Wartime Political Work Capabilities of Political Cadres——</p>
+    
+      <p>The &#34;Lifeline&#34; (生命线) Demonstrates Its Vitality Beneath the Launch Erector</p>
+    
+      <p>■ Deng Liyong</p>
+    
+      
+    
+      <p>Recently, deep in a dense forest, missile combat vehicles of a Rocket Force unit raced through the night, maneuvering toward designated areas.</p>
+    
+      
+    
+      <p>Shortly after a full-process combat-realistic exercise (全流程实战化演练) began, officers and soldiers encountered a special situation (特情): &#34;&#39;enemy&#39; unmanned aerial vehicles scattering leaflets.&#34; The political work team rapidly moved forward, collected and destroyed the scattered leaflets, simultaneously activated contingency plans for public opinion control and ideological stabilization (舆情防控、思想稳控), and flexibly conducted short, direct, and fast battlefield agitation (短平快的战场鼓动). In the subsequent exercise, officers and soldiers completed operations including occupying positions and erecting missiles with high morale, and successfully carried out a &#34;strike&#34; against the target.</p>
+    
+      
+    
+      <p>&#34;Political work during combat operations is an important component of combat action; only through combat-realistic testing can its proper effectiveness be ensured,&#34; the unit&#39;s leadership explained. They closely align with their mission tasks and combat-realistic requirements, place the study and practice of wartime political work (作战中政治工作) in a prominent position, and use opportunities such as combined-arms training and cross-region exercises to plan and implement political work and military operations in an integrated and unified manner, ensuring that wherever the mission extends, political work follows.</p>
+    
+      
+    
+      <p>At the exercise site, this reporter observed: inside the command post, the political work station tracked the progress of the mission at all times, flexibly conducting combat mobilization (战斗动员), battlefield culture (战地文化), and battlefield discipline enforcement (战场执纪); beneath the launch erector, political cadres organized battlefield agitation, merit citation and model creation (立功创模), and the promotion of exemplary individuals in accordance with the progress of the battle; on the forward positions, political work backbone personnel moved between various posts, simultaneously conducting battlefield evidence collection (战场取证) and other work.</p>
+    
+      
+    
+      <p>&#34;Your unit has been &#39;struck.&#39; The company commander has been &#39;killed in action.&#39; Equipment has been &#39;damaged.&#39;&#34; As the confrontation entered a critical phase, the exercise control element (导演部) issued an impromptu special situation. At this critical juncture, Political Instructor Wang of the company immediately assumed command. After comprehensively assessing the battlefield situation, he simultaneously organized backbone personnel to carry out emergency equipment repairs, adjusted the combat disposition, and boosted the morale of officers and soldiers, leading the company to continue fighting. In the end, the company successfully completed the exercise mission within the prescribed time limit.</p>
+    
+      
+    
+      <p>Being able to step up at the critical moment is the result of dedicated and refined training in normal times. This reporter learned that the unit routinely organizes political cadres to conduct training in subjects including the drafting of combat documents (作战文书拟制) and information system operation; through a paired mentorship (结对帮带) approach, it organizes political cadres and military cadres to jointly study battle cases, analyze situations, and handle special situations, continuously strengthening political cadres&#39; capabilities in combat planning and command decision-making; it arranges for political cadres to shadow and observe at launch sub-units and combat posts, so they can proficiently master equipment operating skills; and centering on content such as battlefield situation assessment and the handling of sudden special situations, it invites academic experts and outstanding political cadres to deliver lectures, enhancing political cadres&#39; ability to analyze, make decisions, and respond flexibly in actual combat. In addition, the unit distinguishes three phases—combat preparation, execution, and conclusion—to sort out and identify multiple categories of wartime political work subjects, including organizational work and security and protection, and requires political cadres to take on and tackle these subjects in close connection with actual mission conditions, broadening their thinking on how to conduct wartime political work by solving difficult problems.</p>
+    
+      
+    
+      <p>After the battle concluded, an after-action review (复盘) was conducted. Political cadres who participated in the training examined shortcomings exposed during the exercise, focusing on areas including the functioning of Party organization (党组织功能发挥), wartime public opinion and propaganda (战时舆论宣传), and honor incentives (荣誉激励), and collectively studied improvement measures. At the same time, they comprehensively sorted out and summarized the experience and practices of conducting political work during the exercise, continuously optimizing the content, forms, and methods of wartime political work.</p>
+    
+      
+    
+      <p>As new orders arrived, the participating political cadres, in full combat gear, rushed to their combat positions and maneuvered with the missile combat vehicles toward the next target area……</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">火箭军某部提升政治干部作战中政治工作能力—— “生命线”在发射架下彰显生命力 ■邓立勇 近日，密林深处，火箭军某部一辆辆导弹战车在夜色中疾驰，向预定地域转进。 全流程实战化演练开始不久，官兵遭遇“‘敌’无人机抛撒传单”特情。政治工作小组迅速前出，收集并销毁散落传单，同步启动舆情防控、思想稳控预案，灵活开展短平快的战场鼓动。后续演练中，官兵士气高昂完成占领阵地、起竖导弹等操作，对目标成功实施“打击”。 “作战中政治工作是作战行动的重要组成部分，只有通过实战化检验，才能确保发挥应有效力。”该部领导介绍，他们紧扣使命任务和实战要求，把作战中政治工作研练摆在突出位置，利用合成训练、跨区演练等时机，将政治工作与军事行动一体统筹部署、组织实施，做到任务延伸到哪里、政治工作就跟进到哪里。 笔者在演练现场看到，指挥所内，政治工作席位全时跟进任务进程，灵活开展战斗动员、战地文化、战场执纪等工作；发射架下，政治干部结合战斗进程，适时组织战场鼓动、立功创模、典型宣传；前沿阵地上，政治工作骨干穿梭各个点位，同步开展战场取证等工作。 “你部遭‘打击’，连长‘阵亡’，装备‘受损’。”对抗进入关键阶段，导演部临机下达特情。紧急关头，该连王指导员立即接替指挥。综合研判战场态势后，他一边组织骨干力量抢修装备，一边调整战斗部署、鼓舞官兵士气，率领连队继续战斗。最终，连队在规定时限内，圆满完成演训任务。 关键时刻顶得上去，得益于平时专攻精练。笔者了解到，该部常态组织政治干部开展作战文书拟制、信息系统操作等课目训练；采取结对帮带的方式，组织政治干部与军事干部共同研讨战例、分析态势、处置特情，不断强化政治干部作战筹划、指挥决策等能力；安排政治干部到发射分队、战斗岗位跟岗见学，熟练掌握装备操作技能；围绕战场态势研判、突发特情处置等内容，邀请院校专家、优秀政治干部登台授课，增强政治干部实战中分析决策和灵活应变能力。此外，该部还区分作战准备、实施、结束3个阶段，梳理确定组织工作、安全保卫等多类作战中政治工作课题，要求政治干部紧贴任务实际领题攻关，在破解难题中拓宽开展作战中政治工作的思路。 战斗结束，复盘展开。参训政治干部围绕党组织功能发挥、战时舆论宣传、荣誉激励等内容，查摆演训中暴露出的不足，集智研究改进举措。与此同时，他们全面梳理总结演练中开展政治工作的经验做法，不断优化作战中政治工作的内容、形式和方法。 指令再次传来，参训政治干部全副武装奔赴战位，跟随导弹战车向下一目标地域机动……</div>
+  </details>
+  
+
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. <a href="../methodology.html">Methodology</a> · <a href="../archive.html">Archive</a></div>
+  </div>
+</footer>
+
+
+</body>
+</html>
