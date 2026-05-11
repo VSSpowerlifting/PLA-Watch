@@ -356,14 +356,17 @@
   border-radius: 4px;
   padding: 1.5rem 1.75rem;
   position: relative;
+  box-shadow: 0 1px 2px rgba(28, 25, 23, 0.025);
   transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
 .article-card:hover {
   border-color: #D4D0C7;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 18px rgba(28, 25, 23, 0.055);
 }
 .article-card.significant {
   border-left: 3px solid var(--color-brand);
+  border-top-color: #D7B6B0;
+  box-shadow: 0 8px 22px rgba(127, 29, 29, 0.07);
   padding-left: calc(1.75rem - 2px);
 }
 
@@ -388,15 +391,74 @@
 }
 
 .article-summary {
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  line-height: 1.62;
   color: var(--color-text-secondary);
   margin-bottom: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.signal-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #E7C2BC;
+  color: var(--color-brand);
+  background: #FFF8F6;
+  border-radius: 2px;
+  padding: 0.16rem 0.42rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Analyst readout ─────────────────────────────────────────────── */
+.analyst-readout {
+  background: linear-gradient(180deg, #fff 0%, var(--color-bg-card) 100%);
+  border: 1px solid #D8D1C6;
+  border-top: 3px solid var(--color-brand);
+  border-radius: 4px;
+  padding: 1.35rem 1.55rem 1.25rem;
+  margin-bottom: 1.35rem;
+  box-shadow: 0 10px 26px rgba(28, 25, 23, 0.055);
+}
+.readout-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.7rem;
+}
+.readout-overview {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+.readout-lines {
+  display: grid;
+  gap: 0.55rem;
+}
+.readout-line {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0.85rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--color-border-soft);
+  font-size: 0.825rem;
+  line-height: 1.5;
+}
+.readout-label {
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.readout-text { color: var(--color-text-secondary); }
 
 .article-footer {
   display: flex;
@@ -528,6 +590,69 @@
   letter-spacing: 0.04em;
 }
 
+.source-status-list,
+.signal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.source-status-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.source-status-row:last-child { border-bottom: none; padding-bottom: 0; }
+.source-status-name {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+.status-badge {
+  align-self: flex-start;
+  white-space: nowrap;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: 0.12rem 0.35rem;
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  background: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.status-badge.active {
+  border-color: #E7C2BC;
+  color: var(--color-brand);
+  background: #FFF8F6;
+}
+.sidebar-note,
+.signal-empty {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin-top: 0.85rem;
+}
+.signal-item {
+  border-bottom: 1px solid var(--color-border-soft);
+  padding-bottom: 0.65rem;
+}
+.signal-item:last-child { border-bottom: none; padding-bottom: 0; }
+.signal-date {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+.signal-title {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.signal-title a { color: var(--color-text-secondary); text-decoration: none; }
+.signal-title a:hover { color: var(--color-brand); }
+
 /* ── How to read note ────────────────────────────────────────────── */
 .brief-context-note {
   font-size: 0.8rem;
@@ -654,6 +779,16 @@
     <p class="brief-context-note">China Mil Watch tracks official Chinese military and security media. Official coverage is read as institutional messaging, not as neutral reporting or evidence of classified activity. <a href="methodology.html">Methodology →</a></p>
 
 
+    <section class="analyst-readout" aria-labelledby="analyst-readout-heading">
+      <div class="readout-eyebrow" id="analyst-readout-heading">ANALYST READOUT</div>
+      <div class="readout-overview">Today’s official military-media coverage appears mostly routine, centered on Political Work, Exercises, Nuclear. No single item indicates a major new operational development in the collected material.</div>
+      <div class="readout-lines">
+        <div class="readout-line"><span class="readout-label">What mattered</span><span class="readout-text">No article was flagged as an analytical signal.</span></div>
+        <div class="readout-line"><span class="readout-label">What was routine</span><span class="readout-text">Dominant categories: Political Work, Exercises, Nuclear.</span></div>
+        <div class="readout-line"><span class="readout-label">What to watch</span><span class="readout-text">Watch whether Political Work, Exercises themes recur across multiple sources or senior-level placements.</span></div>
+      </div>
+    </section>
+
       <div class="article-list">
         <article class="article-card">
 
@@ -669,7 +804,7 @@
 
             <div class="article-title-zh">火箭军某部提升政治干部作战中政治工作能力</div>
 
-            <div class="article-summary">An unidentified PLA Rocket Force unit conducted a full-process combat-realistic exercise in which political cadres were embedded with missile combat vehicles to perform wartime political work functions—including battlefield agitation, public opinion control, merit citation, and command succession when the company commander was notionally killed in action. The exercise reflects a sustained PLA effort to integrate political work officers into operational command structures rather than treat them as rear-echelon functions, with explicit training in combat document drafting, equipment operation, and command decision-making. This is consistent with the broader post-2016 PLA reform emphasis on making political work combat-effective, and the detail on political cadres assuming tactical command under casualty conditions is a useful data point for assessing how the Rocket Force intends to maintain unit cohesion and command continuity during strike operations.</div>
+            <div class="article-summary">An unidentified PLA Rocket Force unit conducted a full-process combat-realistic exercise in which political cadres were embedded with missile combat vehicles to perform wartime political work functions—including battlefield agitation, public opinion control, merit citation, and command succession...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -693,7 +828,7 @@
 
             <div class="article-title-zh">火箭军某部领导干部严实调研抓建作风</div>
 
-            <div class="article-summary">A PLA Daily feature published by a Rocket Force unit describes a Party Committee Standing Member&#39;s sustained, hands-on talent cultivation program at a subordinate battalion, including the introduction of simulation training equipment, a dual-mentor mechanism pairing theoretical and practical instructors, a formalized talent handover checklist system, and quarterly talent assessments tied to cadre evaluations. The piece is a product of the ongoing political consolidation training (政治整训) campaign and illustrates how that campaign is being operationalized at the unit level to address what the Rocket Force&#39;s own leadership has identified as a persistent gap between directed policy and grassroots implementation—a gap that became a focal concern after the 2023 purge of Rocket Force senior leadership. The article contains no new order-of-battle or capability information, but it is useful as evidence of the institutional mechanisms the Rocket Force is deploying to rebuild command culture and accountability structures in the wake of that leadership crisis.</div>
+            <div class="article-summary">A PLA Daily feature published by a Rocket Force unit describes a Party Committee Standing Member&#39;s sustained, hands-on talent cultivation program at a subordinate battalion, including the introduction of simulation training equipment, a dual-mentor mechanism pairing theoretical and practical...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -717,7 +852,7 @@
 
             <div class="article-title-zh">走进火箭军工程大学，开启一场跨越时空的砺剑寻访</div>
 
-            <div class="article-summary">The Rocket Force Engineering University, described as the institutional origin of China&#39;s strategic missile officer corps, reopened its renovated history museum and hosted a PLA media visit highlighting the university&#39;s lineage from its 1960 founding under first president Xiang Shouzhi—appointed by Zhou Enlai from command of the 15th Corps—through the development of a large-scale missile training simulation system that won the 1991 National Science and Technology Progress Award First Prize. The piece is institutional hagiography rather than a capability announcement, but it signals continued PLA emphasis on the Rocket Force Engineering University as the authoritative pipeline for strategic missile personnel and reinforces the recurring theme that talent development and simulation-based training are treated as force-multiplying priorities within the Rocket Force. The explicit framing of &#39;talent advantage as decisive advantage&#39; and the profile of Professor Zheng Jianfei integrating frontline missile tracking observations directly into curricula suggest the university is actively working to close the gap between operational experience and classroom instruction.</div>
+            <div class="article-summary">The Rocket Force Engineering University, described as the institutional origin of China&#39;s strategic missile officer corps, reopened its renovated history museum and hosted a PLA media visit highlighting the university&#39;s lineage from its 1960 founding under first president Xiang Shouzhi—appointed by...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -741,7 +876,7 @@
 
             <div class="article-title-zh">盐碱地里“结”出战斗力果实——走进北部战区空军航空兵某部靶场</div>
 
-            <div class="article-summary">A Northern Theater Command Air Force aviation unit operates a live-fire ground-attack range on saline-alkali terrain, where personnel support multi-munition training missions using pictographic targets, unexploded ordnance disposal teams, and a mix of traditional and modernized target systems including night illuminated targets, signal-emitting radiation targets, and unmanned moving vehicles. The article&#39;s operational detail—particularly the addition of radar-emitting and moving targets to simulate a contested environment, and the emphasis on real-time target-scoring accuracy to correct pilot aim between successive passes—signals incremental investment in the fidelity of air-to-ground strike training rather than a doctrinal shift, consistent with the PLA Air Force&#39;s sustained push to close the gap between training conditions and actual combat requirements. The piece is primarily a human-interest profile of range support personnel and contains no new information on unit order of battle, readiness levels, or specific aircraft types.</div>
+            <div class="article-summary">A Northern Theater Command Air Force aviation unit operates a live-fire ground-attack range on saline-alkali terrain, where personnel support multi-munition training missions using pictographic targets, unexploded ordnance disposal teams, and a mix of traditional and modernized target systems...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -765,7 +900,7 @@
 
             <div class="article-title-zh">第八十一集团军某部将班长纳入指挥训练体系</div>
 
-            <div class="article-summary">A unit of the 81st Group Army has restructured its squad-leader training program to address deficiencies in independent command, establishing a dedicated command training class, introducing officer-enlisted mentorship pairings, and pushing command authority down to the squad level during adversarial exercises. The reform was triggered by a documented training failure in which a squad leader&#39;s inability to act without higher authorization caused a stalled offensive after his platoon leader was ruled killed in action. The initiative reflects a PLA-wide tension between the legacy &#39;directive-style&#39; command culture—which conditions junior leaders toward passive execution—and the decentralized, adaptive command competencies required for combined-arms operations under degraded conditions.</div>
+            <div class="article-summary">A unit of the 81st Group Army has restructured its squad-leader training program to address deficiencies in independent command, establishing a dedicated command training class, introducing officer-enlisted mentorship pairings, and pushing command authority down to the squad level during...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -789,7 +924,7 @@
 
             <div class="article-title-zh">官兵代表来到杨根思墓前 “老连长，我们向您报告”</div>
 
-            <div class="article-summary">Five representatives of the PLA&#39;s &#39;Yang Gengsi Company&#39;—a unit of the 20th Group Army lineage named for a Korean War hero—attended the April 23 interment ceremony at Shenyang&#39;s Cemetery of the Martyrs for the 13th batch of CPVA remains repatriated from South Korea, marking the company&#39;s first invitation to such a ceremony, and afterward conducted a formal grave-reporting ritual before Yang Gengsi&#39;s tomb. The article is primarily a PLA Daily propaganda piece reinforcing the military&#39;s &#39;heroic unit&#39; (英雄部队) culture and the institutional use of Korean War memory to sustain unit cohesion and combat motivation, and it signals no new operational, organizational, or capability information beyond that function.</div>
+            <div class="article-summary">Five representatives of the PLA&#39;s &#39;Yang Gengsi Company&#39;—a unit of the 20th Group Army lineage named for a Korean War hero—attended the April 23 interment ceremony at Shenyang&#39;s Cemetery of the Martyrs for the 13th batch of CPVA remains repatriated from South Korea, marking the company&#39;s first...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -813,7 +948,7 @@
 
             <div class="article-title-zh">攻坚建军百年·新样貌 新作为丨“我愿做守护战士的‘智能铠甲’”</div>
 
-            <div class="article-summary">Chen Junxian, a civilian researcher at the Academy of Military Sciences with a polymer materials doctorate from Peking University, leads development of soldier protective equipment—including extreme-cold thermal suits field-tested at Mohe in temperatures below -30°C—and was appointed in early 2025 as project lead for a major support equipment program after compiling data from more than 20 grassroots units. The profile is a PLA propaganda piece oriented toward recruiting high-credential civilian talent into defense research roles, but it also signals that the Academy of Military Sciences is prioritizing field-validated, combat-oriented materials development and framing &#39;intelligentized&#39; soldier protection systems as a contribution to new-quality combat capability (新质战斗力). The article contains no operationally significant disclosures and follows a standard pattern of profiling civilian personnel to normalize and valorize non-uniformed scientific careers within the PLA research establishment.</div>
+            <div class="article-summary">Chen Junxian, a civilian researcher at the Academy of Military Sciences with a polymer materials doctorate from Peking University, leads development of soldier protective equipment—including extreme-cold thermal suits field-tested at Mohe in temperatures below -30°C—and was appointed in early 2025...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -836,7 +971,7 @@
 
             <div class="article-title-zh">我赴南苏丹维和工兵分队完成“通季—罗米奇”补给线修复任务</div>
 
-            <div class="article-summary">China&#39;s 16th Peacekeeping Engineer Detachment to South Sudan (Wau) completed repairs on the 112-kilometer Tonj–Romich supply route, deploying 41 personnel and 23 vehicles in a field-camping operation that earned formal praise from UNMISS. The report is routine in content—a standard PLA Daily feature on a completed UN peacekeeping engineering task—but is useful as a data point on China&#39;s sustained operational presence in South Sudan and its continued use of peacekeeping deployments to demonstrate engineering capability and build local goodwill.</div>
+            <div class="article-summary">China&#39;s 16th Peacekeeping Engineer Detachment to South Sudan (Wau) completed repairs on the 112-kilometer Tonj–Romich supply route, deploying 41 personnel and 23 vehicles in a field-camping operation that earned formal praise from UNMISS. The report is routine in content—a standard PLA Daily...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -860,7 +995,7 @@
 
             <div class="article-title-zh">思想战线丨以理论上的清醒保证政治上的坚定</div>
 
-            <div class="article-summary">An article published under the byline of the &#39;Xi Jinping Thought on Strengthening the Military Research Center,&#39; authored by Zhou Junjie, elaborates on Xi Jinping&#39;s directive—delivered at the opening ceremony of a senior cadre training course for the entire PLA—that &#39;theoretical clarity&#39; in Marxist doctrine is the prerequisite for &#39;political steadfastness,&#39; and calls on senior military cadres to deepen study of Xi Jinping Thought on Strengthening the Military as the foundation of loyalty and combat effectiveness. The piece is a doctrinal elaboration rather than a policy announcement, but it signals continued emphasis on ideological conformity as a command-and-control mechanism within the PLA, framing theoretical indoctrination explicitly as a counter to &#39;Western hostile forces&#39; and internal wavering amid what the text describes as an unprecedented convergence of reform pressures and external strategic competition. The invocation of the Yan&#39;an Rectification Movement as a model, combined with the targeting of senior cadres specifically, is consistent with the ongoing pattern of using centralized political education campaigns to enforce loyalty at the officer corps level.</div>
+            <div class="article-summary">An article published under the byline of the &#39;Xi Jinping Thought on Strengthening the Military Research Center,&#39; authored by Zhou Junjie, elaborates on Xi Jinping&#39;s directive—delivered at the opening ceremony of a senior cadre training course for the entire PLA—that &#39;theoretical clarity&#39; in Marxist...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -884,7 +1019,7 @@
 
             <div class="article-title-zh">强军论坛丨科学决策决定政绩成色</div>
 
-            <div class="article-summary">A commentary published in a PLA-affiliated forum calls on military cadres at all levels to adopt &#39;scientific decision-making&#39; as the methodological foundation for the ongoing campaign to establish a &#39;correct outlook on performance,&#39; invoking Xi Jinping&#39;s 2002–2007 Zhejiang tenure and the &#39;Eight-Eight Strategy&#39; as the authoritative model. The piece operationalizes the directive by requiring that investigation and research precede all decisions, that democratic centralism govern major choices through collective Party committee deliberation rather than individual or administrative action, and that technical experts be consulted on specialized matters. The article is a standard political education piece reinforcing an existing PLA rectification theme and contains no new operational, organizational, or capability information.</div>
+            <div class="article-summary">A commentary published in a PLA-affiliated forum calls on military cadres at all levels to adopt &#39;scientific decision-making&#39; as the methodological foundation for the ongoing campaign to establish a &#39;correct outlook on performance,&#39; invoking Xi Jinping&#39;s 2002–2007 Zhejiang tenure and the...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -909,7 +1044,7 @@
 
             <div class="article-title-zh">武警第二机动总队某支队选人用人更加客观公正</div>
 
-            <div class="article-summary">A subordinate brigade of the People&#39;s Armed Police 2nd Mobile Corps has publicized the promotion of Detachment Commander Zhang Junji—a plateau-based officer with decades of operational service along the Xinjiang–Tibet Highway and multiple merit citations—as a showcase of reformed personnel selection practices following sustained political rectification training. The article is a PLA Daily-produced propaganda piece designed to signal that rectification has disrupted patronage networks within PAP units and is producing a meritocratic promotion culture oriented toward combat readiness. It is most useful as evidence of the PAP&#39;s ongoing internal discipline campaign rather than as a source of new information about unit capability or posture.</div>
+            <div class="article-summary">A subordinate brigade of the People&#39;s Armed Police 2nd Mobile Corps has publicized the promotion of Detachment Commander Zhang Junji—a plateau-based officer with decades of operational service along the Xinjiang–Tibet Highway and multiple merit citations—as a showcase of reformed personnel...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -932,7 +1067,7 @@
 
             <div class="article-title-zh">西部战区陆军某旅党委接力解决历史遗留问题</div>
 
-            <div class="article-summary">A brigade under Western Theater Command Army has institutionalized a closed-loop accountability mechanism to resolve accumulated administrative and legal legacy problems, assigning each unresolved case a lead Party committee member, a responsible section, and a documented resolution plan that must be transferred intact when leadership rotates. The report signals a PLA-wide concern about institutional continuity and accountability gaps that emerge during unit leadership transitions—a recurring friction point in Chinese military administration—and reflects the broader &#39;correct view of political achievement&#39; campaign being used to pressure mid-level commanders to accept responsibility for problems inherited from predecessors rather than deferring them. The article is useful as evidence of how Western Theater Command ground forces are operationalizing that campaign at the brigade level, though it contains no information about named units, specific locations, or senior officials beyond the reporter&#39;s byline.</div>
+            <div class="article-summary">A brigade under Western Theater Command Army has institutionalized a closed-loop accountability mechanism to resolve accumulated administrative and legal legacy problems, assigning each unresolved case a lead Party committee member, a responsible section, and a documented resolution plan that must...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -956,7 +1091,7 @@
 
             <div class="article-title-zh">政治建军专刊·政治整训丨做好“最艰巨的战争准备”</div>
 
-            <div class="article-summary">A PLA political work article published under a special issue on military political strengthening calls on all command levels to embed political loyalty screening into talent cultivation as the primary standard, framing ideological reliability—not professional competence alone—as the prerequisite for officer advancement and describing talent force building as &#39;the most arduous war preparation.&#39; The piece invokes Xi Jinping&#39;s remarks at both the NPC delegation session and the senior cadre training course opening to authorize a campaign linking political rectification training (政治整训) with realistic combat readiness, cross-establishment joint training platforms, and elimination of seniority-based promotion. The article is consistent with the post-Rocket Force purge pattern of using political rectification campaigns to reassert Party control over officer corps advancement criteria while simultaneously pressing combat proficiency standards—signaling that the two imperatives are being pursued in tandem rather than traded off.</div>
+            <div class="article-summary">A PLA political work article published under a special issue on military political strengthening calls on all command levels to embed political loyalty screening into talent cultivation as the primary standard, framing ideological reliability—not professional competence alone—as the prerequisite...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -979,7 +1114,7 @@
 
             <div class="article-title-zh">政治建军专刊·政治整训丨同乘一辆车 拉近官兵心</div>
 
-            <div class="article-summary">A PLA Navy brigade implemented a consolidated vehicle dispatch system requiring officers and soldiers, including senior leaders, to share official vehicles based on route rather than rank, with the brigade political commissar using a specific incident of redundant vehicle use to publicly criticize a deputy chief of staff for privileged thinking and mandate unified dispatch for all leading cadres. The article is a PLA Daily piece tied to the ongoing political rectification training (政治整训) campaign and illustrates how that campaign is being operationalized at the unit level—using mundane administrative practices as vehicles for enforcing ideological conformity around officer-soldier relations and cadre conduct. The emphasis on self-criticism, public examination of privileged thinking, and leading by example signals that rectification is being pushed below the organ level into daily garrison life, consistent with a broader effort to use political discipline to address perceived gaps between officers and enlisted personnel.</div>
+            <div class="article-summary">A PLA Navy brigade implemented a consolidated vehicle dispatch system requiring officers and soldiers, including senior leaders, to share official vehicles based on route rather than rank, with the brigade political commissar using a specific incident of redundant vehicle use to publicly criticize...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -1002,7 +1137,7 @@
 
             <div class="article-title-zh">八一锐评丨不坐“靠背椅” 甘坐“矮板凳”</div>
 
-            <div class="article-summary">A Bayi commentary published in response to Xi Jinping&#39;s directive at a senior cadre training course calls on PLA leading officers to abandon bureaucratic distance, engage directly with enlisted personnel and junior officers at the grassroots level, and embody the Party&#39;s mass line. The piece signals an ongoing campaign to address perceived detachment and elitism among senior PLA officers—a recurrent friction point in PLA political work—and reflects Xi&#39;s continued use of ideological and behavioral rectification as a tool for consolidating command authority and unit cohesion ahead of operational demands.</div>
+            <div class="article-summary">A Bayi commentary published in response to Xi Jinping&#39;s directive at a senior cadre training course calls on PLA leading officers to abandon bureaucratic distance, engage directly with enlisted personnel and junior officers at the grassroots level, and embody the Party&#39;s mass line. The piece...</div>
 
           <div class="article-footer">
             <span class="source-name">PLA Daily (解放军报)</span>
@@ -1047,7 +1182,7 @@
         </div>
         <div class="sidebar-stat">
           <span class="label">Last updated</span>
-          <span class="value muted">2026-05-11 20:22 UTC</span>
+          <span class="value muted">2026-05-11 21:22 UTC</span>
         </div>
       </div>
     </div>
@@ -1055,9 +1190,54 @@
     <a href="the-pla-watch/index.html" class="sidebar-cta">
       <span class="cta-eyebrow">Companion publication</span>
       <span class="cta-title">The PLA Watch</span>
-      <span class="cta-desc">Weekly synthesis of the daily signals — published every Sunday.</span>
+      <span class="cta-desc">Weekly synthesis of the daily signals — reviewed weekly synthesis.</span>
       <span class="cta-arrow">Read more →</span>
     </a>
+
+    <div class="sidebar-card">
+      <div class="sidebar-eyebrow">Source Status</div>
+      <div class="source-status-list">
+        <div class="source-status-row">
+          <span class="source-status-name">PLA Daily</span>
+          <span class="status-badge active">articles collected</span>
+        </div>
+        <div class="source-status-row">
+          <span class="source-status-name">Global Times Defense</span>
+          <span class="status-badge active">articles collected</span>
+        </div>
+        <div class="source-status-row">
+          <span class="source-status-name">MND</span>
+          <span class="status-badge">configured / expanding</span>
+        </div>
+        <div class="source-status-row">
+          <span class="source-status-name">China Military Online</span>
+          <span class="status-badge">configured / expanding</span>
+        </div>
+        <div class="source-status-row">
+          <span class="source-status-name">Xinhua Military</span>
+          <span class="status-badge">in development</span>
+        </div>
+      </div>
+      <div class="sidebar-note">Source coverage reflects articles successfully collected and analyzed for this date. Additional configured sources remain in expansion or verification.</div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-eyebrow">Recent Analytical Signals</div>
+      <div class="signal-list">
+        <div class="signal-item">
+          <div class="signal-date">10 May 2026</div>
+          <div class="signal-title"><a href="article/120.html">Happy 13th Birthday to the Naval Carrier-Based Aviation Force!</a></div>
+        </div>
+        <div class="signal-item">
+          <div class="signal-date">9 May 2026</div>
+          <div class="signal-title"><a href="article/99.html">Ministry of National Defense Routine Press Briefing, Early May 2026</a></div>
+        </div>
+        <div class="signal-item">
+          <div class="signal-date">9 May 2026</div>
+          <div class="signal-title"><a href="article/95.html">The Two Militaries of China and Pakistan Continue to Deepen Practical Cooperation</a></div>
+        </div>
+      </div>
+    </div>
 
   </aside>
 
