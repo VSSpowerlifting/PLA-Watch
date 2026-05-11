@@ -9,8 +9,9 @@
   "week_ending": "2026-05-09",
   "n_articles": 42,
   "n_significant": 1,
-  "cover_image": "../media/2026-05-10-cover.png",
-  "cover_image_url": "https://chinamilwatch.org/the-pla-watch/media/2026-05-10-cover.png",
+  "cover_image": "../covers/2026-05-10.png",
+  "cover_thumb": "../covers/2026-05-10-thumb.png",
+  "cover_image_url": "https://chinamilwatch.org/the-pla-watch/covers/2026-05-10.png",
   "sources_seen": [
     "PLA Daily (81.cn)"
   ],
