@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Issue on Building the Military Through Politics · Political Rectification Training | Riding the Same Vehicle, Closing the Distance Between Officers and Soldiers — China Mil Watch</title>
+  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="China Mil Watch">
+  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-brand:          #B3132B;
+      --color-brand-dark:     #8B0E20;
+      --color-brand-light:    #D11C36;
+      --color-bg:             #F6F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FBFAF6;
+      --color-text-primary:   #161616;
+      --color-text-secondary: #4A4A4A;
+      --color-text-muted:     #7A7A7A;
+      --color-border:         #E2DFD8;
+      --color-border-soft:    #ECE9E2;
+      --color-accent:         #B3132B;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      /* Faint paper grid — barely-visible cross pattern for desktop polish */
+      background-image:
+        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: -1px -1px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 0 0 0 transparent, 0 2px 0 0 var(--color-brand);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav .nav-short { display: none; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a.active {
+      color: var(--color-text-primary);
+    }
+    .header-nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+    }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-card);
+      border-radius: 2px;
+      padding: 2px 8px;
+      line-height: 1.4;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
+
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      .header-nav .nav-full { display: none; }
+      .header-nav .nav-short { display: inline; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    
+.article-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.article-page-title-zh {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── About-this-analysis link ────────────────────────────────────── */
+.about-analysis {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.about-analysis a { color: var(--color-text-muted); text-decoration: underline; }
+.about-analysis a:hover { color: var(--color-brand); }
+
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
+}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title">China Mil Watch</span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >
+        <span class="nav-full">Daily Brief</span><span class="nav-short">Daily</span>
+      </a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../signals.html" >Signals</a>
+      <a href="../the-pla-watch/index.html" >
+        <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
+      </a>
+      <a href="../methodology.html" >Methodology</a>
+    </nav>
+  </div>
+</header>
+
+
+
+<main>
+  
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+    
+      <div class="tags">
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
+
+    <h1 class="article-page-title">
+      Special Issue on Building the Military Through Politics · Political Rectification Training | Riding the Same Vehicle, Closing the Distance Between Officers and Soldiers
+    </h1>
+
+    
+      <div class="article-page-title-zh">政治建军专刊·政治整训丨同乘一辆车 拉近官兵心</div>
+    
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>11 May 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16459854.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+    <div class="about-analysis">
+      <a href="../methodology.html">About this analysis</a>
+    </div>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A PLA Navy brigade implemented a consolidated vehicle dispatch system requiring officers and soldiers, including senior leaders, to share official vehicles based on route rather than rank, with the brigade political commissar using a specific incident of redundant vehicle use to publicly criticize a deputy chief of staff for privileged thinking and mandate unified dispatch for all leading cadres. The article is a PLA Daily piece tied to the ongoing political rectification training (政治整训) campaign and illustrates how that campaign is being operationalized at the unit level—using mundane administrative practices as vehicles for enforcing ideological conformity around officer-soldier relations and cadre conduct. The emphasis on self-criticism, public examination of privileged thinking, and leading by example signals that rectification is being pushed below the organ level into daily garrison life, consistent with a broader effort to use political discipline to address perceived gaps between officers and enlisted personnel.</div>
+    
+  </div>
+  
+
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>Riding the Same Vehicle, Closing the Distance Between Officers and Soldiers</p>
+    
+      <p>■ Zhuge Jiahao, PLA Daily Special Correspondent Fu Kang</p>
+    
+      
+    
+      <p>&#34;Those going to the hospital for medical appointments, consolidate onto Vehicle No. 6; those going to higher-level organs on official business, take Vehicle No. 3 uniformly…&#34; On a spring morning, a Navy brigade&#39;s vehicle dispatch preparations proceeded in an orderly fashion. Xiao Lou, the motor pool duty officer, allocated personnel and vehicles according to a consolidated plan, with not a single redundant trip.</p>
+    
+      
+    
+      <p>&#34;Officers and enlisted soldiers riding the same vehicle?&#34; Noticing that a brigade leader was also aboard, the reporter was somewhat curious.</p>
+    
+      
+    
+      <p>&#34;After the brigade introduced the consolidated vehicle dispatch mechanism, officers and soldiers board vehicles according to their travel routes, regardless of rank,&#34; Xiao Lou told the reporter. Previously, official vehicles had problems of high empty-run rates and low support efficiency. Now, through unified dispatch by the duty room, trips with the same time and route are merged and coordinated, vehicle fuel consumption has dropped noticeably, and work efficiency has improved.</p>
+    
+      
+    
+      <p>&#34;This way, relations between officers and soldiers have also grown closer,&#34; Xiao Lou said, and recounted the following experience.</p>
+    
+      
+    
+      <p>On one occasion, the brigade political commissar was passing through the motor pool when he noticed through the Vehicle Dispatch Plan that a vehicle heading to a higher-level organ for a meeting and official business had a capacity of five but was carrying only three, leaving two empty seats. During the same time window, a deputy chief of staff traveling to the same destination had taken a separate vehicle, with most of its seats empty.</p>
+    
+      
+    
+      <p>The political commissar sought out Xiao Lou, who had been responsible for vehicle dispatch that day, and asked about the situation: &#34;When one vehicle could clearly fit everyone, why was a separate vehicle dispatched?&#34;</p>
+    
+      
+    
+      <p>Faced with the question, Xiao Lou haltingly voiced some of the concerns among officers and soldiers: some felt that leaders needed to think through work matters and handle official business on the road, and feared that more people would be a disturbance; some worried that consolidated vehicle use would inevitably require detours for pickups and drop-offs, delaying the leader&#39;s schedule; still more felt uncomfortable riding in the same vehicle as a leader and would rather wait an extra half-day or make an extra trip themselves. Weighing these considerations, the motor pool had defaulted to dispatching separate vehicles for leaders, and some leaders had tacitly accepted this arrangement.</p>
+    
+      
+    
+      <p>&#34;The reason rank-and-file soldiers harbor such misgivings ultimately lies with the Party committee organs. If leading cadres would set aside their airs in their daily conduct and proactively draw close to rank-and-file soldiers, these misgivings would naturally dissipate over time.&#34; After learning the situation, the political commissar reflected: one important dimension by which the masses judge whether a cadre is competent is how that cadre&#39;s image and prestige appear—whether the cadre puts on &#34;official airs (官架子).&#34;</p>
+    
+      
+    
+      <p>&#34;Whether leading cadres can maintain the character of an ordinary Party member and an ordinary soldier bears on military morale and spirit, on internal relations, on conduct and image, and on the ability to fight and win battles.&#34; At an office meeting, the political commissar put the matter on the table, criticized and educated the deputy chief of staff, and took the lead in examining his own privileged thinking (特权思想). He told everyone that leading cadres setting aside their &#34;official airs&#34; is by no means a lowering of their status, but rather a matter of breadth of vision and a sense of responsibility. In the course of deepening political rectification training (政治整训), they must lead by example, take the initiative in correcting their own privileged thinking, and inspire and guide officers and soldiers through exemplary image and conduct.</p>
+    
+      
+    
+      <p>&#34;When it comes down to it, I simply had not sat on the same bench as the rank-and-file soldiers.&#34; The deputy chief of staff offered an on-the-spot self-criticism, conducted a thorough self-examination, and asked everyone to supervise his rectification.</p>
+    
+      
+    
+      <p>Seizing on this as an opportunity, the brigade organized organ cadres to carry out self-examination and self-correction discussions and analysis, guiding everyone to abandon privileged thinking and take the lead in implementing regulations. Building on this, the vehicle use mechanism was further refined, with explicit requirements that all official vehicle use by leading cadres be brought under unified brigade dispatch.</p>
+    
+      
+    
+      <p>Another morning arrived. An official vehicle stopped in front of the office building. The deputy chief of staff stepped aboard briskly, patted the empty seat beside him, and waved warmly to the soldiers riding along: &#34;We&#39;re all comrades—no need to stand on ceremony.&#34;</p>
+    
+      
+    
+      <p>The vehicle slowly pulled out of the garrison. At first the cabin was somewhat quiet. The deputy chief of staff took the initiative to ask everyone about their recent lives and training. Soon the soldiers also set aside their reservations, talking about difficulties in training, everyday matters in their lives, and suggestions about food and logistics support. The deputy chief of staff listened attentively and responded patiently; the cabin, which had been a bit subdued, became a &#34;mobile heart-to-heart room (移动谈心室).&#34;</p>
+    
+      
+    
+      <p>&#34;I always used to think, &#39;you can&#39;t just get into a leader&#39;s vehicle&#39; and &#39;getting too close to a leader is seeking special treatment&#39;—turns out I was overthinking it…&#34; Watching everyone speak up one after another, voicing the misgivings they had kept to themselves, the deputy chief of staff reflected inwardly: &#34;The extra kilometer driven to pick up and drop off officers and soldiers is, in fact, the closest kilometer (最近的一公里) to the hearts of the soldiers.&#34;</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">同乘一辆车 拉近官兵心 ■诸葛嘉濠 解放军报特约记者 付 康 “去医院看病的合并为6号车，去上级机关办事的统一乘3号车……”春日清晨，海军某大队出车前准备工作井然有序进行。车场值班员小娄按照统筹计划，合理分配出行人员和车辆，没有一趟冗余行程。 “领导干部和基层战士同乘一辆车？”看到一名大队领导也在车上，记者有些好奇。 “大队推行合并派车机制后，官兵根据出行路线乘车，不看职务高低。”小娄告诉记者，此前，公务用车存在空驶率高、保障效能低的问题，现在通过值班室统一调度，将时间和路线相同的行程合并统筹，车辆油耗明显降低，办事效率得到提升。 “这样一来，官兵关系也更加密切了。”小娄向记者讲起这样一段经历。 那一次，大队政委路过车场时，通过《车辆派遣计划表》发现，前往上级机关开会和办事的车辆定员5人、实乘3人，仍有2个空座。而同一时间段，一名副参谋长前往同一目的地时却单独乘车出行，车内大半座位空余。 政委找到当日负责派车的小娄询问情况：“明明一台车就能坐下，为什么还要单独派车？” 面对询问，小娄支支吾吾说出了一些官兵的顾虑：有人感到，领导路上要思考工作、处理公务，人多了怕打扰；有的担心，合并用车难免要绕路接送，会耽误领导行程；更多人觉得，跟领导同乘一辆车放不开，自己宁愿多等半天、多跑一趟。权衡之下，车队便默认给领导单独派车，而有的领导干部也默许了这样的安排。 “基层官兵之所以出现这样的思想顾虑，根子还是在党委机关。如果领导干部平日里放下架子，主动走近基层官兵，这些顾虑自然会渐渐消除。”了解情况后，政委反思感到：群众看一名干部是否称职，其中一个重要方面是看其形象威信怎么样，有没有“官架子”。 “领导干部能否保持普通党员、普通一兵的本色，事关军心士气、内部关系，事关作风形象、能打胜仗。”一次办公会，政委将此事摆上台面，对副参谋长进行批评教育，并带头检视自己存在的特权思想。他告诉大家，领导干部放下“官架子”绝非降低身份，而是一种格局、一种担当，深化政治整训中，更要以身作则，带头纠治身上存在的特权思想，以过硬形象作风感召带动官兵。 “说到底，还是没有和基层官兵坐在同一条板凳上。”这名副参谋长当场检讨反思，进行深刻自我批评，请大家监督整改。 以此为契机，大队组织机关干部开展自查自纠讨论辨析，引导大家摒弃特权思想，带头落实制度。在此基础上，进一步完善用车机制，明确所有领导干部公务用车，全部纳入大队统一调度。 又是一个清晨，一辆公务车停在办公楼前，这名副参谋长快步上车，拍拍身边的空位，热情向搭乘的战士招手：“都是战友，不用客套。” 车辆缓缓驶出营区，车厢里起初有些安静。副参谋长主动问起大家最近的生活和训练情况，很快，战士们也放下顾虑，聊起训练中的难点、生活中的琐事、伙食保障的建议。副参谋长认真倾听、耐心答复，原本有点沉闷的车厢变成了“移动谈心室”。 “以往总觉得‘领导的车不能随便上’‘跟领导走太近是搞特殊’，原来是自己想太多……”看到大家你一言我一语，把藏在心里的顾虑都说了出来，副参谋长心中感叹：“接送官兵多绕出去的一公里，其实是通向兵心‘最近的一公里’。”</div>
+  </details>
+  
+
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. <a href="../methodology.html">Methodology</a> · <a href="../archive.html">Archive</a></div>
+  </div>
+</footer>
+
+
+</body>
+</html>

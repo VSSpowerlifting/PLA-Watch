@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strong Military Forum | Scientific Decision-Making Determines the Quality of Performance — China Mil Watch</title>
+  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="website">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org">
+  <meta property="og:title"        content="China Mil Watch">
+  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="China Mil Watch">
+  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-brand:          #B3132B;
+      --color-brand-dark:     #8B0E20;
+      --color-brand-light:    #D11C36;
+      --color-bg:             #F6F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FBFAF6;
+      --color-text-primary:   #161616;
+      --color-text-secondary: #4A4A4A;
+      --color-text-muted:     #7A7A7A;
+      --color-border:         #E2DFD8;
+      --color-border-soft:    #ECE9E2;
+      --color-accent:         #B3132B;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      /* Faint paper grid — barely-visible cross pattern for desktop polish */
+      background-image:
+        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: -1px -1px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 0 0 0 transparent, 0 2px 0 0 var(--color-brand);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav .nav-short { display: none; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a.active {
+      color: var(--color-text-primary);
+    }
+    .header-nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+    }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-card);
+      border-radius: 2px;
+      padding: 2px 8px;
+      line-height: 1.4;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
+
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      .header-nav .nav-full { display: none; }
+      .header-nav .nav-short { display: inline; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    
+.article-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.article-page-title-zh {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── About-this-analysis link ────────────────────────────────────── */
+.about-analysis {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.about-analysis a { color: var(--color-text-muted); text-decoration: underline; }
+.about-analysis a:hover { color: var(--color-brand); }
+
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
+}
+
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title">China Mil Watch</span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >
+        <span class="nav-full">Daily Brief</span><span class="nav-short">Daily</span>
+      </a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../signals.html" >Signals</a>
+      <a href="../the-pla-watch/index.html" >
+        <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
+      </a>
+      <a href="../methodology.html" >Methodology</a>
+    </nav>
+  </div>
+</header>
+
+
+
+<main>
+  
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+    
+      <div class="tags">
+        
+          <span class="tag">Doctrine</span>
+        
+          <span class="tag">Political Work</span>
+        
+      </div>
+    
+
+    <h1 class="article-page-title">
+      Strong Military Forum | Scientific Decision-Making Determines the Quality of Performance
+    </h1>
+
+    
+      <div class="article-page-title-zh">强军论坛丨科学决策决定政绩成色</div>
+    
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>11 May 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16459826.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+    <div class="about-analysis">
+      <a href="../methodology.html">About this analysis</a>
+    </div>
+
+  </div>
+
+  
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A commentary published in a PLA-affiliated forum calls on military cadres at all levels to adopt &#39;scientific decision-making&#39; as the methodological foundation for the ongoing campaign to establish a &#39;correct outlook on performance,&#39; invoking Xi Jinping&#39;s 2002–2007 Zhejiang tenure and the &#39;Eight-Eight Strategy&#39; as the authoritative model. The piece operationalizes the directive by requiring that investigation and research precede all decisions, that democratic centralism govern major choices through collective Party committee deliberation rather than individual or administrative action, and that technical experts be consulted on specialized matters. The article is a standard political education piece reinforcing an existing PLA rectification theme and contains no new operational, organizational, or capability information.</div>
+    
+  </div>
+  
+
+  
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+    
+      <p>Scientific Decision-Making Determines the Quality of Performance</p>
+    
+      <p>—A Series of Discussions on Establishing and Practicing the Correct Outlook on Performance (正确政绩观)</p>
+    
+      <p>■ Cao Chengjun, Yang Huan</p>
+    
+      
+    
+      <p>In 2002, shortly after Chairman Xi began working in Zhejiang, someone asked him to speak about his &#34;governing program&#34; (施政纲领). He smiled and said: &#34;I have just arrived—I don&#39;t yet have the standing to speak.&#34; Later, after relentless investigation and research and thorough, meticulous scientific deliberation, Chairman Xi put forward the &#34;Eight-Eight Strategy&#34; (八八战略), which systematically answered the era&#39;s question of how Zhejiang could &#34;climb the slope and clear the hurdles&#34; (爬坡过坎) in its transformational development, and led Zhejiang onto a path of development with the characteristics of the era, Chinese characteristics, and Zhejiang&#39;s own distinctive features. This instructs us that establishing and practicing the correct outlook on performance (正确政绩观) requires adhering to scientific decision-making, proceeding from reality, and acting in accordance with objective laws.</p>
+    
+      
+    
+      <p>&#34;Scientific decision-making&#34; is an important element of the &#34;16-character general requirement&#34; (16字总要求) for study and education on establishing and practicing the correct outlook on performance, and is also the methodological path for ensuring that real results are achieved and that merit is built on the job. Whether decision-making is scientific or not directly determines the quality of performance; whether one&#39;s outlook on performance is sound or not is directly reflected in the level of decision-making. Many &#34;performance projects&#34; (政绩工程) and &#34;face projects&#34; (面子工程) are the result of off-the-cuff decisions and reckless action; many arbitrary decisions that disregard procedure and blind decisions that disregard science are the product of a distorted outlook on performance and a distorted view of power. The rectitude of one&#39;s outlook on performance originates in the substance of one&#39;s decisions; the substance of one&#39;s decisions produces the authenticity of one&#39;s performance. It can be said that improving the quality of performance cannot be separated from scientific decision-making, and neither can consolidating the foundation of performance. As Chairman Xi has pointed out: &#34;The correct outlook on performance requires us to proceed from reality, act in accordance with objective laws, and—through scientific decision-making and hard, diligent work—create achievements that can withstand the test of practice and history, that genuinely benefit the people, and that receive the recognition of the masses.&#34;</p>
+    
+      
+    
+      <p>Investigation and research is the living source of genuine knowledge and insight, an essential prerequisite for scientific decision-making; correct decisions cannot be separated from thorough investigation and research into objective reality. Without investigation, there is no standing to speak—and still less any right to make decisions. Planning ahead is what prevents confusion later. This requires Party member cadres to master the fundamental skill of investigation and research, to go deep into the front lines and deep among the officers and soldiers, to run investigation and research throughout the entire process of decision-making, and to ensure that research precedes decisions and that no decision is made without research. Through investigation and research of multiple forms and types, they must strive to obtain comprehensive, truthful, rich, and vivid first-hand materials, truly get a clear picture of the situation, accurately identify problems, and put forward concrete countermeasures—and must absolutely never engage in decision-making &#34;by experience,&#34; decision-making &#34;off the top of one&#39;s head,&#34; or one-size-fits-all (一刀切) decision-making.</p>
+    
+      
+    
+      <p>&#34;Acting in accordance with reason makes effort easy; moving against the times makes achievement difficult.&#34; Scientific decision-making means proceeding from reality and making decisions in accordance with objective laws. Comrade Mao Zedong said: &#34;In all our work we must act in accordance with objective laws; otherwise our work will go badly or take a roundabout path.&#34; Laws are the inherent and necessary connections between things and determine the necessary direction of their development. At all levels, leaders must master ideological weapons, thoroughly understand conditions both above and below, strengthen research and deliberation, and proceed from the laws governing the existence and development of objective things—making decisions with scientific thinking, scientific institutions, and scientific methods—so that decisions truly conform to actual conditions, conform to objective laws, and conform to the spirit of science, ensuring that decisions are grounded in reality, practical, and feasible.</p>
+    
+      
+    
+      <p>Democratic centralism (民主集中制) is the Party&#39;s fundamental organizational principle and leadership system, and is the fundamental guarantee for improving the quality and level of decision-making. Party organizations at all levels should adhere to collective decision-making by Party organizations and to the mass line; on major decisions, they should fully promote democracy, extensively solicit opinions, and decide through collective deliberation—guarding against substituting administrative meetings for Party meetings, substituting the circulation and endorsement of documents for collective Party committee deliberation, and engaging in individual autocratic direction and &#34;special handling of special matters&#34; (特事特办); guarding against insufficient research and deliberation and against making bold decisions without a clear picture of the situation—so as to genuinely transform the wisdom of officers and soldiers into correct decisions. For projects with a strong technical or specialized character, leaders should be adept at drawing on outside expertise, consulting technical experts, authoritative scholars, and knowledgeable officers and soldiers, so as to avoid blind decision-making and to truly use high-level consultation and assessment to support high-quality decisions and high-efficiency implementation.</p>
+    
+  </div>
+  
+
+  
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">科学决策决定政绩成色 ——树立和践行正确政绩观系列谈 ■曹成俊 杨 欢 2002年，习主席到浙江工作不久，有人请他谈谈“施政纲领”。他笑着说：“我刚刚来，还没有发言权。”后来，经过马不停蹄的调查研究和深入细致的科学论证，习主席提出了“八八战略”，系统回答了浙江当时“爬坡过坎、转型发展”的时代之问，引领浙江走出一条具有时代特征、中国特色、浙江特点的发展道路。这启示我们，树立和践行正确政绩观必须坚持科学决策，从实际出发、按规律办事。 “科学决策”是抓好树立和践行正确政绩观学习教育“16字总要求”的重要内容，也是确保干出实绩、岗位建功的方法路径。决策科学与否，直接决定政绩成色；政绩观端正与否，直接体现决策水平。很多“政绩工程”“面子工程”，就是拍脑袋决策、拍胸脯蛮干的结果；很多不讲程序的任性决策、不讲科学的盲目决策，就是政绩观、权力观发生了扭曲所致。政绩观之正，源于决策之实；决策之实，成就政绩之真。可以说，提高政绩成色离不开科学决策，筑牢政绩根基同样离不开科学决策。正如习主席所指出的：“正确政绩观要求我们坚持从实际出发、按规律办事，通过科学决策和实干苦干，创造经得起实践和历史检验、真正造福人民、得到群众公认的业绩。” 调查研究是获得真知灼见的源头活水，是科学决策的重要前提，正确的决策离不开对客观实际的周密调查研究。没有调查，就没有发言权，更没有决策权。谋于前才可不惑于后。这就要求党员干部练好调查研究基本功，深入一线、深入官兵，把调查研究贯穿于决策的全过程，做到先调研后决策、不调研不决策。通过多种形式和类型的调查研究，努力掌握全面、真实、丰富、生动的第一手材料，真正把情况摸清、把问题找准、把对策提实，坚决不搞“凭经验”决策、“拍脑袋”决策、“一刀切”决策。 “顺理而举易为力，背时而动难为功。”科学决策，就是从实际出发，按照客观规律作决策。毛泽东同志说过：“我们做任何工作都必须按规律办事，否则，工作就会搞不好或者走弯路。”规律是事物之间内在的必然联系，决定着事物发展的必然趋向。各级必须掌握思想武器、吃透上情下情、加强研究论证，从客观事物存在和发展的规律出发，以科学的思想、科学的制度、科学的方法作决策，真正使决策符合实际情况、符合客观规律、符合科学精神，确保决策符合实际、务实可行。 民主集中制是我们党的根本组织原则和领导制度，是提高决策质量水平的根本保证。各级党组织应坚持党组织集体决策和走群众路线，重大决策充分发扬民主、广泛听取意见、集体研究决定，防止用行政会议代替党的会议、用传批文件方式代替党委集体研究，搞个人专断授意、“特事特办”；防止研究论证不充分、情况不明决心大，真正把官兵智慧转化为正确决策。对那些专业性较强的项目，应善于借助外脑，通过咨询技术专家、权威学者、内行官兵等，避免决策的盲目性，切实以高水平咨询评估支撑高质量决策、高效益落实。</div>
+  </details>
+  
+
+
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. <a href="../methodology.html">Methodology</a> · <a href="../archive.html">Archive</a></div>
+  </div>
+</footer>
+
+
+</body>
+</html>
