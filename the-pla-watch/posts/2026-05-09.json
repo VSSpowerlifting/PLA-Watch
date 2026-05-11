@@ -1,5 +1,5 @@
 {
-  "date": "2026-05-10",
+  "date": "2026-05-09",
   "title": "The PLA Watch: Two Defense Ministers, One Verdict",
   "dek": "Pilot edition based on three days of observed data (7–9 May 2026), not a full weekly readout. Across 42 articles from PLA Daily and affiliated outlets, the suspended death sentences against Wei Fenghe and Li Shangfu — two consecutive former defense ministers — stand apart from otherwise routine coverage.",
   "edition_type": "significant",
@@ -9,9 +9,10 @@
   "week_ending": "2026-05-09",
   "n_articles": 42,
   "n_significant": 1,
-  "cover_image": "../covers/2026-05-10.png",
-  "cover_thumb": "../covers/2026-05-10-thumb.png",
-  "cover_image_url": "https://chinamilwatch.org/the-pla-watch/covers/2026-05-10.png",
+  "days_covered": 3,
+  "cover_image": "../covers/2026-05-09.png",
+  "cover_thumb": "../covers/2026-05-09-thumb.png",
+  "cover_image_url": "https://chinamilwatch.org/the-pla-watch/covers/2026-05-09.png",
   "sources_seen": [
     "PLA Daily (81.cn)"
   ],
