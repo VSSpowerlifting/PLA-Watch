@@ -6,10 +6,13 @@
   <title>{% block title %}The PLA Watch — Weekly signals from Chinese military media{% endblock %}</title>
   <meta name="description" content="{% block meta_description %}The PLA Watch is the reader-facing weekly publication from China Mil Watch, translating Chinese military and security media into accessible analysis.{% endblock %}">
 
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ page_url | default('https://chinamilwatch.org/the-pla-watch/') }}">
+
   <!-- Open Graph -->
   <meta property="og:type"         content="{% block og_type %}website{% endblock %}">
   <meta property="og:site_name"    content="The PLA Watch">
-  <meta property="og:url"          content="{% block og_url %}https://chinamilwatch.org/the-pla-watch/{% endblock %}">
+  <meta property="og:url"          content="{{ page_url | default('https://chinamilwatch.org/the-pla-watch/') }}">
   <meta property="og:title"        content="{% block og_title %}The PLA Watch{% endblock %}">
   <meta property="og:description"  content="{% block og_description %}Weekly signals from Chinese military media. Published every Sunday by China Mil Watch.{% endblock %}">
   <meta property="og:image"        content="{% block og_image %}https://chinamilwatch.org/og-image.png{% endblock %}">

@@ -21,6 +21,7 @@ import sys
 from collections import Counter
 from datetime import datetime, timedelta
 from pathlib import Path
+from xml.sax.saxutils import escape as _xml_escape
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -164,6 +165,7 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
     (output_dir / "index.html").write_text(
         tmpl_index.render(
             root_path="",
+            page_url="https://chinamilwatch.org/",
             brief_date=brief_date,
             brief_date_fmt=_format_date(brief_date) if brief_date else "",
             articles=brief_articles,
@@ -206,6 +208,7 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
     (output_dir / "archive.html").write_text(
         tmpl_archive.render(
             root_path="",
+            page_url="https://chinamilwatch.org/archive.html",
             total_articles=len(articles),
             articles_json=json.dumps(archive_json, ensure_ascii=False),
             category_labels=CATEGORY_LABELS,
@@ -222,6 +225,7 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
         (article_dir / f"{a['id']}.html").write_text(
             tmpl_article.render(
                 root_path="../",
+                page_url=f"https://chinamilwatch.org/article/{a['id']}.html",
                 article=a,
                 generated_at=generated_at,
             ),
@@ -255,10 +259,20 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
     # ── methodology.html ──────────────────────────────────────────────────────
     tmpl_method = env.get_template("methodology.html")
     (output_dir / "methodology.html").write_text(
-        tmpl_method.render(root_path="", generated_at=generated_at),
+        tmpl_method.render(
+            root_path="",
+            page_url="https://chinamilwatch.org/methodology.html",
+            generated_at=generated_at,
+        ),
         encoding="utf-8",
     )
     logger.info("Wrote methodology.html")
+
+    # ── robots.txt ────────────────────────────────────────────────────────────
+    _generate_robots_txt(output_dir)
+
+    # ── sitemap.xml ───────────────────────────────────────────────────────────
+    _generate_sitemap_xml(output_dir, articles)
 
     logger.info("Site generated → %s", output_dir)
 
@@ -350,6 +364,7 @@ def _write_signals_page(env, output_dir: Path, articles: list[dict], generated_a
     (output_dir / "signals.html").write_text(
         tmpl.render(
             root_path="",
+            page_url="https://chinamilwatch.org/signals.html",
             stats_7d=_compute_window_stats(articles, 7),
             stats_30d=_compute_window_stats(articles, 30),
             top_categories=top_categories,
@@ -363,6 +378,43 @@ def _write_signals_page(env, output_dir: Path, articles: list[dict], generated_a
                 _compute_window_stats(articles, 7),
                 _compute_window_stats(articles, 30),
                 len(latest_significant))
+
+
+def _generate_robots_txt(output_dir: Path) -> None:
+    """Generate robots.txt for SEO."""
+    robots_content = """User-agent: *
+Allow: /
+Sitemap: https://chinamilwatch.org/sitemap.xml
+"""
+    (output_dir / "robots.txt").write_text(robots_content, encoding="utf-8")
+    logger.info("Wrote robots.txt")
+
+
+def _generate_sitemap_xml(output_dir: Path, articles: list[dict]) -> None:
+    """Generate sitemap.xml with all article pages."""
+    urls = [
+        "https://chinamilwatch.org/",
+        "https://chinamilwatch.org/archive.html",
+        "https://chinamilwatch.org/signals.html",
+        "https://chinamilwatch.org/methodology.html",
+        "https://chinamilwatch.org/the-pla-watch/",
+    ]
+
+    for article in articles:
+        urls.append(f"https://chinamilwatch.org/article/{article['id']}.html")
+
+    sitemap_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for url in urls:
+        sitemap_lines.append("  <url>")
+        sitemap_lines.append(f"    <loc>{_xml_escape(url)}</loc>")
+        sitemap_lines.append("  </url>")
+    sitemap_lines.append("</urlset>")
+
+    (output_dir / "sitemap.xml").write_text("\n".join(sitemap_lines) + "\n", encoding="utf-8")
+    logger.info("Wrote sitemap.xml (%d URLs)", len(urls))
 
 
 def _generate_og_image(output_dir: Path) -> None:

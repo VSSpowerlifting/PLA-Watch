@@ -3,6 +3,18 @@
 
 {% block title %}China Mil Watch — Daily Brief{% if brief_date_fmt %}, {{ brief_date_fmt }}{% endif %}{% endblock %}
 
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "China Mil Watch",
+  "url": "https://chinamilwatch.org/",
+  "description": "Daily-updating open-source intelligence tool that monitors Chinese-language military and security media, translates to English, and produces analytical summaries."
+}
+</script>
+{% endblock %}
+
 {% block extra_styles %}
 /* ── Brief layout (main + sidebar) ───────────────────────────────── */
 .brief-layout {
@@ -337,7 +349,7 @@
         </div>
         {% endif %}
         <div class="sidebar-stat">
-          <span class="label">Sources monitored</span>
+          <span class="label">Sources with articles</span>
           <span class="value">{{ n_sources if (n_sources is defined and n_sources > 0) else '—' }}</span>
         </div>
         <div class="sidebar-stat">

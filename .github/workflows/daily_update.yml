@@ -79,7 +79,7 @@ jobs:
         if: steps.timecheck.outputs.should_run == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python pipeline.py --source pla_daily
+        run: python pipeline.py
 
       # ── 6. Commit DB + site output back to main ────────────────────────────
       #

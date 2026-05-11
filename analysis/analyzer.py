@@ -118,7 +118,7 @@ class Analyzer:
                 cleaned = raw[start : end + 1]
 
         try:
-            return json.loads(cleaned)
+            return json.loads(cleaned, strict=False)
         except json.JSONDecodeError as exc:
             # TODO (v2): Replace this regex approach with the Anthropic API's
             # native structured output / tool-use mode, which enforces a JSON

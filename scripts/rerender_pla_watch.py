@@ -162,6 +162,10 @@ def _build_post_context(sidecar: dict) -> dict:
         "author_links": sidecar.get("author_links", AUTHOR_LINKS),
 
         "root_path": "../../",
+        "page_url": (
+            f"https://chinamilwatch.org/the-pla-watch/posts/{sidecar.get('date', '')}.html"
+            if sidecar.get("date") else "https://chinamilwatch.org/the-pla-watch/"
+        ),
     }
 
 
@@ -226,12 +230,16 @@ def main() -> int:
     archive_posts = sidecars[1:] if len(sidecars) > 1 else []
 
     index_html = index_tmpl.render(
-        latest_post=latest, archive_posts=archive_posts, root_path="../"
+        latest_post=latest, archive_posts=archive_posts, root_path="../",
+        page_url="https://chinamilwatch.org/the-pla-watch/",
     )
     (PLA_WATCH_DIR / "index.html").write_text(index_html, encoding="utf-8")
     print(f"Wrote {(PLA_WATCH_DIR / 'index.html').relative_to(ROOT)}")
 
-    archive_html = archive_tmpl.render(posts=sidecars, root_path="../")
+    archive_html = archive_tmpl.render(
+        posts=sidecars, root_path="../",
+        page_url="https://chinamilwatch.org/the-pla-watch/archive.html",
+    )
     (PLA_WATCH_DIR / "archive.html").write_text(archive_html, encoding="utf-8")
     print(f"Wrote {(PLA_WATCH_DIR / 'archive.html').relative_to(ROOT)}")
 

@@ -9,8 +9,11 @@ or analysis should read this document first.
 
 ## 1. Source Selection
 
-PLA Watch monitors five publicly accessible sources.  Each was selected for a
-distinct analytical purpose.
+China Mil Watch currently centers production coverage on PLA Daily and is
+configured for expansion across additional publicly accessible official and
+state-linked sources, including MND, China Military Online, Global Times
+Military, and Xinhua Military. Each source was selected for a distinct
+analytical purpose.
 
 | Source | Language | Purpose |
 |--------|----------|---------|
@@ -32,6 +35,14 @@ This means: **the absence of coverage is as analytically significant as the
 presence of it.**  What the PLA chooses to publicize—exercises, weapons
 demonstrations, personnel changes, doctrinal statements—is a deliberate act of
 signaling.  What it omits is equally deliberate.
+
+### Coverage Status
+
+China Mil Watch currently monitors PLA Daily and is being expanded across
+additional official and state-linked sources including MND, China Military
+Online, Global Times Military, and Xinhua Military. Some sources may return
+zero articles on a given day; Xinhua Military remains in development because
+its listings are JavaScript/API-rendered.
 
 ### What these sources are not
 

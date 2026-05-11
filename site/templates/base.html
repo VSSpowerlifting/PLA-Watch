@@ -4,26 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}China Mil Watch — Open-Source Intelligence on Chinese Military and Security Developments{% endblock %}</title>
-  <meta name="description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="description" content="{% block meta_description %}Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.{% endblock %}">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ page_url | default('https://chinamilwatch.org/') }}">
 
   <!-- Open Graph -->
-  <meta property="og:type"         content="website">
+  <meta property="og:type"         content="{% block og_type %}website{% endblock %}">
   <meta property="og:site_name"    content="China Mil Watch">
-  <meta property="og:url"          content="https://chinamilwatch.org">
-  <meta property="og:title"        content="China Mil Watch">
-  <meta property="og:description"  content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta property="og:url"          content="{{ page_url | default('https://chinamilwatch.org/') }}">
+  <meta property="og:title"        content="{% block og_title %}China Mil Watch{% endblock %}">
+  <meta property="og:description"  content="{% block og_description %}Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.{% endblock %}">
   <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="China Mil Watch">
-  <meta name="twitter:description" content="Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.">
+  <meta name="twitter:title"       content="{% block twitter_title %}China Mil Watch{% endblock %}">
+  <meta name="twitter:description" content="{% block twitter_description %}Daily-updating open-source intelligence tool that monitors Chinese-language military and security media. Translates from Mandarin and produces analytical summaries categorized across fourteen topic areas including Taiwan, South China Sea, modernization, and military diplomacy.{% endblock %}">
   <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
 
   <link rel="icon" type="image/png" href="{{ root_path }}logo-icon.png">
   <link rel="apple-touch-icon" href="{{ root_path }}logo-icon.png">
+
+  <!-- JSON-LD Structured Data -->
+{% block json_ld %}{% endblock %}
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

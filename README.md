@@ -12,11 +12,15 @@ classified information.  All source material is publicly available.
 
 ## What It Does
 
-PLA Watch scrapes five Chinese state media outlets daily, filters content for
-military and security relevance, translates Chinese-language articles to
-English, generates analytic summaries, and flags items of unusual significance.
+China Mil Watch currently monitors PLA Daily and is configured for expansion
+across additional official and state-linked sources including MND, China Military
+Online, Global Times Military, and Xinhua Military. It filters content for
+relevance, translates Chinese-language articles to English, generates analytic
+summaries, and flags items of unusual significance.
 Results are stored in a local SQLite database and published as a static site
-suitable for hosting on GitHub Pages.
+suitable for hosting on GitHub Pages. Some sources may return zero articles on
+a given day; Xinhua Military remains in development because its listings are
+JavaScript/API-rendered.
 
 The tool is designed to reduce the friction of monitoring official Chinese
 military media for analysts, researchers, and students who cannot read

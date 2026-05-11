@@ -3,6 +3,16 @@
 
 {% block title %}{{ article.title_english or article.title_original }} — China Mil Watch{% endblock %}
 
+{% set _article_title = article.title_english or article.title_original %}
+{% set _article_desc  = (article.summary_english or "")[:200] %}
+
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ _article_title }}{% endblock %}
+{% block og_description %}{{ _article_desc }}{% endblock %}
+{% block twitter_title %}{{ _article_title }}{% endblock %}
+{% block twitter_description %}{{ _article_desc }}{% endblock %}
+{% block meta_description %}{{ _article_desc }}{% endblock %}
+
 {% block extra_styles %}
 .article-page {
   max-width: 740px;
