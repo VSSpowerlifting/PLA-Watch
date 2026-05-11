@@ -54,6 +54,14 @@ CATEGORY_LABELS: dict[str, str] = {
     "political_work":     "Political Work",
 }
 
+CONFIGURED_SOURCES: list[dict[str, str]] = [
+    {"slug": "pla_daily", "name": "PLA Daily", "fallback": "configured / expanding"},
+    {"slug": "global_times_mil", "name": "Global Times Defense", "fallback": "configured / expanding"},
+    {"slug": "mod_china", "name": "MND", "fallback": "configured / expanding"},
+    {"slug": "china_mil_online", "name": "China Military Online", "fallback": "configured / expanding"},
+    {"slug": "xinhua_mil", "name": "Xinhua Military", "fallback": "in development"},
+]
+
 # Lower number = higher priority; used to sort articles by category
 _CATEGORY_PRIORITY: dict[str, int] = {
     "taiwan":             1,
@@ -117,6 +125,88 @@ def _row_to_dict(row) -> dict:
     return d
 
 
+def _homepage_excerpt(text: str, limit: int = 300) -> str:
+    """Display-only excerpt for homepage cards; does not alter stored summaries."""
+    text = " ".join((text or "").split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(" ,;:")
+    return f"{cut}..."
+
+
+def _dominant_category_labels(articles: list[dict], max_items: int = 3) -> list[str]:
+    counter: Counter = Counter()
+    for a in articles:
+        if a.get("extraction_issue"):
+            continue
+        for slug in a.get("categories", []) or []:
+            counter[slug] += 1
+    return [CATEGORY_LABELS.get(slug, slug) for slug, _ in counter.most_common(max_items)]
+
+
+def _make_daily_readout(articles: list[dict]) -> dict:
+    normal = [a for a in articles if not a.get("extraction_issue")]
+    significant = [a for a in normal if a.get("is_significant")]
+    routine = [a for a in normal if not a.get("is_significant")]
+    dominant = _dominant_category_labels(normal)
+    sig_categories = _dominant_category_labels(significant)
+    routine_categories = _dominant_category_labels(routine)
+
+    if not normal:
+        overview = (
+            "Today’s monitored coverage did not produce enough clean article text for a clear single analytical signal. "
+            "The brief should be read article-by-article, with collection notes separated from normal analysis."
+        )
+        mattered = "No clean analytical signal identified."
+        routine_line = "Collection quality limited normal triage."
+    elif significant:
+        pattern = ", ".join(sig_categories) if sig_categories else "higher-signal coverage"
+        overview = (
+            f"Today’s monitored coverage produced {len(significant)} analytical signal"
+            f"{'' if len(significant) == 1 else 's'}, concentrated in {pattern}. "
+            "The signal should be read as official institutional messaging, not evidence of classified activity or confirmed intent."
+        )
+        mattered = "; ".join((a.get("title_english") or a.get("title_original") or "Untitled") for a in significant[:2])
+        routine_line = (
+            f"Most other clean items centered on {', '.join(routine_categories)}."
+            if routine_categories else "Other clean items were lower-signal or routine."
+        )
+    else:
+        pattern = ", ".join(dominant) if dominant else "routine official military-media themes"
+        overview = (
+            f"Today’s official military-media coverage appears mostly routine, centered on {pattern}. "
+            "No single item indicates a major new operational development in the collected material."
+        )
+        mattered = "No article was flagged as an analytical signal."
+        routine_line = f"Dominant categories: {pattern}."
+
+    watch_cats = sig_categories or dominant
+    watch = (
+        f"Watch whether {', '.join(watch_cats[:2])} themes recur across multiple sources or senior-level placements."
+        if watch_cats else
+        "Watch for repeated themes across multiple sources or senior-level placements."
+    )
+    return {
+        "overview": overview,
+        "what_mattered": mattered,
+        "what_was_routine": routine_line,
+        "what_to_watch": watch,
+    }
+
+
+def _make_source_statuses(articles: list[dict]) -> list[dict]:
+    collected = Counter(a.get("source_slug") for a in articles if a.get("source_slug"))
+    statuses = []
+    for src in CONFIGURED_SOURCES:
+        count = collected.get(src["slug"], 0)
+        if count:
+            status = "articles collected"
+        else:
+            status = src["fallback"]
+        statuses.append({"name": src["name"], "status": status, "count": count})
+    return statuses
+
+
 # ── Jinja2 setup ──────────────────────────────────────────────────────────────
 
 def _make_env() -> Environment:
@@ -128,6 +218,7 @@ def _make_env() -> Environment:
         lstrip_blocks=True,
     )
     env.filters["format_date"] = _format_date
+    env.filters["homepage_excerpt"] = _homepage_excerpt
     return env
 
 
@@ -178,6 +269,9 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
 
     # Count unique sources for the brief
     brief_sources = len({a["source_slug"] for a in brief_articles})
+    daily_readout = _make_daily_readout(brief_articles)
+    source_statuses = _make_source_statuses(brief_articles)
+    recent_signals = [a for a in articles if a.get("is_significant") and not a.get("extraction_issue")][:3]
 
     tmpl_index = env.get_template("index.html")
     (output_dir / "index.html").write_text(
@@ -189,6 +283,9 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
             articles=brief_articles,
             n_significant=n_significant,
             n_sources=brief_sources,
+            daily_readout=daily_readout,
+            source_statuses=source_statuses,
+            recent_signals=recent_signals,
             generated_at=generated_at,
         ),
         encoding="utf-8",

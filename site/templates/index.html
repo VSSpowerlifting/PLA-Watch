@@ -83,14 +83,17 @@
   border-radius: 4px;
   padding: 1.5rem 1.75rem;
   position: relative;
+  box-shadow: 0 1px 2px rgba(28, 25, 23, 0.025);
   transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
 }
 .article-card:hover {
   border-color: #D4D0C7;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 18px rgba(28, 25, 23, 0.055);
 }
 .article-card.significant {
   border-left: 3px solid var(--color-brand);
+  border-top-color: #D7B6B0;
+  box-shadow: 0 8px 22px rgba(127, 29, 29, 0.07);
   padding-left: calc(1.75rem - 2px);
 }
 
@@ -115,15 +118,74 @@
 }
 
 .article-summary {
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 0.9rem;
+  line-height: 1.62;
   color: var(--color-text-secondary);
   margin-bottom: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.signal-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #E7C2BC;
+  color: var(--color-brand);
+  background: #FFF8F6;
+  border-radius: 2px;
+  padding: 0.16rem 0.42rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Analyst readout ─────────────────────────────────────────────── */
+.analyst-readout {
+  background: linear-gradient(180deg, #fff 0%, var(--color-bg-card) 100%);
+  border: 1px solid #D8D1C6;
+  border-top: 3px solid var(--color-brand);
+  border-radius: 4px;
+  padding: 1.35rem 1.55rem 1.25rem;
+  margin-bottom: 1.35rem;
+  box-shadow: 0 10px 26px rgba(28, 25, 23, 0.055);
+}
+.readout-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.7rem;
+}
+.readout-overview {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  line-height: 1.55;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+.readout-lines {
+  display: grid;
+  gap: 0.55rem;
+}
+.readout-line {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0.85rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--color-border-soft);
+  font-size: 0.825rem;
+  line-height: 1.5;
+}
+.readout-label {
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.readout-text { color: var(--color-text-secondary); }
 
 .article-footer {
   display: flex;
@@ -255,6 +317,69 @@
   letter-spacing: 0.04em;
 }
 
+.source-status-list,
+.signal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.source-status-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.source-status-row:last-child { border-bottom: none; padding-bottom: 0; }
+.source-status-name {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+.status-badge {
+  align-self: flex-start;
+  white-space: nowrap;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: 0.12rem 0.35rem;
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  background: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.status-badge.active {
+  border-color: #E7C2BC;
+  color: var(--color-brand);
+  background: #FFF8F6;
+}
+.sidebar-note,
+.signal-empty {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin-top: 0.85rem;
+}
+.signal-item {
+  border-bottom: 1px solid var(--color-border-soft);
+  padding-bottom: 0.65rem;
+}
+.signal-item:last-child { border-bottom: none; padding-bottom: 0; }
+.signal-date {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+.signal-title {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.signal-title a { color: var(--color-text-secondary); text-decoration: none; }
+.signal-title a:hover { color: var(--color-brand); }
+
 /* ── How to read note ────────────────────────────────────────────── */
 .brief-context-note {
   font-size: 0.8rem;
@@ -363,13 +488,26 @@
     {% set normal_articles = articles | rejectattr('extraction_issue') | list %}
     {% set issue_articles = articles | selectattr('extraction_issue') | list %}
 
+    {% if daily_readout %}
+    <section class="analyst-readout" aria-labelledby="analyst-readout-heading">
+      <div class="readout-eyebrow" id="analyst-readout-heading">ANALYST READOUT</div>
+      <div class="readout-overview">{{ daily_readout.overview }}</div>
+      <div class="readout-lines">
+        <div class="readout-line"><span class="readout-label">What mattered</span><span class="readout-text">{{ daily_readout.what_mattered }}</span></div>
+        <div class="readout-line"><span class="readout-label">What was routine</span><span class="readout-text">{{ daily_readout.what_was_routine }}</span></div>
+        <div class="readout-line"><span class="readout-label">What to watch</span><span class="readout-text">{{ daily_readout.what_to_watch }}</span></div>
+      </div>
+    </section>
+    {% endif %}
+
     {% if normal_articles %}
       <div class="article-list">
         {% for a in normal_articles %}
         <article class="article-card{% if a.is_significant %} significant{% endif %}">
 
-          {% if a.category_labels %}
+          {% if a.category_labels or a.is_significant %}
             <div class="tags">
+              {% if a.is_significant %}<span class="signal-badge">Analytical Signal</span>{% endif %}
               {% for label in a.category_labels %}
                 <span class="tag">{{ label }}</span>
               {% endfor %}
@@ -385,7 +523,7 @@
           {% endif %}
 
           {% if a.summary_english %}
-            <div class="article-summary">{{ a.summary_english }}</div>
+            <div class="article-summary">{{ a.summary_english | homepage_excerpt }}</div>
           {% endif %}
 
           <div class="article-footer">
@@ -453,9 +591,38 @@
     <a href="{{ root_path }}the-pla-watch/index.html" class="sidebar-cta">
       <span class="cta-eyebrow">Companion publication</span>
       <span class="cta-title">The PLA Watch</span>
-      <span class="cta-desc">Weekly synthesis of the daily signals — published every Sunday.</span>
+      <span class="cta-desc">Weekly synthesis of the daily signals — reviewed weekly synthesis.</span>
       <span class="cta-arrow">Read more →</span>
     </a>
+
+    <div class="sidebar-card">
+      <div class="sidebar-eyebrow">Source Status</div>
+      <div class="source-status-list">
+        {% for s in source_statuses %}
+        <div class="source-status-row">
+          <span class="source-status-name">{{ s.name }}</span>
+          <span class="status-badge{% if s.count %} active{% endif %}">{{ s.status }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="sidebar-note">Source coverage reflects articles successfully collected and analyzed for this date. Additional configured sources remain in expansion or verification.</div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-eyebrow">Recent Analytical Signals</div>
+      {% if recent_signals %}
+      <div class="signal-list">
+        {% for a in recent_signals %}
+        <div class="signal-item">
+          <div class="signal-date">{{ a.published_date_fmt }}</div>
+          <div class="signal-title"><a href="article/{{ a.id }}.html">{{ a.title_english or a.title_original }}</a></div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="signal-empty">No recent analytical signals in the current archive window.</div>
+      {% endif %}
+    </div>
 
   </aside>
 
