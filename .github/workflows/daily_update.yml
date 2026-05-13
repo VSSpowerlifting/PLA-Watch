@@ -6,7 +6,7 @@ on:
     #   EDT (UTC-4): 12:00 UTC  |  EST (UTC-5): 13:00 UTC
     # We fire at :17 and :47 past each of those hours, plus a safety
     # window at 14:17 UTC, avoiding GitHub's top-of-hour load spikes.
-    # A runtime window guard (8:00–10:30 NY) and a once-per-day state
+    # A runtime window guard (≥08:00 NY) and a once-per-day state
     # file ensure the pipeline runs at most once per calendar day.
     - cron: '17,47 12 * * *'
     - cron: '17,47 13 * * *'
@@ -37,7 +37,7 @@ jobs:
 
       # ── 2. Scheduling guard ────────────────────────────────────────────────
       # Manual dispatch: always run.
-      # Scheduled: run only if NY time is 08:00–10:30 AND today has not
+      # Scheduled: run only if NY time is at or after 08:00 AND today has not
       # already succeeded (tracked in .github/state/last_daily_run_date.txt).
       - name: Scheduling guard
         id: timecheck
@@ -49,8 +49,6 @@ jobs:
 
           STATE_FILE        = ".github/state/last_daily_run_date.txt"
           WINDOW_START_HOUR = 8
-          WINDOW_END_HOUR   = 10
-          WINDOW_END_MINUTE = 30
 
           event     = os.environ.get("GITHUB_EVENT_NAME", "")
           now       = datetime.now(ZoneInfo("America/New_York"))
@@ -65,33 +63,27 @@ jobs:
           except FileNotFoundError:
               pass
 
-          in_window = (
-              now.hour >= WINDOW_START_HOUR
-              and (
-                  now.hour < WINDOW_END_HOUR
-                  or (now.hour == WINDOW_END_HOUR and now.minute <= WINDOW_END_MINUTE)
-              )
-          )
+          after_start = now.hour >= WINDOW_START_HOUR
 
           print(f"GitHub event:        {event}")
           print(f"New York time:       {now:%Y-%m-%d %H:%M:%S %Z}")
           print(f"Is manual dispatch:  {is_manual}")
-          print(f"Inside 08:00-10:30:  {in_window}")
+          print(f"At or after 08:00:   {after_start}")
           print(f"Last run date:       {last_run!r}")
           print(f"Today (NY):          {today_str}")
 
           if is_manual:
               should_run = "true"
               reason = "manual dispatch — skipping all guards"
-          elif not in_window:
-              should_run = "false"
-              reason = f"NY time {now:%H:%M} is outside 08:00-10:30 window"
           elif last_run == today_str:
               should_run = "false"
               reason = f"already ran successfully today ({today_str})"
+          elif not after_start:
+              should_run = "false"
+              reason = f"NY time {now:%H:%M} is before 08:00"
           else:
               should_run = "true"
-              reason = f"NY time {now:%H:%M} is inside window and today has not yet run"
+              reason = f"NY time {now:%H:%M} is at or after 08:00 and today has not yet run"
 
           print(f"Decision:            should_run={should_run}")
           print(f"Reason:              {reason}")
