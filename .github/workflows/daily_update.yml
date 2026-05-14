@@ -37,8 +37,8 @@ jobs:
 
       # ── 2. Scheduling guard ────────────────────────────────────────────────
       # Manual dispatch: always run.
-      # Scheduled: run only if NY time is at or after 08:00 AND today has not
-      # already succeeded (tracked in .github/state/last_daily_run_date.txt).
+      # Scheduled: run once per NY calendar day (tracked in last_daily_run_date.txt).
+      # No time-of-day window — late cron fires still update the site.
       - name: Scheduling guard
         id: timecheck
         run: |
@@ -48,8 +48,6 @@ jobs:
           from zoneinfo import ZoneInfo
 
           STATE_FILE        = ".github/state/last_daily_run_date.txt"
-          WINDOW_START_HOUR = 8
-
           event     = os.environ.get("GITHUB_EVENT_NAME", "")
           now       = datetime.now(ZoneInfo("America/New_York"))
           today_str = now.strftime("%Y-%m-%d")
@@ -63,12 +61,9 @@ jobs:
           except FileNotFoundError:
               pass
 
-          after_start = now.hour >= WINDOW_START_HOUR
-
           print(f"GitHub event:        {event}")
           print(f"New York time:       {now:%Y-%m-%d %H:%M:%S %Z}")
           print(f"Is manual dispatch:  {is_manual}")
-          print(f"At or after 08:00:   {after_start}")
           print(f"Last run date:       {last_run!r}")
           print(f"Today (NY):          {today_str}")
 
@@ -78,12 +73,9 @@ jobs:
           elif last_run == today_str:
               should_run = "false"
               reason = f"already ran successfully today ({today_str})"
-          elif not after_start:
-              should_run = "false"
-              reason = f"NY time {now:%H:%M} is before 08:00"
           else:
               should_run = "true"
-              reason = f"NY time {now:%H:%M} is at or after 08:00 and today has not yet run"
+              reason = f"today ({today_str}) has not yet run"
 
           print(f"Decision:            should_run={should_run}")
           print(f"Reason:              {reason}")
