@@ -234,6 +234,23 @@ def get_articles_pending_analysis() -> list[sqlite3.Row]:
         ).fetchall()
 
 
+def get_articles_unscored() -> list[sqlite3.Row]:
+    """
+    Return articles inserted by a prior run that never reached LLM relevance
+    scoring (passed_relevance IS NULL).  This happens when the API was
+    unavailable during the run that scraped them.
+    """
+    with get_conn() as conn:
+        return conn.execute(
+            """
+            SELECT id, url, title_original, text_original
+              FROM articles
+             WHERE passed_relevance IS NULL
+             ORDER BY id
+            """
+        ).fetchall()
+
+
 # ── Site-generation bulk fetch ────────────────────────────────────────────────
 
 def get_all_analyzed_articles() -> list[sqlite3.Row]:

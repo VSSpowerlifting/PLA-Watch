@@ -156,6 +156,8 @@ def run(
         for aid, a in inserted
     ]
 
+    inserted_ids = {aid for aid, _ in inserted}
+
     pending_rows = db.get_articles_pending_analysis()
     pending: list[tuple[int, str, str, str]] = [
         (r["id"],
@@ -163,13 +165,30 @@ def run(
          r["text_original"]  or "",
          r["url"]            or "?")
         for r in pending_rows
+        if r["id"] not in inserted_ids
+    ]
+
+    # Articles inserted by a prior run that never reached LLM relevance scoring
+    # (API was down).  Exclude any already in the queue.
+    queued_ids = inserted_ids | {aid for aid, *_ in pending}
+    unscored_rows = db.get_articles_unscored()
+    unscored: list[tuple[int, str, str, str]] = [
+        (r["id"],
+         r["title_original"] or "",
+         r["text_original"]  or "",
+         r["url"]            or "?")
+        for r in unscored_rows
+        if r["id"] not in queued_ids
     ]
 
     logger.info(
-        "Analysis stage: %d newly stored, %d pending from prior run, %d total to analyze",
-        len(queue), len(pending), len(queue) + len(pending),
+        "Analysis stage: %d newly stored, %d pending from prior run, "
+        "%d unscored from prior run, %d total to analyze",
+        len(queue), len(pending), len(unscored),
+        len(queue) + len(pending) + len(unscored),
     )
     queue.extend(pending)
+    queue.extend(unscored)
 
     if not ANTHROPIC_API_KEY:
         logger.warning(

@@ -137,15 +137,13 @@ jobs:
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
           commit_message: 'Deploy: ${{ github.run_id }}'
 
-      # ── 8. Record successful run (scheduled only) ──────────────────────────
+      # ── 8. Record successful run ───────────────────────────────────────────
       # Written here — after deploy — so a deploy failure does not mark today
       # as done. Steps run with implicit success() so this is skipped if any
-      # earlier step failed. Manual runs skip this entirely so a mid-day
-      # manual trigger never blocks the next morning's automatic run.
-      - name: Record successful scheduled run
-        if: >
-          steps.timecheck.outputs.should_run == 'true' &&
-          github.event_name != 'workflow_dispatch'
+      # earlier step failed. Both scheduled and manual runs write the state
+      # file so a successful manual run prevents a duplicate scheduled run.
+      - name: Record successful run
+        if: steps.timecheck.outputs.should_run == 'true'
         env:
           TODAY_NY: ${{ steps.timecheck.outputs.today_ny }}
         run: |
