@@ -241,7 +241,6 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
             shutil.copy2(src, output_dir / asset)
 
     env = _make_env()
-    generated_at = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
 
     # ── Load all articles ─────────────────────────────────────────────────────
     rows = get_all_analyzed_articles()
@@ -264,6 +263,9 @@ def generate_site(output_dir: Path = OUTPUT_DIR) -> None:
 
     # ── index.html ────────────────────────────────────────────────────────────
     brief_date = dates_sorted[0] if dates_sorted else None
+    # Tie generated_at to the data date so re-runs with unchanged DB produce
+    # identical HTML — prevents cosmetic "Daily update" commits with no new content.
+    generated_at = brief_date if brief_date else datetime.utcnow().strftime("%Y-%m-%d")
     brief_articles = by_date.get(brief_date, []) if brief_date else []
     n_significant = sum(1 for a in brief_articles if a["is_significant"])
 

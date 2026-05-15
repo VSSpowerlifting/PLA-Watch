@@ -226,6 +226,13 @@ def run(
                     )
 
     # ── Stage 13: Close run record ────────────────────────────────────────────
+    analysis_attempted = len(queue) > 0 and ANTHROPIC_API_KEY
+    total_analysis_failed = (
+        analysis_attempted
+        and articles_analyzed == 0
+        and any("Analysis failed entirely" in e for e in errors)
+    )
+
     if run_id is not None:
         db.complete_scrape_run(
             run_id,
@@ -239,6 +246,14 @@ def run(
     db_total = db.get_total_analyzed_count() if not dry_run else 0
     _print_summary(all_scraped, new_articles, kw_passed, inserted, errors, dry_run,
                    articles_analyzed=articles_analyzed, db_total=db_total, elapsed=elapsed)
+
+    if total_analysis_failed:
+        logger.error(
+            "FATAL: %d article(s) queued for analysis but zero succeeded — "
+            "API or billing failure. Exiting nonzero to block state-file update and deploy.",
+            len(queue),
+        )
+        sys.exit(2)
 
     # ── Stage 14: Generate site ───────────────────────────────────────────────
     if not dry_run:

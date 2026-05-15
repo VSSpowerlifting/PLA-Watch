@@ -151,13 +151,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
           mkdir -p .github/state
           echo "$TODAY_NY" > .github/state/last_daily_run_date.txt
           git add .github/state/last_daily_run_date.txt
           if git diff --cached --quiet; then
             echo "State file already up to date."
           else
-            git pull --rebase origin main
-            git commit -m "State: mark ${TODAY_NY} complete"
-            git push
+            git commit -m "State: mark daily run ${TODAY_NY}"
+            git push origin main
           fi
