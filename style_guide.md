@@ -145,10 +145,9 @@ If an abstract concept is necessary, tie it immediately to a concrete actor, ins
 
 ## Analytical verbs
 
-Prefer careful verbs:
+Prefer careful verbs (vary — do not default to the same one):
 
 - suggests
-- signals
 - frames
 - emphasizes
 - points to
@@ -158,6 +157,13 @@ Prefer careful verbs:
 - should be read as
 - helps explain
 - does not by itself prove
+- documents
+- confirms
+- is consistent with
+- complicates the picture
+- extends an established pattern
+- runs counter to
+- raises the question of
 
 Avoid overclaiming verbs:
 
@@ -358,7 +364,7 @@ Avoid:
 
 Use these only when they genuinely help:
 
-- signal
+- signal / signals — overused as a second-sentence opener; find the more specific verb
 - framing
 - discipline
 - deterrence

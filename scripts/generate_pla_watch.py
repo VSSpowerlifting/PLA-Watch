@@ -89,9 +89,13 @@ PARAGRAPH STRUCTURE (preferred)
 3. Analytical interpretation.
 4. Limiting sentence.
 
-ANALYTICAL VERBS (use these)
-suggests / signals / frames / emphasizes / points to / fits a pattern / makes visible /
-should be read as / helps explain / does not by itself prove
+ANALYTICAL VERBS (vary across these — do not default to the same one each time)
+suggests / frames / emphasizes / points to / fits a pattern / makes visible /
+should be read as / helps explain / does not by itself prove / documents / confirms /
+is consistent with / complicates the picture / extends an established pattern /
+runs counter to / is the first public acknowledgment of / raises the question of
+Note: "signals" is reserved for cases where it is the genuinely precise word; it is
+overused as a default and should be displaced by one of the more specific alternatives above.
 
 OVERCLAIMING VERBS (avoid)
 proves / confirms / exposes / reveals the truth / marks a turning point / changes everything
@@ -241,7 +245,14 @@ TOOL_SCHEMA = {
             },
             "what_was_routine": {
                 "type": "string",
-                "description": "What appeared normal, repetitive, or not worth overreading.",
+                "description": (
+                    "What appeared normal, repetitive, or not worth overreading — and why. "
+                    "Do not list items. Pick 1–2 and explain specifically what makes them routine: "
+                    "what established PLA Daily pattern they fit, what baseline they extend, "
+                    "what the article is trying to accomplish institutionally versus what it actually shows. "
+                    "Routine coverage is more useful when the reader understands the category of routine, "
+                    "not just the label."
+                ),
             },
             "term_to_know_term": {
                 "type": "string",

@@ -158,17 +158,27 @@ SUMMARY_SCHEMA: dict[str, Any] = {
 def build_summary_messages(title_en: str, body_en: str) -> list[dict]:
     """Generate a two-to-three sentence analytic summary for a policy audience."""
     user_content = f"""\
-Write a two to three sentence analytic summary of the article in the voice of a \
-Council on Foreign Relations analyst writing for a policy audience.
+Write a two to three sentence analytic summary for a U.S. national security analyst \
+tracking Chinese military media. The prose should be direct and specific, not \
+institutional in register.
 
 The first sentence reports what the article says: who did what, when, where, and at \
 what scale. Be concrete and specific. Use named units, named officials, and named \
 locations where the article provides them.
 
-The second (and optional third) sentence states what the report signals or what it is \
-useful for understanding: a shift in posture, a continuation or break from an established \
-pattern, a reveal about capability or intent, a piece of evidence on an open analytic \
-question, or a gap that someone is trying to fill.
+The second (and optional third) sentence answers: what concrete institutional or \
+military problem does this article make visible? What specific pattern does it fit, \
+break, or document? Name the problem before naming the pattern. Prefer specific verbs \
+over generic ones: records, documents, demonstrates, shows, confirms, reveals, fits, \
+breaks, extends, complicates, raises the question of. Do not default to "signals."
+
+If the article is genuinely routine, name the specific category of routine and its \
+narrow use — e.g., "This is a quarterly readiness assessment; it documents the \
+detachment's training cycle but does not indicate changed posture." or "This is \
+standard political work content; its value is as a record of how the institution \
+frames loyalty to junior officers, not as evidence of a new policy line." Do not use \
+the phrase "contains no new information." Say specifically what kind of baseline the \
+article provides.
 
 Voice and style:
 
@@ -178,10 +188,9 @@ Avoid hedging language ("it appears," "it could be argued," "this may suggest," 
 "potentially") unless the underlying uncertainty is genuine and material.
 Avoid meta-language. Do not begin with "This article reports" or "The piece discusses." \
 Start with the substance.
-If the article is genuinely routine and signals nothing beyond itself, say so directly \
-rather than manufacturing significance. A summary that ends "The announcement follows \
-a standard pattern and contains no new information" is more useful than one that \
-invents an angle.
+Do not use "signals" or "reflects continued" as default second-sentence openers — they \
+are overused across this corpus and flatten distinct articles into the same register. \
+Find the more specific verb.
 
 Length: two to three sentences. Do not exceed three.
 Return only the raw JSON object with one field: "summary" (string). Do not wrap the \
