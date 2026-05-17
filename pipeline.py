@@ -34,7 +34,7 @@ import sys
 from datetime import date, datetime
 from typing import Optional
 
-from config import ANTHROPIC_API_KEY, CACHE_DIR, DB_PATH, OUTPUT_DIR
+from config import ANTHROPIC_API_KEY, CACHE_DIR, DAILY_ANALYSIS_CAP, DB_PATH, OUTPUT_DIR, ANALYSIS_MODEL, RELEVANCE_MODEL
 from processing.dedup import dedup_articles
 from processing.deduplicator import deduplicate
 from processing.metadata import normalize_article
@@ -74,13 +74,21 @@ SCRAPERS = {
 # ── Pipeline ──────────────────────────────────────────────────────────────────
 
 def run(
-    sources:     list[str],
-    target_date: date,
-    dry_run:     bool = False,
+    sources:         list[str],
+    target_date:     date,
+    dry_run:         bool = False,
+    process_backlog: bool = False,
 ) -> None:
     start_time = datetime.now()
     logger.info("=== PLA Watch pipeline — %s ===", target_date.isoformat())
-    logger.info("Sources: %s | dry-run: %s", sources, dry_run)
+    logger.info(
+        "Sources: %s | dry-run: %s | process-backlog: %s",
+        sources, dry_run, process_backlog,
+    )
+    logger.info(
+        "Models: relevance=%s  analysis=%s  | cap=%d",
+        RELEVANCE_MODEL, ANALYSIS_MODEL, DAILY_ANALYSIS_CAP,
+    )
     if dry_run:
         logger.info("DRY RUN — no DB writes, no API calls")
 
@@ -124,6 +132,8 @@ def run(
     if dry_run:
         _print_summary(all_scraped, new_articles, kw_passed, [], [], dry_run)
         return
+
+
 
     # ── Stage 7–8: Store articles ─────────────────────────────────────────────
     inserted: list[tuple[int, dict]] = []   # (article_id, article)
@@ -181,14 +191,33 @@ def run(
         if r["id"] not in queued_ids
     ]
 
-    logger.info(
-        "Analysis stage: %d newly stored, %d pending from prior run, "
-        "%d unscored from prior run, %d total to analyze",
-        len(queue), len(pending), len(unscored),
-        len(queue) + len(pending) + len(unscored),
-    )
-    queue.extend(pending)
-    queue.extend(unscored)
+    skipped_backlog = 0
+    if process_backlog:
+        queue.extend(pending)
+        queue.extend(unscored)
+        logger.info(
+            "Analysis stage: %d newly stored + %d pending + %d unscored = %d total "
+            "(--process-backlog active)",
+            len(queue) - len(pending) - len(unscored),
+            len(pending), len(unscored),
+            len(queue),
+        )
+    else:
+        skipped_backlog = len(pending) + len(unscored)
+        logger.info(
+            "Analysis stage: %d newly stored | skipping %d backlog articles "
+            "(pass --process-backlog to include them)",
+            len(queue), skipped_backlog,
+        )
+
+    pre_cap = len(queue)
+    if len(queue) > DAILY_ANALYSIS_CAP:
+        logger.warning(
+            "Queue has %d articles; capping to %d (DAILY_ANALYSIS_CAP). "
+            "Set env var DAILY_ANALYSIS_CAP=N or pass --process-backlog to adjust.",
+            pre_cap, DAILY_ANALYSIS_CAP,
+        )
+        queue = queue[:DAILY_ANALYSIS_CAP]
 
     if not ANTHROPIC_API_KEY:
         logger.warning(
@@ -264,14 +293,18 @@ def run(
     elapsed = (datetime.now() - start_time).total_seconds()
     db_total = db.get_total_analyzed_count() if not dry_run else 0
     _print_summary(all_scraped, new_articles, kw_passed, inserted, errors, dry_run,
-                   articles_analyzed=articles_analyzed, db_total=db_total, elapsed=elapsed)
+                   articles_analyzed=articles_analyzed, db_total=db_total, elapsed=elapsed,
+                   pre_cap=pre_cap, backlog_skipped=skipped_backlog)
 
     if total_analysis_failed:
         logger.error(
             "FATAL: %d article(s) queued for analysis but zero succeeded — "
-            "API or billing failure. Exiting nonzero to block state-file update and deploy.",
+            "API or billing failure. Writing billing-failure marker to prevent "
+            "repeated paid retries from later cron windows today.",
             len(queue),
         )
+        if not dry_run:
+            _write_billing_failure_marker(target_date)
         sys.exit(2)
 
     # ── Stage 14: Generate site ───────────────────────────────────────────────
@@ -292,6 +325,26 @@ def run(
             sys.exit(1)
 
 
+# ── Billing-failure marker ────────────────────────────────────────────────────
+
+BILLING_FAILURE_STATE_FILE = ".github/state/last_billing_failure_date.txt"
+
+
+def _write_billing_failure_marker(target_date: date) -> None:
+    """
+    Write today's NY date to a state file so the scheduling guard in the
+    workflow can skip later cron windows after a total API/billing failure.
+    This file is separate from last_daily_run_date.txt so a successful manual
+    workflow_dispatch still writes the success marker and clears the failure.
+    Note: the workflow must commit+push this file for it to persist to origin/main.
+    """
+    from pathlib import Path
+    p = Path(BILLING_FAILURE_STATE_FILE)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(target_date.isoformat())
+    logger.info("Billing-failure marker written: %s → %s", p, target_date.isoformat())
+
+
 # ── Terminal summary ──────────────────────────────────────────────────────────
 
 def _print_summary(
@@ -304,6 +357,8 @@ def _print_summary(
     articles_analyzed: int   = 0,
     db_total:          int   = 0,
     elapsed:           float = 0.0,
+    pre_cap:           int   = 0,
+    backlog_skipped:   int   = 0,
 ) -> None:
     sep = "─" * 52
     tag = "(DRY RUN)" if dry_run else ""
@@ -315,8 +370,15 @@ def _print_summary(
     print(f"  After keyword filter:   {len(after_kw):>4}")
     if not dry_run:
         print(f"  Stored to DB:           {len(inserted):>4}")
+        if pre_cap > DAILY_ANALYSIS_CAP:
+            print(f"  Queue before cap:       {pre_cap:>4}")
+            print(f"  Cap (DAILY_ANALYSIS_CAP):{DAILY_ANALYSIS_CAP:>4}")
+        if backlog_skipped:
+            print(f"  Backlog skipped:        {backlog_skipped:>4}  (use --process-backlog)")
         print(f"  Analyzed this run:      {articles_analyzed:>4}")
         print(f"  Total analyzed in DB:   {db_total:>4}")
+        print(f"  Relevance model:        {RELEVANCE_MODEL}")
+        print(f"  Analysis model:         {ANALYSIS_MODEL}")
     if elapsed:
         print(f"  Elapsed:                {elapsed:>6.1f}s")
     if errors:
@@ -351,9 +413,23 @@ if __name__ == "__main__":
         action="store_true",
         help="Run pipeline without writing to DB or calling LLM APIs",
     )
+    parser.add_argument(
+        "--process-backlog",
+        action="store_true",
+        help=(
+            "Include old pending/unscored articles from prior runs in the analysis queue. "
+            "Off by default to prevent surprise catch-up costs. "
+            "Subject to DAILY_ANALYSIS_CAP regardless."
+        ),
+    )
     args = parser.parse_args()
 
     target   = args.date or date.today()
     sources  = [args.source] if args.source else list(SCRAPERS.keys())
 
-    run(sources=sources, target_date=target, dry_run=args.dry_run)
+    run(
+        sources=sources,
+        target_date=target,
+        dry_run=args.dry_run,
+        process_backlog=args.process_backlog,
+    )

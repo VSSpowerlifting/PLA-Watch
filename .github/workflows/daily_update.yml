@@ -2,15 +2,11 @@ name: Daily PLA Watch Update
 
 on:
   schedule:
-    # GitHub Actions cron is UTC.  8 AM America/New_York spans:
-    #   EDT (UTC-4): 12:00 UTC  |  EST (UTC-5): 13:00 UTC
-    # We fire at :17 and :47 past each of those hours, plus a safety
-    # window at 14:17 UTC, avoiding GitHub's top-of-hour load spikes.
-    # A runtime window guard (≥08:00 NY) and a once-per-day state
-    # file ensure the pipeline runs at most once per calendar day.
-    - cron: '17,47 12 * * *'
-    - cron: '17,47 13 * * *'
-    - cron: '17 14 * * *'
+    # Two daily windows (EDT: 08:17 + 09:17 NY, UTC+4).
+    # Reduced from five to limit retry cost on billing/API failures.
+    # The scheduling guard ensures at most one successful run per NY calendar day.
+    - cron: '17 12 * * *'
+    - cron: '17 13 * * *'
   workflow_dispatch:         # Manual trigger from Actions tab
 
 concurrency:
@@ -47,24 +43,28 @@ jobs:
           from datetime import datetime
           from zoneinfo import ZoneInfo
 
-          STATE_FILE        = ".github/state/last_daily_run_date.txt"
+          STATE_FILE         = ".github/state/last_daily_run_date.txt"
+          FAILURE_FILE       = ".github/state/last_billing_failure_date.txt"
           event     = os.environ.get("GITHUB_EVENT_NAME", "")
           now       = datetime.now(ZoneInfo("America/New_York"))
           today_str = now.strftime("%Y-%m-%d")
           is_manual = event == "workflow_dispatch"
 
-          # Read last-run date from state file (may not exist on first deploy)
-          last_run = ""
-          try:
-              with open(STATE_FILE) as f:
-                  last_run = f.read().strip()
-          except FileNotFoundError:
-              pass
+          def read_state(path):
+              try:
+                  with open(path) as f:
+                      return f.read().strip()
+              except FileNotFoundError:
+                  return ""
+
+          last_run     = read_state(STATE_FILE)
+          last_failure = read_state(FAILURE_FILE)
 
           print(f"GitHub event:        {event}")
           print(f"New York time:       {now:%Y-%m-%d %H:%M:%S %Z}")
           print(f"Is manual dispatch:  {is_manual}")
           print(f"Last run date:       {last_run!r}")
+          print(f"Last billing failure:{last_failure!r}")
           print(f"Today (NY):          {today_str}")
 
           if is_manual:
@@ -73,6 +73,12 @@ jobs:
           elif last_run == today_str:
               should_run = "false"
               reason = f"already ran successfully today ({today_str})"
+          elif last_failure == today_str:
+              should_run = "false"
+              reason = (
+                  f"billing/API failure already recorded today ({today_str}); "
+                  "use workflow_dispatch to retry after fixing credits"
+              )
           else:
               should_run = "true"
               reason = f"today ({today_str}) has not yet run"
@@ -108,6 +114,32 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python pipeline.py
+
+      # ── 6a. Commit billing-failure marker (scheduled runs only) ──────────
+      # Runs even when the pipeline step fails so the marker reaches origin/main
+      # and the scheduling guard can block later cron windows the same day.
+      # workflow_dispatch skips this so a manual retry is always allowed.
+      - name: Commit billing-failure marker (if pipeline failed)
+        if: >
+          failure() &&
+          steps.timecheck.outputs.should_run == 'true' &&
+          github.event_name != 'workflow_dispatch'
+        run: |
+          MARKER=".github/state/last_billing_failure_date.txt"
+          if [ -f "$MARKER" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git pull --rebase origin main
+            git add "$MARKER"
+            if git diff --cached --quiet; then
+              echo "Billing-failure marker already committed."
+            else
+              git commit -m "State: billing failure ${{ steps.timecheck.outputs.today_ny }}"
+              git push origin main
+            fi
+          else
+            echo "No billing-failure marker file found — skipping commit."
+          fi
 
       # ── 6. Commit DB + site output back to main ───────────────────────────
       - name: Commit updated database and site output

@@ -34,9 +34,22 @@ MAX_RETRIES:             int   = 3
 # Analysis
 # ---------------------------------------------------------------------------
 RELEVANCE_THRESHOLD: float = 0.60      # LLM confidence score; articles below this are filtered
-# Model string as specified by project design doc.  If the API returns a model-not-found
-# error, verify the current ID at https://docs.anthropic.com/en/docs/about-claude/models
-ANALYSIS_MODEL: str = "claude-sonnet-4-6"
+
+# RELEVANCE_MODEL: cheap first-pass binary classifier (pass/fail at threshold).
+# Haiku is ~10-20x cheaper than Sonnet and sufficient for binary relevance scoring.
+# Full analysis (translation, summary, categorization) always uses ANALYSIS_MODEL.
+RELEVANCE_MODEL: str = os.environ.get("RELEVANCE_MODEL", "claude-haiku-4-5-20251001")
+
+# ANALYSIS_MODEL: used for translation, summarization, and categorization.
+# If the API returns a model-not-found error, verify the current ID at
+# https://docs.anthropic.com/en/docs/about-claude/models
+ANALYSIS_MODEL: str = os.environ.get("ANALYSIS_MODEL", "claude-sonnet-4-6")
+
+# Hard cap on LLM-analyzed articles per daily run.
+# Prevents runaway costs from large scrape days or backlog catch-up.
+# Override via env var: DAILY_ANALYSIS_CAP=20 python pipeline.py
+DAILY_ANALYSIS_CAP: int = int(os.environ.get("DAILY_ANALYSIS_CAP", "15"))
+
 PROMPT_VERSION: str = "v1"
 
 # ---------------------------------------------------------------------------

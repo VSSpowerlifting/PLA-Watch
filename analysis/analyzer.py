@@ -33,7 +33,7 @@ from analysis.prompts import (
     build_summary_messages,
     build_translation_messages,
 )
-from config import ANALYSIS_MODEL, ANTHROPIC_API_KEY, RELEVANCE_THRESHOLD
+from config import ANALYSIS_MODEL, ANTHROPIC_API_KEY, RELEVANCE_MODEL, RELEVANCE_THRESHOLD
 
 logger = logging.getLogger(__name__)
 
@@ -77,16 +77,28 @@ class Analyzer:
         messages: list[dict],
         max_tokens: int,
         temperature: float,
+        model: Optional[str] = None,
     ) -> str:
         """Single API call. Returns raw text. Raises AnalysisError on failure."""
+        used_model = model or ANALYSIS_MODEL
         try:
             response = self._client.messages.create(
-                model=ANALYSIS_MODEL,
+                model=used_model,
                 system=self._SYSTEM_WITH_CACHE,
                 messages=messages,
                 max_tokens=max_tokens,
                 temperature=temperature,
             )
+            usage = getattr(response, "usage", None)
+            if usage:
+                logger.debug(
+                    "  [%s] tokens in=%d out=%d cache_read=%d cache_write=%d",
+                    used_model,
+                    getattr(usage, "input_tokens", 0),
+                    getattr(usage, "output_tokens", 0),
+                    getattr(usage, "cache_read_input_tokens", 0),
+                    getattr(usage, "cache_creation_input_tokens", 0),
+                )
             return response.content[0].text
         except anthropic.APIStatusError as exc:
             raise AnalysisError(f"API status error ({exc.status_code}): {exc.message}") from exc
@@ -147,9 +159,10 @@ class Analyzer:
         """
         Returns (score, reasoning).
         Score is clamped to [0.0, 1.0] as a safeguard against out-of-range values.
+        Uses RELEVANCE_MODEL (Haiku) — cheaper first-pass binary classifier.
         """
         messages = build_relevance_messages(title, body)
-        raw  = self._call(messages, max_tokens=500, temperature=0.0)
+        raw  = self._call(messages, max_tokens=500, temperature=0.0, model=RELEVANCE_MODEL)
         data = self._parse_json(raw)
         score = float(max(0.0, min(1.0, data["score"])))
         return score, str(data.get("reasoning", ""))
