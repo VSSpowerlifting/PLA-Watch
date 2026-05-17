@@ -504,8 +504,45 @@ def _iter_sidecar_strings(value):
             yield from _iter_sidecar_strings(nested)
 
 
-def resolve_background_image(sidecar: dict) -> Optional[Path]:
-    """Choose a deterministic local photo/visual before using the abstract fallback."""
+def resolve_background_image(
+    sidecar: dict,
+    exclude_path: Optional[Path] = None,
+) -> Optional[Path]:
+    """Choose a deterministic local photo/visual before using the abstract fallback.
+
+    Selection order:
+      1. media_items entries in the sidecar (src/local_path/path/optimized_path).
+      2. Top-level image keys (visual_image, context_image, …).
+      3. Any ../media/ path found anywhere in the sidecar strings.
+      4. Curated image directories (assets/pla-watch/covers, …).
+      5. Abstract fallback (returns None).
+
+    An image that resolves to *exclude_path* is silently skipped so that the
+    previous issue's cover background is never accidentally reused.
+
+    # Remote fetch (step 3.5): handled by generate_one() calling
+    # _auto_fetch_source_image() before this function is called a second time,
+    # so that the downloaded image appears in media_items and is picked up here.
+    """
+    # If generate_one() pre-resolved the path (with dedup exclusion), use it directly.
+    pre_resolved = sidecar.get("_resolved_bg_path")
+    if pre_resolved:
+        p = Path(pre_resolved)
+        if p.exists():
+            print(f"[cover] using pre-resolved background: {p.name}")
+            return p
+
+    issue_date = sidecar.get("date") or sidecar.get("week_ending") or "?"
+
+    def _accept(img: Optional[Path], label: str) -> Optional[Path]:
+        if img is None:
+            return None
+        if exclude_path and img.resolve() == exclude_path.resolve():
+            print(f"[cover:{issue_date}] skip {label}: same as previous issue image ({img.name})")
+            return None
+        print(f"[cover:{issue_date}] selected background via {label}: {img.name}")
+        return img
+
     media_items = sidecar.get("media_items") or []
     if isinstance(media_items, list):
         for item in media_items:
@@ -514,19 +551,20 @@ def resolve_background_image(sidecar: dict) -> Optional[Path]:
             if item.get("type") and item.get("type") != "image":
                 continue
             for key in ("src", "local_path", "path", "optimized_path"):
-                img = _local_image_path(str(item.get(key) or ""))
+                img = _accept(_local_image_path(str(item.get(key) or "")),
+                              f"media_items[{key}]")
                 if img:
                     return img
 
     for key in ("visual_image", "context_image", "media_image", "image", "local_path"):
-        img = _local_image_path(str(sidecar.get(key) or ""))
+        img = _accept(_local_image_path(str(sidecar.get(key) or "")), f"sidecar[{key}]")
         if img:
             return img
 
     for raw_path in _iter_sidecar_strings(sidecar):
         if "output/the-pla-watch/media/" not in raw_path and "../media/" not in raw_path:
             continue
-        img = _local_image_path(raw_path)
+        img = _accept(_local_image_path(raw_path), f"sidecar string ({raw_path})")
         if img:
             return img
 
@@ -535,17 +573,25 @@ def resolve_background_image(sidecar: dict) -> Optional[Path]:
             continue
         for img in sorted(directory.iterdir()):
             if img.suffix.lower() in IMAGE_EXTS:
-                return img.resolve()
+                result = _accept(img.resolve(), f"curated dir ({directory.name})")
+                if result:
+                    return result
+
+    print(f"[cover:{issue_date}] no local image found — using abstract fallback gradient")
     return None
 
 
 def _build_html(sidecar: dict) -> str:
     """Fill the HTML template with escaped sidecar data."""
-    title = sidecar.get("title", "").strip()
-    for prefix in ("The PLA Watch:", "The PLA Watch —", "PLA Watch:"):
-        if title.lower().startswith(prefix.lower()):
-            title = title[len(prefix):].strip()
-            break
+    # cover_title overrides the derived title when set (allows a shorter cover
+    # headline independent of the full publication title).
+    title = (sidecar.get("cover_title") or "").strip()
+    if not title:
+        title = sidecar.get("title", "").strip()
+        for prefix in ("The PLA Watch:", "The PLA Watch —", "PLA Watch:"):
+            if title.lower().startswith(prefix.lower()):
+                title = title[len(prefix):].strip()
+                break
 
     week_start = sidecar.get("week_start", "")
     week_ending = sidecar.get("week_ending", "") or sidecar.get("date", "")
@@ -835,11 +881,13 @@ def _render_with_pil(sidecar: dict, out_path: Path) -> None:
     img = Image.alpha_composite(img.convert("RGBA"), title_shield).convert("RGB")
     draw = ImageDraw.Draw(img)
 
-    title = sidecar.get("title", "").strip()
-    for pfx in ("The PLA Watch:", "The PLA Watch —", "PLA Watch:"):
-        if title.lower().startswith(pfx.lower()):
-            title = title[len(pfx):].strip()
-            break
+    title = (sidecar.get("cover_title") or "").strip()
+    if not title:
+        title = sidecar.get("title", "").strip()
+        for pfx in ("The PLA Watch:", "The PLA Watch —", "PLA Watch:"):
+            if title.lower().startswith(pfx.lower()):
+                title = title[len(pfx):].strip()
+                break
     hed_font = _find_font(_SERIF_BOLD, 36)
     hed_lines = _wrap(draw, title, hed_font, inner_w - 40)
     hed_lines = _truncate_lines(draw, hed_lines, hed_font, inner_w - 40, 3)
@@ -942,17 +990,77 @@ def _load_sidecar(json_path: Path) -> dict:
     return json.loads(json_path.read_text(encoding="utf-8"))
 
 
-def generate_one(json_path: Path, force: bool = False) -> Optional[Path]:
+def _prev_issue_image(sidecar_date: str) -> Optional[Path]:
+    """Return the resolved background image used by the chronologically prior issue, if any."""
+    try:
+        all_json = sorted(POSTS_DIR.glob("*.json"))
+        dates = [p.stem for p in all_json]
+        if sidecar_date not in dates:
+            return None
+        idx = dates.index(sidecar_date)
+        if idx == 0:
+            return None
+        prev_sidecar = _load_sidecar(all_json[idx - 1])
+        # Pass exclude_path=None: we only want to resolve, not exclude here.
+        return resolve_background_image(prev_sidecar, exclude_path=None)
+    except Exception:
+        return None
+
+
+def _auto_fetch_source_image(sidecar: dict, sidecar_date: str) -> Optional[Path]:
+    """
+    Attempt to fetch a cover background from the sidecar's source_trail URLs.
+    Returns the cached local Path on success, None on failure or no URLs.
+
+    Imports fetch_article_image lazily so this module remains usable without
+    network access. Failures are caught and logged — never fatal.
+    """
+    urls = [
+        e["url"] for e in (sidecar.get("source_trail") or [])
+        if isinstance(e, dict) and e.get("url")
+    ][:4]
+    if not urls:
+        return None
+    try:
+        from scripts.fetch_article_image import fetch_best_image  # type: ignore
+        return fetch_best_image(urls=urls, post_date=sidecar_date, dry_run=False,
+                                update_sidecar=True)
+    except Exception as exc:
+        print(f"[cover:{sidecar_date}] auto-fetch failed ({exc!r}); using fallback")
+        return None
+
+
+def generate_one(json_path: Path, force: bool = False,
+                 fetch_source_image: bool = True) -> Optional[Path]:
     sidecar = _load_sidecar(json_path)
     sidecar_date = sidecar.get("date") or json_path.stem
     out_path = _cover_path_for(sidecar_date)
     thumb_path = _thumb_path_for(sidecar_date)
 
+    # Determine the previous issue's background so we can refuse to reuse it.
+    prev_img = _prev_issue_image(sidecar_date)
+
     if out_path.exists() and not force:
         print(f"[skip] {out_path.relative_to(ROOT)} already exists "
               f"(use --force to overwrite)")
     else:
-        render_cover(sidecar, out_path)
+        # Inject exclude_path into sidecar resolution via a patched call.
+        # render_cover() calls resolve_background_image internally, so we
+        # pre-resolve here with exclusion and inject the result as a sentinel.
+        bg_path = resolve_background_image(sidecar, exclude_path=prev_img)
+
+        # If no local image found, try fetching from the source article URLs.
+        if bg_path is None and fetch_source_image:
+            fetched = _auto_fetch_source_image(sidecar, sidecar_date)
+            if fetched:
+                # Reload sidecar so the new media_items entry is visible.
+                sidecar = _load_sidecar(json_path)
+                bg_path = resolve_background_image(sidecar, exclude_path=prev_img)
+
+        sidecar_with_bg = dict(sidecar)
+        if bg_path:
+            sidecar_with_bg["_resolved_bg_path"] = str(bg_path)
+        render_cover(sidecar_with_bg, out_path)
         if out_path.exists():
             print(f"[wrote] {out_path.relative_to(ROOT)}")
         else:

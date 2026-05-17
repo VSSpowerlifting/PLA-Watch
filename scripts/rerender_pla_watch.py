@@ -26,9 +26,26 @@ sys.path.insert(0, str(ROOT))
 from jinja2 import Environment, FileSystemLoader
 
 # Reuse author identity from the generator module without calling its main().
-from scripts.generate_pla_watch import (
-    AUTHOR_NAME, AUTHOR_TITLE, AUTHOR_BIO, AUTHOR_LINKS,
-)
+# Guard against the anthropic import that generate_pla_watch.py performs at
+# module level — this script never calls the API.
+try:
+    from scripts.generate_pla_watch import (
+        AUTHOR_NAME, AUTHOR_TITLE, AUTHOR_BIO, AUTHOR_LINKS,
+    )
+except ImportError:
+    AUTHOR_NAME = "Benjamin Yang"
+    AUTHOR_TITLE = "Founder & Principal Analyst, China Mil Watch"
+    AUTHOR_BIO = (
+        "Benjamin Yang is the founder of China Mil Watch and an incoming "
+        "International Affairs student at George Washington University's "
+        "Elliott School, focused on U.S.-China relations, public diplomacy, "
+        "and security affairs."
+    )
+    AUTHOR_LINKS = {
+        "LinkedIn":        "https://www.linkedin.com/in/benjamin-yang-42b525294",
+        "Email":           "mailto:ben.yang@gwmail.gwu.edu",
+        "China Mil Watch": "../../index.html",
+    }
 from scripts.generate_pla_watch_cover import (
     render_cover,
     render_thumbnail,
