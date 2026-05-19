@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strong Military Forum | Creative Implementation Is True Implementation — China Mil Watch</title>
+  <meta name="description" content="A People&#39;s Armed Police Guangxi General Corps officer published a political education piece in a PLA forum arguing that cadres must implement higher-level directives creatively rather than mechanicall">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://chinamilwatch.org/article/436.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="article">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org/article/436.html">
+  <meta property="og:title"        content="Strong Military Forum | Creative Implementation Is True Implementation">
+  <meta property="og:description"  content="A People&#39;s Armed Police Guangxi General Corps officer published a political education piece in a PLA forum arguing that cadres must implement higher-level directives creatively rather than mechanicall">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Strong Military Forum | Creative Implementation Is True Implementation">
+  <meta name="twitter:description" content="A People&#39;s Armed Police Guangxi General Corps officer published a political education piece in a PLA forum arguing that cadres must implement higher-level directives creatively rather than mechanicall">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <!-- JSON-LD Structured Data -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-brand:          #B3132B;
+      --color-brand-dark:     #8B0E20;
+      --color-brand-light:    #D11C36;
+      --color-bg:             #F6F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FBFAF6;
+      --color-text-primary:   #161616;
+      --color-text-secondary: #4A4A4A;
+      --color-text-muted:     #7A7A7A;
+      --color-border:         #E2DFD8;
+      --color-border-soft:    #ECE9E2;
+      --color-accent:         #B3132B;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      /* Faint paper grid — barely-visible cross pattern for desktop polish */
+      background-image:
+        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: -1px -1px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 0 0 0 transparent, 0 2px 0 0 var(--color-brand);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav .nav-short { display: none; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a.active {
+      color: var(--color-text-primary);
+    }
+    .header-nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+    }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-card);
+      border-radius: 2px;
+      padding: 2px 8px;
+      line-height: 1.4;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
+
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      .header-nav .nav-full { display: none; }
+      .header-nav .nav-short { display: inline; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+.article-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.article-page-title-zh {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-brand);
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-source:hover {
+  background: var(--color-brand);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── About-this-analysis link ────────────────────────────────────── */
+.about-analysis {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.about-analysis a { color: var(--color-text-muted); text-decoration: underline; }
+.about-analysis a:hover { color: var(--color-brand); }
+
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
+}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title">China Mil Watch</span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >
+        <span class="nav-full">Daily Brief</span><span class="nav-short">Daily</span>
+      </a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../signals.html" >Signals</a>
+      <a href="../the-pla-watch/index.html" >
+        <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
+      </a>
+      <a href="../methodology.html" >Methodology</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+      <div class="tags">
+          <span class="tag">Doctrine</span>
+          <span class="tag">Political Work</span>
+      </div>
+
+    <h1 class="article-page-title">
+      Strong Military Forum | Creative Implementation Is True Implementation
+    </h1>
+
+      <div class="article-page-title-zh">强军论坛丨创造性落实才是真落实</div>
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>19 May 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16461989.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+    <div class="about-analysis">
+      <a href="../methodology.html">About this analysis</a>
+    </div>
+
+  </div>
+
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A People&#39;s Armed Police Guangxi General Corps officer published a political education piece in a PLA forum arguing that cadres must implement higher-level directives creatively rather than mechanically, explicitly criticizing behaviors like meeting-to-meeting relay, selective compliance, and &#39;mailroom-style&#39; pass-through that leave orders unexecuted in practice. This is standard political work content targeting a persistent institutional problem — the gap between formal compliance and substantive execution — that the PAP and PLA have flagged repeatedly in the context of the 2027 army-building centenary deadline; its value is as a dated record of how the institution frames the implementation failure problem to mid-level officers, framing rote compliance itself as a form of resistance.</div>
+  </div>
+
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+<p>Creative Implementation Is True Implementation</p><p>— A Series of Discussions on Establishing and Practicing a Correct Outlook on Political Performance (正确政绩观)</p><p>■ Li Changzhi</p><p>One part deployment, nine parts implementation. The key to transforming a grand blueprint into a beautiful reality lies in leading cadres at all levels giving full play to their subjective initiative (主观能动性) and creatively putting the decisions and deployments of higher authorities into practice, creating solid, tangible results through genuine hard work.</p><p>Creative implementation is a consistent working method upheld by our Party and our military, and an important requirement for leading cadres. Dialectical materialism tells us that contradictions are both universal and particular. The decisions and deployments of higher authorities can only set forth general principles, general requirements, and general operational methods, addressing the universality of contradictions. However, conditions vary enormously across different fields, departments, and units, which means that in the course of implementation, one must closely integrate the actual circumstances of each situation, adapting to local conditions and to the times, applying precise measures and executing efficiently. Comrade Mao Zedong once said: &#34;To carry out the instructions of superiors blindly and on the surface without any apparent objection is not truly carrying out those instructions—it is the most ingenious method of opposing or slacking off on them.&#34; Creative implementation is by no means the kind of workaround captured in the phrase &#34;policies from above, countermeasures from below&#34; (上有政策、下有对策); rather, it is the process of combining the decisions and deployments of higher authorities with the concrete realities of one&#39;s own unit, on the basis of thoroughly understanding the situation above and clearly grasping the situation below.</p><p>Creative implementation is true implementation. Chairman Xi has profoundly pointed out: &#34;To thoroughly grasp the spirit without mechanically copying it, to &#39;not defer to superiors, not defer to books, but only defer to reality&#39; (不唯上，不唯书，只唯实), and to achieve deepening, refinement, and concretization—this is the true and concrete embodiment of maintaining a high degree of unity with the Central Committee.&#34; Yet some people, when executing the decisions and deployments of higher authorities, always misconstrue &#34;to the letter&#34; (不折不扣) as mechanical copying. Some implement meetings with meetings and documents with documents—seemingly transmitting layer by layer and deploying item by item, but in reality never achieving genuine and effective results on the ground. Some nominally engage in &#34;strict alignment with standards and benchmarks&#34; (严格对标对表) but in practice carry out a &#34;mailroom-style&#34; (收发室式) implementation—neither digesting nor processing, leaving things equally coarse from top to bottom. Some are accustomed to acting on experience and lack new methods when confronted with new problems and new contradictions. Still others engage in selective implementation, doing whatever is most advantageous to themselves. Such behavior inevitably causes the decisions and deployments of higher authorities to come to nothing in implementation, damaging the image of the Party and the military.</p><p>A correct outlook on political performance requires us to proceed from reality and act in accordance with objective laws. Creativity is not arbitrariness. True creativity must uphold the Marxist standpoint, viewpoints, and methods; respect reality; respect objective laws; avoid blind recklessness; avoid complacency and stagnation; avoid putting on a superficial show; and avoid flashy but empty gestures (花拳绣腿). Officers, soldiers, and especially leading cadres should study Xi Jinping Thought on Socialism with Chinese Characteristics for a New Era deeply and thoroughly, making a concentrated effort to fully comprehend the standpoints, viewpoints, and methods contained therein, and to master the worldview and methodology of the &#34;Six Must-Upholds&#34; (六个必须坚持) and the military outlook and methodology of the &#34;Five Upholds&#34; (五个坚持). They should be adept at carrying out the work of deepening, refining, and concretizing in accordance with the decisions and deployments of higher authorities, making them better suited to actual conditions and to the characteristics of their own units, and embodying creativity in concrete actions toward high-quality development.</p><p>Creative implementation requires, above all, the courage to innovate and the boldness to break through. Comrade Deng Xiaoping said: &#34;The more people there are within the Party and among the people who are willing to use their minds and think through problems, the more beneficial it is to our cause. Whether making revolution or carrying out construction, we need a contingent of pathbreakers (闯将) who dare to think, dare to explore, and dare to innovate.&#34; This year marks the opening year of the &#34;14th Five-Year Plan&#34; (十五五) and is also a critical year for winning the hard battle to achieve the centenary goal of army-building (建军一百年奋斗目标). At all levels, personnel should keep in mind &#34;the great affairs of the nation&#34; (国之大者) and bear firmly in mind &#34;the great matters of the military&#34; (军之大事). They should be adept at combining the decisions and deployments of higher authorities with their own actual circumstances, have the courage to break free from fixed mindsets and path dependence (路径依赖), identify the entry points and breakthroughs for advancing their work, produce genuinely feasible and effective measures and methods, fix their sights on the objective, overcome difficulties and obstacles, and strive to transform blueprints into reality and visions into tangible outcomes.</p><p>(Author&#39;s unit: People&#39;s Armed Police Guangxi General Corps)</p>  </div>
+
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">创造性落实才是真落实 ——树立和践行正确政绩观系列谈 ■李长志 一分部署，九分落实。把宏伟蓝图变成美好现实，关键在于各级领导干部发挥主观能动性，创造性地把上级的决策部署落到实处，在真抓实干中创造实实在在的业绩。 创造性落实，是我党我军一贯坚持的工作方法，也是对领导干部的一项重要要求。辩证唯物主义告诉我们，矛盾具有普遍性，也有特殊性。上级的决策部署，只能提出总的原则、总的要求和总的操作方法，解决的是矛盾的普遍性。然而，各领域、各部门、各单位情况千差万别，这就决定了贯彻执行中，必须紧密结合各自实际，因地制宜、因时制宜，精准施策、高效执行。毛泽东同志曾说：“盲目地表面上完全无异议地执行上级的指示，这不是真正在执行上级的指示，这是反对上级指示或者对上级指示怠工的最妙方法。”创造性落实绝非“上有政策、下有对策”的变通，而是在吃透上情、摸清下情的基础上，把上级决策部署同本单位具体实际相结合的过程。 创造性落实才是真落实。习主席深刻指出，“吃透精神而不照抄照搬，‘不唯上，不唯书，只唯实’，做到深化细化具体化，这才是真正与中央保持高度一致的具体体现”。然而，一些人在执行上级决策部署时，总是将“不折不扣”曲解为机械照搬。有的以会议落实会议，以文件落实文件，看似层层传达、件件部署，实则没有真正有效落地；有的名为“严格对标对表”，实际上搞“收发室”式落实，不“消化”，不“加工”，上下一般粗；有的习惯于凭经验办事，面对新问题新矛盾缺乏新办法；还有的搞选择性执行，怎么于己有利怎么来。这样的行为必然导致上级决策部署在落实中落空，损害了党和军队的形象。 正确的政绩观要求我们，从实际出发，按规律办事。创造性不是随意性，真正的创造性必须坚持马克思主义的立场、观点和方法，尊重实际，尊重规律，不盲目蛮干，不固步自封，不做表面文章，不耍花拳绣腿。广大官兵特别是领导干部应学深悟透习近平新时代中国特色社会主义思想，着力把其中的立场观点方法领悟透，把“六个必须坚持”的世界观和方法论、“五个坚持”的军事观和方法论学到手。善于根据上级决策部署做好深化细化具体化的工作，使之更加符合实际、符合本单位特点，把创造性体现在高质量发展的实际行动上。 创造性落实，关键在于勇于创新、敢于突破。邓小平同志说过：“在党内和人民群众中，肯动脑筋、肯想问题的人愈多，对我们的事业就愈有利。干革命、搞建设，都要有一批勇于思考、勇于探索、勇于创新的闯将。”今年是“十五五”开局之年，也是打好实现建军一百年奋斗目标攻坚战的关键一年。各级应胸怀“国之大者”、牢记“军之大事”，善于把上级的决策部署与自身实际结合起来，勇于打破思维定式和路径依赖，找准推进工作的切入点和突破口，拿出切实可行的真招实招，锚定目标，攻坚克难，努力把蓝图变为现实，把愿景变成实景。 （作者单位：武警广西总队）</div>
+  </details>
+
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. <a href="../methodology.html">Methodology</a> · <a href="../archive.html">Archive</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
