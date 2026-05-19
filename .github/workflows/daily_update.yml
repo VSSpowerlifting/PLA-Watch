@@ -5,8 +5,11 @@ on:
     # Two daily windows (EDT: 08:17 + 09:17 NY, UTC+4).
     # Reduced from five to limit retry cost on billing/API failures.
     # The scheduling guard ensures at most one successful run per NY calendar day.
-    - cron: '17 12 * * *'
-    - cron: '17 13 * * *'
+    - cron: '23 12 * * *'
+    - cron: '53 12 * * *'
+    - cron: '23 13 * * *'
+    - cron: '53 13 * * *'
+    - cron: '23 14 * * *'
   workflow_dispatch:         # Manual trigger from Actions tab
 
 concurrency:
