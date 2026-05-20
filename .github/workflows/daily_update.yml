@@ -2,8 +2,8 @@ name: Daily PLA Watch Update
 
 on:
   schedule:
-    # Two daily windows (EDT: 08:17 + 09:17 NY, UTC+4).
-    # Reduced from five to limit retry cost on billing/API failures.
+    # Five retry windows covering 08:23–10:23 NY time (EDT, UTC-4).
+    # Off-peak minutes (:23/:53) reduce GitHub scheduler queueing delays.
     # The scheduling guard ensures at most one successful run per NY calendar day.
     - cron: '23 12 * * *'
     - cron: '53 12 * * *'
