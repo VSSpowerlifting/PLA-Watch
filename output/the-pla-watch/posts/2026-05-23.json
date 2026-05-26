@@ -20,5 +20,34 @@
   },
   "cover_image": "../covers/2026-05-23.png",
   "cover_image_url": "https://chinamilwatch.org/the-pla-watch/covers/2026-05-23.png",
-  "cover_thumb": "../covers/2026-05-23-thumb.png"
+  "cover_thumb": "../covers/2026-05-23-thumb.png",
+  "source_trail": [
+    {
+      "label": "Rockets Roar Over the Karakoram — Training images, Xinjiang MD rocket artillery subunit",
+      "url": "http://www.81.cn/yw_208727/16461486.html",
+      "source": "PLA Daily (81.cn)"
+    },
+    {
+      "label": "Writing Papers on the Training Ground — ISF center guides research personnel for war",
+      "url": "http://www.81.cn/yw_208727/16461595.html",
+      "source": "PLA Daily (81.cn)"
+    },
+    {
+      "label": "New Pattern of Unified Management and Shared Use of Warehousing Resources Across the Entire Military",
+      "url": "http://www.81.cn/yw_208727/16462860.html",
+      "source": "PLA Daily (81.cn)"
+    }
+  ],
+  "media_items": [
+    {
+      "type": "image",
+      "src": "../media/2026-05-23-source-image.jpg",
+      "alt": "Source article image",
+      "caption": "Cover background image sourced from the lead source article. Included for editorial visual context only.",
+      "source_url": "http://www.81.cn/yw_208727/16461486.html",
+      "image_url": "http://www.81.cn/yw_208727/_attachment/2026/05/17/16461486_9695422fe0a59ac10be8c30f4934a102_wm4194.jpg",
+      "source_label": "article body image",
+      "auto_selected": true
+    }
+  ]
 }
