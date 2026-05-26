@@ -1,0 +1,24 @@
+{
+  "date": "2026-05-23",
+  "week_ending": "2026-05-23",
+  "week_start": "2026-05-17",
+  "title": "The PLA Watch: Institutional Friction and the Gap Between Form and Function",
+  "dek": "A full week of PLA Daily coverage with no flagged significant articles — but internal-reform coverage offers a useful baseline for the implementation gaps the institution is still naming publicly.",
+  "signal": "PLA Daily spent more space this week on internal implementation gaps — logistics fragmentation, research disconnects and formalism — than on external signaling.",
+  "n_articles": 49,
+  "n_significant": 0,
+  "days_covered": 7,
+  "edition_type": "routine",
+  "edition_label": "Routine",
+  "author_name": "Benjamin Yang",
+  "author_title": "Founder & Principal Analyst, China Mil Watch",
+  "author_bio": "Benjamin Yang is the founder of China Mil Watch and an incoming International Affairs student at George Washington University’s Elliott School, focused on U.S.-China relations, public diplomacy, and security affairs.",
+  "author_links": {
+    "LinkedIn": "https://www.linkedin.com/in/benjamin-yang-42b525294",
+    "Email": "mailto:ben.yang@gwmail.gwu.edu",
+    "China Mil Watch": "../../index.html"
+  },
+  "cover_image": "../covers/2026-05-23.png",
+  "cover_image_url": "https://chinamilwatch.org/the-pla-watch/covers/2026-05-23.png",
+  "cover_thumb": "../covers/2026-05-23-thumb.png"
+}
