@@ -37,19 +37,21 @@
   <style>
     /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --color-brand:          #B3132B;
-      --color-brand-dark:     #8B0E20;
-      --color-brand-light:    #D11C36;
-      --color-bg:             #F6F4EF;
+      --color-ink:            #1A2C3D;
+      --color-brand:          #B5513C;
+      --color-signal-mid:     #D87A64;
+      --color-signal-tint:    #FAECE7;
+      --color-surface:        #EDE8DF;
+      --color-bg:             #F7F4EF;
       --color-bg-card:        #FFFFFF;
       --color-bg-header:      #FFFFFF;
-      --color-bg-sidebar:     #FBFAF6;
-      --color-text-primary:   #161616;
-      --color-text-secondary: #4A4A4A;
-      --color-text-muted:     #7A7A7A;
-      --color-border:         #E2DFD8;
-      --color-border-soft:    #ECE9E2;
-      --color-accent:         #B3132B;
+      --color-bg-sidebar:     #FAF7F2;
+      --color-text-primary:   #1A2C3D;
+      --color-text-secondary: #4A4440;
+      --color-text-muted:     #7A726A;
+      --color-border:         #C9BFB4;
+      --color-border-soft:    rgba(201, 191, 180, 0.55);
+      --color-accent:         #B5513C;
       --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
       --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     }
@@ -60,12 +62,6 @@
 
     body {
       background-color: var(--color-bg);
-      /* Faint paper grid — barely-visible cross pattern for desktop polish */
-      background-image:
-        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
-      background-size: 32px 32px;
-      background-position: -1px -1px;
       color: var(--color-text-primary);
       font-family: var(--sans);
       font-weight: 400;
@@ -84,7 +80,6 @@
     .site-header {
       background: var(--color-bg-header);
       border-bottom: 1px solid var(--color-border);
-      box-shadow: 0 0 0 0 transparent, 0 2px 0 0 var(--color-brand);
       flex-shrink: 0;
     }
     .site-header-inner {
@@ -126,6 +121,7 @@
       line-height: 1.05;
       white-space: nowrap;
     }
+    .wordmark-signal { color: var(--color-brand); }
     .header-wordmark .kicker {
       font-family: var(--sans);
       font-size: 0.65rem;
@@ -148,13 +144,9 @@
       padding: 6px 0;
       position: relative;
       white-space: nowrap;
-      transition: color 0.15s;
+      transition: color 140ms ease;
     }
-    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
-    .header-nav a.active {
-      color: var(--color-text-primary);
-    }
-    .header-nav a.active::after {
+    .header-nav a::after {
       content: "";
       position: absolute;
       left: 0;
@@ -162,7 +154,14 @@
       bottom: -1px;
       height: 2px;
       background: var(--color-brand);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 160ms ease;
     }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a:hover::after { transform: scaleX(1); }
+    .header-nav a.active { color: var(--color-text-primary); }
+    .header-nav a.active::after { transform: scaleX(1); }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
@@ -209,16 +208,96 @@
     .tag {
       display: inline-block;
       font-family: var(--sans);
-      font-size: 0.6875rem;
+      font-size: 11px;
       font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #444441;
+      background: #F1EFE8;
+      border: none;
+      border-radius: 3px;
+      padding: 4px 9px;
+      line-height: 1.4;
+    }
+    .tag[data-label="Taiwan"]                { background: #FCEBEB; color: #A32D2D; }
+    .tag[data-label="East China Sea"],
+    .tag[data-label="South China Sea"],
+    .tag[data-label="U.S.\2013 China Military"] { background: #E6F1FB; color: #185FA5; }
+    .tag[data-label*="Personnel"]             { background: #FAEEDA; color: #633806; }
+    .tag[data-label="Exercises"]              { background: #EAF3DE; color: #3B6D11; }
+    .tag[data-label="Military Diplomacy"]     { background: #EEEDFE; color: #3C3489; }
+    .tag[data-label="Internal Security"]      { background: #F1EFE8; color: #444441; }
+    .tag[data-label="Modernization"]          { background: #E1F5EE; color: #0F6E56; }
+
+    /* ── Analytical signal indicator ─────────────────────────────────────────── */
+    .analytical-signal-kicker {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.5rem;
+    }
+    .signal-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #B5513C;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .signal-kicker-text {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--color-text-secondary);
+      color: #B5513C;
+    }
+
+    /* ── Button tiers ────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, transform 120ms ease;
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--color-signal-mid);
+      outline-offset: 2px;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: #1A2C3D;
+      color: #E8EFF5;
+      border: none;
+    }
+    .btn-primary:hover { background: #14202D; color: #E8EFF5; text-decoration: none; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text-primary);
       border: 1px solid var(--color-border);
-      background: var(--color-bg-card);
-      border-radius: 2px;
-      padding: 2px 8px;
-      line-height: 1.4;
+    }
+    .btn-secondary:hover { background: var(--color-surface); text-decoration: none; }
+    .btn-signal {
+      background: transparent;
+      color: #B5513C;
+      border: 1px solid #D87A64;
+    }
+    .btn-signal:hover { background: #FAECE7; color: #B5513C; text-decoration: none; }
+
+    /* ── Significant badge ───────────────────────────────────────────────────── */
+    .significant-badge {
+      display: inline-block;
+      background: #FAC775;
+      color: #633806;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 4px;
     }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
@@ -256,7 +335,7 @@
       .header-nav { gap: 1rem; }
       .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
       main { padding: 1.75rem 1.25rem 3rem; }
-      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      body { font-size: 0.9375rem; }
       .site-footer { padding: 2rem 1.25rem; }
     }
     @media (max-width: 720px) {
@@ -278,6 +357,14 @@
       .header-wordmark .title { font-size: 0.92rem; }
       .header-nav { gap: 0.6rem; }
       .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    /* ── Reduced motion ─────────────────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
     }
 
 .signals-wrap { max-width: 980px; margin: 0 auto; }
@@ -355,7 +442,7 @@
 .stat-card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 1.1rem 1.15rem 1rem;
 }
 .stat-card .label {
@@ -401,7 +488,7 @@
 .module {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 1.25rem 1.4rem 1.3rem;
 }
 .module-title {
@@ -483,17 +570,18 @@
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-brand);
-  border-radius: 4px;
+  border-radius: 0 6px 6px 0;
   padding: 0.95rem 1.1rem 0.9rem;
   display: block;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color 140ms ease, transform 140ms ease, background-color 140ms ease;
 }
 .sig-item:hover {
   border-color: var(--color-brand);
+  background: #FEF7F4;
+  transform: translateY(-1px);
   text-decoration: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 .sig-item-title {
   font-family: var(--serif);
@@ -611,18 +699,18 @@
 .read-card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 1.2rem 1.35rem 1.15rem;
   text-decoration: none;
   color: inherit;
   display: block;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color 140ms ease, transform 140ms ease;
   position: relative;
 }
 .read-card:hover {
   border-color: var(--color-brand);
+  transform: translateY(-1px);
   text-decoration: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 .read-card .read-eyebrow {
   font-family: var(--sans);
@@ -676,7 +764,7 @@
     <a href="index.html" class="header-brand" aria-label="China Mil Watch home">
       <img src="logo-icon.png" alt="">
       <span class="header-wordmark">
-        <span class="title">China Mil Watch</span>
+        <span class="title"><span class="wordmark-primary">China Mil</span> <span class="wordmark-signal">Watch</span></span>
         <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
       </span>
     </a>
@@ -710,7 +798,7 @@
     <div class="stat-grid">
       <div class="stat-card">
         <div class="label">Articles · 7 days</div>
-        <div class="value">40</div>
+        <div class="value">42</div>
         <div class="sub">monitored in the last week</div>
       </div>
       <div class="stat-card">
@@ -720,7 +808,7 @@
       </div>
       <div class="stat-card">
         <div class="label">Articles · 30 days</div>
-        <div class="value">223</div>
+        <div class="value">228</div>
         <div class="sub">monitored in the last month</div>
       </div>
       <div class="stat-card">
@@ -738,63 +826,63 @@
               <div class="cat-bar-track">
                 <div class="cat-bar-fill" style="width: 100.0%;"></div>
               </div>
-              <span class="cat-count">118</span>
+              <span class="cat-count">119</span>
             </div>
             <div class="cat-row">
               <span class="cat-label">Exercises</span>
               <div class="cat-bar-track">
-                <div class="cat-bar-fill" style="width: 51.7%;"></div>
+                <div class="cat-bar-fill" style="width: 53.8%;"></div>
               </div>
-              <span class="cat-count">61</span>
+              <span class="cat-count">64</span>
             </div>
             <div class="cat-row">
               <span class="cat-label">Doctrine</span>
               <div class="cat-bar-track">
-                <div class="cat-bar-fill" style="width: 46.6%;"></div>
+                <div class="cat-bar-fill" style="width: 47.9%;"></div>
               </div>
-              <span class="cat-count">55</span>
+              <span class="cat-count">57</span>
             </div>
             <div class="cat-row">
               <span class="cat-label">Modernization</span>
               <div class="cat-bar-track">
-                <div class="cat-bar-fill" style="width: 42.4%;"></div>
+                <div class="cat-bar-fill" style="width: 42.9%;"></div>
               </div>
-              <span class="cat-count">50</span>
+              <span class="cat-count">51</span>
             </div>
             <div class="cat-row">
               <span class="cat-label">Internal Security</span>
               <div class="cat-bar-track">
-                <div class="cat-bar-fill" style="width: 28.0%;"></div>
+                <div class="cat-bar-fill" style="width: 28.6%;"></div>
               </div>
-              <span class="cat-count">33</span>
+              <span class="cat-count">34</span>
             </div>
             <div class="cat-row">
               <span class="cat-label">Military Diplomacy</span>
               <div class="cat-bar-track">
-                <div class="cat-bar-fill" style="width: 22.0%;"></div>
+                <div class="cat-bar-fill" style="width: 21.8%;"></div>
               </div>
               <span class="cat-count">26</span>
             </div>
             <div class="cat-row">
+              <span class="cat-label">South China Sea</span>
+              <div class="cat-bar-track">
+                <div class="cat-bar-fill" style="width: 9.2%;"></div>
+              </div>
+              <span class="cat-count">11</span>
+            </div>
+            <div class="cat-row">
               <span class="cat-label">Personnel</span>
               <div class="cat-bar-track">
-                <div class="cat-bar-fill" style="width: 8.5%;"></div>
+                <div class="cat-bar-fill" style="width: 8.4%;"></div>
               </div>
               <span class="cat-count">10</span>
             </div>
             <div class="cat-row">
               <span class="cat-label">East China Sea</span>
               <div class="cat-bar-track">
-                <div class="cat-bar-fill" style="width: 8.5%;"></div>
+                <div class="cat-bar-fill" style="width: 8.4%;"></div>
               </div>
               <span class="cat-count">10</span>
-            </div>
-            <div class="cat-row">
-              <span class="cat-label">South China Sea</span>
-              <div class="cat-bar-track">
-                <div class="cat-bar-fill" style="width: 7.6%;"></div>
-              </div>
-              <span class="cat-count">9</span>
             </div>
             <div class="cat-row">
               <span class="cat-label">Nuclear</span>
@@ -809,7 +897,7 @@
         <div class="module-title">Source mix · last 30 days</div>
             <div class="src-row">
               <span class="src-name">PLA Daily (解放军报)</span>
-              <span class="src-count">217</span>
+              <span class="src-count">222</span>
             </div>
             <div class="src-row">
               <span class="src-name">Global Times — Defense</span>
@@ -826,6 +914,7 @@
     <div class="module-title" style="margin-top: 2rem;">Latest significant items</div>
       <div class="sig-list">
           <a class="sig-item" href="article/763.html">
+            <div class="analytical-signal-kicker"><span class="signal-dot"></span><span class="signal-kicker-text">Analytical signal</span></div>
             <div class="sig-item-title">Central Military Commission Issues &#39;Several Measures on Strengthening the Education, Management, and Supervision of Senior Military Cadres&#39;</div>
             <div class="sig-item-meta">
               <span class="source">PLA Daily (解放军报)</span>
@@ -836,6 +925,7 @@
             </div>
           </a>
           <a class="sig-item" href="article/725.html">
+            <div class="analytical-signal-kicker"><span class="signal-dot"></span><span class="signal-kicker-text">Analytical signal</span></div>
             <div class="sig-item-title">Southern Theater Command Spokesperson Zhai Shichen Issues Statement on Provocative Actions by Dutch Warship</div>
             <div class="sig-item-meta">
               <span class="source">PLA Daily (解放军报)</span>
@@ -846,6 +936,7 @@
             </div>
           </a>
           <a class="sig-item" href="article/232.html">
+            <div class="analytical-signal-kicker"><span class="signal-dot"></span><span class="signal-kicker-text">Analytical signal</span></div>
             <div class="sig-item-title">After the &#34;Four Randoms&#34; Training Model Was Introduced, Backup Operators Stepped In and Scored a &#34;Full House&#34;</div>
             <div class="sig-item-meta">
               <span class="source">PLA Daily (解放军报)</span>
@@ -856,6 +947,7 @@
             </div>
           </a>
           <a class="sig-item" href="article/241.html">
+            <div class="analytical-signal-kicker"><span class="signal-dot"></span><span class="signal-kicker-text">Analytical signal</span></div>
             <div class="sig-item-title">PLA Navy&#39;s new terminal defense system completes type certification trials; expert cites world-class ultra-low-altitude interception capability</div>
             <div class="sig-item-meta">
               <span class="source">Global Times — Defense</span>
@@ -866,6 +958,7 @@
             </div>
           </a>
           <a class="sig-item" href="article/120.html">
+            <div class="analytical-signal-kicker"><span class="signal-dot"></span><span class="signal-kicker-text">Analytical signal</span></div>
             <div class="sig-item-title">Happy 13th Birthday to the Naval Carrier-Based Aviation Force!</div>
             <div class="sig-item-meta">
               <span class="source">PLA Daily (解放军报)</span>
@@ -876,6 +969,7 @@
             </div>
           </a>
           <a class="sig-item" href="article/99.html">
+            <div class="analytical-signal-kicker"><span class="signal-dot"></span><span class="signal-kicker-text">Analytical signal</span></div>
             <div class="sig-item-title">Ministry of National Defense Routine Press Briefing, Early May 2026</div>
             <div class="sig-item-meta">
               <span class="source">PLA Daily (解放军报)</span>
