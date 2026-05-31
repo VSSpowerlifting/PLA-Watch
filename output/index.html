@@ -71,6 +71,10 @@
 
     body {
       background-color: var(--color-bg);
+      background-image:
+        linear-gradient(rgba(26, 44, 61, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 44, 61, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
       color: var(--color-text-primary);
       font-family: var(--sans);
       font-weight: 400;
@@ -419,15 +423,50 @@
   letter-spacing: -0.01em;
   margin-bottom: 0.5rem;
 }
-.brief-meta {
-  font-size: 0.8125rem;
+/* ── Edition strip / signal posture ─────────────────────────────── */
+.edition-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding: 0.6rem 0 0.1rem;
+  margin-top: 0.65rem;
+  border-top: 1px solid var(--color-border-soft);
+}
+.edition-meta {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
   font-variant-numeric: tabular-nums;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.45rem;
 }
-.brief-meta span + span::before {
-  content: "·";
-  margin: 0 0.5rem;
+.edition-sep {
   color: var(--color-border);
+  font-weight: 400;
+}
+.signal-posture {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+.signal-posture.elevated {
+  color: var(--color-brand);
+  border-color: var(--color-signal-mid);
+  background: var(--color-signal-tint);
 }
 
 /* ── Article cards ───────────────────────────────────────────────── */
@@ -472,22 +511,27 @@
 
 .article-title-zh {
   font-family: var(--sans);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: var(--color-text-muted);
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.6rem;
   font-style: normal;
+  letter-spacing: 0.01em;
 }
 
 .article-summary {
-  font-size: 0.9rem;
-  line-height: 1.62;
+  font-size: 0.875rem;
+  line-height: 1.65;
   color: var(--color-text-secondary);
   margin-bottom: 0;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--color-border-soft);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.article-card .tags { margin-bottom: 0.5rem; }
 
 /* .signal-badge replaced by .analytical-signal-kicker in base.html */
 
@@ -507,33 +551,50 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-brand);
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.readout-eyebrow::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+  flex-shrink: 0;
 }
 .readout-overview {
   font-family: var(--serif);
   font-size: 1.08rem;
   line-height: 1.55;
   color: var(--color-text-primary);
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border-soft);
 }
 .readout-lines {
   display: grid;
-  gap: 0.55rem;
+  gap: 0;
+  padding-top: 0.35rem;
 }
 .readout-line {
   display: grid;
   grid-template-columns: 7.5rem minmax(0, 1fr);
   gap: 0.85rem;
-  padding-top: 0.55rem;
+  padding: 0.65rem 0;
   border-top: 1px solid var(--color-border-soft);
   font-size: 0.825rem;
   line-height: 1.5;
 }
 .readout-label {
+  font-size: 0.65rem;
   font-weight: 700;
-  color: var(--color-text-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding-top: 0.15rem;
 }
-.readout-text { color: var(--color-text-secondary); }
+.readout-text { color: var(--color-text-primary); }
 
 .article-footer {
   display: flex;
@@ -546,6 +607,18 @@
   border-top: 1px solid var(--color-border-soft);
   margin-top: 1rem;
   letter-spacing: 0.01em;
+}
+.article-footer .footer-source {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+.footer-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 .article-footer .source-name {
   font-weight: 600;
@@ -572,6 +645,9 @@
   padding: 1.5rem 1.5rem 1.4rem;
   margin-bottom: 1rem;
 }
+.sidebar-card--primary {
+  border-top: 3px solid var(--color-brand);
+}
 .sidebar-eyebrow {
   font-family: var(--sans);
   font-size: 0.6875rem;
@@ -582,6 +658,16 @@
   margin-bottom: 0.85rem;
   padding-bottom: 0.65rem;
   border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sidebar-eyebrow::before {
+  content: "";
+  width: 14px;
+  height: 2px;
+  background: var(--color-brand);
+  flex-shrink: 0;
 }
 .sidebar-stats {
   display: flex;
@@ -727,14 +813,26 @@
 .signal-title a { color: var(--color-text-secondary); text-decoration: none; }
 .signal-title a:hover { color: var(--color-brand); }
 
-/* ── How to read note ────────────────────────────────────────────── */
+/* ── Analytic posture strip ──────────────────────────────────────── */
 .brief-context-note {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: var(--color-text-muted);
-  line-height: 1.6;
-  padding: 0.55rem 0 1.25rem;
+  line-height: 1.55;
+  padding: 0.6rem 0 1.1rem;
   border-bottom: 1px solid var(--color-border-soft);
   margin-bottom: 1.5rem;
+}
+.posture-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-right: 0.2rem;
+}
+.posture-sep {
+  margin: 0 0.45rem;
+  color: var(--color-border);
 }
 .brief-context-note a {
   color: var(--color-text-muted);
@@ -844,12 +942,23 @@
     <div class="brief-header">
       <div class="brief-eyebrow">Daily Brief</div>
       <div class="brief-date">31 May 2026</div>
-      <div class="brief-meta">
+      <div class="edition-strip">
+        <div class="edition-meta">
+          <span>Daily Brief</span>
+          <span class="edition-sep">·</span>
+          <span>31 May 2026</span>
+          <span class="edition-sep">·</span>
           <span>5 articles</span>
-<span>1 source</span>      </div>
+          <span class="edition-sep">·</span>
+          <span>1 source</span>
+          <span class="edition-sep">·</span>
+          <span>Updated 2026-05-31</span>
+        </div>
+        <div class="signal-posture">Signal&nbsp;Posture:&nbsp;Routine</div>
+      </div>
     </div>
 
-    <p class="brief-context-note">China Mil Watch tracks official Chinese military and security media. Official coverage is read as institutional messaging, not as neutral reporting or evidence of classified activity. <a href="methodology.html">Methodology →</a></p>
+    <p class="brief-context-note"><span class="posture-label">Source mode</span> Official PRC military media<span class="posture-sep">·</span><span class="posture-label">Analytic posture</span> Institutional signaling, not field reporting<span class="posture-sep">·</span><a href="methodology.html">Methodology →</a></p>
 
 
     <section class="analyst-readout" aria-labelledby="analyst-readout-heading">
@@ -879,7 +988,7 @@
             <div class="article-summary">On May 31, the PLA Southern Theater Command conducted combat readiness patrols (战备警巡) over the territorial waters, airspace, and surrounding areas of Huangyan Island, describing the operation as part of a sustained intensification of patrol and alert activity throughout May. The article documents...</div>
 
           <div class="article-footer">
-            <span class="source-name">PLA Daily (解放军报)</span>
+            <span class="footer-source"><span class="footer-label">Source</span> <span class="source-name">PLA Daily (解放军报)</span></span>
             <span class="sep"></span>
             <a href="http://www.81.cn/yw_208727/16464620.html" target="_blank" rel="noopener">Original ↗</a>
             <span class="sep"></span>
@@ -903,7 +1012,7 @@
             <div class="article-summary">The PLA Navy hospital ship *Silk Road Ark* departed Zhanjiang, Guangdong, on May 31 for its third &#39;Healthcare to the Maritime Frontier&#39; mission since commissioning in 2024, bound for South China Sea islands and reefs to provide garrison personnel and family members with free medical services via...</div>
 
           <div class="article-footer">
-            <span class="source-name">PLA Daily (解放军报)</span>
+            <span class="footer-source"><span class="footer-label">Source</span> <span class="source-name">PLA Daily (解放军报)</span></span>
             <span class="sep"></span>
             <a href="http://www.81.cn/yw_208727/16464619.html" target="_blank" rel="noopener">Original ↗</a>
             <span class="sep"></span>
@@ -927,7 +1036,7 @@
             <div class="article-summary">An unidentified PLA Air Force surface-to-air missile unit in southern China has replaced its traditional primary-reserve launch group structure with a &#39;first to arrive, first to strike&#39; doctrine, validated in a recent joint-service live-force exercise where dispersed launch vehicles conducted...</div>
 
           <div class="article-footer">
-            <span class="source-name">PLA Daily (解放军报)</span>
+            <span class="footer-source"><span class="footer-label">Source</span> <span class="source-name">PLA Daily (解放军报)</span></span>
             <span class="sep"></span>
             <a href="http://www.81.cn/yw_208727/16464570.html" target="_blank" rel="noopener">Original ↗</a>
             <span class="sep"></span>
@@ -951,7 +1060,7 @@
             <div class="article-summary">The CMC Logistic Support Department&#39;s clothing and equipment support organ, working through Joint Logistic Support Center subordinate organs, piloted &#39;frontline clothing and equipment field stores&#39; at three training bases—including Zhurihe Joint Training Base—between May and October of this year...</div>
 
           <div class="article-footer">
-            <span class="source-name">PLA Daily (解放军报)</span>
+            <span class="footer-source"><span class="footer-label">Source</span> <span class="source-name">PLA Daily (解放军报)</span></span>
             <span class="sep"></span>
             <a href="http://www.81.cn/yw_208727/16464566.html" target="_blank" rel="noopener">Original ↗</a>
             <span class="sep"></span>
@@ -975,7 +1084,7 @@
             <div class="article-summary">Soldiers from the Kurgan Border Defense Company, subordinate to Yingyan Outpost on the southern slopes of the Tianshan Mountains, used patrol rest periods to survey the surrounding pastoral area, located a mountain spring, and self-funded the installation of roughly 200 meters of pipeline and water...</div>
 
           <div class="article-footer">
-            <span class="source-name">PLA Daily (解放军报)</span>
+            <span class="footer-source"><span class="footer-label">Source</span> <span class="source-name">PLA Daily (解放军报)</span></span>
             <span class="sep"></span>
             <a href="http://www.81.cn/yw_208727/16464578.html" target="_blank" rel="noopener">Original ↗</a>
             <span class="sep"></span>
@@ -990,7 +1099,7 @@
 
   <aside class="brief-sidebar">
 
-    <div class="sidebar-card">
+    <div class="sidebar-card sidebar-card--primary">
       <div class="sidebar-eyebrow">Today's Brief</div>
       <div class="sidebar-stats">
         <div class="sidebar-stat">
