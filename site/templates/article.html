@@ -73,16 +73,20 @@
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--color-brand);
-  border: 1px solid var(--color-brand);
-  border-radius: 3px;
+  border: 1px solid var(--color-signal-mid);
+  border-radius: 5px;
   padding: 6px 16px;
   margin-top: 1.1rem;
-  transition: background 0.15s, color 0.15s;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 .btn-source:hover {
-  background: var(--color-brand);
-  color: #ffffff;
+  background: var(--color-signal-tint);
+  border-color: var(--color-brand);
   text-decoration: none;
+}
+.btn-source:focus-visible {
+  outline: 2px solid var(--color-signal-mid);
+  outline-offset: 2px;
 }
 
 /* ── Section label ───────────────────────────────────────────────── */
@@ -197,10 +201,13 @@ details summary:hover { color: var(--color-text-primary); }
 
   <div class="article-header">
 
+    {% if article.is_significant %}
+      <div class="analytical-signal-kicker"><span class="signal-dot"></span><span class="signal-kicker-text">Analytical signal</span></div>
+    {% endif %}
     {% if article.category_labels %}
       <div class="tags">
         {% for label in article.category_labels %}
-          <span class="tag">{{ label }}</span>
+          <span class="tag" data-label="{{ label }}">{{ label }}</span>
         {% endfor %}
       </div>
     {% endif %}

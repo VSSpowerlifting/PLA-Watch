@@ -37,19 +37,21 @@
   <style>
     /* ── Color system ───────────────────────────────────────────────────────── */
     :root {
-      --color-brand:          #B3132B;
-      --color-brand-dark:     #8B0E20;
-      --color-brand-light:    #D11C36;
-      --color-bg:             #F6F4EF;
+      --color-ink:            #1A2C3D;
+      --color-brand:          #B5513C;
+      --color-signal-mid:     #D87A64;
+      --color-signal-tint:    #FAECE7;
+      --color-surface:        #EDE8DF;
+      --color-bg:             #F7F4EF;
       --color-bg-card:        #FFFFFF;
       --color-bg-header:      #FFFFFF;
-      --color-bg-sidebar:     #FBFAF6;
-      --color-text-primary:   #161616;
-      --color-text-secondary: #4A4A4A;
-      --color-text-muted:     #7A7A7A;
-      --color-border:         #E2DFD8;
-      --color-border-soft:    #ECE9E2;
-      --color-accent:         #B3132B;
+      --color-bg-sidebar:     #FAF7F2;
+      --color-text-primary:   #1A2C3D;
+      --color-text-secondary: #4A4440;
+      --color-text-muted:     #7A726A;
+      --color-border:         #C9BFB4;
+      --color-border-soft:    rgba(201, 191, 180, 0.55);
+      --color-accent:         #B5513C;
       --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
       --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     }
@@ -60,12 +62,6 @@
 
     body {
       background-color: var(--color-bg);
-      /* Faint paper grid — barely-visible cross pattern for desktop polish */
-      background-image:
-        linear-gradient(rgba(22, 22, 22, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(22, 22, 22, 0.025) 1px, transparent 1px);
-      background-size: 32px 32px;
-      background-position: -1px -1px;
       color: var(--color-text-primary);
       font-family: var(--sans);
       font-weight: 400;
@@ -84,7 +80,6 @@
     .site-header {
       background: var(--color-bg-header);
       border-bottom: 1px solid var(--color-border);
-      box-shadow: 0 0 0 0 transparent, 0 2px 0 0 var(--color-brand);
       flex-shrink: 0;
     }
     .site-header-inner {
@@ -126,6 +121,7 @@
       line-height: 1.05;
       white-space: nowrap;
     }
+    .wordmark-signal { color: var(--color-brand); }
     .header-wordmark .kicker {
       font-family: var(--sans);
       font-size: 0.65rem;
@@ -148,13 +144,9 @@
       padding: 6px 0;
       position: relative;
       white-space: nowrap;
-      transition: color 0.15s;
+      transition: color 140ms ease;
     }
-    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
-    .header-nav a.active {
-      color: var(--color-text-primary);
-    }
-    .header-nav a.active::after {
+    .header-nav a::after {
       content: "";
       position: absolute;
       left: 0;
@@ -162,7 +154,14 @@
       bottom: -1px;
       height: 2px;
       background: var(--color-brand);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 160ms ease;
     }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a:hover::after { transform: scaleX(1); }
+    .header-nav a.active { color: var(--color-text-primary); }
+    .header-nav a.active::after { transform: scaleX(1); }
 
     /* ── Main layout ─────────────────────────────────────────────────────────── */
     main {
@@ -209,16 +208,96 @@
     .tag {
       display: inline-block;
       font-family: var(--sans);
-      font-size: 0.6875rem;
+      font-size: 11px;
       font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #444441;
+      background: #F1EFE8;
+      border: none;
+      border-radius: 3px;
+      padding: 4px 9px;
+      line-height: 1.4;
+    }
+    .tag[data-label="Taiwan"]                { background: #FCEBEB; color: #A32D2D; }
+    .tag[data-label="East China Sea"],
+    .tag[data-label="South China Sea"],
+    .tag[data-label="U.S.\2013 China Military"] { background: #E6F1FB; color: #185FA5; }
+    .tag[data-label*="Personnel"]             { background: #FAEEDA; color: #633806; }
+    .tag[data-label="Exercises"]              { background: #EAF3DE; color: #3B6D11; }
+    .tag[data-label="Military Diplomacy"]     { background: #EEEDFE; color: #3C3489; }
+    .tag[data-label="Internal Security"]      { background: #F1EFE8; color: #444441; }
+    .tag[data-label="Modernization"]          { background: #E1F5EE; color: #0F6E56; }
+
+    /* ── Analytical signal indicator ─────────────────────────────────────────── */
+    .analytical-signal-kicker {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.5rem;
+    }
+    .signal-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #B5513C;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .signal-kicker-text {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--color-text-secondary);
+      color: #B5513C;
+    }
+
+    /* ── Button tiers ────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, transform 120ms ease;
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--color-signal-mid);
+      outline-offset: 2px;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: #1A2C3D;
+      color: #E8EFF5;
+      border: none;
+    }
+    .btn-primary:hover { background: #14202D; color: #E8EFF5; text-decoration: none; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text-primary);
       border: 1px solid var(--color-border);
-      background: var(--color-bg-card);
-      border-radius: 2px;
-      padding: 2px 8px;
-      line-height: 1.4;
+    }
+    .btn-secondary:hover { background: var(--color-surface); text-decoration: none; }
+    .btn-signal {
+      background: transparent;
+      color: #B5513C;
+      border: 1px solid #D87A64;
+    }
+    .btn-signal:hover { background: #FAECE7; color: #B5513C; text-decoration: none; }
+
+    /* ── Significant badge ───────────────────────────────────────────────────── */
+    .significant-badge {
+      display: inline-block;
+      background: #FAC775;
+      color: #633806;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 4px;
     }
 
     /* ── Utilities ───────────────────────────────────────────────────────────── */
@@ -256,7 +335,7 @@
       .header-nav { gap: 1rem; }
       .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
       main { padding: 1.75rem 1.25rem 3rem; }
-      body { font-size: 0.9375rem; background-size: 24px 24px; }
+      body { font-size: 0.9375rem; }
       .site-footer { padding: 2rem 1.25rem; }
     }
     @media (max-width: 720px) {
@@ -278,6 +357,14 @@
       .header-wordmark .title { font-size: 0.92rem; }
       .header-nav { gap: 0.6rem; }
       .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    /* ── Reduced motion ─────────────────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
     }
 
 .article-page {
@@ -339,16 +426,20 @@
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--color-brand);
-  border: 1px solid var(--color-brand);
-  border-radius: 3px;
+  border: 1px solid var(--color-signal-mid);
+  border-radius: 5px;
   padding: 6px 16px;
   margin-top: 1.1rem;
-  transition: background 0.15s, color 0.15s;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
 }
 .btn-source:hover {
-  background: var(--color-brand);
-  color: #ffffff;
+  background: var(--color-signal-tint);
+  border-color: var(--color-brand);
   text-decoration: none;
+}
+.btn-source:focus-visible {
+  outline: 2px solid var(--color-signal-mid);
+  outline-offset: 2px;
 }
 
 /* ── Section label ───────────────────────────────────────────────── */
@@ -464,7 +555,7 @@ details summary:hover { color: var(--color-text-primary); }
     <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
       <img src="../logo-icon.png" alt="">
       <span class="header-wordmark">
-        <span class="title">China Mil Watch</span>
+        <span class="title"><span class="wordmark-primary">China Mil</span> <span class="wordmark-signal">Watch</span></span>
         <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
       </span>
     </a>
@@ -490,8 +581,8 @@ details summary:hover { color: var(--color-text-primary); }
   <div class="article-header">
 
       <div class="tags">
-          <span class="tag">Internal Security</span>
-          <span class="tag">Political Work</span>
+          <span class="tag" data-label="Internal Security">Internal Security</span>
+          <span class="tag" data-label="Political Work">Political Work</span>
       </div>
 
     <h1 class="article-page-title">

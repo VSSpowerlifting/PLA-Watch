@@ -79,7 +79,7 @@
 .stat-card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 1.1rem 1.15rem 1rem;
 }
 .stat-card .label {
@@ -125,7 +125,7 @@
 .module {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 1.25rem 1.4rem 1.3rem;
 }
 .module-title {
@@ -207,17 +207,18 @@
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-left: 3px solid var(--color-brand);
-  border-radius: 4px;
+  border-radius: 0 6px 6px 0;
   padding: 0.95rem 1.1rem 0.9rem;
   display: block;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color 140ms ease, transform 140ms ease, background-color 140ms ease;
 }
 .sig-item:hover {
   border-color: var(--color-brand);
+  background: #FEF7F4;
+  transform: translateY(-1px);
   text-decoration: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 .sig-item-title {
   font-family: var(--serif);
@@ -335,18 +336,18 @@
 .read-card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 1.2rem 1.35rem 1.15rem;
   text-decoration: none;
   color: inherit;
   display: block;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition: border-color 140ms ease, transform 140ms ease;
   position: relative;
 }
 .read-card:hover {
   border-color: var(--color-brand);
+  transform: translateY(-1px);
   text-decoration: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 .read-card .read-eyebrow {
   font-family: var(--sans);
@@ -469,6 +470,7 @@
       <div class="sig-list">
         {% for a in latest_significant %}
           <a class="sig-item" href="article/{{ a.id }}.html">
+            <div class="analytical-signal-kicker"><span class="signal-dot"></span><span class="signal-kicker-text">Analytical signal</span></div>
             <div class="sig-item-title">{{ a.title_english or a.title_original }}</div>
             <div class="sig-item-meta">
               <span class="source">{{ a.source_name }}</span>
