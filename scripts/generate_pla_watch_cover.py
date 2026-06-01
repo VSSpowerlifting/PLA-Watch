@@ -508,21 +508,18 @@ def resolve_background_image(
     sidecar: dict,
     exclude_path: Optional[Path] = None,
 ) -> Optional[Path]:
-    """Choose a deterministic local photo/visual before using the abstract fallback.
+    """Resolve an edition-specific local image from the sidecar.
 
-    Selection order:
-      1. media_items entries in the sidecar (src/local_path/path/optimized_path).
+    Only checks images that belong to this edition:
+      1. media_items entries (src/local_path/path/optimized_path).
       2. Top-level image keys (visual_image, context_image, …).
       3. Any ../media/ path found anywhere in the sidecar strings.
-      4. Curated image directories (assets/pla-watch/covers, …).
-      5. Abstract fallback (returns None).
+
+    Curated fallbacks and prior-week media are intentionally excluded here;
+    generate_one() handles those in priority order after auto-fetch.
 
     An image that resolves to *exclude_path* is silently skipped so that the
     previous issue's cover background is never accidentally reused.
-
-    # Remote fetch (step 3.5): handled by generate_one() calling
-    # _auto_fetch_source_image() before this function is called a second time,
-    # so that the downloaded image appears in media_items and is picked up here.
     """
     # If generate_one() pre-resolved the path (with dedup exclusion), use it directly.
     pre_resolved = sidecar.get("_resolved_bg_path")
@@ -568,16 +565,6 @@ def resolve_background_image(
         if img:
             return img
 
-    for directory in CURATED_IMAGE_DIRS:
-        if not directory.exists():
-            continue
-        for img in sorted(directory.iterdir()):
-            if img.suffix.lower() in IMAGE_EXTS:
-                result = _accept(img.resolve(), f"curated dir ({directory.name})")
-                if result:
-                    return result
-
-    print(f"[cover:{issue_date}] no local image found — using abstract fallback gradient")
     return None
 
 
@@ -1030,6 +1017,29 @@ def _auto_fetch_source_image(sidecar: dict, sidecar_date: str) -> Optional[Path]
         return None
 
 
+def _first_image_in_dirs(
+    dirs: list,
+    exclude_path: Optional[Path],
+    issue_date: str,
+    label: str,
+) -> Optional[Path]:
+    """Return the first valid image found across *dirs*, skipping *exclude_path*."""
+    for directory in dirs:
+        directory = Path(directory)
+        if not directory.exists():
+            continue
+        for img in sorted(directory.iterdir()):
+            if img.suffix.lower() not in IMAGE_EXTS:
+                continue
+            resolved = img.resolve()
+            if exclude_path and resolved == exclude_path.resolve():
+                print(f"[cover:{issue_date}] skip {label} ({img.name}): same as previous issue image")
+                continue
+            print(f"[cover:{issue_date}] selected background via {label}: {img.name}")
+            return resolved
+    return None
+
+
 def generate_one(json_path: Path, force: bool = False,
                  fetch_source_image: bool = True) -> Optional[Path]:
     sidecar = _load_sidecar(json_path)
@@ -1044,18 +1054,48 @@ def generate_one(json_path: Path, force: bool = False,
         print(f"[skip] {out_path.relative_to(ROOT)} already exists "
               f"(use --force to overwrite)")
     else:
-        # Inject exclude_path into sidecar resolution via a patched call.
-        # render_cover() calls resolve_background_image internally, so we
-        # pre-resolve here with exclusion and inject the result as a sentinel.
+        # Priority 1: edition-specific images (media_items, image keys, path strings).
         bg_path = resolve_background_image(sidecar, exclude_path=prev_img)
+        bg_source = "edition_media" if bg_path else None
 
-        # If no local image found, try fetching from the source article URLs.
+        # Priority 2: fetch og:image from this edition's source_trail article URLs.
         if bg_path is None and fetch_source_image:
             fetched = _auto_fetch_source_image(sidecar, sidecar_date)
             if fetched:
-                # Reload sidecar so the new media_items entry is visible.
                 sidecar = _load_sidecar(json_path)
                 bg_path = resolve_background_image(sidecar, exclude_path=prev_img)
+                bg_source = "source_trail_fetch" if bg_path else None
+
+        # Priority 3: curated reusable cover images (static assets, never edition-specific).
+        if bg_path is None:
+            bg_path = _first_image_in_dirs(
+                CURATED_IMAGE_DIRS, prev_img, sidecar_date, "curated_fallback"
+            )
+            bg_source = "curated_fallback" if bg_path else None
+
+        # Priority 4: last-resort — prior-week images already in the media dir.
+        # Sorted newest-first so the most recently fetched image is tried first.
+        if bg_path is None and MEDIA_DIR.exists():
+            bg_path = _first_image_in_dirs(
+                [MEDIA_DIR], prev_img, sidecar_date, "media_dir_fallback"
+            )
+            bg_source = "media_dir_fallback" if bg_path else None
+
+        if bg_path is None:
+            bg_source = "abstract_gradient"
+            print(f"[cover:{sidecar_date}] no local image found — using abstract fallback gradient")
+
+        # Record the image source in the sidecar so callers can audit it.
+        sidecar_on_disk = _load_sidecar(json_path)
+        sidecar_on_disk["background_image_source"] = bg_source
+        if bg_path:
+            sidecar_on_disk["background_image_path"] = str(bg_path.relative_to(ROOT)
+                                                            if bg_path.is_relative_to(ROOT)
+                                                            else bg_path)
+        json_path.write_text(
+            json.dumps(sidecar_on_disk, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
+        sidecar = sidecar_on_disk
 
         sidecar_with_bg = dict(sidecar)
         if bg_path:

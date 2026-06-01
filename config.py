@@ -8,7 +8,9 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-load_dotenv()
+if os.environ.get("ANTHROPIC_API_KEY") == "":
+    os.environ.pop("ANTHROPIC_API_KEY")
+load_dotenv(dotenv_path=Path(__file__).parent / ".env", override=False)
 
 # ---------------------------------------------------------------------------
 # Paths

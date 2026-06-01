@@ -65,9 +65,12 @@ def resolve_week_ending(raw: Optional[str]) -> date:
     if raw:
         return date.fromisoformat(raw)
     today = date.today()
-    # Roll forward to the next Sunday (weekday 6)
-    days_until_sunday = (6 - today.weekday()) % 7
-    return today + timedelta(days=days_until_sunday)
+    # Editions close on Saturday. On Sunday the most recent Saturday is yesterday;
+    # any other day of the week, roll forward to the upcoming Saturday.
+    if today.weekday() == 6:  # Sunday
+        return today - timedelta(days=1)
+    days_until_saturday = (5 - today.weekday()) % 7
+    return today + timedelta(days=days_until_saturday)
 
 
 # ── Style guide extract ───────────────────────────────────────────────────────
@@ -605,8 +608,8 @@ def main():
     edition_label = derive_edition_label(result["edition_type"], days_covered)
     source_trail, trail_truncated = build_source_trail(articles)
 
-    # Build sidecar without cover paths first — they are added only after the
-    # files are confirmed to exist on disk.
+    # source_trail is included so generate_one()'s auto-fetch step can find
+    # article URLs when no local image exists yet.
     sidecar: dict = {
         "date": week_ending_str,
         "week_ending": week_ending_str,
@@ -619,42 +622,44 @@ def main():
         "days_covered": days_covered,
         "edition_type": result["edition_type"],
         "edition_label": edition_label,
+        "source_trail": source_trail,
         "author_name":  AUTHOR_NAME,
         "author_title": AUTHOR_TITLE,
         "author_bio":   AUTHOR_BIO,
         "author_links": AUTHOR_LINKS,
     }
 
-    # Generate the editorial cover PNG. This must run before the sidecar JSON
-    # is written so the JSON only records paths that actually exist.
+    # Write sidecar JSON before cover generation so generate_one() can read
+    # source_trail URLs from disk during its auto-fetch step.
+    json_path = posts_dir / f"{week_ending_str}.json"
+    json_path.write_text(json.dumps(sidecar, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # Generate the editorial cover PNG via generate_one(), which tries
+    # auto-fetching a source article image before falling back to the gradient.
     cover_path = covers_dir / f"{week_ending_str}.png"
     thumb_path = covers_dir / f"{week_ending_str}-thumb.png"
     try:
-        from scripts.generate_pla_watch_cover import render_cover, render_thumbnail
-        render_cover(sidecar, cover_path)
+        from scripts.generate_pla_watch_cover import generate_one
+        generate_one(json_path, force=True)
+        # Reload sidecar: generate_one() may have added media_items entries.
+        sidecar = json.loads(json_path.read_text(encoding="utf-8"))
         if cover_path.exists():
             sidecar["cover_image"] = f"../covers/{week_ending_str}.png"
             sidecar["cover_image_url"] = (
                 f"https://chinamilwatch.org/the-pla-watch/covers/{week_ending_str}.png"
             )
+            if thumb_path.exists():
+                sidecar["cover_thumb"] = f"../covers/{week_ending_str}-thumb.png"
+            json_path.write_text(json.dumps(sidecar, indent=2, ensure_ascii=False), encoding="utf-8")
             print(f"Wrote cover: {cover_path.relative_to(ROOT)}")
-            try:
-                render_thumbnail(cover_path, thumb_path)
-                if thumb_path.exists():
-                    sidecar["cover_thumb"] = f"../covers/{week_ending_str}-thumb.png"
-                    print(f"Wrote thumbnail: {thumb_path.relative_to(ROOT)}")
-            except Exception as thumb_exc:
-                print(f"WARN: thumbnail generation failed ({thumb_exc!r})")
+            if thumb_path.exists():
+                print(f"Wrote thumbnail: {thumb_path.relative_to(ROOT)}")
         else:
             print("WARN: cover render returned but file not found; "
                   "post will render without a cover image")
     except Exception as exc:
         print(f"WARN: cover image generation failed ({exc!r}); "
               "post will render without a cover image")
-
-    # Write sidecar JSON — cover fields are now present only if files exist.
-    json_path = posts_dir / f"{week_ending_str}.json"
-    json_path.write_text(json.dumps(sidecar, indent=2, ensure_ascii=False), encoding="utf-8")
 
     # Build meta from the finalised sidecar so the HTML template gets the
     # same truthful cover paths (or their absence).
