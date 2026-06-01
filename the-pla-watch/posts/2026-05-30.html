@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The PLA Watch: Senior Cadre Oversight, Electronic Warfare, and the Week's Institutional Texture — The PLA Watch</title>
+  <meta name="description" content="The CMC issued a formal 26-article directive on managing its senior officer corps. The Southern Theater Command publicly acknowledged jamming a NATO warship. The rest of the week was mostly institutional maintenance — but that maintenance is worth reading carefully.">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://chinamilwatch.org/the-pla-watch/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="article">
+  <meta property="og:site_name"    content="The PLA Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org/the-pla-watch/">
+  <meta property="og:title"        content="The PLA Watch: Senior Cadre Oversight, Electronic Warfare, and the Week's Institutional Texture">
+  <meta property="og:description"  content="The CMC issued a formal 26-article directive on managing its senior officer corps. The Southern Theater Command publicly acknowledged jamming a NATO warship. The rest of the week was mostly institutional maintenance — but that maintenance is worth reading carefully.">
+  <meta property="og:image"        content="https://chinamilwatch.org/the-pla-watch/covers/2026-05-30.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="The PLA Watch: Senior Cadre Oversight, Electronic Warfare, and the Week's Institutional Texture">
+  <meta name="twitter:description" content="The CMC issued a formal 26-article directive on managing its senior officer corps. The Southern Theater Command publicly acknowledged jamming a NATO warship. The rest of the week was mostly institutional maintenance — but that maintenance is worth reading carefully.">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/the-pla-watch/covers/2026-05-30.png">
+
+  <link rel="icon" type="image/png" href="../../logo-icon.png">
+  <link rel="apple-touch-icon" href="../../logo-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system (shared with parent brand) ────────────────────────── */
+    :root {
+      --color-brand:          #B3132B;
+      --color-brand-dark:     #8B0E20;
+      --color-brand-light:    #D11C36;
+      --color-bg:             #F4EFE6;        /* warmer paper tone for the publication */
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FBF7EE;
+      --color-text-primary:   #161616;
+      --color-text-secondary: #4A4A4A;
+      --color-text-muted:     #7A7A7A;
+      --color-border:         #DCD7CC;
+      --color-border-soft:    #ECE7DC;
+      --color-accent:         #B3132B;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      /* Editorial paper grain — vertical hairline texture rather than the dashboard grid */
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          rgba(22, 22, 22, 0.018) 0,
+          rgba(22, 22, 22, 0.018) 1px,
+          transparent 1px,
+          transparent 6px
+        );
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Masthead — editorial nameplate, not the parent's dashboard header  */
+    .pw-masthead {
+      background: var(--color-bg-header);
+      border-top: 4px solid var(--color-brand);
+      border-bottom: 1px solid var(--color-border);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .pw-masthead-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.4rem 2rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .pw-masthead-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .pw-nameplate {
+      display: flex;
+      align-items: baseline;
+      gap: 0.85rem;
+      color: inherit;
+      text-decoration: none;
+    }
+    .pw-nameplate:hover { text-decoration: none; }
+    .pw-nameplate .pw-mark {
+      font-family: var(--serif);
+      font-weight: 800;
+      font-style: italic;
+      font-size: 2.2rem;
+      letter-spacing: -0.015em;
+      color: var(--color-text-primary);
+      line-height: 1;
+    }
+    .pw-nameplate .pw-mark .the {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      margin-right: 0.15em;
+    }
+    .pw-nameplate .pw-mark-rule {
+      width: 36px;
+      height: 1px;
+      background: var(--color-brand);
+      align-self: center;
+    }
+    .pw-nameplate .pw-tag {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      align-self: center;
+    }
+
+    .pw-nav { display: flex; gap: 1.25rem; align-items: center; }
+    .pw-nav a {
+      color: var(--color-text-secondary);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 4px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .pw-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .pw-nav a.active { color: var(--color-text-primary); }
+    .pw-nav a.active::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -2px;
+      height: 2px;
+      background: var(--color-brand);
+    }
+    .pw-nav .nav-sep {
+      color: var(--color-border);
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .pw-nav .pw-nav-back {
+      color: var(--color-brand);
+      font-weight: 600;
+    }
+
+    .pw-masthead-rule {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border-soft);
+      padding-top: 0.65rem;
+    }
+    .pw-masthead-rule .left,
+    .pw-masthead-rule .right { display: flex; gap: 1.1rem; }
+
+    /* ── Main layout ───────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    /* ── Footer ───────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .footer-desc {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      max-width: 520px;
+    }
+    .footer-transparency {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      border-top: 1px solid var(--color-border-soft);
+      padding-top: 0.85rem;
+      margin-top: 0.85rem;
+    }
+    .footer-meta {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      letter-spacing: 0.04em;
+    }
+    .footer-meta a { color: var(--color-text-secondary); font-weight: 600; }
+    .footer-meta-label {
+      display: block;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-brand);
+      margin-bottom: 0.5rem;
+      font-size: 0.65rem;
+    }
+
+    /* ── Utilities ─────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    /* ── Tablet / mobile ───────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .pw-masthead-inner { padding: 1.2rem 1.25rem 0.95rem; }
+      .pw-masthead-top { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+      .pw-nameplate .pw-mark { font-size: 1.8rem; }
+      .pw-nameplate .pw-mark-rule { display: none; }
+      .pw-nameplate .pw-tag { display: none; }
+      .pw-nav { gap: 1rem; }
+      .pw-nav a { font-size: 0.66rem; letter-spacing: 0.1em; }
+      .pw-masthead-rule { font-size: 0.62rem; letter-spacing: 0.12em; }
+      .pw-masthead-rule .right { display: none; }
+      main { padding: 2rem 1.25rem 3.5rem; }
+      body { font-size: 0.9375rem; }
+      .site-footer { padding: 2rem 1.25rem; }
+      .footer-inner { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .pw-nameplate .pw-mark { font-size: 1.55rem; }
+      .pw-nav { gap: 0.85rem; }
+      .pw-nav a { font-size: 0.6rem; }
+      .pw-nav .nav-sep { display: none; }
+    }
+    @media (max-width: 460px) {
+      .pw-nav a[href$="archive.html"]:not(.active) { display: none; }
+    }
+
+    
+/* ── Two-column post layout ─────────────────────────────────────────── */
+.post-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 3.5rem;
+  align-items: flex-start;
+}
+.post-main { min-width: 0; }
+@media (max-width: 900px) {
+  .post-wrap { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+}
+
+/* ── Issue cover image (editorial PNG) ──────────────────────────────── */
+.cover-figure {
+  margin: 0 0 2rem;
+}
+.cover-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg-card);
+}
+.cover-figure figcaption {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  margin-top: 0.55rem;
+  text-align: right;
+}
+.cover-credit-note {
+  margin: -1.25rem 0 2.25rem;
+  padding: 0.75rem 0.95rem;
+  border: 1px solid var(--color-border-soft);
+  border-left: 3px solid var(--color-brand);
+  border-radius: 4px;
+  background: var(--color-bg-card);
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+.cover-credit-note .label {
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+.cover-credit-note a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+}
+.cover-credit-note a:hover {
+  color: var(--color-brand);
+  text-decoration-color: var(--color-brand);
+}
+
+/* ── Visual Context — restrained editorial image card ───────────────── */
+.visual-context {
+  margin: 0 0 2.5rem;
+}
+.media-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.media-card:last-child { margin-bottom: 0; }
+.media-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--color-bg-card);
+}
+.media-card-body {
+  padding: 0.95rem 1.15rem 1rem;
+  border-top: 1px solid var(--color-border-soft);
+}
+.media-caption {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+.media-meta {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+.media-meta a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+}
+.media-meta a:hover {
+  color: var(--color-brand);
+  text-decoration-color: var(--color-brand);
+}
+.media-meta .sep {
+  margin: 0 0.45rem;
+  color: var(--color-border);
+}
+.media-note {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-top: 0.45rem;
+  line-height: 1.5;
+}
+@media (max-width: 600px) {
+  .media-card-body { padding: 0.85rem 1rem 0.95rem; }
+  .media-caption { font-size: 0.9rem; }
+}
+
+/* ── Editorial hero — large display, generous spacing, watermark ────── */
+.hero {
+  position: relative;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-top: 4px solid var(--color-brand);
+  border-radius: 4px;
+  padding: 2.4rem 2.4rem 2rem;
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+}
+.hero::after {
+  content: "PLA WATCH";
+  position: absolute;
+  right: -0.4rem;
+  bottom: -1.6rem;
+  font-family: var(--serif);
+  font-weight: 800;
+  font-style: italic;
+  font-size: 7.5rem;
+  letter-spacing: -0.025em;
+  color: var(--color-brand);
+  opacity: 0.045;
+  pointer-events: none;
+  line-height: 1;
+}
+.hero-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 1.4rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+.hero-eyebrow::before {
+  content: "";
+  width: 26px; height: 2px;
+  background: var(--color-brand);
+}
+.hero-edition {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.hero-edition .badge {
+  display: inline-block;
+  background: #FFF7ED;
+  color: #9A3412;
+  border: 1px solid #FED7AA;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-left: 0.5rem;
+}
+.hero-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.12;
+  letter-spacing: -0.018em;
+  color: var(--color-text-primary);
+  margin-bottom: 1.05rem;
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+.hero-dek {
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+  max-width: 660px;
+  position: relative;
+  z-index: 1;
+}
+.hero-meta {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  border-top: 1px solid var(--color-border-soft);
+  padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-meta .meta-item { display: inline-flex; gap: 0.4rem; align-items: baseline; }
+.hero-meta .meta-item .num {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
+@media (max-width: 768px) {
+  .hero { padding: 1.7rem 1.5rem 1.5rem; }
+  .hero-title { font-size: 1.85rem; }
+  .hero-dek { font-size: 1.05rem; }
+  .hero::after { font-size: 4.5rem; }
+}
+
+/* ── Module section heading ────────────────────────────────────────── */
+.mod-heading {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.95rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mod-heading::before {
+  content: "";
+  width: 22px; height: 2px;
+  background: var(--color-brand);
+}
+.mod-heading.brand { color: var(--color-brand); }
+
+/* ── This Week's Signal — pull-quote-style card ────────────────────── */
+.signal-card {
+  background: var(--color-bg-sidebar);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-brand);
+  border-radius: 4px;
+  padding: 1.6rem 1.85rem 1.7rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.signal-card::before {
+  content: "“";
+  position: absolute;
+  left: 0.45rem;
+  top: -0.8rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: var(--color-brand);
+  opacity: 0.18;
+  line-height: 1;
+}
+.signal-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.7rem;
+}
+.signal-text {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1.18rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  letter-spacing: -0.005em;
+}
+
+/* ── Coverage Snapshot — stat module ───────────────────────────────── */
+.snapshot {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.5rem 1.65rem 1.6rem;
+  margin-bottom: 2.5rem;
+}
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.snap-stat .num {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.95rem;
+  line-height: 1;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.012em;
+  margin-bottom: 0.4rem;
+}
+.snap-stat .num .accent { color: var(--color-brand); }
+.snap-stat .label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+.snap-stat .sub {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.25rem;
+}
+.snap-bar {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border-soft);
+}
+.snap-bar-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+.snap-bar-track {
+  height: 8px;
+  background: var(--color-border-soft);
+  border-radius: 1px;
+  overflow: hidden;
+  display: flex;
+}
+.snap-bar-fill { background: var(--color-brand); height: 100%; }
+.snap-bar-rest { background: var(--color-border); height: 100%; flex: 1; }
+.snap-bar-legend {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.55rem;
+  display: flex;
+  gap: 1.4rem;
+}
+.snap-bar-legend .swatch {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 1px;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+.swatch-sig { background: var(--color-brand); }
+.swatch-rest { background: var(--color-border); }
+@media (max-width: 600px) {
+  .snapshot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .snap-stat .num { font-size: 1.55rem; }
+}
+
+/* ── Body sections — long-form editorial flow ──────────────────────── */
+.post-body { max-width: 700px; }
+.post-section { margin-bottom: 2.5rem; }
+.post-section .mod-heading.brand { color: var(--color-brand); }
+
+.section-text p {
+  margin-bottom: 1.05rem;
+  line-height: 1.78;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+}
+.section-text p:last-child { margin-bottom: 0; }
+.section-text p:first-of-type::first-letter {
+  /* Editorial drop cap on the very first paragraph of the opening section */
+  /* Applied selectively below */
+}
+.opening .section-text p:first-of-type::first-letter {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 3.6rem;
+  line-height: 0.85;
+  float: left;
+  margin: 0.18rem 0.55rem -0.15rem 0;
+  color: var(--color-brand);
+}
+
+/* ── Term-to-know module ───────────────────────────────────────────── */
+.term-box {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-brand);
+  border-radius: 4px;
+  padding: 1.4rem 1.65rem 1.4rem;
+}
+.term-word {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.005em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.6rem;
+}
+.term-explanation {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+.term-explanation p { margin-bottom: 0.85rem; }
+.term-explanation p:last-child { margin-bottom: 0; }
+
+/* ── Source Trail — vertical list ──────────────────────────────────── */
+.source-trail { margin-bottom: 2.5rem; }
+.source-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.source-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-top: none;
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+  position: relative;
+}
+.source-card:first-child { border-top: 1px solid var(--color-border); border-radius: 4px 4px 0 0; }
+.source-card:last-child { border-radius: 0 0 4px 4px; }
+.source-card:only-child { border-top: 1px solid var(--color-border); border-radius: 4px; }
+.source-card:hover { background: var(--color-bg-sidebar); text-decoration: none; }
+.source-card.is-significant { border-left: 3px solid var(--color-brand); padding-left: calc(1.1rem - 2px); }
+.source-card-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--color-text-primary);
+}
+.source-card-meta {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.source-card-meta .sep { color: var(--color-border); }
+.source-card-meta .sig-tag {
+  color: var(--color-brand);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  padding: 1px 6px;
+  border-radius: 2px;
+  font-size: 0.625rem;
+}
+.source-card-domain {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+.source-trail-cap {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 0.85rem;
+  font-style: italic;
+}
+
+/* ── Closing note ──────────────────────────────────────────────────── */
+.closing-note {
+  margin-top: 2.5rem;
+  padding: 1.4rem 1.65rem;
+  background: var(--color-bg-sidebar);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* ── Byline (hero) ─────────────────────────────────────────────────── */
+.byline {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.4rem;
+  position: relative;
+  z-index: 1;
+  max-width: 660px;
+}
+.byline-name {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+.byline-title {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+  letter-spacing: 0.005em;
+}
+
+/* ── Author block (bottom of post) ─────────────────────────────────── */
+.author-block {
+  margin-top: 2.5rem;
+  padding: 1.5rem 1.65rem 1.6rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+.author-block-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.author-block-eyebrow::before {
+  content: "";
+  width: 22px; height: 2px;
+  background: var(--color-brand);
+}
+.author-block-name {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-text-primary);
+  letter-spacing: -0.005em;
+  margin-bottom: 0.15rem;
+}
+.author-block-title {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.85rem;
+}
+.author-block-bio {
+  font-family: var(--serif);
+  font-size: 0.97rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 640px;
+  margin-bottom: 1.1rem;
+}
+
+/* ── Contact chips — restrained text pills ─────────────────────────── */
+.author-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+.author-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.author-chip:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  text-decoration: none;
+}
+.author-chip .arrow {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  transition: color 0.15s;
+}
+.author-chip:hover .arrow { color: var(--color-brand); }
+
+/* ── Sidebar (sticky) ──────────────────────────────────────────────── */
+.post-sidebar { position: sticky; top: 1.5rem; }
+.sb-card {
+  background: var(--color-bg-sidebar);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1.3rem 1.4rem 1.25rem;
+  margin-bottom: 1rem;
+}
+.sb-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.sb-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border-soft);
+  font-family: var(--sans);
+  font-size: 0.825rem;
+}
+.sb-row:last-child { border-bottom: none; }
+.sb-row .label { color: var(--color-text-secondary); }
+.sb-row .value {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.sb-text {
+  font-size: 0.825rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .post-sidebar { position: static; }
+}
+
+/* ── Post nav (bottom) ─────────────────────────────────────────────── */
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+}
+.post-nav a { color: var(--color-text-secondary); }
+.post-nav a:hover { color: var(--color-brand); text-decoration: none; }
+
+  </style>
+</head>
+<body>
+
+<header class="pw-masthead">
+  <div class="pw-masthead-inner">
+    <div class="pw-masthead-top">
+      <a href="../index.html" class="pw-nameplate" aria-label="The PLA Watch home">
+        <span class="pw-mark"><span class="the">The</span>PLA Watch</span>
+        <span class="pw-mark-rule" aria-hidden="true"></span>
+        <span class="pw-tag">A weekly publication of China Mil Watch</span>
+      </a>
+      <nav class="pw-nav">
+        <a href="../index.html" >Latest Edition</a>
+        <a href="../archive.html" >Archive</a>
+        <span class="nav-sep">|</span>
+        <a href="../../index.html" class="pw-nav-back">China Mil Watch &rarr;</a>
+      </nav>
+    </div>
+    <div class="pw-masthead-rule">
+      <span class="left"><span>Vol. I</span><span>Significant · Week ending 2026-05-30</span></span>
+      <span class="right"><span>Source-grounded · Restrained · Weekly</span></span>
+    </div>
+  </div>
+</header>
+
+
+
+<main>
+  
+<div class="post-wrap">
+
+  <article class="post-main">
+
+    
+    <div class="hero">
+      <div class="hero-meta-top">
+        <div class="hero-eyebrow">The PLA Watch</div>
+        <div class="hero-edition">
+          Week ending 2026-05-30
+          <span class="badge">Significant</span>
+        </div>
+      </div>
+      <h1 class="hero-title">The PLA Watch: Senior Cadre Oversight, Electronic Warfare, and the Week's Institutional Texture</h1>
+      <div class="hero-dek">The CMC issued a formal 26-article directive on managing its senior officer corps. The Southern Theater Command publicly acknowledged jamming a NATO warship. The rest of the week was mostly institutional maintenance — but that maintenance is worth reading carefully.</div>
+      
+      <div class="byline">
+        By <span class="byline-name">Benjamin Yang</span>
+        <span class="byline-title">Founder & Principal Analyst, China Mil Watch</span>
+      </div>
+      
+      <div class="hero-meta">
+        <span class="meta-item">Covers <span class="num">2026-05-24</span> → <span class="num">2026-05-30</span></span>
+        <span class="meta-item"><span class="num">7</span> days observed</span>
+        <span class="meta-item"><span class="num">40</span> articles analyzed</span>
+        <span class="meta-item"><span class="num">2</span> significant</span>
+        
+          <span class="meta-item">PLA Daily (解放军报)</span>
+        
+      </div>
+    </div>
+
+    
+    
+    <figure class="cover-figure">
+      <img src="../covers/2026-05-30.png"
+           alt="The PLA Watch — The PLA Watch: Senior Cadre Oversight, Electronic Warfare, and the Week's Institutional Texture (issue cover)"
+           width="1200" height="630" loading="eager">
+      <figcaption>Issue cover · The PLA Watch · 2026-05-30</figcaption>
+    </figure>
+    
+    
+
+    
+    
+
+    
+    
+      <div class="signal-card">
+        <div class="signal-eyebrow">This week's signal</div>
+        <div class="signal-text">The CMC issued a formal 26-article directive on senior cadre oversight while the Southern Theater Command publicly acknowledged jamming a NATO frigate near the Paracels.</div>
+      </div>
+    
+
+    
+    <div class="snapshot">
+      <div class="mod-heading brand">Coverage Snapshot</div>
+      <div class="snapshot-grid">
+        <div class="snap-stat">
+          <div class="num">40</div>
+          <div class="label">Articles</div>
+          <div class="sub">analyzed in this edition</div>
+        </div>
+        <div class="snap-stat">
+          <div class="num"><span class="accent">2</span></div>
+          <div class="label">Significant</div>
+          <div class="sub">flagged for closer reading</div>
+        </div>
+        <div class="snap-stat">
+          <div class="num">1</div>
+          <div class="label">Source</div>
+          <div class="sub">PLA Daily (解放军报)</div>
+        </div>
+        <div class="snap-stat">
+          <div class="num">7</div>
+          <div class="label">Days</div>
+          <div class="sub">2026-05-24 → 2026-05-30</div>
+        </div>
+      </div>
+      
+      <div class="snap-bar">
+        <div class="snap-bar-label">Significant vs. routine coverage</div>
+        <div class="snap-bar-track">
+          
+          <div class="snap-bar-fill" style="width: 5.0%;"></div>
+          <div class="snap-bar-rest"></div>
+        </div>
+        <div class="snap-bar-legend">
+          <span><span class="swatch swatch-sig"></span>Significant (2)</span>
+          <span><span class="swatch swatch-rest"></span>Routine (38)</span>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <div class="post-body">
+
+      
+      <div class="post-section opening">
+        <div class="mod-heading brand">Opening Note</div>
+        <div class="section-text">
+          
+          <p>Two items stood out this week in PLA Daily coverage, and they were genuinely different in kind. One was an internal governance document — the Central Military Commission's formal directive on the education, management, and supervision of senior military cadres. The other was an operational statement — the Southern Theater Command's public acknowledgment that it used electronic jamming against a Dutch Navy frigate near the Paracels. Neither was routine. Both were consequential in specific and limited ways.</p>
+          
+          <p>The rest of the 40 articles reviewed this week — covering everything from PAP marksmanship pipelines to plateau transport route books to bayonet drills — fit established patterns. That is not dismissal. Routine coverage in PLA Daily is how you build the baseline. It is how you know when something stops being routine. This week gave us two real data points and thirty-eight more bricks of baseline.</p>
+          
+          <p>One theme that ran through the week's less-prominent articles is worth naming: the PLA's persistent internal tension between form and substance in political campaigns. Multiple articles — the PLA Daily commentator piece on rectification, the 76th Group Army's positive-and-negative list mechanism, the regiment that catalogued unauthorized phone calls — all document the same structural problem. Mandated campaigns produce compliance behavior rather than changed behavior. The apparatus keeps inventing enforcement mechanisms to close that gap, and keeps having to invent new ones. That is not a crisis. But it is a recurring institutional signal, and this week's coverage made it unusually visible.</p>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="post-section">
+        <div class="mod-heading brand">What Stood Out</div>
+        <div class="section-text">
+          
+          <p>Two items stand out, and both deserve separate treatment.</p>
+          
+          <p>The first is the CMC's May 28 issuance of "Several Measures on Strengthening the Education, Management, and Supervision of Senior Military Cadres" — a named, structured, 26-article directive covering ideological remolding, Party committee collective leadership, cadre selection, and oversight of principal leaders. This is not a routine political study notice. It is a regulatory document with explicit provisions, published in PLA Daily, directed specifically at the senior officer corps. The explicit invocation of 思想整风 (ideological rectification) and 政治整训 (political consolidation training) confirms that the CMC treats the senior cadre corps as requiring active rehabilitation, not merely tighter procedures. On the same day, CMC Vice Chairman Zhang Shengmin convened a military-wide special conference on deepening ideological indoctrination with Xi Jinping's Thought on Strengthening the Military — the two items reinforce each other and document a sustained post-purge effort to formalize oversight mechanisms that visibly failed before the Rocket Force removals.</p>
+          
+          <p>The second is the Southern Theater Command's May 27 statement on Dutch Navy frigate De Ruyter. The statement documents that PLA naval and air forces were deployed to expel the vessel after it transited the Xisha (Paracel) Islands, with the response including voice warnings and — notably — electronic jamming. The PLA's public acknowledgment of jamming as a declared enforcement tool against a NATO-member navy conducting a freedom-of-navigation operation is worth noting carefully. It is not the first time China has used electronic warfare in the South China Sea, but the explicit, named public acknowledgment of its use as a routine expulsion measure against a European vessel is an addition to the public record. The Southern Theater Command's framing treats jamming as a legal enforcement action rather than an act requiring explanation or apology.</p>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="post-section">
+        <div class="mod-heading brand">Why It Matters</div>
+        <div class="section-text">
+          
+          <p>On the CMC directive: the 2023–2024 Rocket Force purge and the broader pattern of senior officer removals revealed that existing oversight mechanisms were insufficient to catch or deter misconduct at the most senior levels of the PLA. A 26-article named directive specifically targeting senior cadre conduct is the CMC's formal institutional response to that gap. It documents — in public — that the leadership considers the problem structural enough to require a new regulatory framework, not just a renewed study campaign. The emphasis on "revolutionary tempering" and "renewed political bearing" extends that logic: the problem is framed as ideological as well as procedural, which means the fix requires both tighter rules and deeper attitudinal change. Whether this directive produces the behavioral change it demands is a separate question. What it confirms is that the CMC considers the current state of senior cadre conduct to be in need of correction.</p>
+          
+          <p>On the De Ruyter incident: the significance is not the expulsion itself — the Southern Theater Command regularly responds to freedom-of-navigation transits near the Paracels. It is the explicit public naming of electronic jamming as part of that response. Beijing is building a public record of treating electronic warfare measures as routine, legitimate tools of maritime law enforcement in waters it claims as territorial. That framing has implications for how future incidents are characterized, and for whether European navies conducting similar transits can expect the same response. The Dutch frigate is a NATO-member vessel. The PLA's willingness to name the action publicly, without diplomatic hedging, documents a posture rather than an incident.</p>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="post-section">
+        <div class="mod-heading brand">Routine Baseline</div>
+        <div class="section-text">
+          
+          <p>Two categories of coverage this week are worth understanding as routine — not dismissing, but categorizing correctly.</p>
+          
+          <p>The first is the week's ideological-political education content. Articles on the "Iron Army" lineage, Dong Cunrui's anniversary roll call, the Shenzhou-21 crew's return framed through patriotic-scientist identity, and the Jin-Cha-Ji base area production movement all fit a stable and recurring PLA Daily pattern: using revolutionary heritage narratives to address the standing problem of motivating a peacetime force. PLA Daily runs this category of content continuously, not episodically. The volume this week was normal. The framing was normal. These articles are evidence of how Chinese military political work constructs institutional identity — they are not evidence of a changed policy line or elevated operational tempo.</p>
+          
+          <p>The second is the Fujian Coast Guard patrol near Kinmen, reported on May 26. The CCG's assertion of jurisdiction in waters adjacent to Taiwan-administered Kinmen has been a regular feature of PLA Daily and state media coverage since the February 2024 capsizing incident. The Taiwan Affairs Office's same-day endorsement follows a coordinated messaging pattern that has been visible for over a year: operational action paired with immediate political authorization, framed in protective civilian language. This week's patrol fits that established pattern precisely. It extends the baseline; it does not break from it. Readers should track cumulative frequency and escalation over time, not treat individual patrols as discrete events.</p>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="post-section">
+        <div class="mod-heading brand">Term to Know</div>
+        <div class="term-box">
+          <div class="term-word">思想整风 (Sīxiǎng Zhěngfēng) — Ideological Rectification</div>
+          <div class="term-explanation">
+            
+            <p>思想整风 translates literally as "rectification of thought" or "ideological rectification." It refers to a structured campaign within the CCP or PLA apparatus to correct ideological deviation, reinforce political loyalty, and bring cadre thinking into alignment with the Party's current line. The term carries historical weight: its most famous use was Mao Zedong's 1942–1944 Yan'an Rectification Movement, which used criticism and self-criticism sessions to consolidate CCP authority over the Party apparatus. In the current PLA context, 思想整风 does not mean show trials or purges — it refers to mandatory study campaigns, self-criticism meetings, and supervision mechanisms aimed at senior officers. The CMC's May 28 directive invokes this term specifically in relation to the senior cadre corps, framing the post-purge response as requiring not just tighter procedures but a genuine change in how senior officers think about loyalty, discipline, and Party command. When you see this term in PLA Daily, it is a signal that the leadership considers the problem ideological in nature — not merely bureaucratic or procedural.</p>
+            
+          </div>
+        </div>
+      </div>
+      
+
+      
+      <div class="post-section">
+        <div class="mod-heading brand">What I'm Watching Next</div>
+        <div class="section-text">
+          
+          <p>Three things are worth watching in the coming weeks, with appropriate caution about what the data will and will not show.</p>
+          
+          <p>First, implementation follow-through on the CMC senior cadre directive. The directive's existence is documentable. Whether and how PLA Daily covers its implementation — inspection results, named enforcement actions, unit-level study campaigns — will be the more meaningful signal. Directives in PLA media often appear once and then recede. Sustained follow-up coverage would suggest the CMC is treating this as a durable enforcement priority rather than a one-time public statement.</p>
+          
+          <p>Second, further European naval transits in the South China Sea. The De Ruyter incident establishes a public PLA baseline for how Southern Theater Command characterizes and responds to NATO-member freedom-of-navigation operations near the Paracels. Whether the PLA applies the same electronic jamming response to subsequent transits — and whether it publicizes that response in the same declaratory terms — will help establish whether this is a new standard posture or a situationally specific response.</p>
+          
+          <p>Third, the cadence of CMC Vice Chairman Zhang Shengmin's ideological consolidation activities as the PLA's August 2027 centenary approaches. Zhang convened two related events in the same week — the special conference on May 27 and the thematic conference documented separately. That density of activity from a CMC vice chairman on a single ideological campaign is worth noting. Whether it sustains or recedes will indicate how seriously the centenary deadline is being used as an accountability lever across the force.</p>
+          
+        </div>
+      </div>
+      
+
+      <div class="post-section source-trail">
+        <div class="mod-heading brand">Source Trail</div>
+        
+        <div class="source-cards">
+          
+          <a class="source-card is-significant" href="http://www.81.cn/yw_208727/16463889.html" target="_blank" rel="noopener">
+            <div class="source-card-title">Central Military Commission Issues 'Several Measures on Strengthening the Education, Management, and Supervision of Senior Military Cadres'</div>
+            <div class="source-card-meta">
+              <span class="sig-tag">Significant</span>
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-28</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16463889.html</div>
+          </a>
+          
+          <a class="source-card is-significant" href="http://www.81.cn/yw_208727/16463856.html" target="_blank" rel="noopener">
+            <div class="source-card-title">Southern Theater Command Spokesperson Zhai Shichen Issues Statement on Provocative Actions by Dutch Warship</div>
+            <div class="source-card-meta">
+              <span class="sig-tag">Significant</span>
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-27</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16463856.html</div>
+          </a>
+          
+          <a class="source-card" href="http://www.81.cn/yw_208727/16463154.html" target="_blank" rel="noopener">
+            <div class="source-card-title">Multi-Branch Forces Persist in Deep Research and Deep Training, Continuously Expanding the Boundaries of Military Training</div>
+            <div class="source-card-meta">
+              
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-25</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16463154.html</div>
+          </a>
+          
+          <a class="source-card" href="http://www.81.cn/bz_208549/16464526.html" target="_blank" rel="noopener">
+            <div class="source-card-title">PAP Liaoning Provincial Corps Recruit Regiment Explores Precision Training Model</div>
+            <div class="source-card-meta">
+              
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-30</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/bz_208549/16464526.html</div>
+          </a>
+          
+          <a class="source-card" href="http://www.81.cn/yw_208727/16464435.html" target="_blank" rel="noopener">
+            <div class="source-card-title">PLA Daily Reporter at the Grassroots | The Plateau Motor Soldiers' 'Roadbook' Has Grown Thicker</div>
+            <div class="source-card-meta">
+              
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-30</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16464435.html</div>
+          </a>
+          
+          <a class="source-card" href="http://www.81.cn/yw_208727/16464198.html" target="_blank" rel="noopener">
+            <div class="source-card-title">An Army Regiment Improves Oversight Mechanisms to Guide Headquarters Elements in Transforming Their Work Style</div>
+            <div class="source-card-meta">
+              
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-29</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16464198.html</div>
+          </a>
+          
+          <a class="source-card" href="http://www.81.cn/yw_208727/16464201.html" target="_blank" rel="noopener">
+            <div class="source-card-title">Maritime Rescue, Troops Descend from the Sky! A Naval Aviation Regiment Conducts Day-Night Search-and-Rescue Training</div>
+            <div class="source-card-meta">
+              
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-29</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16464201.html</div>
+          </a>
+          
+          <a class="source-card" href="http://www.81.cn/yw_208727/16463894.html" target="_blank" rel="noopener">
+            <div class="source-card-title">An Air Force Brigade Uses Scientific and Technological Means to Solve Training Problems</div>
+            <div class="source-card-meta">
+              
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-28</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16463894.html</div>
+          </a>
+          
+          <a class="source-card" href="http://www.81.cn/yw_208727/16463485.html" target="_blank" rel="noopener">
+            <div class="source-card-title">From Training Ground to Battlefield, They Have Given Tactical Training 'Wings of Science and Technology'</div>
+            <div class="source-card-meta">
+              
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-26</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16463485.html</div>
+          </a>
+          
+          <a class="source-card" href="http://www.81.cn/yw_208727/16463476.html" target="_blank" rel="noopener">
+            <div class="source-card-title">Improve the Long-Term Mechanism for Cultivating the Combat Spirit</div>
+            <div class="source-card-meta">
+              
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-26</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16463476.html</div>
+          </a>
+          
+          <a class="source-card" href="http://www.81.cn/yw_208727/16463487.html" target="_blank" rel="noopener">
+            <div class="source-card-title">"Positive and Negative Lists" Appear Together on a Regular Basis — Doing Well and Doing Poorly Cannot Be Treated the Same</div>
+            <div class="source-card-meta">
+              
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-26</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16463487.html</div>
+          </a>
+          
+          <a class="source-card" href="http://www.81.cn/yw_208727/16463153.html" target="_blank" rel="noopener">
+            <div class="source-card-title">The Ninth Army-Wide Military Modeling Competition Results Exchange Conference Held</div>
+            <div class="source-card-meta">
+              
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-25</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16463153.html</div>
+          </a>
+          
+          <a class="source-card" href="http://www.81.cn/yw_208727/16463155.html" target="_blank" rel="noopener">
+            <div class="source-card-title">An Army Training Base Closely Tracks Troop Talent Demands and Optimizes Training Organization Models</div>
+            <div class="source-card-meta">
+              
+              <span>PLA Daily (解放军报)</span>
+              <span class="sep">·</span><span>2026-05-25</span>
+            </div>
+            <div class="source-card-domain">www.81.cn/yw_208727/16463155.html</div>
+          </a>
+          
+        </div>
+        
+          <div class="source-trail-cap">Showing the 13 most relevant items from this week's coverage. The full set is searchable on <a href="../../archive.html">China Mil Watch</a>.</div>
+        
+        
+      </div>
+
+      <div class="closing-note">
+        I welcome comments or corrections from people working on Chinese military media, PLA studies, or U.S.-China security.
+      </div>
+
+      
+      <div class="author-block">
+        <div class="author-block-eyebrow">Author</div>
+        <div class="author-block-name">Benjamin Yang</div>
+        <div class="author-block-title">Founder & Principal Analyst, China Mil Watch</div>
+        <div class="author-block-bio">Benjamin Yang is the founder of China Mil Watch and an incoming International Affairs student at George Washington University’s Elliott School, focused on U.S.-China relations, public diplomacy, and security affairs.</div>
+        
+        <div class="author-chips">
+          <a class="author-chip" href="https://www.linkedin.com/in/benjamin-yang-42b525294" target="_blank" rel="noopener">LinkedIn <span class="arrow">↗</span></a>
+          <a class="author-chip" href="mailto:ben.yang@gwmail.gwu.edu">Email <span class="arrow">→</span></a>
+          <a class="author-chip" href="../../index.html">China Mil Watch <span class="arrow">→</span></a>
+        </div>
+        
+      </div>
+      
+
+    </div>
+
+    <div class="post-nav">
+      <a href="../archive.html">&larr; Back to Archive</a>
+      <a href="../../index.html">Visit China Mil Watch &rarr;</a>
+    </div>
+  </article>
+
+  <aside class="post-sidebar">
+    <div class="sb-card">
+      <div class="sb-eyebrow">Edition</div>
+      <div class="sb-row"><span class="label">Type</span><span class="value">Significant</span></div>
+      <div class="sb-row"><span class="label">Week ending</span><span class="value">2026-05-30</span></div>
+      <div class="sb-row"><span class="label">Days observed</span><span class="value">7</span></div>
+      <div class="sb-row"><span class="label">Articles</span><span class="value">40</span></div>
+      <div class="sb-row"><span class="label">Significant</span><span class="value">2</span></div>
+    </div>
+
+    <div class="sb-card">
+      <div class="sb-eyebrow">About this edition</div>
+      <div class="sb-text">
+        Source-grounded weekly synthesis built from China Mil Watch's daily Chinese-language monitoring. Every claim links to the original Chinese-language source. <a href="/methodology.html">Methodology</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">The PLA Watch</div>
+      <div class="footer-desc">The reader-facing weekly publication from China Mil Watch — a synthesis layer for the daily Chinese-language monitoring archive, written for policy readers, analysts, and journalists.</div>
+      <div class="footer-transparency">
+        Source-grounded weekly synthesis. Every edition links to original Chinese-language sources. Not a substitute for expert judgment or original source review. <a href="/methodology.html">Methodology</a>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <span class="footer-meta-label">Read alongside</span>
+      <a href="../../index.html">China Mil Watch — Daily Brief</a><br>
+      <a href="../../archive.html">China Mil Watch — Archive</a><br>
+      <a href="../../signals.html">Signals &amp; Methodology</a>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

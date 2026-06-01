@@ -1,0 +1,131 @@
+{
+  "date": "2026-05-30",
+  "week_ending": "2026-05-30",
+  "week_start": "2026-05-24",
+  "title": "The PLA Watch: Senior Cadre Oversight, Electronic Warfare, and the Week's Institutional Texture",
+  "dek": "The CMC issued a formal 26-article directive on managing its senior officer corps. The Southern Theater Command publicly acknowledged jamming a NATO warship. The rest of the week was mostly institutional maintenance — but that maintenance is worth reading carefully.",
+  "signal": "The CMC issued a formal 26-article directive on senior cadre oversight while the Southern Theater Command publicly acknowledged jamming a NATO frigate near the Paracels.",
+  "n_articles": 40,
+  "n_significant": 2,
+  "days_covered": 7,
+  "edition_type": "significant",
+  "edition_label": "Significant",
+  "source_trail": [
+    {
+      "title": "Central Military Commission Issues 'Several Measures on Strengthening the Education, Management, and Supervision of Senior Military Cadres'",
+      "url": "http://www.81.cn/yw_208727/16463889.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-28",
+      "is_significant": true
+    },
+    {
+      "title": "Southern Theater Command Spokesperson Zhai Shichen Issues Statement on Provocative Actions by Dutch Warship",
+      "url": "http://www.81.cn/yw_208727/16463856.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-27",
+      "is_significant": true
+    },
+    {
+      "title": "Multi-Branch Forces Persist in Deep Research and Deep Training, Continuously Expanding the Boundaries of Military Training",
+      "url": "http://www.81.cn/yw_208727/16463154.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-25",
+      "is_significant": false
+    },
+    {
+      "title": "PAP Liaoning Provincial Corps Recruit Regiment Explores Precision Training Model",
+      "url": "http://www.81.cn/bz_208549/16464526.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-30",
+      "is_significant": false
+    },
+    {
+      "title": "PLA Daily Reporter at the Grassroots | The Plateau Motor Soldiers' 'Roadbook' Has Grown Thicker",
+      "url": "http://www.81.cn/yw_208727/16464435.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-30",
+      "is_significant": false
+    },
+    {
+      "title": "An Army Regiment Improves Oversight Mechanisms to Guide Headquarters Elements in Transforming Their Work Style",
+      "url": "http://www.81.cn/yw_208727/16464198.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-29",
+      "is_significant": false
+    },
+    {
+      "title": "Maritime Rescue, Troops Descend from the Sky! A Naval Aviation Regiment Conducts Day-Night Search-and-Rescue Training",
+      "url": "http://www.81.cn/yw_208727/16464201.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-29",
+      "is_significant": false
+    },
+    {
+      "title": "An Air Force Brigade Uses Scientific and Technological Means to Solve Training Problems",
+      "url": "http://www.81.cn/yw_208727/16463894.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-28",
+      "is_significant": false
+    },
+    {
+      "title": "From Training Ground to Battlefield, They Have Given Tactical Training 'Wings of Science and Technology'",
+      "url": "http://www.81.cn/yw_208727/16463485.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-26",
+      "is_significant": false
+    },
+    {
+      "title": "Improve the Long-Term Mechanism for Cultivating the Combat Spirit",
+      "url": "http://www.81.cn/yw_208727/16463476.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-26",
+      "is_significant": false
+    },
+    {
+      "title": "\"Positive and Negative Lists\" Appear Together on a Regular Basis — Doing Well and Doing Poorly Cannot Be Treated the Same",
+      "url": "http://www.81.cn/yw_208727/16463487.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-26",
+      "is_significant": false
+    },
+    {
+      "title": "The Ninth Army-Wide Military Modeling Competition Results Exchange Conference Held",
+      "url": "http://www.81.cn/yw_208727/16463153.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-25",
+      "is_significant": false
+    },
+    {
+      "title": "An Army Training Base Closely Tracks Troop Talent Demands and Optimizes Training Organization Models",
+      "url": "http://www.81.cn/yw_208727/16463155.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-25",
+      "is_significant": false
+    }
+  ],
+  "author_name": "Benjamin Yang",
+  "author_title": "Founder & Principal Analyst, China Mil Watch",
+  "author_bio": "Benjamin Yang is the founder of China Mil Watch and an incoming International Affairs student at George Washington University’s Elliott School, focused on U.S.-China relations, public diplomacy, and security affairs.",
+  "author_links": {
+    "LinkedIn": "https://www.linkedin.com/in/benjamin-yang-42b525294",
+    "Email": "mailto:ben.yang@gwmail.gwu.edu",
+    "China Mil Watch": "../../index.html"
+  },
+  "media_items": [
+    {
+      "type": "image",
+      "src": "../media/2026-05-30-source-image.jpg",
+      "alt": "Source article image",
+      "caption": "Cover background image sourced from the lead source article. Included for editorial visual context only.",
+      "source_url": "http://www.81.cn/bz_208549/16464526.html",
+      "image_url": "http://www.81.cn/lmyybl/jskt_208724/_attachment/2026/05/30/16464539_db4dd81b0fcfabcc4661276400d2b51b.jpg",
+      "source_label": "article body image",
+      "auto_selected": true
+    }
+  ],
+  "background_image_source": "source_trail_fetch",
+  "background_image_path": "output/the-pla-watch/media/2026-05-30-source-image.jpg",
+  "cover_image": "../covers/2026-05-30.png",
+  "cover_image_url": "https://chinamilwatch.org/the-pla-watch/covers/2026-05-30.png",
+  "cover_thumb": "../covers/2026-05-30-thumb.png"
+}
