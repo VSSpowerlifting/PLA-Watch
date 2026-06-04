@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&#34;Software Engineering&#34; Inspires Innovation in Tactical Methods — China Mil Watch</title>
+  <meta name="description" content="Two PLA authors, Xia Zehua and Xu Zicheng, argue that software engineering principles—responsive development, incremental delivery, and closed-loop quality control—should structure how the PLA generat">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://chinamilwatch.org/article/1037.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="article">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org/article/1037.html">
+  <meta property="og:title"        content="&#34;Software Engineering&#34; Inspires Innovation in Tactical Methods">
+  <meta property="og:description"  content="Two PLA authors, Xia Zehua and Xu Zicheng, argue that software engineering principles—responsive development, incremental delivery, and closed-loop quality control—should structure how the PLA generat">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="&#34;Software Engineering&#34; Inspires Innovation in Tactical Methods">
+  <meta name="twitter:description" content="Two PLA authors, Xia Zehua and Xu Zicheng, argue that software engineering principles—responsive development, incremental delivery, and closed-loop quality control—should structure how the PLA generat">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <!-- JSON-LD Structured Data -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-ink:            #1A2C3D;
+      --color-brand:          #B5513C;
+      --color-signal-mid:     #D87A64;
+      --color-signal-tint:    #FAECE7;
+      --color-surface:        #EDE8DF;
+      --color-bg:             #F7F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FAF7F2;
+      --color-text-primary:   #1A2C3D;
+      --color-text-secondary: #4A4440;
+      --color-text-muted:     #7A726A;
+      --color-border:         #C9BFB4;
+      --color-border-soft:    rgba(201, 191, 180, 0.55);
+      --color-accent:         #B5513C;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      background-image:
+        linear-gradient(rgba(26, 44, 61, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 44, 61, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .wordmark-signal { color: var(--color-brand); }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav .nav-short { display: none; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 140ms ease;
+    }
+    .header-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 160ms ease;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a:hover::after { transform: scaleX(1); }
+    .header-nav a.active { color: var(--color-text-primary); }
+    .header-nav a.active::after { transform: scaleX(1); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #444441;
+      background: #F1EFE8;
+      border: none;
+      border-radius: 3px;
+      padding: 4px 9px;
+      line-height: 1.4;
+    }
+    .tag[data-label="Taiwan"]                { background: #FCEBEB; color: #A32D2D; }
+    .tag[data-label="East China Sea"],
+    .tag[data-label="South China Sea"],
+    .tag[data-label="U.S.\2013 China Military"] { background: #E6F1FB; color: #185FA5; }
+    .tag[data-label*="Personnel"]             { background: #FAEEDA; color: #633806; }
+    .tag[data-label="Exercises"]              { background: #EAF3DE; color: #3B6D11; }
+    .tag[data-label="Military Diplomacy"]     { background: #EEEDFE; color: #3C3489; }
+    .tag[data-label="Internal Security"]      { background: #F1EFE8; color: #444441; }
+    .tag[data-label="Modernization"]          { background: #E1F5EE; color: #0F6E56; }
+
+    /* ── Analytical signal indicator ─────────────────────────────────────────── */
+    .analytical-signal-kicker {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.5rem;
+    }
+    .signal-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #B5513C;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .signal-kicker-text {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #B5513C;
+    }
+
+    /* ── Button tiers ────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, transform 120ms ease;
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--color-signal-mid);
+      outline-offset: 2px;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: #1A2C3D;
+      color: #E8EFF5;
+      border: none;
+    }
+    .btn-primary:hover { background: #14202D; color: #E8EFF5; text-decoration: none; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border);
+    }
+    .btn-secondary:hover { background: var(--color-surface); text-decoration: none; }
+    .btn-signal {
+      background: transparent;
+      color: #B5513C;
+      border: 1px solid #D87A64;
+    }
+    .btn-signal:hover { background: #FAECE7; color: #B5513C; text-decoration: none; }
+
+    /* ── Significant badge ───────────────────────────────────────────────────── */
+    .significant-badge {
+      display: inline-block;
+      background: #FAC775;
+      color: #633806;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
+
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      .header-nav .nav-full { display: none; }
+      .header-nav .nav-short { display: inline; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    /* ── Reduced motion ─────────────────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+.article-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.article-page-title-zh {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-signal-mid);
+  border-radius: 5px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.btn-source:hover {
+  background: var(--color-signal-tint);
+  border-color: var(--color-brand);
+  text-decoration: none;
+}
+.btn-source:focus-visible {
+  outline: 2px solid var(--color-signal-mid);
+  outline-offset: 2px;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── About-this-analysis link ────────────────────────────────────── */
+.about-analysis {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.about-analysis a { color: var(--color-text-muted); text-decoration: underline; }
+.about-analysis a:hover { color: var(--color-brand); }
+
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
+}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title"><span class="wordmark-primary">China Mil</span> <span class="wordmark-signal">Watch</span></span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >
+        <span class="nav-full">Daily Brief</span><span class="nav-short">Daily</span>
+      </a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../signals.html" >Signals</a>
+      <a href="../the-pla-watch/index.html" >
+        <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
+      </a>
+      <a href="../methodology.html" >Methodology</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+      <div class="tags">
+          <span class="tag" data-label="Doctrine">Doctrine</span>
+      </div>
+
+    <h1 class="article-page-title">
+      &#34;Software Engineering&#34; Inspires Innovation in Tactical Methods
+    </h1>
+
+      <div class="article-page-title-zh">“软件工程”启发战法创新</div>
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>4 June 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16465406.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+    <div class="about-analysis">
+      <a href="../methodology.html">About this analysis</a>
+    </div>
+
+  </div>
+
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>Two PLA authors, Xia Zehua and Xu Zicheng, argue that software engineering principles—responsive development, incremental delivery, and closed-loop quality control—should structure how the PLA generates, implements, and evaluates tactical methods under intelligentized warfare conditions, proposing specific mechanisms including situation-driven algorithm-matched planning, versioned iterative rollout across service branches, and a quantitative multi-indicator evaluation framework feeding back to doctrine developers. The article documents a recurring PLA effort to borrow systems-engineering vocabulary to solve a persistent institutional problem: the gap between tactical concept generation and validated, battlefield-ready implementation in a force that lacks a mature, standardized doctrine development and assessment cycle. It extends a visible pattern in PLA professional military education writing where intelligentization-era pressures are used to justify more rigorous, iterative, and data-driven internal processes—but the specific framing here raises the question of whether units actually possess the full-domain sensor networks and intelligent algorithms the proposed mechanisms presuppose.</div>
+  </div>
+
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+<p>&#34;Software Engineering&#34; Inspires Innovation in Tactical Methods</p><p>■ Xia Zehua, Xu Zicheng</p><p>Technology drives transformation, and transformation calls for innovation. Today, the wave of intelligentization (智能化) sweeps across the full-domain battlefield; the form of warfare is accelerating its evolution, the dimensions of competition are continuously expanding, and various battlefield spaces are interwoven with one another. Innovation in tactical methods (战法创新) has become an important lever for tipping the scales of victory and defeat in war and for forging full-domain war-winning capabilities. Analogous to the application of tactical methods on a complex battlefield, software engineering is a systematic discipline that works deeply within complex, large-scale information environments. Its principles of responsive development, incremental delivery, and closed-loop quality control share a degree of consistency with the laws governing tactical method innovation under conditions of intelligentization. We can draw on relevant concepts from software engineering to empower the full chain of tactical method generation, implementation, and evaluation, and inject endogenous momentum into the generation and qualitative improvement of combat effectiveness.</p><p>Advancing &#34;Responsive&#34; Tactical Method Generation. Responsive development is a software development model capable of adapting to the contemporary complex information environment. This model is centered on dynamic adjustment and oriented by actual requirements; it possesses the qualities of flexible combination and rapid iteration, and can precisely meet users&#39; core needs in response to dynamic changes in the external environment. As the saying goes, &#34;water shapes its flow according to the terrain; troops win victory according to the enemy&#34; (水因地而制流，兵因敌而制胜). The generation of tactical methods must adapt to the battlefield environment and match the requirements for achieving victory. Drawing on the responsive development model of software engineering, we can achieve tactical method designs that are deeply aligned with complex battlefield situations, precisely matched to the differentiated requirements of different operational missions and different operational environments, and that realize effective coupling of operational resources with tactical plans, firmly grasping battlefield initiative. In terms of implementation pathways: on one hand, we must build a situation-driven linkage mechanism (态势驱动联动机制) that aggregates battlefield data through a full-domain perception network, makes advance assessments of the direction of the battle situation and core operational requirements, and uses intelligent algorithms to match and combine tactical methods, ensuring that the diverse tactical plans produced genuinely approach actual combat conditions and improve the unit&#39;s combat effectiveness. On the other hand, we must improve the iterative update mechanism, streamline redundant processes in tactical method design, compress the cycle for plan optimization, and conduct routine fine-tuning and refinement of tactical method details, allowing tactical plans to evolve in step with the battlefield situation and remain consistently aligned with actual combat requirements.</p><p>Advancing &#34;Incremental&#34; Tactical Method Implementation. In software engineering, incremental delivery is primarily applied to large-scale, extended-cycle software projects. Its incremental character is mainly reflected in the project team&#39;s practice of decomposing the overall research and development objective—which is large in volume and complex in structure—layer by layer into a number of phased sub-tasks that are strongly interrelated, graduated in difficulty, and independently verifiable, and then completing &#34;version development—feature supplementation—performance debugging&#34; in an orderly manner according to a preset rhythm, ultimately delivering the product in stages. The process from conception to implementation of a tactical method is likewise a long-cycle, systematic undertaking, encompassing multiple links such as command system integration, operational force adaptation, supporting equipment coordination, and personnel quality cultivation. The incremental delivery model of software engineering can provide inspiration for smoothly advancing the integration of new tactical methods into existing operational systems. We must scientifically decompose the implementation levels of tactical methods: centering on the overall objective of tactical method application, and following the progressive implementation levels of &#34;theoretical demonstration—unit trial training—full-domain promotion,&#34; we should clarify the construction standards, work priorities, and assessment dimensions for each level, and coordinate all construction work step by step. We can promote a &#34;versioned&#34; iterative implementation model: in combination with the differences in service branch characteristics and operational scenarios, release a basic version of the tactical method, then supplement functions and refine details based on feedback from frontline application, gradually upgrading and optimizing the tactical method, and smoothly completing the transition from old to new tactical methods.</p><p>Advancing &#34;Closed-Loop&#34; Tactical Method Evaluation. The closed-loop evaluation mechanism runs throughout the full cycle of software research, development, and use. Its function is to comprehensively detect a software system&#39;s operational stability, functional integrity, and scenario adaptability through diverse means, forming a positive cycle in which research and development, application, testing and evaluation, and optimization are interlocked, continuously improving the operational effectiveness of the software system. &#34;Running water does not stagnate; a door hinge does not rot&#34; (流水不腐，户枢不蠹). Tactical methods are not immutable, and tactical method innovation cannot be achieved overnight. Ensuring that tactical method innovation never stops depends on the construction of a normalized &#34;closed-loop&#34; tactical method evaluation mechanism. First, we must build a three-dimensional evaluation indicator system: grounded in the overall picture of system-of-systems (体系化) confrontation, and centered on multiple indicators such as decision-making operational efficiency, operational resource allocation, degree of achievement of specialized tasks, and system compatibility, we should build a multi-layered, comprehensive quantitative evaluation indicator framework to ensure that tactical method evaluation has a basis on which to rely. Second, we must improve the full-cycle data collection mechanism: open up data transmission links across all levels and all operational units, collect core data on various tactical methods during exercises and training activities, and allow the effectiveness of tactical method application to be presented directly before decision-makers. Third, we must establish a two-way interactive optimization mechanism: rely on intelligent algorithms to complete data analysis and effectiveness assessment, generate objective and precise evaluation reports, and build a feedback channel that reaches directly to tactical method research and development departments, enabling tactical methods to undergo targeted optimization at the level of top-level design, forming a &#34;ceaselessly self-renewing&#34; (生生不息) closed loop of tactical method upgrading.</p>  </div>
+
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">“软件工程”启发战法创新 ■夏泽华 许紫城 科技催生变革，变革呼唤创新。当下，智能化浪潮席卷全域战场，战争形态加速嬗变、博弈维度持续拓展、各类战场空间相互交织，战法创新已然成为撬动战争胜负天平、锻造全域制胜能力的重要抓手。与战法应用于复杂战场相类似，软件工程是一门深耕复杂大型信息环境的系统性工程，其响应式开发、渐进式交付、闭环式质控等原则，与智能化背景下战法创新规律具有一定一致性。我们可以借鉴软件工程的相关理念，赋能战法生成、落地、评估全链条建设，为战斗力的生成和提质增效注入内生动力。 推进“响应式”战法生成。响应式开发是能够适配当代复杂信息环境的软件开发模式，该模式以动态调整为核心，以实际需求为导向，具备弹性组合、快速迭代等特质，能够根据外部环境的动态变化精准满足用户的核心需求。正所谓“水因地而制流，兵因敌而制胜”，战法生成需要与战场环境相适应、与制胜需求相匹配。借鉴软件工程的响应式开发模式，我们可以做到战法设计深度贴合复杂战场态势，精准匹配不同作战任务、不同作战环境的差异化需求，实现作战资源与战术方案的有效耦合，牢牢掌握战场主动权。在实施路径上，一方面要构建态势驱动联动机制，依托全域感知网络汇聚战场数据，超前研判战局走向与作战核心诉求，借助智能算法匹配组合战法，确保输出的多元化战术方案能够真正贴近实战，提高部队战斗力。另一方面要健全迭代更新机制，精简战法设计冗余流程，压缩方案优化周期，对战法细节进行常态化微调完善，让战术方案随战场态势同步演化，始终贴合实战要求。 推进“渐进式”战法落地。在软件工程中，渐进式交付主要应用于大型超长周期的软件项目。其渐进式特点主要体现在项目团队会将体量庞大、结构复杂的整体研发目标，逐层拆解为若干关联性强、难易梯度分明、可独立验收的阶段性子任务，按照预设节奏有序完成“版本开发—功能增补—性能调试”，最终分阶段完成产品交付。战法从构想到落地也是一项长周期的系统性工程，涵盖指挥体系磨合、作战力量适配、配套装备协同、人员素养培育等多个环节。软件工程的渐进式交付模式，可以为平稳推动新型战法融入现有作战体系提供启发。要科学拆分战法落地层级，围绕战法应用的总体目标，按照“理论论证—单元试训—全域推广”的递进式实施层级，明确每个层级的建设标准、工作重心与考核维度，按步骤统筹各项建设。可以推行“版本”化的迭代落地模式，结合军兵种属性、作战场景的差异性，推出战法的基础版本，并且依据一线应用反馈增补功能、完善细则，逐步升级优化战法，平稳完成新旧战法的衔接过渡。 推进“闭环式”战法评估。闭环式评估机制贯穿软件研发、使用的全周期，其功能在于可以通过多元化手段全方位检测软件的运行稳定性、功能完整性与场景适配性，形成研发、应用、测评、优化环环相扣的正向循环，持续提高软件系统的运行效能。“流水不腐，户枢不蠹”，战法并非一成不变、战法创新不能一蹴而就，要确保在战法创新上不停步，有赖于常态化“闭环式”战法评估机制的建设。一是要搭建立体化评估指标体系，立足体系化对抗全局，围绕决策运转效率、作战资源配置、专项任务达成度、体系兼容能力等多个指标搭建多层次、全覆盖的量化评估指标框架，确保战法评估有据可依。二是完善全周期数据归集机制，打通各层级、各作战单元的数据传输链路，收集各类战法在演训活动中的核心数据，使战法应用效果直观地呈现在决策者眼前。三是建立双向互通优化机制，依托智能算法完成数据解析与效能研判，生成客观精准的评估报告，并搭建直达战法研发部门的反馈通道，使战法从顶层设计层面完成针对性优化，形成“生生不息”的战法升级闭环。</div>
+  </details>
+
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. <a href="../methodology.html">Methodology</a> · <a href="../archive.html">Archive</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
