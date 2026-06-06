@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&#34;Study Regulations&#34; Mini-Program Goes Online, Enabling Officers and Soldiers to Study Law Anytime and Apply What They Learn — China Mil Watch</title>
+  <meta name="description" content="A political instructor in a company under the 76th Group Army developed and deployed a WeChat-style &#39;Study Regulations&#39; mini-program to address a documented gap between soldiers&#39; ability to recite mil">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://chinamilwatch.org/article/1117.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="article">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org/article/1117.html">
+  <meta property="og:title"        content="&#34;Study Regulations&#34; Mini-Program Goes Online, Enabling Officers and Soldiers to Study Law Anytime and Apply What They Learn">
+  <meta property="og:description"  content="A political instructor in a company under the 76th Group Army developed and deployed a WeChat-style &#39;Study Regulations&#39; mini-program to address a documented gap between soldiers&#39; ability to recite mil">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="&#34;Study Regulations&#34; Mini-Program Goes Online, Enabling Officers and Soldiers to Study Law Anytime and Apply What They Learn">
+  <meta name="twitter:description" content="A political instructor in a company under the 76th Group Army developed and deployed a WeChat-style &#39;Study Regulations&#39; mini-program to address a documented gap between soldiers&#39; ability to recite mil">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <!-- JSON-LD Structured Data -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-ink:            #1A2C3D;
+      --color-brand:          #B5513C;
+      --color-signal-mid:     #D87A64;
+      --color-signal-tint:    #FAECE7;
+      --color-surface:        #EDE8DF;
+      --color-bg:             #F7F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FAF7F2;
+      --color-text-primary:   #1A2C3D;
+      --color-text-secondary: #4A4440;
+      --color-text-muted:     #7A726A;
+      --color-border:         #C9BFB4;
+      --color-border-soft:    rgba(201, 191, 180, 0.55);
+      --color-accent:         #B5513C;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      background-image:
+        linear-gradient(rgba(26, 44, 61, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 44, 61, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .wordmark-signal { color: var(--color-brand); }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav .nav-short { display: none; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 140ms ease;
+    }
+    .header-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 160ms ease;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a:hover::after { transform: scaleX(1); }
+    .header-nav a.active { color: var(--color-text-primary); }
+    .header-nav a.active::after { transform: scaleX(1); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #444441;
+      background: #F1EFE8;
+      border: none;
+      border-radius: 3px;
+      padding: 4px 9px;
+      line-height: 1.4;
+    }
+    .tag[data-label="Taiwan"]                { background: #FCEBEB; color: #A32D2D; }
+    .tag[data-label="East China Sea"],
+    .tag[data-label="South China Sea"],
+    .tag[data-label="U.S.\2013 China Military"] { background: #E6F1FB; color: #185FA5; }
+    .tag[data-label*="Personnel"]             { background: #FAEEDA; color: #633806; }
+    .tag[data-label="Exercises"]              { background: #EAF3DE; color: #3B6D11; }
+    .tag[data-label="Military Diplomacy"]     { background: #EEEDFE; color: #3C3489; }
+    .tag[data-label="Internal Security"]      { background: #F1EFE8; color: #444441; }
+    .tag[data-label="Modernization"]          { background: #E1F5EE; color: #0F6E56; }
+
+    /* ── Analytical signal indicator ─────────────────────────────────────────── */
+    .analytical-signal-kicker {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.5rem;
+    }
+    .signal-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #B5513C;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .signal-kicker-text {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #B5513C;
+    }
+
+    /* ── Button tiers ────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, transform 120ms ease;
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--color-signal-mid);
+      outline-offset: 2px;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: #1A2C3D;
+      color: #E8EFF5;
+      border: none;
+    }
+    .btn-primary:hover { background: #14202D; color: #E8EFF5; text-decoration: none; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border);
+    }
+    .btn-secondary:hover { background: var(--color-surface); text-decoration: none; }
+    .btn-signal {
+      background: transparent;
+      color: #B5513C;
+      border: 1px solid #D87A64;
+    }
+    .btn-signal:hover { background: #FAECE7; color: #B5513C; text-decoration: none; }
+
+    /* ── Significant badge ───────────────────────────────────────────────────── */
+    .significant-badge {
+      display: inline-block;
+      background: #FAC775;
+      color: #633806;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
+
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      .header-nav .nav-full { display: none; }
+      .header-nav .nav-short { display: inline; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    /* ── Reduced motion ─────────────────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+.article-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.article-page-title-zh {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-signal-mid);
+  border-radius: 5px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.btn-source:hover {
+  background: var(--color-signal-tint);
+  border-color: var(--color-brand);
+  text-decoration: none;
+}
+.btn-source:focus-visible {
+  outline: 2px solid var(--color-signal-mid);
+  outline-offset: 2px;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── About-this-analysis link ────────────────────────────────────── */
+.about-analysis {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.about-analysis a { color: var(--color-text-muted); text-decoration: underline; }
+.about-analysis a:hover { color: var(--color-brand); }
+
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
+}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title"><span class="wordmark-primary">China Mil</span> <span class="wordmark-signal">Watch</span></span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >
+        <span class="nav-full">Daily Brief</span><span class="nav-short">Daily</span>
+      </a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../signals.html" >Signals</a>
+      <a href="../the-pla-watch/index.html" >
+        <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
+      </a>
+      <a href="../methodology.html" >Methodology</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+      <div class="tags">
+          <span class="tag" data-label="Political Work">Political Work</span>
+      </div>
+
+    <h1 class="article-page-title">
+      &#34;Study Regulations&#34; Mini-Program Goes Online, Enabling Officers and Soldiers to Study Law Anytime and Apply What They Learn
+    </h1>
+
+      <div class="article-page-title-zh">“学法规”小程序上线，让官兵随时学法、学以致用</div>
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>6 June 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16465824.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+    <div class="about-analysis">
+      <a href="../methodology.html">About this analysis</a>
+    </div>
+
+  </div>
+
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A political instructor in a company under the 76th Group Army developed and deployed a WeChat-style &#39;Study Regulations&#39; mini-program to address a documented gap between soldiers&#39; ability to recite military law and their ability to apply it when confronted with real-world scams—credential fraud, click-farming schemes, and online lending traps. The article documents a persistent institutional problem in PLA legal education: classroom-based regulatory study produces compliance performance rather than practical judgment, and unit-level political officers are improvising workarounds rather than relying on centrally provided tools. The bottom-up origin of this solution—a company-grade instructor building his own platform after receiving higher-level approval—raises the question of whether the PLA&#39;s formal legal education infrastructure is keeping pace with the online threat environment soldiers actually face.</div>
+  </div>
+
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+<p>One Mini-Program, One Effective Tool for Legal Education</p><p>■ Wang Xiaochao, Li Xuancheng</p><p>&#34;I saw an ad saying you don&#39;t need to attend classes—just wait for the time to pass and you get a diploma directly. Should we give it a try?&#34; Not long ago, Corporal Xiao Li of a certain company under a certain brigade of the 76th Group Army saw an online advertisement for &#34;one-stop academic credential upgrades&#34; and &#34;full refund if you don&#39;t get the diploma,&#34; and began discussing it with several fellow soldiers.</p><p>His fellow soldiers advised Xiao Li not to trust the advertisement, but none of them could say with certainty what was right or wrong, and could only speak vaguely: &#34;I feel like these kinds of ads are all scams, I just don&#39;t know how to explain to you exactly what the risks and hidden dangers are.&#34;</p><p>This incident prompted the company&#39;s political instructor to reflect: the company regularly conducts legal and disciplinary education, and officers and soldiers can recite the regulations fluently, yet when actually confronted with real-world problems, very few people can actively apply regulations to define risks and identify traps. There is a disconnect between learning the law in the classroom and applying it in daily life, resulting in a situation where &#34;what is learned cannot be used, and what needs to be used was never learned.&#34;</p><p>During one rest period, the political instructor walked into the gym and saw many officers and soldiers using a self-discipline check-in mini-program to record their exercise and verify recent training results. The scene sparked a sudden idea: could a &#34;Study Regulations&#34; mini-program be developed that, on the premise of security and confidentiality, would allow officers and soldiers to study law at any time and apply what they learn?</p><p>After requesting and receiving approval from higher authorities, he organized officers and soldiers with expertise in network technology to jointly study the overall architecture and content details of the mini-program. After several rounds of debugging, a &#34;Study Regulations&#34; mini-program with a distinctly soldier-flavored character went online. The mini-program abandons the tedious mode of stacking legal provisions and instead, grounded in the real-world risks that officers and soldiers frequently encounter—such as credential procurement services, click-farming rebate schemes, and online lending—embeds regulatory provisions within case studies to ensure relevance to daily life.</p><p>&#34;This mini-program is not simply a question-drilling tool, but a vivid legal education reference.&#34; One soldier said: &#34;Every regulation is accompanied by a scenario interpretation, a risk analysis, and a pitfall-avoidance guide. By reading cases and analyzing scenarios, you can precisely identify risks and clearly understand the disciplinary red lines.&#34;</p><p>&#34;I had seen a similar case on the mini-program, so when my family called me a few days ago, I immediately thought of a solution.&#34; A soldier who helped his family resolve a law-related dispute shared his experience using the mini-program with his fellow soldiers. Today, the mini-program has been promoted for use in battalion-level after-hours legal study and case discussion sessions. When faced with various online temptations and concealed traps, officers and soldiers are generally able to quickly identify and resolutely avoid them, achieving a meaningful transformation in regulatory study from rote memorization to active and practical application (从死记硬背到活学活用).</p>  </div>
+
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">一款小程序 普法好工具 ■王晓超 李宣成 “我看广告里说，不用上课，时间到了直接拿文凭，咱们能不能试试？”前不久，第76集团军某旅某连中士小李看到网上“一站式提升学历”“包获文凭不过退款”的广告，和几个战友探讨起来。 战友纷纷劝小李不要轻信广告，但谁也说不准对错，只能含糊其辞：“我感觉这种广告都是骗人的，就是不知道怎么给你说清楚这里面的风险隐患。” 这件事引起该连指导员的反思：连队常态化开展法纪教育，官兵条令也背得熟练，可真正遇到现实问题，很少有人能活用法规界定风险、辨别陷阱，课堂学法与生活用法有些脱节，导致“学的用不上、用的没学过”。 一次休息时间，指导员走进健身房，看到不少官兵在用自律打卡小程序记录运动情况，检验近期训练成果。这一幕让他灵光一现：能不能制作一款“学法规”小程序，在安全保密的前提下，方便官兵随时学法、学以致用？ 请示上级同意后，他组织擅长网络技术的官兵，一同研究小程序的整体架构和内容细节。几经调试，一款兵味十足的“学法规”小程序上线。小程序摒弃枯燥的法条堆砌模式，立足官兵经常遇到的学历代办、刷单返利、网络借贷等现实风险，将法规条文嵌入案例，确保贴近生活。 “这款小程序不是单纯的刷题工具，而是生动的普法工具书。”一名战士说，“每一条法规都配有场景解读、风险剖析和避坑指南，通过看案例、析场景，就能精准辨别风险、明晰纪律红线。” “我在小程序上看到过类似案例，前几天家里人给我打电话时，我立刻就想到了解决方案。”一名帮助家人解决涉法纠纷的战士与战友分享了自己使用小程序的感受。如今，这款小程序被推广到营队课余学法、案例研讨中，官兵面对各类网络诱惑、隐蔽陷阱，普遍能够快速甄别、坚决规避，较好实现了法规学习从死记硬背到活学活用的转变。</div>
+  </details>
+
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. <a href="../methodology.html">Methodology</a> · <a href="../archive.html">Archive</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
