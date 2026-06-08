@@ -1,0 +1,36 @@
+The PLA Watch: Loitering Munitions, Rocket Force Readiness, and the Coast Guard's Expanding Remit
+
+This week’s PLA Daily signal sat below the headline layer, where a doctrinal article on low-cost loitering munitions and a granular Rocket Force training feature converged with a CCG patrol east of Taiwan tied to Japan-Philippines maritime talks.
+
+This week's signal: The China Coast Guard publicly tied a patrol east of Taiwan to Japan-Philippines maritime delimitation talks, turning a patrol announcement into a warning about negotiations Beijing was not party to.
+
+This was not a dramatic week in PLA Daily. There were no announced Taiwan exercises or senior personnel changes, and no article that on its own read like an immediate escalatory signal. The useful material sat below that surface, where doctrinal commentary and training reportage kept returning to a problem the PLA has not solved in public view: how a force built around control, hierarchy, and system-of-systems integration should absorb cheap, expendable, and increasingly unmanned capabilities.
+
+## What stood out
+The week’s sharpest material sat in the gap between routine format and less routine implication.
+
+The loitering-munitions piece, authored by Zhao Wei, Hu Yongjiang, and Zhu Ning, describes Russia’s Geranium-2 as an adaptation of the Shahed-136 for attrition warfare and presents U.S. work on a Shahed-derived system with Starlink integration and F-35 cooperative strike trials. The article is interesting less for the foreign systems it describes than for the standard it uses to judge adaptation. It treats imitation as successful only when a borrowed design is made to fit a country’s industrial base, operational concept, and wider equipment architecture. In PLA Daily, that is not a neutral lesson in military history. It is a disciplined way of thinking about technology transfer, reverse engineering, and force design. The article never says China will pursue a specific loitering-munition pathway, and the evidence does not support that claim. What it does support is a narrower reading: PLA media is giving serious space to the institutional logic of absorbing foreign low-cost strike technology.
+
+The CCG patrol works differently because it is a public enforcement statement rather than a doctrinal essay. Jiang Lue connected the June 1 patrol east of Taiwan to Japan and the Philippines opening maritime delimitation negotiations in that area. The linkage extends CCG messaging into a zone that is not routinely foregrounded in patrol announcements, while making third-party negotiation itself part of the trigger. In practice, the CCG is being presented as a diplomatic instrument backed by physical presence: a way to contest talks before they become agreements.
+
+The Rocket Force training article is easy to underrate because the genre looks familiar. Its content is more useful than that. Simulator-based launch training, NCO-developed decision-support software, and a first-term conscript winning a key crew position after outperforming senior NCOs all give the article a more granular texture than standard morale writing. The piece documents an institutional response to the training-combat gap at brigade level, while leaving open the more important question of whether unit-built software is being propagated across the Rocket Force or remains a local workaround.
+
+## Why it matters
+The CCG framing matters because it shows coast guard patrol authority being used to contest diplomatic process, rather than only the physical presence of rival vessels. A patrol east of Taiwan linked to Japan-Philippines delimitation discussions pulls the East China Sea, South China Sea, and Taiwan Strait into the same enforcement grammar. That does not make one patrol a new baseline. It does, however, create a public template Beijing can reuse if it wants to challenge maritime talks between other parties through physical presence.
+
+The loitering-munitions article matters because PLA media often uses third-country wars and weapons programs to process lessons that are relevant to Chinese force development without naming the domestic implication outright. Here, the operative lesson is not that Iran, Russia, or the United States has produced a particular system. The lesson is that cheap strike systems become militarily meaningful only when a force can pull them into its own industrial and operational architecture. That is the kind of reasoning that can sit upstream of procurement, even when the article itself remains formally about foreign militaries.
+
+The Rocket Force piece matters more modestly, but in a concrete way. It adds to the public record of how one brigade is translating “training-combat integration” into daily practice. The useful details are not proof of readiness. They are evidence of the mechanisms being advertised: simulator crews, NCO innovation studios, and launch-condition physical training under protective gear. For a force that is often discussed in abstract terms, those unit-level mechanisms are worth filing.
+
+## What I'm watching next
+I would track these as possible patterns, not conclusions.
+
+The CCG patrol east of Taiwan deserves the closest watch. If later announcements in the same area keep citing third-party negotiations rather than generic sovereignty language, that would suggest a deliberate enforcement posture is being built east of Taiwan. One patrol and one spokesperson statement cannot establish that. Repetition could.
+
+For the loitering-munitions line, the key question is whether the “absorb and adapt” frame returns in later PLA Daily coverage of low-cost expendable strike systems. If it reappears around doctrine, procurement-adjacent writing, or export-facing commentary, the June 3 article will look less like a one-off foreign military essay and more like preparatory institutional argument.
+
+For the Rocket Force, the detail to file is the NCO innovation studio producing brigade-level decision-support software. Similar stories across other Rocket Force units would suggest that bottom-up software work is being promoted as a model for solving data interpretation and crew proficiency problems outside normal centralized procurement channels.
+
+Full edition: https://chinamilwatch.org/the-pla-watch/posts/2026-06-06.html
+
+I welcome comments or corrections from people working on Chinese military media, PLA studies, or U.S.-China security.
