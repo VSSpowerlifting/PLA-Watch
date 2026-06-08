@@ -1,0 +1,131 @@
+{
+  "date": "2026-06-06",
+  "week_ending": "2026-06-06",
+  "week_start": "2026-05-31",
+  "title": "The PLA Watch: Loitering Munitions, Rocket Force Readiness, and the Coast Guard's Expanding Remit",
+  "dek": "This week’s PLA Daily signal sat below the headline layer, where a doctrinal article on low-cost loitering munitions and a granular Rocket Force training feature converged with a CCG patrol east of Taiwan tied to Japan-Philippines maritime talks.",
+  "signal": "The China Coast Guard publicly tied a patrol east of Taiwan to Japan-Philippines maritime delimitation talks, turning a patrol announcement into a warning about negotiations Beijing was not party to.",
+  "n_articles": 41,
+  "n_significant": 4,
+  "days_covered": 7,
+  "edition_type": "significant",
+  "edition_label": "Significant",
+  "source_trail": [
+    {
+      "title": "Who Is Imitating and Copying the 'Aerial Moped'? Lessons from Russia and America Drawing on Iran's Low-Cost Loitering Munitions",
+      "url": "http://www.81.cn/yw_208727/16465208.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-03",
+      "is_significant": true
+    },
+    {
+      "title": "A Major Officer Returns to His Old Unit and Finds Some Training Events He 'Can't Make Sense Of'—What Did He Go Through?",
+      "url": "http://www.81.cn/yw_208727/16465213.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-03",
+      "is_significant": true
+    },
+    {
+      "title": "Long March 12B Yao-1 Launch Vehicle Successfully Launched",
+      "url": "http://www.81.cn/yw_208727/16464811.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-01",
+      "is_significant": true
+    },
+    {
+      "title": "China Coast Guard Conducts Law-Enforcement Patrols in Waters East of China's Taiwan Island",
+      "url": "http://www.81.cn/yw_208727/16464755.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-01",
+      "is_significant": true
+    },
+    {
+      "title": "Empowering Joint Operations Planning with Intelligentization",
+      "url": "http://www.81.cn/yw_208727/16465401.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-04",
+      "is_significant": false
+    },
+    {
+      "title": "An Air Force Unit Breaks Inertial Thinking to Innovate Combat Mode",
+      "url": "http://www.81.cn/yw_208727/16464570.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-05-31",
+      "is_significant": false
+    },
+    {
+      "title": "China-Mongolia 'Steppe Partner-2026' Army Joint Training Closing Ceremony Held",
+      "url": "http://www.81.cn/yw_208727/16465864.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-06",
+      "is_significant": false
+    },
+    {
+      "title": "Jiangsu Yixing Military-Civilian Organizations Conduct Joint Water Search-and-Rescue Training",
+      "url": "http://www.81.cn/yw_208727/16465815.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-06",
+      "is_significant": false
+    },
+    {
+      "title": "Simulation System Moved into a 'Postage-Stamp Range,' Born from a Sudden Flash of Inspiration among Officers and Soldiers",
+      "url": "http://www.81.cn/yw_208727/16465393.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-04",
+      "is_significant": false
+    },
+    {
+      "title": "A Base of Naval Aviation University Conducts In-Depth Study and Implementation of Xi Jinping's Thought on Strengthening the Military",
+      "url": "http://www.81.cn/yw_208727/16465379.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-04",
+      "is_significant": false
+    },
+    {
+      "title": "A Brigade of the 74th Group Army Strengthens Unmanned Combat Force Development",
+      "url": "http://www.81.cn/yw_208727/16465194.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-03",
+      "is_significant": false
+    },
+    {
+      "title": "As the Artificial Intelligence Wave Sweeps the Military Domain, Does Strategic Wisdom Still Have a Role to Play?",
+      "url": "http://www.81.cn/yw_208727/16464974.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-02",
+      "is_significant": false
+    },
+    {
+      "title": "Encountering 'Enemy' Harassment During Movement — UAVs and Robotic Wolves Deployed!",
+      "url": "http://www.81.cn/yw_208727/16465059.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-02",
+      "is_significant": false
+    }
+  ],
+  "author_name": "Benjamin Yang",
+  "author_title": "Founder & Principal Analyst, China Mil Watch",
+  "author_bio": "Benjamin Yang is the founder of China Mil Watch and an incoming International Affairs student at George Washington University’s Elliott School, focused on U.S.-China relations, public diplomacy, and security affairs.",
+  "author_links": {
+    "LinkedIn": "https://www.linkedin.com/in/benjamin-yang-42b525294",
+    "Email": "mailto:ben.yang@gwmail.gwu.edu",
+    "China Mil Watch": "../../index.html"
+  },
+  "media_items": [
+    {
+      "type": "image",
+      "src": "../media/2026-06-06-source-image.jpg",
+      "alt": "Source article image",
+      "caption": "Cover background image sourced from the lead source article. Included for editorial visual context only.",
+      "source_url": "http://www.81.cn/yw_208727/16465208.html",
+      "image_url": "http://www.81.cn/yw_208727/_attachment/2026/06/03/16465208_9d404992042e0286d5d988c2dff9ef79.jpg",
+      "source_label": "article body image",
+      "auto_selected": true
+    }
+  ],
+  "background_image_source": "source_trail_fetch",
+  "background_image_path": "output/the-pla-watch/media/2026-06-06-source-image.jpg",
+  "cover_image": "../covers/2026-06-06.png",
+  "cover_image_url": "https://chinamilwatch.org/the-pla-watch/covers/2026-06-06.png",
+  "cover_thumb": "../covers/2026-06-06-thumb.png"
+}
