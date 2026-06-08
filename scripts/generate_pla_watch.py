@@ -384,7 +384,7 @@ def call_claude(article_block: str, stats: dict, week_ending: str, week_start: s
 REQUIRED_FIELDS = [
     "title", "dek", "opening_note", "what_stood_out", "why_it_matters",
     "what_was_routine", "term_to_know_term", "term_to_know_explanation",
-    "what_im_watching_next", "edition_type", "linkedin_version",
+    "what_im_watching_next", "edition_type",
 ]
 
 
@@ -396,6 +396,38 @@ def validate_result(result: dict) -> list[str]:
     if result.get("edition_type") not in ("significant", "routine"):
         errors.append(f"Invalid edition_type: {result.get('edition_type')!r}")
     return errors
+
+
+def generate_linkedin_fallback(result: dict, week_ending: str) -> str:
+    """Deterministic fallback LinkedIn post built from core issue fields."""
+    title = result.get("title", "The PLA Watch")
+    dek = result.get("dek", "")
+    opening = (result.get("opening_note") or "").split("\n\n")[0]
+    stood_out = result.get("what_stood_out", "")
+    matters = result.get("why_it_matters", "")
+    signal = result.get("signal", "")
+    watching = result.get("what_im_watching_next", "")
+
+    lines = [title, ""]
+    if dek:
+        lines += [dek, ""]
+    if signal:
+        lines += [f"This week's signal: {signal}", ""]
+    if opening:
+        lines += [opening, ""]
+    if stood_out:
+        lines += ["## What stood out", stood_out, ""]
+    if matters:
+        lines += ["## Why it matters", matters, ""]
+    if watching:
+        lines += ["## What I'm watching next", watching, ""]
+    lines += [
+        f"Full edition: https://chinamilwatch.org/the-pla-watch/posts/{week_ending}.html",
+        "",
+        "I welcome comments or corrections from people working on Chinese military media, "
+        "PLA studies, or U.S.-China security.",
+    ]
+    return "\n".join(lines)
 
 
 # ── Source-trail capping ─────────────────────────────────────────────────────
@@ -565,6 +597,10 @@ def main():
             print(f"  - {e}")
         print("\nRaw result:", json.dumps(result, indent=2, ensure_ascii=False))
         sys.exit(1)
+
+    if not str(result.get("linkedin_version", "")).strip():
+        print("WARN: linkedin_version missing; generated fallback")
+        result["linkedin_version"] = generate_linkedin_fallback(result, week_ending_str)
 
     if args.dry_run:
         print("\n" + "=" * 72)
