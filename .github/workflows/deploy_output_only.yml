@@ -34,6 +34,12 @@ jobs:
           echo "output/ contents:"
           ls -la output/
 
+      # Validate the rendered output before publishing. Stdlib-only, so it runs
+      # on the runner's system Python without installing project dependencies.
+      # A non-zero exit blocks the deploy step below.
+      - name: Validate rendered output
+        run: python3 scripts/validate_output.py
+
       # Same deploy step the daily workflow uses, including the CNAME.
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

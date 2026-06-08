@@ -118,6 +118,14 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python pipeline.py
 
+      # ── 5b. Validate rendered output (blocks deploy on failure) ───────────
+      # Runs after the pipeline generates the site. A non-zero exit skips the
+      # commit, deploy, and success-marker steps below, so a broken render
+      # never reaches production and a later run can retry.
+      - name: Validate rendered output
+        if: steps.timecheck.outputs.should_run == 'true'
+        run: python scripts/validate_output.py
+
       # ── 6a. Commit billing-failure marker (scheduled runs only) ──────────
       # Runs even when the pipeline step fails so the marker reaches origin/main
       # and the scheduling guard can block later cron windows the same day.

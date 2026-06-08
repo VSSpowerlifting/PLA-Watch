@@ -77,14 +77,10 @@ def run(
     sources:         list[str],
     target_date:     date,
     dry_run:         bool = False,
-    process_backlog: bool = False,
 ) -> None:
     start_time = datetime.now()
     logger.info("=== PLA Watch pipeline — %s ===", target_date.isoformat())
-    logger.info(
-        "Sources: %s | dry-run: %s | process-backlog: %s",
-        sources, dry_run, process_backlog,
-    )
+    logger.info("Sources: %s | dry-run: %s", sources, dry_run)
     logger.info(
         "Models: relevance=%s  analysis=%s  | cap=%d",
         RELEVANCE_MODEL, ANALYSIS_MODEL, DAILY_ANALYSIS_CAP,
@@ -152,13 +148,18 @@ def run(
                 len(inserted), len(kw_rejected))
 
     # ── Stages 9–12: LLM analysis ────────────────────────────────────────────
-    articles_analyzed = 0
+    articles_analyzed      = 0
+    passed_relevance_count = 0   # articles that passed relevance this run
 
-    # Build analysis queue: newly stored this run + any that passed relevance in
-    # a prior run but whose translation/summary/categorization failed or was
-    # interrupted before completion.
+    # Build the analysis queue, newest-first so fresh scrapes are never starved:
+    #   1. inserted — scraped this run (passed_relevance NULL)
+    #   2. pending  — passed relevance in a prior run but analysis never finished
+    #   3. unscored — stored by a prior run that never reached relevance scoring,
+    #                 INCLUDING articles truncated by the cap on an earlier day
+    # Backlog (2 + 3) drains every run to fill capacity under DAILY_ANALYSIS_CAP,
+    # so cap-overflow and prior-outage articles can't stay invisible forever.
     # Format: (article_id, title_zh, body_zh, url)
-    queue: list[tuple[int, str, str, str]] = [
+    new_queue: list[tuple[int, str, str, str]] = [
         (aid,
          a.get("title_original", ""),
          a.get("text_original",  ""),
@@ -178,8 +179,6 @@ def run(
         if r["id"] not in inserted_ids
     ]
 
-    # Articles inserted by a prior run that never reached LLM relevance scoring
-    # (API was down).  Exclude any already in the queue.
     queued_ids = inserted_ids | {aid for aid, *_ in pending}
     unscored_rows = db.get_articles_unscored()
     unscored: list[tuple[int, str, str, str]] = [
@@ -191,33 +190,31 @@ def run(
         if r["id"] not in queued_ids
     ]
 
-    skipped_backlog = 0
-    if process_backlog:
-        queue.extend(pending)
-        queue.extend(unscored)
-        logger.info(
-            "Analysis stage: %d newly stored + %d pending + %d unscored = %d total "
-            "(--process-backlog active)",
-            len(queue) - len(pending) - len(unscored),
-            len(pending), len(unscored),
-            len(queue),
-        )
-    else:
-        skipped_backlog = len(pending) + len(unscored)
-        logger.info(
-            "Analysis stage: %d newly stored | skipping %d backlog articles "
-            "(pass --process-backlog to include them)",
-            len(queue), skipped_backlog,
-        )
+    backlog_total = len(pending) + len(unscored)
+    queue = new_queue + pending + unscored
 
     pre_cap = len(queue)
-    if len(queue) > DAILY_ANALYSIS_CAP:
+    if pre_cap > DAILY_ANALYSIS_CAP:
         logger.warning(
             "Queue has %d articles; capping to %d (DAILY_ANALYSIS_CAP). "
-            "Set env var DAILY_ANALYSIS_CAP=N or pass --process-backlog to adjust.",
+            "Set env var DAILY_ANALYSIS_CAP=N to raise the per-run ceiling.",
             pre_cap, DAILY_ANALYSIS_CAP,
         )
         queue = queue[:DAILY_ANALYSIS_CAP]
+
+    # Backlog that won't be touched this run because the cap filled first.
+    backlog_in_queue  = max(0, len(queue) - len(new_queue))
+    backlog_remaining = backlog_total - backlog_in_queue
+    logger.info(
+        "Analysis queue: %d new + %d/%d backlog draining this run (cap=%d)",
+        len(new_queue), backlog_in_queue, backlog_total, DAILY_ANALYSIS_CAP,
+    )
+    if backlog_remaining > 0:
+        logger.warning(
+            "%d backlog article(s) still unprocessed after today's cap — they will "
+            "drain on later runs (raise DAILY_ANALYSIS_CAP to clear them faster).",
+            backlog_remaining,
+        )
 
     if not ANTHROPIC_API_KEY:
         logger.warning(
@@ -252,6 +249,9 @@ def run(
                 passed    = result["passed_relevance"],
             )
 
+            if result["passed_relevance"]:
+                passed_relevance_count += 1
+
             # Write full analysis only for articles that passed relevance
             if result["passed_relevance"] and result.get("title_english"):
                 db.update_analysis(
@@ -272,14 +272,39 @@ def run(
                         "  ★ SIGNIFICANT: %s",
                         result.get("significance_reasoning", ""),
                     )
+            elif result["passed_relevance"]:
+                # Passed relevance but translation/summary failed → no publishable
+                # output. analyzed_at stays NULL so this becomes pending backlog
+                # and a later run retries it.
+                msg = (
+                    f"Post-relevance analysis incomplete for article {aid} ({url}): "
+                    "passed relevance but produced no English translation"
+                )
+                logger.error(msg)
+                errors.append(msg)
 
     # ── Stage 13: Close run record ────────────────────────────────────────────
-    analysis_attempted = len(queue) > 0 and ANTHROPIC_API_KEY
-    total_analysis_failed = (
+    analysis_attempted = bool(len(queue) > 0 and ANTHROPIC_API_KEY)
+
+    # Relevance scoring itself failed for every queued article (analyze() returned
+    # None) → likely API/billing outage. Preserved exactly as the original check
+    # so the billing-failure guard behaves the same.
+    relevance_total_failure = (
         analysis_attempted
         and articles_analyzed == 0
         and any("Analysis failed entirely" in e for e in errors)
     )
+    # Relevance scoring worked (≥1 article passed) but translation/summary failed
+    # for ALL of them, so the run produced nothing publishable. Previously this
+    # slipped through as a "success". Not a billing failure, but the run must
+    # still fail visibly so a later cron window or manual run retries.
+    post_relevance_total_failure = (
+        analysis_attempted
+        and articles_analyzed == 0
+        and passed_relevance_count > 0
+        and not relevance_total_failure
+    )
+    total_analysis_failed = relevance_total_failure or post_relevance_total_failure
 
     if run_id is not None:
         db.complete_scrape_run(
@@ -294,17 +319,27 @@ def run(
     db_total = db.get_total_analyzed_count() if not dry_run else 0
     _print_summary(all_scraped, new_articles, kw_passed, inserted, errors, dry_run,
                    articles_analyzed=articles_analyzed, db_total=db_total, elapsed=elapsed,
-                   pre_cap=pre_cap, backlog_skipped=skipped_backlog)
+                   pre_cap=pre_cap, backlog_remaining=backlog_remaining)
 
     if total_analysis_failed:
-        logger.error(
-            "FATAL: %d article(s) queued for analysis but zero succeeded — "
-            "API or billing failure. Writing billing-failure marker to prevent "
-            "repeated paid retries from later cron windows today.",
-            len(queue),
-        )
-        if not dry_run:
-            _write_billing_failure_marker(target_date)
+        if relevance_total_failure:
+            logger.error(
+                "FATAL: %d article(s) queued for analysis but zero succeeded — "
+                "API or billing failure. Writing billing-failure marker to prevent "
+                "repeated paid retries from later cron windows today.",
+                len(queue),
+            )
+            if not dry_run:
+                _write_billing_failure_marker(target_date)
+        else:
+            logger.error(
+                "FATAL: %d article(s) passed relevance but none produced a usable "
+                "translation/summary — post-relevance analysis failed for the whole "
+                "queue. Not writing the success marker; a later cron window or manual "
+                "run will retry the now-pending articles. (No billing marker: relevance "
+                "scoring succeeded, so this is not credit exhaustion.)",
+                passed_relevance_count,
+            )
         sys.exit(2)
 
     # ── Stage 14: Generate site ───────────────────────────────────────────────
@@ -358,7 +393,7 @@ def _print_summary(
     db_total:          int   = 0,
     elapsed:           float = 0.0,
     pre_cap:           int   = 0,
-    backlog_skipped:   int   = 0,
+    backlog_remaining: int   = 0,
 ) -> None:
     sep = "─" * 52
     tag = "(DRY RUN)" if dry_run else ""
@@ -373,8 +408,8 @@ def _print_summary(
         if pre_cap > DAILY_ANALYSIS_CAP:
             print(f"  Queue before cap:       {pre_cap:>4}")
             print(f"  Cap (DAILY_ANALYSIS_CAP):{DAILY_ANALYSIS_CAP:>4}")
-        if backlog_skipped:
-            print(f"  Backlog skipped:        {backlog_skipped:>4}  (use --process-backlog)")
+        if backlog_remaining:
+            print(f"  Backlog remaining:      {backlog_remaining:>4}  (drains on later runs)")
         print(f"  Analyzed this run:      {articles_analyzed:>4}")
         print(f"  Total analyzed in DB:   {db_total:>4}")
         print(f"  Relevance model:        {RELEVANCE_MODEL}")
@@ -413,15 +448,6 @@ if __name__ == "__main__":
         action="store_true",
         help="Run pipeline without writing to DB or calling LLM APIs",
     )
-    parser.add_argument(
-        "--process-backlog",
-        action="store_true",
-        help=(
-            "Include old pending/unscored articles from prior runs in the analysis queue. "
-            "Off by default to prevent surprise catch-up costs. "
-            "Subject to DAILY_ANALYSIS_CAP regardless."
-        ),
-    )
     args = parser.parse_args()
 
     target   = args.date or date.today()
@@ -431,5 +457,4 @@ if __name__ == "__main__":
         sources=sources,
         target_date=target,
         dry_run=args.dry_run,
-        process_backlog=args.process_backlog,
     )
