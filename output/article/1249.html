@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Are Medium-Altitude Long-Endurance UAVs Obsolete? — China Mil Watch</title>
+  <meta name="description" content="A Chinese military journal article by Zhao Wei, Hu Yongjiang, and Yang Sen catalogs MALE UAV combat losses across the Middle East, Ukraine, and Africa through mid-2025—including 24 cumulative MQ-9 los">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://chinamilwatch.org/article/1249.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="article">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org/article/1249.html">
+  <meta property="og:title"        content="Are Medium-Altitude Long-Endurance UAVs Obsolete?">
+  <meta property="og:description"  content="A Chinese military journal article by Zhao Wei, Hu Yongjiang, and Yang Sen catalogs MALE UAV combat losses across the Middle East, Ukraine, and Africa through mid-2025—including 24 cumulative MQ-9 los">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Are Medium-Altitude Long-Endurance UAVs Obsolete?">
+  <meta name="twitter:description" content="A Chinese military journal article by Zhao Wei, Hu Yongjiang, and Yang Sen catalogs MALE UAV combat losses across the Middle East, Ukraine, and Africa through mid-2025—including 24 cumulative MQ-9 los">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <!-- JSON-LD Structured Data -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-ink:            #1A2C3D;
+      --color-brand:          #B5513C;
+      --color-signal-mid:     #D87A64;
+      --color-signal-tint:    #FAECE7;
+      --color-surface:        #EDE8DF;
+      --color-bg:             #F7F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FAF7F2;
+      --color-text-primary:   #1A2C3D;
+      --color-text-secondary: #4A4440;
+      --color-text-muted:     #7A726A;
+      --color-border:         #C9BFB4;
+      --color-border-soft:    rgba(201, 191, 180, 0.55);
+      --color-accent:         #B5513C;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      background-image:
+        linear-gradient(rgba(26, 44, 61, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 44, 61, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .wordmark-signal { color: var(--color-brand); }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav .nav-short { display: none; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 140ms ease;
+    }
+    .header-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 160ms ease;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a:hover::after { transform: scaleX(1); }
+    .header-nav a.active { color: var(--color-text-primary); }
+    .header-nav a.active::after { transform: scaleX(1); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #444441;
+      background: #F1EFE8;
+      border: none;
+      border-radius: 3px;
+      padding: 4px 9px;
+      line-height: 1.4;
+    }
+    .tag[data-label="Taiwan"]                { background: #FCEBEB; color: #A32D2D; }
+    .tag[data-label="East China Sea"],
+    .tag[data-label="South China Sea"],
+    .tag[data-label="U.S.\2013 China Military"] { background: #E6F1FB; color: #185FA5; }
+    .tag[data-label*="Personnel"]             { background: #FAEEDA; color: #633806; }
+    .tag[data-label="Exercises"]              { background: #EAF3DE; color: #3B6D11; }
+    .tag[data-label="Military Diplomacy"]     { background: #EEEDFE; color: #3C3489; }
+    .tag[data-label="Internal Security"]      { background: #F1EFE8; color: #444441; }
+    .tag[data-label="Modernization"]          { background: #E1F5EE; color: #0F6E56; }
+
+    /* ── Analytical signal indicator ─────────────────────────────────────────── */
+    .analytical-signal-kicker {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.5rem;
+    }
+    .signal-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #B5513C;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .signal-kicker-text {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #B5513C;
+    }
+
+    /* ── Button tiers ────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, transform 120ms ease;
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--color-signal-mid);
+      outline-offset: 2px;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: #1A2C3D;
+      color: #E8EFF5;
+      border: none;
+    }
+    .btn-primary:hover { background: #14202D; color: #E8EFF5; text-decoration: none; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border);
+    }
+    .btn-secondary:hover { background: var(--color-surface); text-decoration: none; }
+    .btn-signal {
+      background: transparent;
+      color: #B5513C;
+      border: 1px solid #D87A64;
+    }
+    .btn-signal:hover { background: #FAECE7; color: #B5513C; text-decoration: none; }
+
+    /* ── Significant badge ───────────────────────────────────────────────────── */
+    .significant-badge {
+      display: inline-block;
+      background: #FAC775;
+      color: #633806;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
+
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      .header-nav .nav-full { display: none; }
+      .header-nav .nav-short { display: inline; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    /* ── Reduced motion ─────────────────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+.article-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.article-page-title-zh {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-signal-mid);
+  border-radius: 5px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.btn-source:hover {
+  background: var(--color-signal-tint);
+  border-color: var(--color-brand);
+  text-decoration: none;
+}
+.btn-source:focus-visible {
+  outline: 2px solid var(--color-signal-mid);
+  outline-offset: 2px;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── About-this-analysis link ────────────────────────────────────── */
+.about-analysis {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.about-analysis a { color: var(--color-text-muted); text-decoration: underline; }
+.about-analysis a:hover { color: var(--color-brand); }
+
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
+}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title"><span class="wordmark-primary">China Mil</span> <span class="wordmark-signal">Watch</span></span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >
+        <span class="nav-full">Daily Brief</span><span class="nav-short">Daily</span>
+      </a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../signals.html" >Signals</a>
+      <a href="../the-pla-watch/index.html" >
+        <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
+      </a>
+      <a href="../methodology.html" >Methodology</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+      <div class="tags">
+          <span class="tag" data-label="Modernization">Modernization</span>
+          <span class="tag" data-label="Doctrine">Doctrine</span>
+      </div>
+
+    <h1 class="article-page-title">
+      Are Medium-Altitude Long-Endurance UAVs Obsolete?
+    </h1>
+
+      <div class="article-page-title-zh">中空长航时无人机过时了吗？</div>
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>10 June 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16466490.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+    <div class="about-analysis">
+      <a href="../methodology.html">About this analysis</a>
+    </div>
+
+  </div>
+
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A Chinese military journal article by Zhao Wei, Hu Yongjiang, and Yang Sen catalogs MALE UAV combat losses across the Middle East, Ukraine, and Africa through mid-2025—including 24 cumulative MQ-9 losses and the first-deployment shootdown of the MQ-1C Gray Eagle—and argues the category remains viable through stealth redesign, electronic self-defense, anti-jamming redundancy, and repositioning as networked ISR and relay nodes rather than direct-strike platforms. The article documents PLA analytical attention to adversary platform vulnerabilities and adaptation patterns, specifically the shift from contested-airspace strike roles to stand-off ISR and system-of-systems node functions—a framing that maps directly onto how China would need to contest U.S. MALE UAV operations in a Taiwan or South China Sea scenario. The granular loss data and capability gap analysis—slow speed, high radar cross-section, link dependency—extends a visible pattern in Chinese military writing of deriving operational design lessons from third-party conflicts before those lessons are tested against PLA systems.</div>
+  </div>
+
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+<p>Are Medium-Altitude Long-Endurance UAVs Obsolete?</p><p>■ Zhao Wei, Hu Yongjiang, Yang Sen</p><p>Over the past two years, dozens of medium-altitude long-endurance (MALE) unmanned aerial vehicles—including the MQ-9 Reaper—have been shot down on battlefields around the world, prompting many to ask whether these platforms can still &#34;hold their own&#34; (尚能饭否).</p><p>At the same time, multiple countries continue to increase investment in the research, development, and deployment of this category of UAV. In November of last year, the upgraded MQ-9B completed its first anti-submarine patrol test; in April of this year, the first production aircraft of South Korea&#39;s domestically developed KUS-FS MALE UAV officially rolled off the assembly line; and shortly before that, Europe&#39;s first MALE UAV entered the prototype production stage.</p><p>So are MALE UAVs truly obsolete? Why are multiple countries bucking the trend and doubling down on investment? What circumstances will shape their future development? See this issue&#39;s analysis.</p><p>Related Types Suffer Repeated Losses</p><p>MALE UAVs generally refer to unmanned aerial systems operating at altitudes of 3 to 10 kilometers, with endurance of no less than 24 hours and substantial payload capacity, primarily tasked with reconnaissance and surveillance, communications relay, and precision strike missions. In the early 21st century, types such as the MQ-1 Predator and MQ-9 Reaper rose to prominence through battlefield performance and were once regarded as indispensable &#34;eyes in the sky&#34; of modern warfare.</p><p>In recent years, however, the status and role of MALE UAVs has been shaken. On Middle Eastern battlefields, at least 7 MQ-9 Reaper UAVs were shot down between March and April 2025 alone; following the escalation of U.S.-Israeli-Iranian hostilities, cumulative combat losses for that type had reached 24 aircraft as of April of this year. On the Russo-Ukrainian battlefield, the MQ-1C Gray Eagle was shot down on its very first combat deployment; the Orion UAV lost at least 2 aircraft within two days in September 2025; and confirmed video losses of the Bayraktar TB-2 alone reached 26 aircraft. In Africa, several Reaper UAVs have been shot down on the battlefield since the second half of 2025, and in Iraq the same type has been struck by missiles and suffered losses on multiple occasions. This string of data indicates that traditional MALE UAVs are becoming increasingly &#34;fragile&#34; in the modern battlefield environment.</p><p>[Caption: MQ-1C Gray Eagle UAV.]</p><p>[Caption: Bayraktar TB-2 UAV.]</p><p>The concentrated losses of MALE UAVs are not coincidental. From the perspective of the platforms themselves, in pursuit of long endurance these UAVs universally adopt a high-aspect-ratio fixed-wing configuration, resulting in slow flight speeds and poor maneuverability. The MQ-9 Reaper&#39;s cruise speed is only approximately 300 kilometers per hour; once locked by an air defense missile it is difficult to evade. The configuration accentuates the UAV&#39;s radar cross-section, and engine heat radiation is easily acquired by infrared seekers. To control weight, the airframes of these UAVs are largely constructed from lightweight composite materials, lacking necessary armor protection and self-defense systems. A more glaring shortcoming is that this category of UAV is highly dependent on satellite communications and data links, with weak resistance to electronic suppression; when subjected to jamming, navigation errors, communications interruptions, and even spoofing-induced forced landings are liable to occur.</p><p>Changes in the battlefield environment have further amplified these deficiencies. In the past, MALE UAVs could exploit their altitude advantage to conduct missions at ease in environments with weak air defense systems. Today, low-cost, miniaturized air defense weapons have proliferated rapidly, and medium altitude—even high altitude—is no longer a difficult-to-reach safe zone. The upgrading of electronic warfare capabilities means these platforms face the constant risk of having their signals cut or being spoofed.</p><p>The losses suffered by traditional MALE UAVs are fundamentally the result of a mismatch between a previous-generation product and the current battlefield environment. Their overall design was premised on a low-threat battlefield environment; when the modern battlefield has escalated to high-intensity confrontation, the same design has gradually shifted from an advantage to a liability, causing these platforms to become aerial targets hunted down and destroyed.</p><p>Why Are Countries Bucking the Trend?</p><p>If MALE UAVs were truly &#34;obsolete,&#34; countries would inevitably reduce or even halt investment in this category. In fact, the opposite is true: multiple countries are continuing to advance the development of new variants while simultaneously upgrading existing UAVs of this type.</p><p>This seemingly contradictory phenomenon stems from the fact that MALE UAVs still possess strategic value—namely, the ability to &#34;stand high, watch long, and link far&#34; (站得高、看得久、联得远). They can avoid the majority of low-altitude fire threats, sustain continuous orbiting in the medium-altitude band of 3 to 10 kilometers, cover operational areas of tens of thousands of square kilometers, and precisely identify and locate targets. They can maintain uninterrupted all-weather surveillance over a reconnaissance area for extended periods, providing continuous and accurate intelligence support for command decision-making. When satellite communications are restricted and ground communications are disrupted, some MALE UAVs can also serve as data relay nodes linking dispersed combat units. This multifunctionality means countries will not retire this category at present, but will instead drive its iterative development through technological upgrades.</p><p>Currently, national investment in this area is primarily directed at improving the following capabilities.</p><p>Stealth modifications. Some new variants take a multi-pronged approach encompassing aerodynamic configuration optimization and the application of stealth materials, substantially improving UAV survivability in complex battlefield environments. The KUS-FS, for example, employs a protrusion-free blended wing-body design; its dorsal intake structure shields the engine fan blades; and after the airframe is coated with radar-absorbent material, its radar cross-section is smaller than that of types such as the MQ-9 Reaper. The Eurodrone produced under the Eurodrone Programme features a V-tail and stealthy external design, with more than 80 percent of the airframe composed of composite materials; both the intake and exhaust are fitted with radar-absorbent structures to reduce the corresponding signatures.</p><p>[Caption: Eurodrone (model).]</p><p>Upgrading sensing and defensive capabilities. Traditional MALE UAVs universally lack threat warning and countermeasure capabilities; new variants continuously enhance self-defense capability by constructing defensive systems. For example, the KUS-FS integrates an electronic warfare self-defense system equipped with an omnidirectional radar warning receiver; once locked on, it can trigger an alert, automatically dispense chaff and infrared decoy flares, and execute high-g evasive maneuvers. The Reaper and similar UAVs have also undergone targeted modifications; the electronic support pods they carry can passively detect enemy radar signals and generate threat maps, providing operators with real-time warning, while the guided munitions they carry also possess the capability to intercept aerial targets.</p><p>Enhancing anti-jamming and autonomous capabilities. Some new variants adopt anti-jamming communications technology and add navigation backups, progressively moving toward autonomous operation. The Eurodrone, for instance, employs a multi-redundant data link design with three communications modes—satellite communications, line-of-sight link, and airborne relay—and can automatically switch based on the battlefield electromagnetic environment to prevent mission failure caused by link interruption. MALE UAVs such as the MQ-9B have, in response to battlefield requirements, added GPS anti-jamming antennas and are also equipped with a directional infrared countermeasures system capable of actively jamming the seekers of certain missiles, further improving survivability.</p><p>Repositioning on the Future Battlefield</p><p>Whether upgraded MALE UAVs can reverse their survivability predicament remains to be verified in actual combat. What can be stated with certainty is that this category of UAV will not disappear, but will instead, through transformation, integrate deeply into the joint operations system in a more pragmatic and effective manner, becoming an important node within it.</p><p>Deployment emphasis shifting toward stand-off operations. Improvements in stealth and self-defense capability do not necessarily mean these platforms must return to high-intensity contested airspace. In the future, this category of UAV will in all likelihood execute missions in relatively safe areas, including stand-off zones, maximizing the platform&#39;s long-endurance loitering advantage. For example, the U.S. Marine Corps&#39; MQ-9A integrates a broadband electronic reconnaissance pod capable of intercepting and collecting signals intelligence outside the adversary&#39;s air defense envelope. The MQ-9B, by integrating stand-off precision strike weapons, ensures mission accomplishment while safeguarding its own safety.</p><p>Capability boundaries extending into non-strike domains. As intelligent and information-based technologies continue to iterate and upgrade, the core capabilities of this category of UAV are expanding deeply into support and sustainment domains. The KUS-FS has specifically reinforced its reconnaissance, surveillance, and electronic defense capabilities, enabling it to capture battlefield dynamics over extended periods and transmit data in real time, providing intelligence support for command decision-making. The MQ-4C Triton undertakes long-range maritime communications relay missions; some modified variants also carry electronic jamming payloads capable of suppressing enemy radar and communications systems to a certain degree, opening safe corridors for friendly forces.</p><p>[Caption: KUS-FS medium-altitude long-endurance UAV.]</p><p>Battlefield role transitioning toward networked nodes (体系化节点). On the future battlefield, the limitations of single-platform operations will become increasingly pronounced, and the role of this category of UAV will shift from independent combat unit to critical node within the system. Some countries have already initiated cooperative combat trials involving electronic warfare aircraft, manned combat aircraft, and this category of UAV, using the UAVs to provide target cueing and data relay for manned platforms. For example, after the MQ-9A is fitted with a communications pod, it can link various combat units through network extension and data distribution functions, improving system-of-systems operational effectiveness through an integrated information link. The KUS-FS UAVs already fielded with the Republic of Korea Air Force&#39;s reconnaissance wing will serve as ISR nodes within the system, providing information support to other combat units.</p><p>Mission scope expanding toward the maritime domain. In executing missions such as maritime domain awareness and anti-submarine patrol, MALE UAVs are a key option for compensating for insufficient manned aircraft numbers, and may in the future become an important force underpinning maritime operational systems. The Eurodrone was, from the research and development stage, aimed at long-cycle missions such as anti-submarine warfare and wide-area maritime surveillance, with an autonomous flight endurance of up to 40 hours. The planning for South Korea&#39;s KUS-FS also explicitly focuses on maritime patrol missions to achieve comprehensive coverage of near-sea and far-sea areas and enhance maritime domain control capabilities. This indicates that the vast ocean is becoming a new primary battlespace for MALE UAVs.</p><p>In sum, the repeated losses suffered by MALE UAVs do not mean they will exit the historical stage; rather, through repositioning, they will integrate into the joint operations system in a posture more closely aligned with the demands of the modern battlefield. In the future, accompanied by technological upgrades and the tempering of actual combat, MALE UAVs may well take on new vitality and write new chapters.</p><p>(Images for this page provided by: Yang Zhou)</p>  </div>
+
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">中空长航时无人机过时了吗？ ■赵 薇 胡永江 杨 森 去今两年，包括MQ-9“死神”无人机在内的数十架中空长航时无人机，在世界多地战场上先后“折戟”，让不少人发出其“尚能饭否”的疑问。 与此同时，多国也在持续加码这类无人机的研发与部署。去年11月，美军升级后的MQ-9B无人机完成首次反潜巡逻测试；今年4月，韩国自研的KUS-FS中空长航时无人机首架量产机正式下线；此前不久，欧洲制造的首架中空长航时无人机进入原型机生产阶段。 那么，中空长航时无人机真的过时了吗？为何多国逆势加码投入？其未来发展将面临什么样的境况？请看本期解读。 相关机型频频折翼 中空长航时无人机通常指作战高度3至10千米、续航力不低于24小时、具备较大载荷能力的无人机系统，主要承担侦察监视、通信中继和精确打击任务。21世纪初，MQ-1“捕食者”、MQ-9“死神”等机型凭借战场上的表现声名鹊起，一度被视为现代战争不可或缺的“长空之眼”。 然而，近年来中空长航时无人机的这种地位作用正在被撼动。在中东战场，2025年3至4月，就有至少7架MQ-9“死神”无人机被击落，美以伊战事升级后，截至今年4月，该机型累计战损已达24架。在俄乌战场，MQ-1C“灰鹰”无人机首次投入作战便遭击落，“猎户座”无人机在2025年9月的两天内折损至少2架，“旗手”TB-2无人机仅视频确认的损失就达26架。在非洲，自2025年下半年以来，数架“游骑兵”无人机在战场上被击落，而在伊拉克，该型机同样多次被导弹命中出现战损。一连串的数据表明，传统中空长航时无人机在现代战场环境中正变得越来越“脆弱”。 MQ-1C“灰鹰”无人机。 “旗手”TB-2无人机。 中空长航时无人机的这种密集“折翼”并非偶然。从平台自身来看，为追求长航时，这类无人机普遍采用大展弦比固定翼布局，飞行速度慢、机动性差。MQ-9“死神”无人机的巡航速度仅约300千米/小时，一旦被防空导弹锁定便难以规避。其布局突出了无人机的雷达反射特征，发动机热辐射也容易被红外导引头捕获。为控制重量，它们的机身多采用轻质复合材料，缺乏必要的装甲防护与自卫系统。更明显的短板，是这类无人机高度依赖卫星通信与数据链，抗电子压制能力薄弱，遭遇干扰时易出现导航失准、通信中断甚至被诱骗迫降的情况。 战场环境的变化进一步放大了这方面的缺陷。过去，中空长航时无人机可凭借飞行高度优势，在防空体系薄弱的环境中从容地执行任务。如今，低成本、小型化防空武器快速普及，中空甚至高空不再是难以触及的安全区域。电子战手段的升级，更使其时刻面临信号被切断或被诱骗的风险。 传统中空长航时无人机的“折翼”，本质上是上一代产品与当前战场环境不适配的结果。其总体设计基于低威胁战场环境，当现代战场升级为高强度对抗，同样的设计即从优势渐渐变为短板，导致其沦为被“猎杀”的空中目标。 各国为何逆势投入 如果中空长航时无人机果真“过时”，那么各国势必会减少甚至停止对此类机型的投入。事实上恰恰相反，多国正持续推进新型号的研发，同时展开对原有的此类无人机的升级。 这种矛盾现象的出现，源于中空长航时无人机仍然具有战略价值，即“站得高、看得久、联得远”。它能避开大部分低空火力威胁，在3至10千米的中空区间持续盘旋，覆盖数万平方千米作战区域，精准识别和定位目标。它可对侦察区域长时间不间断地“全天候值守”，为指挥决策提供连续、准确的情报支撑。当卫星通信受限、地面通信中断时，有些中空长航时无人机还能充当数据中继节点联结分散的作战单元。这种多功能性，使各国当下不会淘汰这一机型，而会通过技术升级推动其迭代发展。 当前，各国对其投入经费主要用来提升以下几个方面的能力。 隐身化改进。有些新型号从气动布局优化、隐身材料应用等方面“多管齐下”，大幅提高无人机在复杂战场环境下的生存能力。如KUS-FS无人机采用无突起翼身融合设计，背负式进气道结构能遮挡发动机叶片，机身喷涂吸波涂层后，雷达反射截面积比MQ-9“死神”等机型更小。在Eurodrone Programme项目中问世的“欧洲无人机”选用V形尾翼与隐身化外形设计，80%以上的机身由复合材料构成，进气道和排气口均加装吸波结构，用以削弱相应特征。 欧洲无人机（模型）。 升级感知与防御能力。传统中空长航时无人机普遍缺乏威胁告警与对抗手段，新型号通过构建防御体系持续提升其自卫能力。比如，KUS-FS无人机集成有电子战自卫系统，配备全向雷达接收机，一旦被锁定即可触发告警，自动释放箔条与红外干扰弹，还可实施大过载机动进行规避。“游骑兵”无人机等也进行了针对性改进，安装的电子支援吊舱能被动侦测敌方雷达信号并生成威胁图谱，为操作员提供实时预警，其搭载的制导弹药还具备拦截空中目标的能力。 提升抗干扰与自主能力。一些新型号采用抗干扰通信技术并加装导航备份，逐步走向自主运行。如“欧洲无人机”采用多冗余数据链设计，具备卫星通信、视距链路和空中中继3种通信方式，可根据战场电磁环境自动切换，避免链路中断导致任务失败。MQ-9B等中空长航时无人机则顺应战场需求，加装了GPS抗干扰天线，同时配备定向红外对抗系统，可主动干扰一些导弹的导引头，生存能力进一步提升。 未来战场上的重新定位 升级后的中空长航时无人机能否扭转生存困境，有待实战检验。但可以确定的是，这类无人机不会消失，而会通过转型，以更加务实高效的方式深度融入联合作战体系，成为其中重要一环。 部署重心向防区外转移。隐身与自卫能力的提升，并不意味着其一定要重返高强度对抗空域。今后，此类无人机大概率会在相对安全的区域包括防区外执行任务，最大化发挥平台长航时滞空优势。如美国海军陆战队的MQ-9A无人机集成了宽频谱电子侦察吊舱，可在对手防空火力外截获和收集信号情报。MQ-9B无人机则通过整合防区外精确打击武器，在确保完成打击任务的同时保障自身安全。 能力边界向非打击领域延伸。随着智能化、信息化技术的迭代升级，此类无人机的核心能力正向支援保障领域深度拓展。KUS-FS无人机专门强化了侦察监视与电子防御能力，可长时间捕捉战场动态、实时传输数据，为指挥决策提供情报支撑。MQ-4C“海神”无人机承担的是远海通信中继任务，部分改进型还搭载电子干扰载荷，能在一定程度上压制敌方雷达与通信系统，为己方力量开辟安全通道。 KUS-FS中空长航时无人机。 战场角色向体系化节点转变。未来战场，单平台作战的局限性愈发凸显，此类无人机的角色将由独立作战单元向体系关键节点转变。一些国家已经启动电子战机、有人战机与此类无人机的协同作战试验，让无人机为有人平台提供目标指引与数据中继。如MQ-9A无人机加装通信吊舱后，可通过网络扩展与数据分发功能，将各作战单元进行串联，通过一体化信息链路提高体系作战效能。已列装韩国空军侦察联队的KUS-FS无人机，将作为体系中的ISR节点，为其他作战单元提供信息支撑。 任务范围向海洋方向拓展。在遂行海洋态势感知、反潜巡逻等任务时，中空长航时无人机是弥补有人机规模不足的关键选项，今后或将成为支撑海上作战体系的重要力量。“欧洲无人机”在研发阶段便瞄准反潜作战和广域海上监视等长周期任务，自主飞行时间可达40小时。韩国KUS-FS无人机的规划，也明确聚焦海上巡逻任务，以实现对近海、远海的全方位覆盖，提升海域管控能力。这意味着，广袤海洋正成为中空长航时无人机新的主战场。 总之，中空长航时无人机的频频折翼，并不意味着它将退出历史舞台，而是会通过重新定位，以更贴合现代战场需求的姿态融入联合作战体系。未来，伴随着技术升级与实战锤炼，中空长航时无人机或将焕发出新生机，续写新传奇。 （本版供图：阳 舟）</div>
+  </details>
+
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. <a href="../methodology.html">Methodology</a> · <a href="../archive.html">Archive</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
