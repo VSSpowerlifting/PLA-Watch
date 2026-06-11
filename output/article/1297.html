@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhancing Command Capability for All-Domain Operations — China Mil Watch</title>
+  <meta name="description" content="A PLA doctrinal article, publication unspecified, lays out a competency framework for commanders conducting all-domain operations, organized around three capability areas: battlefield cognition, multi">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://chinamilwatch.org/article/1297.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"         content="article">
+  <meta property="og:site_name"    content="China Mil Watch">
+  <meta property="og:url"          content="https://chinamilwatch.org/article/1297.html">
+  <meta property="og:title"        content="Enhancing Command Capability for All-Domain Operations">
+  <meta property="og:description"  content="A PLA doctrinal article, publication unspecified, lays out a competency framework for commanders conducting all-domain operations, organized around three capability areas: battlefield cognition, multi">
+  <meta property="og:image"        content="https://chinamilwatch.org/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Enhancing Command Capability for All-Domain Operations">
+  <meta name="twitter:description" content="A PLA doctrinal article, publication unspecified, lays out a competency framework for commanders conducting all-domain operations, organized around three capability areas: battlefield cognition, multi">
+  <meta name="twitter:image"       content="https://chinamilwatch.org/og-image.png">
+
+  <link rel="icon" type="image/png" href="../logo-icon.png">
+  <link rel="apple-touch-icon" href="../logo-icon.png">
+
+  <!-- JSON-LD Structured Data -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Color system ───────────────────────────────────────────────────────── */
+    :root {
+      --color-ink:            #1A2C3D;
+      --color-brand:          #B5513C;
+      --color-signal-mid:     #D87A64;
+      --color-signal-tint:    #FAECE7;
+      --color-surface:        #EDE8DF;
+      --color-bg:             #F7F4EF;
+      --color-bg-card:        #FFFFFF;
+      --color-bg-header:      #FFFFFF;
+      --color-bg-sidebar:     #FAF7F2;
+      --color-text-primary:   #1A2C3D;
+      --color-text-secondary: #4A4440;
+      --color-text-muted:     #7A726A;
+      --color-border:         #C9BFB4;
+      --color-border-soft:    rgba(201, 191, 180, 0.55);
+      --color-accent:         #B5513C;
+      --serif: 'Source Serif 4', 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:  'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+
+    body {
+      background-color: var(--color-bg);
+      background-image:
+        linear-gradient(rgba(26, 44, 61, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 44, 61, 0.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+      color: var(--color-text-primary);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--color-brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header / masthead ──────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--color-bg-header);
+      border-bottom: 1px solid var(--color-border);
+      flex-shrink: 0;
+    }
+    .site-header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 32px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .header-brand:hover { text-decoration: none; }
+    .header-brand img {
+      height: 50px;
+      width: 50px;
+      display: block;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .header-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .header-wordmark .title {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text-primary);
+      letter-spacing: -0.005em;
+      line-height: 1.05;
+      white-space: nowrap;
+    }
+    .wordmark-signal { color: var(--color-brand); }
+    .header-wordmark .kicker {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: 5px;
+    }
+
+    .header-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .header-nav .nav-short { display: none; }
+    .header-nav a {
+      color: var(--color-text-secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 6px 0;
+      position: relative;
+      white-space: nowrap;
+      transition: color 140ms ease;
+    }
+    .header-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: var(--color-brand);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 160ms ease;
+    }
+    .header-nav a:hover { color: var(--color-text-primary); text-decoration: none; }
+    .header-nav a:hover::after { transform: scaleX(1); }
+    .header-nav a.active { color: var(--color-text-primary); }
+    .header-nav a.active::after { transform: scaleX(1); }
+
+    /* ── Main layout ─────────────────────────────────────────────────────────── */
+    main {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-bg-card);
+      border-top: 1px solid var(--color-border);
+      padding: 2.25rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .footer-desc {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Tags / chips ────────────────────────────────────────────────────────── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #444441;
+      background: #F1EFE8;
+      border: none;
+      border-radius: 3px;
+      padding: 4px 9px;
+      line-height: 1.4;
+    }
+    .tag[data-label="Taiwan"]                { background: #FCEBEB; color: #A32D2D; }
+    .tag[data-label="East China Sea"],
+    .tag[data-label="South China Sea"],
+    .tag[data-label="U.S.\2013 China Military"] { background: #E6F1FB; color: #185FA5; }
+    .tag[data-label*="Personnel"]             { background: #FAEEDA; color: #633806; }
+    .tag[data-label="Exercises"]              { background: #EAF3DE; color: #3B6D11; }
+    .tag[data-label="Military Diplomacy"]     { background: #EEEDFE; color: #3C3489; }
+    .tag[data-label="Internal Security"]      { background: #F1EFE8; color: #444441; }
+    .tag[data-label="Modernization"]          { background: #E1F5EE; color: #0F6E56; }
+
+    /* ── Analytical signal indicator ─────────────────────────────────────────── */
+    .analytical-signal-kicker {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 0.5rem;
+    }
+    .signal-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #B5513C;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .signal-kicker-text {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #B5513C;
+    }
+
+    /* ── Button tiers ────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, transform 120ms ease;
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--color-signal-mid);
+      outline-offset: 2px;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: #1A2C3D;
+      color: #E8EFF5;
+      border: none;
+    }
+    .btn-primary:hover { background: #14202D; color: #E8EFF5; text-decoration: none; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border);
+    }
+    .btn-secondary:hover { background: var(--color-surface); text-decoration: none; }
+    .btn-signal {
+      background: transparent;
+      color: #B5513C;
+      border: 1px solid #D87A64;
+    }
+    .btn-signal:hover { background: #FAECE7; color: #B5513C; text-decoration: none; }
+
+    /* ── Significant badge ───────────────────────────────────────────────────── */
+    .significant-badge {
+      display: inline-block;
+      background: #FAC775;
+      color: #633806;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+
+    /* ── Utilities ───────────────────────────────────────────────────────────── */
+    .empty-state {
+      color: var(--color-text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--sans);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .section-rule::before {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+    }
+
+    /* ── Tablet / mobile ────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .site-header-inner { padding: 12px 18px; height: 72px; }
+      .header-brand img { height: 42px; width: 42px; }
+      .header-wordmark .title { font-size: 1.2rem; }
+      .header-wordmark .kicker { display: none; }
+      .header-nav { gap: 1rem; }
+      .header-nav a { font-size: 0.6875rem; letter-spacing: 0.06em; }
+      main { padding: 1.75rem 1.25rem 3rem; }
+      body { font-size: 0.9375rem; }
+      .site-footer { padding: 2rem 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      .header-nav .nav-full { display: none; }
+      .header-nav .nav-short { display: inline; }
+    }
+    @media (max-width: 600px) {
+      .site-header-inner { gap: 0.5rem; padding: 10px 14px; height: 64px; }
+      .header-brand { gap: 10px; }
+      .header-brand img { height: 36px; width: 36px; }
+      .header-wordmark .title { font-size: 1rem; }
+      .header-nav { gap: 0.85rem; }
+      .header-nav a { font-size: 0.625rem; letter-spacing: 0.04em; }
+    }
+    @media (max-width: 460px) {
+      .site-header-inner { padding: 10px 12px; gap: 0.4rem; }
+      .header-brand { gap: 8px; }
+      .header-brand img { height: 32px; width: 32px; }
+      .header-wordmark .title { font-size: 0.92rem; }
+      .header-nav { gap: 0.6rem; }
+      .header-nav a { font-size: 0.575rem; letter-spacing: 0.03em; }
+    }
+
+    /* ── Reduced motion ─────────────────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+.article-page {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+.back-link:hover { color: var(--color-brand); text-decoration: none; }
+
+/* ── Article header ──────────────────────────────────────────────── */
+.article-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-page-title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.article-page-title-zh {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  font-style: normal;
+  margin-bottom: 1rem;
+}
+
+.article-page-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+.article-page-meta .sep::before { content: "·"; margin-right: 0.75rem; }
+
+.btn-source {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-brand);
+  border: 1px solid var(--color-signal-mid);
+  border-radius: 5px;
+  padding: 6px 16px;
+  margin-top: 1.1rem;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.btn-source:hover {
+  background: var(--color-signal-tint);
+  border-color: var(--color-brand);
+  text-decoration: none;
+}
+.btn-source:focus-visible {
+  outline: 2px solid var(--color-signal-mid);
+  outline-offset: 2px;
+}
+
+/* ── Section label ───────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+.section-label::before {
+  content: "";
+  width: 16px;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+/* ── Summary block ───────────────────────────────────────────────── */
+.summary-block {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 4px 4px 0;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+.summary-block.significant {
+  border-left-color: var(--color-brand);
+}
+.sig-reasoning {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-brand);
+  line-height: 1.6;
+}
+
+/* ── Translation body ────────────────────────────────────────────── */
+.translation-body {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+}
+.translation-body p { margin-bottom: 0.9rem; }
+.translation-body p:last-child { margin-bottom: 0; }
+
+/* ── Collapsible original ────────────────────────────────────────── */
+details {
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+details summary {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+details[open] summary::before { transform: rotate(90deg); }
+details summary:hover { color: var(--color-text-primary); }
+.original-body {
+  padding: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ── About-this-analysis link ────────────────────────────────────── */
+.about-analysis {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+.about-analysis a { color: var(--color-text-muted); text-decoration: underline; }
+.about-analysis a:hover { color: var(--color-brand); }
+
+@media (max-width: 900px) {
+  .article-page { max-width: 100%; }
+  .article-page-title { font-size: 1.5rem; }
+}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="header-brand" aria-label="China Mil Watch home">
+      <img src="../logo-icon.png" alt="">
+      <span class="header-wordmark">
+        <span class="title"><span class="wordmark-primary">China Mil</span> <span class="wordmark-signal">Watch</span></span>
+        <span class="kicker">Open-source intelligence · Chinese military &amp; security media</span>
+      </span>
+    </a>
+    <nav class="header-nav">
+      <a href="../index.html" >
+        <span class="nav-full">Daily Brief</span><span class="nav-short">Daily</span>
+      </a>
+      <a href="../archive.html" >Archive</a>
+      <a href="../signals.html" >Signals</a>
+      <a href="../the-pla-watch/index.html" >
+        <span class="nav-full">The PLA Watch</span><span class="nav-short">PLA Watch</span>
+      </a>
+      <a href="../methodology.html" >Methodology</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+<div class="article-page">
+  <a href="../index.html" class="back-link">← Daily Brief</a>
+
+  <div class="article-header">
+
+      <div class="tags">
+          <span class="tag" data-label="Doctrine">Doctrine</span>
+      </div>
+
+    <h1 class="article-page-title">
+      Enhancing Command Capability for All-Domain Operations
+    </h1>
+
+      <div class="article-page-title-zh">面向全域作战提升指挥能力</div>
+
+    <div class="article-page-meta">
+      <span>PLA Daily (解放军报)</span>
+      <span class="sep"></span>
+      <span>11 June 2026</span>
+    </div>
+
+    <a href="http://www.81.cn/yw_208727/16466676.html" target="_blank" rel="noopener" class="btn-source">View original source ↗</a>
+
+    <div class="about-analysis">
+      <a href="../methodology.html">About this analysis</a>
+    </div>
+
+  </div>
+
+  <div class="section-label">Summary</div>
+  <div class="summary-block">
+    <div>A PLA doctrinal article, publication unspecified, lays out a competency framework for commanders conducting all-domain operations, organized around three capability areas: battlefield cognition, multi-service force employment, and adaptive deadlock-breaking, with explicit emphasis on cross-domain control competition (跨域制权) and coordinating fires and tempo across services. The article documents the PLA&#39;s ongoing effort to define what joint command proficiency actually requires at the individual commander level—a problem the force has acknowledged but not resolved, given persistent gaps in cross-service coordination identified in exercises. It extends a recognizable pattern of doctrinal prescription substituting for demonstrated institutional capacity: the specificity of the framework (&#34;objectives aligned, actions synchronized, effectiveness converged&#34;) records aspirational command standards, not confirmed practice.</div>
+  </div>
+
+  <div class="section-label">Translation</div>
+  <div class="translation-body">
+<p>Future warfare will see battlefield space expanded across all domains, operational elements coupled across all domains, and the mechanisms of victory transformed across all domains. What is at stake is not merely advantage in a single domain, but the response speed and coordination level of the all-domain operational system. Oriented toward all-domain operations, commanders must be adept at grasping changes in the form of warfare and adapting to the characteristics of joint operations, building systemic advantage in complex battlefield competition, and thereby effectively enhancing command effectiveness.</p><p>Improving battlefield cognitive capability. All-domain operations exhibit the characteristics of multi-dimensional integration and cross-domain control competition (跨域制权), placing new and higher demands on commanders. Only by taking a holistic perspective to perceive the laws of war and grasp battlefield situations can one effectively seize the initiative on the battlefield. It is necessary to broaden strategic vision—to think about operational problems from the standpoint of the overall national strategy and the top-level design of military strategy, to deeply grasp the evolutionary laws of warfare forms, the trends of battlefield space expansion, and the logic of combat force employment, and to coordinate the allocation of operational resources across all domains and advance operational actions in a coordinated manner from an all-domain perspective. It is necessary to strengthen the assessment of variables—through routine study of military history and battle cases, participation in complex scenario deductions, and precise analysis of battlefield data—to enhance the ability to acutely perceive and precisely anticipate multiple variables such as enemy situation dynamics, one&#39;s own force baseline, and environmental factors, thereby providing solid data support and logical basis for command decisions and achieving precise policy implementation.</p><p>Improving the capability to employ forces. Multi-service coordination and cross-domain linkage are the key logic of all-domain operations. How to integrate and aggregate diverse combat forces, break through coordination bottlenecks, and convert the advantages of each service and branch into overall operational effectiveness directly affects the achievement of operational objectives. First, commanders must be proficient in the specialized knowledge of multiple services and branches—through advanced study at academies, on-the-job tempering, and professional concentrated training—to clarify the functional positioning and coordination interfaces of different services and branches in all-domain operations, laying the foundation for precise force allocation and scientifically formulated plans. Second, commanders must strengthen cross-domain coordination and organization capability, skillfully employing joint command communication techniques and coordination mechanisms, precisely grasping the operational tempo and action requirements of each service and branch, and effectively coordinating to resolve contradictions among multiple services and branches in areas such as mission delineation, temporal-spatial linkage, and fire coordination, driving the formation of an operational posture of &#34;objectives aligned, actions synchronized, and effectiveness converged (目标同向、行动同步、效能同聚).&#34; Third, commanders must temper joint command decision-making capability—rapidly sorting through key operational elements, weighing gains and losses, scientifically allocating operational tasks and resources, and dynamically optimizing and adjusting operational deployments—to ensure that command decisions both conform to the overall requirements of all-domain operations and are adapted to the actual combat capabilities of each service and branch.</p><p>Improving the capability to adapt and break through deadlocks. The characteristic of dynamic sudden change on the all-domain battlefield is increasingly pronounced. Faced with various unconventional threats and complex battlefield deadlocks, commanders should proactively adapt, injecting into operational actions the vitality of dynamic adjustment and innovative breakthrough. On one hand, commanders should enhance emergency response, adaptability, and rapid reconstitution capability. When the battlefield situation undergoes sudden change, unconventional threats are encountered, or extreme dangerous situations arise, commanders must at the first moment precisely assess the nature of the threat, evaluate the scope of impact and operational risk, and—relying on a comprehensive grasp of the force characteristics of each service and branch and the distribution of battlefield resources—flexibly adjust operational deployments, reconstitute command chains and force compositions, and ensure that operational actions remain focused on core objectives at all times. On the other hand, commanders should enhance the capability for tactical innovation and breaking through deadlocks. Break free from traditional operational thinking patterns and path dependence, and proactively explore new models of cross-domain force combinations and new pathways for operational action. Combining cutting-edge technology application scenarios with actual battlefield requirements, innovatively design differentiated and asymmetric tactics (差异化、非对称战法), resolve battlefield deadlocks through the flexible employment of tactical strategies, and open up space for victory through innovative breakthroughs.</p>  </div>
+
+  <details>
+    <summary>Original Chinese</summary>
+    <div class="original-body">未来作战，战场空间全域拓展、作战要素全域耦合、制胜机理全域变革，比拼的不仅是单一领域优势，还有全域作战体系的响应速度、协同水平。面向全域作战，指挥员必须善于把握战争形态变化、适应联合作战特点，在复杂战场博弈中构建体系优势，从而有效提升指挥效能。 提高战场认知能力。全域作战呈现多元融合、跨域制权特点，对指挥员提出了新的更高的要求。只有立足全局洞察战争规律、把握战场态势，才能有效夺取战场主动权。要拓宽战略视野，立足国家战略全局和军事战略顶层设计思考作战问题，深刻把握战争形态演进规律、战场空间拓展趋势与作战力量运用逻辑，从全域视角统筹配置各域作战资源、协调推进作战行动。要强化变量研判，通过常态化研究战史战例、参与复杂场景推演、精准分析战场数据等，提升对敌情动态、我情底数、环境要素等多元变量的敏锐感知与精准预判能力，为指挥决策提供坚实数据支撑与逻辑依据，实现精准施策。 提高力量运用能力。多军兵种协同、跨领域联动是全域作战的关键逻辑。如何统筹聚合多元作战力量、打破协同梗阻，将各军兵种优势转化为整体作战效能，直接影响作战目标的达成。一是要精通多军兵种专业知识，通过院校深造、岗位历练、专业集训等方式，明晰不同军兵种在全域作战中的功能定位与协同接口，为精准调配力量、科学制定方案奠定基础。二是要强化跨域协同组织能力，熟练运用联合指挥沟通技巧与协同机制，精准把握各军兵种作战节奏与行动需求，有效协调解决多军兵种在任务划分、时空衔接、火力配合等方面的矛盾问题，推动形成“目标同向、行动同步、效能同聚”的作战格局。三是要锤炼联合指挥决策能力，快速梳理关键作战要素、权衡利弊得失，科学分配作战任务与资源，动态优化调整作战部署，确保指挥决策既符合全域作战全局要求，又能适配各军兵种实际作战能力。 提高应变破局能力。全域战场动态突变的特征日益明显，面对各类非常规威胁与复杂战场困局，指挥员应主动应变，为作战行动注入动态调整与创新突破的活力。一方面，应提升应急应变与快速重构能力。当战场态势发生突变、遭遇非常规威胁或极端险情时，第一时间精准研判威胁性质、评估影响范围与作战风险，依托对各军兵种力量特性、战场资源分布的全面把握，灵活调整作战部署、重构指挥链路与力量编成，确保作战行动始终聚焦核心目标。另一方面，应提升战法创新与破局能力。打破传统作战思维定势与路径依赖，主动探索跨域力量组合新模式、作战行动新路径。结合前沿技术应用场景与战场实际需求，创新设计差异化、非对称战法，通过灵活运用战术策略破解战场困局，以创新突破打开制胜空间。</div>
+  </details>
+
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-name">China Mil Watch</div>
+    <div class="footer-desc">An independent open-source intelligence pipeline monitoring Chinese-language military and security media. <a href="../methodology.html">Methodology</a> · <a href="../archive.html">Archive</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
