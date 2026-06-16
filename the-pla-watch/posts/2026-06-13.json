@@ -1,0 +1,131 @@
+{
+  "date": "2026-06-13",
+  "week_ending": "2026-06-13",
+  "week_start": "2026-06-07",
+  "title": "The PLA Watch: Combat Realism, Institutional Friction, and One Confirmation Worth Noting",
+  "dek": "A week dominated by training reform narratives and political work — with one MND press briefing that cut through the noise by putting the Liaoning carrier strike group officially on the map.",
+  "signal": "MND officially confirmed the Liaoning carrier strike group is operating in the Western Pacific and acknowledged repeated Japanese surveillance of the formation.",
+  "n_articles": 53,
+  "n_significant": 1,
+  "days_covered": 7,
+  "edition_type": "routine",
+  "edition_label": "Routine",
+  "source_trail": [
+    {
+      "title": "Ministry of National Defense Routine Press Briefing, Early June 2026",
+      "url": "http://www.81.cn/yw_208727/16466372.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-09",
+      "is_significant": true
+    },
+    {
+      "title": "Warships Ride the Waves, Forging the Sword in Distant Seas: Navy's 48th Escort Task Force Conducts Multiple Targeted Training Events",
+      "url": "http://www.81.cn/yw_208727/16465904.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-07",
+      "is_significant": false
+    },
+    {
+      "title": "Military Reporter at the Grassroots | Rescuing Pilots: First Train to 'Pull Teeth from the Tiger's Mouth'",
+      "url": "http://www.81.cn/yw_208727/16467131.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-13",
+      "is_significant": false
+    },
+    {
+      "title": "A Brigade of the Northern Theater Command Air Force Presents a New Landscape in Armed Search-and-Rescue Training",
+      "url": "http://www.81.cn/bz_208549/16467178.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-13",
+      "is_significant": false
+    },
+    {
+      "title": "Guided by Xi Jinping's Thought on Strengthening the Military · Establishing and Practicing a Correct Outlook on Performance Achievements | The New Flight Track of the \"Sea-Sky Eagles\"",
+      "url": "http://www.81.cn/yw_208727/16465983.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-08",
+      "is_significant": false
+    },
+    {
+      "title": "China's Peacekeeping Engineer Detachment in South Sudan Earns Commendation for Completing Road Repair Mission",
+      "url": "http://www.81.cn/yw_208727/16467124.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-13",
+      "is_significant": false
+    },
+    {
+      "title": "China, Kazakhstan, Kyrgyzstan, Russia, and Tajikistan Conduct New Round of Border Disarmament Treaty Compliance Inspections",
+      "url": "http://www.81.cn/yw_208727/16467123.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-13",
+      "is_significant": false
+    },
+    {
+      "title": "Tempering the Sword by Starlight! A Close Look at Air Force Aviation Unit Night Flight Training",
+      "url": "http://www.81.cn/kj_208559/16467005.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-12",
+      "is_significant": false
+    },
+    {
+      "title": "Charging Through the Waves! A Frigate Flotilla of the Southern Theater Command Navy Conducts Combat-Realistic Training",
+      "url": "http://www.81.cn/hj_208557/16466920.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-12",
+      "is_significant": false
+    },
+    {
+      "title": "\"Being Processed\" — Processed to What Extent, Exactly?",
+      "url": "http://www.81.cn/yw_208727/16466913.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-12",
+      "is_significant": false
+    },
+    {
+      "title": "A Glimpse at the Transformation of Military Training Organization Methods",
+      "url": "http://www.81.cn/yw_208727/16466675.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-11",
+      "is_significant": false
+    },
+    {
+      "title": "Enhancing Command Capability for All-Domain Operations",
+      "url": "http://www.81.cn/yw_208727/16466676.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-11",
+      "is_significant": false
+    },
+    {
+      "title": "Are Medium-Altitude Long-Endurance UAVs Obsolete?",
+      "url": "http://www.81.cn/yw_208727/16466490.html",
+      "source": "PLA Daily (解放军报)",
+      "date": "2026-06-10",
+      "is_significant": false
+    }
+  ],
+  "author_name": "Benjamin Yang",
+  "author_title": "Founder & Principal Analyst, China Mil Watch",
+  "author_bio": "Benjamin Yang is the founder of China Mil Watch and an incoming International Affairs student at George Washington University’s Elliott School, focused on U.S.-China relations, public diplomacy, and security affairs.",
+  "author_links": {
+    "LinkedIn": "https://www.linkedin.com/in/benjamin-yang-42b525294",
+    "Email": "mailto:ben.yang@gwmail.gwu.edu",
+    "China Mil Watch": "../../index.html"
+  },
+  "media_items": [
+    {
+      "type": "image",
+      "src": "../media/2026-06-13-source-image.jpg",
+      "alt": "Source article image",
+      "caption": "Cover background image sourced from the lead source article. Included for editorial visual context only.",
+      "source_url": "http://www.81.cn/yw_208727/16466372.html",
+      "image_url": "http://www.81.cn/yw_208727/_attachment/2026/06/09/16466372_9f17030d30e78261fca1e1c50b6e6ec9.jpg",
+      "source_label": "article body image",
+      "auto_selected": true
+    }
+  ],
+  "background_image_source": "source_trail_fetch",
+  "background_image_path": "output/the-pla-watch/media/2026-06-13-source-image.jpg",
+  "cover_image": "../covers/2026-06-13.png",
+  "cover_image_url": "https://chinamilwatch.org/the-pla-watch/covers/2026-06-13.png",
+  "cover_thumb": "../covers/2026-06-13-thumb.png"
+}
